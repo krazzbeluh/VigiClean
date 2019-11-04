@@ -1,0 +1,8 @@
+disabled_rules:
+- trailing_whitespace
+- identifier_name
+excluded: # excluded via string array
+- i
+- j
+- p
+- n
