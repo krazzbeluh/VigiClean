@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
 		94BE5AA42370A9FE00CE3060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */; };
 		94BE5AA72370ABC300CE3060 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA62370ABC300CE3060 /* .swiftlint.yml */; };
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
+		94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashBoardViewController.swift */; };
 		94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0272370A1CA00037210 /* AppDelegate.swift */; };
-		94F0A02C2370A1CA00037210 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A02B2370A1CA00037210 /* ViewController.swift */; };
 		94F0A02F2370A1CA00037210 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A02D2370A1CA00037210 /* Main.storyboard */; };
 		94F0A0312370A1CB00037210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0302370A1CB00037210 /* Assets.xcassets */; };
 		94F0A0342370A1CB00037210 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0322370A1CB00037210 /* LaunchScreen.storyboard */; };
@@ -45,14 +46,15 @@
 		30F149764B943B7441F22A7A /* libPods-VigiClean.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VigiClean.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5134AA4F92C49E79CE95113C /* libPods-VigiCleanTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VigiCleanTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6230A23E08C3B15710CDB865 /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
+		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94BE5AA62370ABC300CE3060 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		94EB57742372D8B800582990 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		94F0A0242370A1CA00037210 /* VigiClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VigiClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0A0272370A1CA00037210 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		94F0A02B2370A1CA00037210 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		94F0A02E2370A1CA00037210 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94F0A0302370A1CB00037210 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94F0A0332370A1CB00037210 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				94F0A02D2370A1CA00037210 /* Main.storyboard */,
+				947FFAEE237213C800F01487 /* ScoreView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -123,7 +126,7 @@
 		94BE5A9F2370A6AB00CE3060 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				94F0A02B2370A1CA00037210 /* ViewController.swift */,
+				94EB57742372D8B800582990 /* DashBoardViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -407,8 +410,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94F0A02C2370A1CA00037210 /* ViewController.swift in Sources */,
+				94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */,
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
+				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

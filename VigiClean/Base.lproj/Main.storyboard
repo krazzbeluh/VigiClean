@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mag-T7-Jig">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
@@ -14,19 +14,19 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Dash Board View Controller-->
         <scene sceneID="DbG-D5-v78">
             <objects>
-                <viewController id="mag-T7-Jig" sceneMemberID="viewController">
+                <viewController id="mag-T7-Jig" customClass="DashBoardViewController" customModule="VigiClean" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N56-T9-4uu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7N0-wx-fld">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="116.33333333333333"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="105.66666666666667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VigiClean" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9u7-OU-DnV">
-                                        <rect key="frame" x="0.0" y="43.999999999999993" width="414" height="72.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="44" width="375" height="61.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Hamish" family="Hamish" pointSize="45"/>
                                         <color key="textColor" name="Background"/>
                                         <nil key="highlightedColor"/>
@@ -45,14 +45,59 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lb8-av-c4K">
+                                <rect key="frame" x="308" y="125.66666666666667" width="47" height="46.666666666666671"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lb8-av-c4K" secondAttribute="height" multiplier="1:1" id="9jG-pS-lcQ"/>
+                                </constraints>
+                                <state key="normal" image="Default Avatar"/>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezg-5l-AbO">
+                                <rect key="frame" x="50" y="696" width="275" height="44"/>
+                                <color key="backgroundColor" name="VigiClean"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Scanner un code">
+                                    <color key="titleColor" name="Background"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJL-n8-ceg">
+                                <rect key="frame" x="118.66666666666669" y="740" width="138" height="30"/>
+                                <state key="normal" title="Code endommagé ?"/>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYj-Wb-9Rv">
+                                <rect key="frame" x="50" y="268.66666666666669" width="275" height="275.00000000000006"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hYj-Wb-9Rv" secondAttribute="height" multiplier="1:1" id="7Oc-9E-4G6"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="9Cl-O6-wY1" kind="embed" id="OBD-MS-GV1"/>
+                                </connections>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99216347930000004" green="0.99214488270000001" blue="0.99215751890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="9u7-OU-DnV" firstAttribute="top" secondItem="EWC-VY-GCU" secondAttribute="top" id="3rs-2P-wwt"/>
+                            <constraint firstItem="ezg-5l-AbO" firstAttribute="leading" secondItem="EWC-VY-GCU" secondAttribute="leading" constant="50" id="6LS-if-AaK"/>
+                            <constraint firstItem="ezg-5l-AbO" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="70G-zv-gk2"/>
+                            <constraint firstItem="lb8-av-c4K" firstAttribute="top" secondItem="7N0-wx-fld" secondAttribute="bottom" constant="20" id="QNw-7X-7Uy"/>
+                            <constraint firstItem="lb8-av-c4K" firstAttribute="width" secondItem="N56-T9-4uu" secondAttribute="width" multiplier="1/8" id="QYC-q5-IsE"/>
                             <constraint firstItem="7N0-wx-fld" firstAttribute="height" secondItem="N56-T9-4uu" secondAttribute="height" multiplier="0.13" id="RlW-bj-lg3"/>
                             <constraint firstItem="7N0-wx-fld" firstAttribute="top" secondItem="N56-T9-4uu" secondAttribute="top" id="cSl-VJ-33s"/>
+                            <constraint firstItem="hYj-Wb-9Rv" firstAttribute="leading" secondItem="EWC-VY-GCU" secondAttribute="leading" constant="50" id="cXY-5q-V5v"/>
+                            <constraint firstItem="vJL-n8-ceg" firstAttribute="top" secondItem="ezg-5l-AbO" secondAttribute="bottom" id="coG-3z-dJd"/>
+                            <constraint firstItem="EWC-VY-GCU" firstAttribute="bottom" secondItem="vJL-n8-ceg" secondAttribute="bottom" constant="8" id="g0l-ej-TDH"/>
                             <constraint firstItem="7N0-wx-fld" firstAttribute="leading" secondItem="N56-T9-4uu" secondAttribute="leading" id="iX8-qw-j1R"/>
                             <constraint firstItem="7N0-wx-fld" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="is0-K8-7Ru"/>
+                            <constraint firstItem="vJL-n8-ceg" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="p4g-E0-MFN"/>
+                            <constraint firstItem="EWC-VY-GCU" firstAttribute="trailing" secondItem="lb8-av-c4K" secondAttribute="trailing" constant="20" id="pTC-GP-s2I"/>
+                            <constraint firstItem="hYj-Wb-9Rv" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="w1g-4E-QB0"/>
+                            <constraint firstItem="hYj-Wb-9Rv" firstAttribute="centerY" secondItem="N56-T9-4uu" secondAttribute="centerY" id="z1d-Tp-hmx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EWC-VY-GCU"/>
                     </view>
@@ -61,13 +106,50 @@
             </objects>
             <point key="canvasLocation" x="1237.68115942029" y="-154.01785714285714"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="N9p-mp-T7h">
+            <objects>
+                <viewController id="9Cl-O6-wY1" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="y60-Dd-iZ3" customClass="ScoreView" customModule="VigiClean" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx8-1w-Wkm">
+                                <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                <color key="textColor" name="VigiClean"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="2" height="3"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="centerY" secondItem="y60-Dd-iZ3" secondAttribute="centerY" id="4Jm-Wq-1en"/>
+                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="centerY" secondItem="y60-Dd-iZ3" secondAttribute="centerY" id="EAr-L7-Sdg"/>
+                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="leading" secondItem="ExE-V2-QmD" secondAttribute="leading" id="VIw-lY-x4B"/>
+                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="centerX" secondItem="y60-Dd-iZ3" secondAttribute="centerX" id="Zgg-TR-w5m"/>
+                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="centerX" secondItem="y60-Dd-iZ3" secondAttribute="centerX" id="dqc-IG-ATB"/>
+                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="top" secondItem="y60-Dd-iZ3" secondAttribute="top" id="e40-Xt-Net"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ExE-V2-QmD"/>
+                        <connections>
+                            <outlet property="scoreLabel" destination="bx8-1w-Wkm" id="Xzj-18-gM5"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2WJ-gA-j5D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="QmD-tx-G28"/>
+            </objects>
+            <point key="canvasLocation" x="1962" y="-154"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Default Avatar" width="129" height="130"/>
         <namedColor name="Background">
-            <color red="0.99216347930000004" green="0.99214488270000001" blue="0.99215751890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="VigiClean">
-            <color red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.56000000238418579" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
