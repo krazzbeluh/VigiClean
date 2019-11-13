@@ -12,7 +12,7 @@ import Firebase
 class ConnectionViewController: UIViewController {
     // MARK: Properties
     private let presenter = ConnectionViewPresenter()
-    private var isInscription = true
+    var isInscription = true
     
     // MARK: Outlets
     @IBOutlet weak var pseudoTextField: UITextField!

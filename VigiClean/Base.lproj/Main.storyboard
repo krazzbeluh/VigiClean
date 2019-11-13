@@ -230,10 +230,10 @@
             </objects>
             <point key="canvasLocation" x="332" y="457"/>
         </scene>
-        <!--View Controller-->
+        <!--Choose Accounting Method View Controller-->
         <scene sceneID="8dF-Yn-HC3">
             <objects>
-                <viewController id="Juh-5h-mMU" sceneMemberID="viewController">
+                <viewController id="Juh-5h-mMU" customClass="ChooseAccountingMethodViewController" customModule="VigiClean" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xf7-Yc-FcD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +252,7 @@
                                     <color key="titleColor" name="Background"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2KX-Fa-dnk" kind="show" id="gVG-MU-eUl"/>
+                                    <action selector="buttonToConnectionVC:" destination="Juh-5h-mMU" eventType="touchUpInside" id="D8G-h6-Mnc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xc1-T8-vAX">
@@ -263,7 +263,7 @@
                                     <color key="titleColor" name="VigiClean"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2KX-Fa-dnk" kind="show" id="Qtn-jX-9Hd"/>
+                                    <action selector="buttonToConnectionVC:" destination="Juh-5h-mMU" eventType="touchUpInside" id="qId-A2-26y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjI-G4-ank">
@@ -302,6 +302,9 @@
                         <viewLayoutGuide key="safeArea" id="e9F-aV-ZyL"/>
                     </view>
                     <navigationItem key="navigationItem" id="ats-Jd-dKu"/>
+                    <connections>
+                        <segue destination="2KX-Fa-dnk" kind="show" identifier="segueToLogIn" id="4R8-Dn-ncG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUH-Lh-2K2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -433,7 +436,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qtn-jX-9Hd"/>
-        <segue reference="wIo-C3-k0q"/>
+        <segue reference="2Sb-bF-GVj"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,6 +18,7 @@
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
 		94CDC9AC237C35FC003295AD /* ConnectionViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AB237C35FC003295AD /* ConnectionViewPresenter.swift */; };
 		94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AD237C3AF2003295AD /* UserAccount.swift */; };
+		94CDC9B0237C48F9003295AD /* ChooseAccountingMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */; };
 		94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashBoardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
 		94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0272370A1CA00037210 /* AppDelegate.swift */; };
@@ -63,6 +64,7 @@
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		94CDC9AB237C35FC003295AD /* ConnectionViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewPresenter.swift; sourceTree = "<group>"; };
 		94CDC9AD237C3AF2003295AD /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountingMethodViewController.swift; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		94F0A0242370A1CA00037210 /* VigiClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VigiClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 		941F7E17237B080200044A0D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */,
 				9462DCC0237B5D81003AEFB9 /* ConnectionViewController.swift */,
 				941F7E1A237B084400044A0D /* ProfileViewController.swift */,
 				94EB57742372D8B800582990 /* DashBoardViewController.swift */,
@@ -441,6 +444,7 @@
 				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
 				94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */,
 				94CDC9AC237C35FC003295AD /* ConnectionViewPresenter.swift in Sources */,
+				94CDC9B0237C48F9003295AD /* ChooseAccountingMethodViewController.swift in Sources */,
 				947447FB237AF63500208B5F /* ScoreViewPresenter.swift in Sources */,
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
