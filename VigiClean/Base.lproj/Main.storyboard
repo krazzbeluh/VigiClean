@@ -314,7 +314,7 @@
         <scene sceneID="xKG-6s-I98">
             <objects>
                 <viewController id="2KX-Fa-dnk" customClass="ConnectionViewController" customModule="VigiClean" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hU7-9T-Kys" customClass="Connection">
+                    <view key="view" contentMode="scaleToFill" id="hU7-9T-Kys">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -324,24 +324,31 @@
                                     <constraint firstAttribute="width" secondItem="xcA-Wb-1J6" secondAttribute="height" multiplier="1:1" id="hLG-AI-ZHr"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZ7-Iy-JFT">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sZ7-Iy-JFT">
                                 <rect key="frame" x="20" y="598" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IzL-we-dMJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XeS-y6-zbd">
                                 <rect key="frame" x="20" y="538" width="374" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartInsertDeleteType="no" textContentType="email"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wyl-kC-rc7">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wyl-kC-rc7">
                                 <rect key="frame" x="20" y="478" width="374" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WsG-eH-YCz">
+                                <rect key="frame" x="182" y="688" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WsG-eH-YCz" secondAttribute="height" multiplier="1:1" id="WJn-qP-cYu"/>
+                                </constraints>
+                                <color key="color" name="VigiClean"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOP-MZ-c0o">
                                 <rect key="frame" x="20" y="688" width="374" height="50"/>
                                 <color key="backgroundColor" name="VigiClean"/>
@@ -354,7 +361,6 @@
                                 </state>
                                 <connections>
                                     <action selector="didTapPerformButton:" destination="2KX-Fa-dnk" eventType="touchUpInside" id="X4C-l0-46T"/>
-                                    <segue destination="mag-T7-Jig" kind="show" id="wIo-C3-k0q"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFe-9E-97Q">
@@ -370,7 +376,9 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="WsG-eH-YCz" firstAttribute="centerX" secondItem="YOP-MZ-c0o" secondAttribute="centerX" id="0vX-fN-pE8"/>
                             <constraint firstItem="UFe-9E-97Q" firstAttribute="leading" secondItem="q4m-sg-UX1" secondAttribute="leading" constant="20" id="1ph-F8-YOk"/>
                             <constraint firstItem="XeS-y6-zbd" firstAttribute="width" secondItem="sZ7-Iy-JFT" secondAttribute="width" id="8to-AO-JQZ"/>
                             <constraint firstItem="UFe-9E-97Q" firstAttribute="top" secondItem="q4m-sg-UX1" secondAttribute="top" constant="20" id="AFP-Yo-C1G"/>
@@ -379,12 +387,14 @@
                             <constraint firstItem="wyl-kC-rc7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xcA-Wb-1J6" secondAttribute="bottom" constant="30" id="Rch-ki-H9V"/>
                             <constraint firstItem="XeS-y6-zbd" firstAttribute="centerX" secondItem="sZ7-Iy-JFT" secondAttribute="centerX" id="SvS-7l-X56"/>
                             <constraint firstItem="sZ7-Iy-JFT" firstAttribute="top" secondItem="XeS-y6-zbd" secondAttribute="bottom" constant="20" id="T8G-mL-YUj"/>
+                            <constraint firstItem="WsG-eH-YCz" firstAttribute="height" secondItem="YOP-MZ-c0o" secondAttribute="height" id="U0i-ez-ZLz"/>
                             <constraint firstItem="sZ7-Iy-JFT" firstAttribute="centerX" secondItem="hU7-9T-Kys" secondAttribute="centerX" id="WOx-Fs-KGZ"/>
                             <constraint firstItem="wyl-kC-rc7" firstAttribute="centerX" secondItem="sZ7-Iy-JFT" secondAttribute="centerX" id="Zm1-UZ-sFl"/>
                             <constraint firstItem="xcA-Wb-1J6" firstAttribute="top" secondItem="q4m-sg-UX1" secondAttribute="top" constant="20" id="aKf-gJ-TBy"/>
                             <constraint firstItem="XeS-y6-zbd" firstAttribute="height" secondItem="sZ7-Iy-JFT" secondAttribute="height" id="c3B-UU-aaz"/>
                             <constraint firstItem="q4m-sg-UX1" firstAttribute="bottom" secondItem="YOP-MZ-c0o" secondAttribute="bottom" constant="70" id="d56-6t-AAO"/>
                             <constraint firstItem="xcA-Wb-1J6" firstAttribute="width" secondItem="xcA-Wb-1J6" secondAttribute="height" multiplier="1:1" id="gKm-Lp-U0T"/>
+                            <constraint firstItem="WsG-eH-YCz" firstAttribute="centerY" secondItem="YOP-MZ-c0o" secondAttribute="centerY" id="jYb-3X-Wnx"/>
                             <constraint firstItem="YOP-MZ-c0o" firstAttribute="leading" secondItem="q4m-sg-UX1" secondAttribute="leading" constant="20" id="pmy-nZ-UMx"/>
                             <constraint firstItem="xcA-Wb-1J6" firstAttribute="leading" secondItem="hU7-9T-Kys" secondAttribute="leading" constant="70" id="ppF-Xi-aH1"/>
                             <constraint firstItem="YOP-MZ-c0o" firstAttribute="centerX" secondItem="hU7-9T-Kys" secondAttribute="centerX" id="qm5-pL-ZDv"/>
@@ -394,6 +404,9 @@
                             <constraint firstItem="YOP-MZ-c0o" firstAttribute="top" secondItem="sZ7-Iy-JFT" secondAttribute="bottom" constant="50" id="zno-7m-bOe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q4m-sg-UX1"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="leE-Md-p6B" appends="YES" id="k2g-hE-ZLP"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="20c-Zd-jVB"/>
                     <connections>
@@ -401,9 +414,15 @@
                         <outlet property="passwordTextField" destination="sZ7-Iy-JFT" id="XZI-5G-QmI"/>
                         <outlet property="performButton" destination="YOP-MZ-c0o" id="M84-US-MfM"/>
                         <outlet property="pseudoTextField" destination="wyl-kC-rc7" id="Ljb-wE-0cN"/>
+                        <segue destination="mag-T7-Jig" kind="show" identifier="segueToDashboard" id="mVQ-7p-GZc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hi-KL-She" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="leE-Md-p6B">
+                    <connections>
+                        <action selector="dismissKeyBoard:" destination="2KX-Fa-dnk" id="WjW-Zn-e61"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="416" y="-154"/>
         </scene>
@@ -436,6 +455,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Sb-bF-GVj"/>
+        <segue reference="mVQ-7p-GZc"/>
     </inferredMetricsTieBreakers>
 </document>

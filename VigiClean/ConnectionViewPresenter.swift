@@ -9,14 +9,27 @@
 import Foundation
 
 class ConnectionViewPresenter {
-    let userAccount = UserAccount()
     init() {}
     
-    func inscription(email: String?, password: String?) {
+    func inscription(email: String?, password: String?, completion: @escaping ((Result<Void, Error>) -> Void)) {
         guard let email = email, let password = password else {
             print("erreur")
             return
         }
-        userAccount.inscription(email: email, password: password)
+        
+        UserAccount.inscription(email: email, password: password) { result in
+            completion(result)
+        }
+    }
+    
+    func connection(email: String?, password: String?, completion: @escaping ((Result<Void, Error>) -> Void)) {
+        guard let email = email, let password = password else {
+            print("erreur")
+            return
+        }
+        
+        UserAccount.connection(email: email, password: password) { result in
+            completion(result)
+        }
     }
 }

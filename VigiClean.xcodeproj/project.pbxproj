@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F7E1A237B084400044A0D /* ProfileViewController.swift */; };
 		9462DCC1237B5D81003AEFB9 /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* ConnectionViewController.swift */; };
-		947447FB237AF63500208B5F /* ScoreViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947447FA237AF63500208B5F /* ScoreViewPresenter.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
@@ -19,6 +18,7 @@
 		94CDC9AC237C35FC003295AD /* ConnectionViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AB237C35FC003295AD /* ConnectionViewPresenter.swift */; };
 		94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AD237C3AF2003295AD /* UserAccount.swift */; };
 		94CDC9B0237C48F9003295AD /* ChooseAccountingMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */; };
+		94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */; };
 		94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashBoardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
 		94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0272370A1CA00037210 /* AppDelegate.swift */; };
@@ -55,7 +55,6 @@
 		6230A23E08C3B15710CDB865 /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
 		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		9462DCC0237B5D81003AEFB9 /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
-		947447FA237AF63500208B5F /* ScoreViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewPresenter.swift; sourceTree = SOURCE_ROOT; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -65,6 +64,7 @@
 		94CDC9AB237C35FC003295AD /* ConnectionViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewPresenter.swift; sourceTree = "<group>"; };
 		94CDC9AD237C3AF2003295AD /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountingMethodViewController.swift; sourceTree = "<group>"; };
+		94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		94F0A0242370A1CA00037210 /* VigiClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VigiClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +129,7 @@
 				941F7E1A237B084400044A0D /* ProfileViewController.swift */,
 				94EB57742372D8B800582990 /* DashBoardViewController.swift */,
 				94EB57762372DB1E00582990 /* ScannerViewController.swift */,
+				94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -155,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				94CDC9AB237C35FC003295AD /* ConnectionViewPresenter.swift */,
-				947447FA237AF63500208B5F /* ScoreViewPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -440,12 +440,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */,
+				94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */,
 				9462DCC1237B5D81003AEFB9 /* ConnectionViewController.swift in Sources */,
 				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
 				94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */,
 				94CDC9AC237C35FC003295AD /* ConnectionViewPresenter.swift in Sources */,
 				94CDC9B0237C48F9003295AD /* ChooseAccountingMethodViewController.swift in Sources */,
-				947447FB237AF63500208B5F /* ScoreViewPresenter.swift in Sources */,
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,

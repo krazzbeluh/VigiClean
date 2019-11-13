@@ -24,10 +24,12 @@ class ConnectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pseudoTextField.isHidden = isInscription ? false : true
+        performButton.setTitle(isInscription ? "Inscription" : "Connexion", for: .normal)
     }
     
     // MARK: Actions
     @IBAction func didTapPerformButton(_ sender: Any) {
+        performButton.isHidden = true
         if isInscription {
             inscription()
         } else {
@@ -39,19 +41,34 @@ class ConnectionViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func dismissKeyBoard(_ sender: Any) {
+        pseudoTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
     // MARK: Methods
     func inscription() {
-        presenter.inscription(email: emailTextField.text, password: passwordTextField.text)
+        presenter.inscription(email: emailTextField.text, password: passwordTextField.text) { result in
+            switch result {
+            case .success:
+                self.performSegue(withIdentifier: "segueToDashboard", sender: nil)
+            case .failure(let error):
+                self.showAlert(with: error)
+            }
+            self.performButton.isHidden = false
+        }
     }
     
     func connection() {
-        Auth.auth().signIn(withEmail: emailTextField.text!,
-                           password: passwordTextField.text!) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter line_length
-            if error != nil {
-                print(error.debugDescription)
-            } else {
-                print("Welcome back \(self.emailTextField.text!) ✅")
+        presenter.connection(email: emailTextField.text, password: passwordTextField.text) { result in
+            switch result {
+            case .success:
+                self.performSegue(withIdentifier: "segueToDashboard", sender: nil)
+            case .failure(let error):
+                self.showAlert(with: error)
             }
+            self.performButton.isHidden = false
         }
     }
 }
