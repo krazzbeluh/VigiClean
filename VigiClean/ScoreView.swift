@@ -58,17 +58,6 @@ class ScoreView: UIView {
         layer.cornerRadius = self.frame.width / 2
         layer.borderColor = color.cgColor
         scoreLabel.textColor = color
-        
-        /*DispatchQueue.global(qos: .background).async {
-            while true {
-                if let text = readLine() {
-                    print(text)
-                    DispatchQueue.main.async {
-                        self.scoreLabel.text = text
-                    }
-                }
-            }
-        }*/
     }
 
 }

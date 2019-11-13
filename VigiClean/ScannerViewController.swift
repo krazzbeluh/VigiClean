@@ -1,5 +1,5 @@
 //
-//  DashBoardViewController.swift
+//  ScannerViewController.swift
 //  VigiClean
 //
 //  Created by Paul Leclerc on 06/11/2019.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class DashBoardViewController: UIViewController {
-
+class ScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
