@@ -36,8 +36,7 @@ class SignInViewController: UIViewController, SignInView {
     
     // MARK: Actions
     @IBAction func didTapPerformButton(_ sender: Any) {
-        performButton.isHidden = true
-        presenter.signIn(email: emailTextField.text, password: passwordTextField.text)
+        signIn()
     }
     
     @IBAction func dismiss(_ sender: Any) {
@@ -51,6 +50,11 @@ class SignInViewController: UIViewController, SignInView {
     
     // MARK: Methods
     
+    func signIn() {
+        performButton.isHidden = true
+        presenter.signIn(email: emailTextField.text, password: passwordTextField.text)
+    }
+    
     func performSegue() {
         performSegue(withIdentifier: "segueToDashboard", sender: nil)
     }
@@ -59,5 +63,18 @@ class SignInViewController: UIViewController, SignInView {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.modalPresentationStyle = .fullScreen
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField != emailTextField {
+            passwordTextField.resignFirstResponder()
+            signIn()
+        } else {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }
+        return true
     }
 }
