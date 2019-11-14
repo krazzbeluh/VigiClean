@@ -10,26 +10,15 @@ import Foundation
 import Firebase
 
 class UserAccount {
-    static func signUp(email: String, password: String, completion: @escaping ((Result<Void, Error>) -> Void)) {
+    static func signUp(email: String, password: String, completion: @escaping((Error?) -> Void)) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter line_length
-            
-            guard error == nil else {
-                print(error.debugDescription)
-                completion(.failure(error!))
-                return
-            }
-            completion(.success(Void()))
+            completion(error)
         }
     }
     
-    static func signIn(email: String, password: String, completion: @escaping((Result<Void, Error>) -> Void)) {
+    static func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) {
         Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter line_length
-            guard error == nil else {
-                print(error.debugDescription)
-                completion(.failure(error!))
-                return
-            }
-            completion(.success(Void()))
+            completion(error)
         }
     }
     

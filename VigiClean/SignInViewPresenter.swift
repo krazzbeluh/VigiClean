@@ -26,13 +26,12 @@ class SignInPresenter: SignInViewPresenter {
             return
         }
         
-        UserAccount.signIn(email: email, password: password) { result in
-            switch result {
-            case .failure(let error):
-                self.view.showAlert(with: error)
-            case .success:
-                self.view.performSegue()
+        UserAccount.signIn(email: email, password: password) { error in
+            guard error == nil else {
+                self.view.showAlert(with: error!)
+                return
             }
+            self.view.performSegue()
         }
     }
 }

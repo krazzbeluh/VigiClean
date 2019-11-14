@@ -9,12 +9,17 @@
 import UIKit
 
 protocol SignUpView: class {
-    
+    func showAlert(with error: Error)
+    func performSegue()
 }
 
 class SignUpViewController: UIViewController, SignUpView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func performSegue() {
+        performSegue(withIdentifier: "segueToDashboard", sender: nil)
     }
 }
