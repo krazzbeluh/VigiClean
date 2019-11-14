@@ -42,5 +42,11 @@ class ChooseAccountingMethodViewController: UIViewController, ChooseAccountingMe
         performSegue(withIdentifier: "segueToDashboard", sender: nil)
     }
     
-    // MARK: Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "segueToDashboard" else {
+            return
+        }
+        
+        segue.destination.modalPresentationStyle = .fullScreen
+    }
 }
