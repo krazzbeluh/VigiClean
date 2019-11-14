@@ -335,6 +335,14 @@
                                     <constraint firstAttribute="width" secondItem="xcA-Wb-1J6" secondAttribute="height" multiplier="1:1" id="hLG-AI-ZHr"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XeS-y6-zbd">
+                                <rect key="frame" x="20" y="538" width="374" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartInsertDeleteType="no" textContentType="email"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2KX-Fa-dnk" id="vnG-EN-aMT"/>
+                                </connections>
+                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sZ7-Iy-JFT">
                                 <rect key="frame" x="20" y="598" width="374" height="40"/>
                                 <constraints>
@@ -344,14 +352,6 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="password"/>
                                 <connections>
                                     <outlet property="delegate" destination="2KX-Fa-dnk" id="AOs-3l-FnV"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XeS-y6-zbd">
-                                <rect key="frame" x="20" y="538" width="374" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartInsertDeleteType="no" textContentType="email"/>
-                                <connections>
-                                    <outlet property="delegate" destination="2KX-Fa-dnk" id="vnG-EN-aMT"/>
                                 </connections>
                             </textField>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WsG-eH-YCz">
@@ -463,25 +463,6 @@
                                     <constraint firstAttribute="width" secondItem="RZY-yE-hTj" secondAttribute="height" multiplier="1:1" id="mns-so-sBK"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmation du mot de passe" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Uci-6u-cF6">
-                                <rect key="frame" x="20" y="598" width="374" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="EST-qx-sXF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password"/>
-                                <connections>
-                                    <outlet property="delegate" destination="cXp-Q8-T4P" id="RLt-8Y-1gi"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vZE-4W-NcV">
-                                <rect key="frame" x="20" y="538" width="374" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password"/>
-                                <connections>
-                                    <outlet property="delegate" destination="cXp-Q8-T4P" id="nKB-f0-xhl"/>
-                                </connections>
-                            </textField>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BQ5-Ne-OAv">
                                 <rect key="frame" x="182" y="688" width="50" height="50"/>
                                 <constraints>
@@ -514,6 +495,14 @@
                                     <action selector="dismiss:" destination="cXp-Q8-T4P" eventType="touchUpInside" id="4ZR-SQ-ezb"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HLe-nt-clu">
+                                <rect key="frame" x="20" y="418" width="374" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartInsertDeleteType="no" textContentType="username"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cXp-Q8-T4P" id="GcW-uK-Hbe"/>
+                                </connections>
+                            </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nth-ES-dDx">
                                 <rect key="frame" x="20" y="478" width="374" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -522,12 +511,23 @@
                                     <outlet property="delegate" destination="cXp-Q8-T4P" id="Gur-2O-OpR"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HLe-nt-clu">
-                                <rect key="frame" x="20" y="418" width="374" height="40"/>
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vZE-4W-NcV">
+                                <rect key="frame" x="20" y="538" width="374" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartInsertDeleteType="no" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password"/>
                                 <connections>
-                                    <outlet property="delegate" destination="cXp-Q8-T4P" id="GcW-uK-Hbe"/>
+                                    <outlet property="delegate" destination="cXp-Q8-T4P" id="nKB-f0-xhl"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmation du mot de passe" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Uci-6u-cF6">
+                                <rect key="frame" x="20" y="598" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="EST-qx-sXF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cXp-Q8-T4P" id="RLt-8Y-1gi"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -600,6 +600,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="piD-0s-YbQ"/>
+        <segue reference="mVQ-7p-GZc"/>
     </inferredMetricsTieBreakers>
 </document>
