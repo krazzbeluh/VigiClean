@@ -33,18 +33,21 @@ class UserAccount {
         }
     }
     
-    static func anonymousSignIn(completion: @escaping((Result<Void, Error>) -> Void)) {
+    static func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
         Auth.auth().signInAnonymously { (authResult, error) in // swiftlint:disable:this unused_closure_parameter line_length
-            guard error == nil else {
-                print(error.debugDescription)
-                completion(.failure(error!))
-                return
-            }
-            completion(.success(Void()))
+            completion(error)
         }
     }
     
     static func checkConnection() -> Bool {
         return Auth.auth().currentUser != nil
+    }
+    
+    static func convertError(_ error: Error) -> AuthErrorCode? {
+        guard let errCode = AuthErrorCode(rawValue: error._code) else {
+            return nil
+        }
+        
+        return errCode
     }
 }

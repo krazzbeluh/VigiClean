@@ -22,13 +22,12 @@ class ChooseAccountingMethodPresenter: ChooseAccountingMethodViewPresenter {
     }
     
     func signIn() {
-        UserAccount.anonymousSignIn { result in
-            switch result {
-            case .success:
-                self.view.performSegue()
-            case .failure(let error):
-                self.view.showAlert(with: error)
+        UserAccount.anonymousSignIn { error in
+            guard error == nil else {
+                self.view.showAlert(with: error!)
+                return
             }
+            self.view.performSegue()
         }
     }
     
