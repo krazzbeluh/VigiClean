@@ -469,9 +469,7 @@
                                     <constraint firstAttribute="height" constant="40" id="EST-qx-sXF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password">
-                                    <passwordRules key="passwordRules" passwordRulesDescriptor="required: lower; required: upper; required: digit; minlength: 6;"/>
-                                </textInputTraits>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password"/>
                                 <connections>
                                     <outlet property="delegate" destination="cXp-Q8-T4P" id="RLt-8Y-1gi"/>
                                 </connections>
@@ -479,9 +477,7 @@
                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vZE-4W-NcV">
                                 <rect key="frame" x="20" y="538" width="374" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password">
-                                    <passwordRules key="passwordRules" passwordRulesDescriptor="required: lower; required: upper; required: digit; minlength: 6;"/>
-                                </textInputTraits>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password"/>
                                 <connections>
                                     <outlet property="delegate" destination="cXp-Q8-T4P" id="nKB-f0-xhl"/>
                                 </connections>
@@ -529,7 +525,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HLe-nt-clu">
                                 <rect key="frame" x="20" y="418" width="374" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartInsertDeleteType="no" textContentType="nickname"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartInsertDeleteType="no" textContentType="username"/>
                                 <connections>
                                     <outlet property="delegate" destination="cXp-Q8-T4P" id="GcW-uK-Hbe"/>
                                 </connections>
@@ -549,7 +545,7 @@
                             <constraint firstItem="vZE-4W-NcV" firstAttribute="top" secondItem="nth-ES-dDx" secondAttribute="bottom" constant="20" id="ITY-g2-epF"/>
                             <constraint firstItem="RZY-yE-hTj" firstAttribute="centerX" secondItem="A9U-dN-hzQ" secondAttribute="centerX" id="N8d-Kv-jBm"/>
                             <constraint firstItem="nth-ES-dDx" firstAttribute="width" secondItem="Uci-6u-cF6" secondAttribute="width" id="NdF-un-xfO"/>
-                            <constraint firstItem="FC9-gn-WnS" firstAttribute="top" secondItem="Uci-6u-cF6" secondAttribute="bottom" constant="50" id="VsW-3v-3GF"/>
+                            <constraint firstItem="Uci-6u-cF6" firstAttribute="bottom" secondItem="FC9-gn-WnS" secondAttribute="top" constant="-50" identifier="bottomConstraint" id="NgE-g3-Z4U"/>
                             <constraint firstItem="BQ5-Ne-OAv" firstAttribute="centerX" secondItem="FC9-gn-WnS" secondAttribute="centerX" id="WHe-ae-b8K"/>
                             <constraint firstItem="vZE-4W-NcV" firstAttribute="width" secondItem="Uci-6u-cF6" secondAttribute="width" id="WzF-88-Df9"/>
                             <constraint firstItem="nth-ES-dDx" firstAttribute="centerX" secondItem="A9U-dN-hzQ" secondAttribute="centerX" id="Ztl-fD-rGP"/>
