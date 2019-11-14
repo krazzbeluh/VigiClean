@@ -25,9 +25,21 @@ class SignUpViewController: UIViewController, SignUpView {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = SignUpPresenter(view: self)
         
         if #available(iOS 13, *) {
             dismissButton.isHidden = true
+        }
+    }
+    
+    // MARK: Actions
+    @IBAction func didTapPerformButton(_ sender: Any) {
+        signUp()
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        for textField in textFields {
+            textField.resignFirstResponder()
         }
     }
     
@@ -37,8 +49,13 @@ class SignUpViewController: UIViewController, SignUpView {
         presenter.signUp(email: textFields[1].text, password: textFields[2].text)
     }
     
+    // MARK: Segues
     func performSegue() {
         performSegue(withIdentifier: "segueToDashboard", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.modalPresentationStyle = .fullScreen
     }
 }
 

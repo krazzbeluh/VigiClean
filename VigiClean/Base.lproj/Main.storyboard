@@ -469,15 +469,19 @@
                                     <constraint firstAttribute="height" constant="40" id="EST-qx-sXF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password">
+                                    <passwordRules key="passwordRules" passwordRulesDescriptor="required: lower; required: upper; required: digit; minlength: 6;"/>
+                                </textInputTraits>
                                 <connections>
                                     <outlet property="delegate" destination="cXp-Q8-T4P" id="RLt-8Y-1gi"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vZE-4W-NcV">
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vZE-4W-NcV">
                                 <rect key="frame" x="20" y="538" width="374" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartInsertDeleteType="no" textContentType="new-password">
+                                    <passwordRules key="passwordRules" passwordRulesDescriptor="required: lower; required: upper; required: digit; minlength: 6;"/>
+                                </textInputTraits>
                                 <connections>
                                     <outlet property="delegate" destination="cXp-Q8-T4P" id="nKB-f0-xhl"/>
                                 </connections>
@@ -499,6 +503,9 @@
                                 <state key="normal" title="Inscription">
                                     <color key="titleColor" name="Background"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapPerformButton:" destination="cXp-Q8-T4P" eventType="touchUpInside" id="x98-5e-W8W"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-oy-FXy">
                                 <rect key="frame" x="20" y="20" width="30" height="30"/>
@@ -560,6 +567,9 @@
                             <constraint firstItem="nth-ES-dDx" firstAttribute="top" secondItem="HLe-nt-clu" secondAttribute="bottom" constant="20" id="ynO-vw-b65"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s6r-ea-mcK"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fMA-Dn-IeL" appends="YES" id="gWz-hw-MNi"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="pJU-F2-fCV"/>
                     <connections>
@@ -573,7 +583,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VZ-Cd-HBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="g2K-ll-2j6"/>
+                <tapGestureRecognizer id="fMA-Dn-IeL">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="cXp-Q8-T4P" id="mAl-j2-wy6"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="390" y="590"/>
         </scene>
