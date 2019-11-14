@@ -15,26 +15,4 @@ class ChooseAccountingMethodViewController: UIViewController {
         super.viewDidLoad()
         
     }
-    
-    // MARK: Actions
-    @IBAction func buttonToConnectionVC(_ sender: UIButton) {
-        performSegue(withIdentifier: "segueToLogIn", sender: sender)
-    }
-    
-    // MARK: Segues
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "segueToLogIn" else {
-            return
-        }
-        
-        guard let successVC = segue.destination as? SignInViewController else {
-            return
-        }
-        
-        guard let sender = sender as? UIButton else {
-            return
-        }
-        
-        successVC.isInscription = sender.titleLabel?.text == "Se connecter" ? false : true
-    }
 }

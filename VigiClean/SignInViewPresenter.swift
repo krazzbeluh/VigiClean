@@ -10,8 +10,7 @@ import Foundation
 
 protocol SignInViewPresenter {
     init(view: SignInView)
-    func connection(email: String?, password: String?, completion: @escaping ((Result<Void, Error>) -> Void))
-    func inscription(email: String?, password: String?, completion: @escaping ((Result<Void, Error>) -> Void))
+    func signIn(email: String?, password: String?)
 }
 
 class SignInPresenter: SignInViewPresenter {
@@ -19,27 +18,21 @@ class SignInPresenter: SignInViewPresenter {
     
     required init(view: SignInView) {
         self.view = view
-    }
+    } 
     
-    func inscription(email: String?, password: String?, completion: @escaping ((Result<Void, Error>) -> Void)) {
+    func signIn(email: String?, password: String?) {
         guard let email = email, let password = password else {
             print("erreur")
             return
         }
         
-        UserAccount.inscription(email: email, password: password) { result in
-            completion(result)
-        }
-    }
-    
-    func connection(email: String?, password: String?, completion: @escaping ((Result<Void, Error>) -> Void)) {
-        guard let email = email, let password = password else {
-            print("erreur")
-            return
-        }
-        
-        UserAccount.connection(email: email, password: password) { result in
-            completion(result)
+        UserAccount.signIn(email: email, password: password) { result in
+            switch result {
+            case .failure(let error):
+                self.view.showAlert(with: error)
+            case .success:
+                self.view.performSegue()
+            }
         }
     }
 }

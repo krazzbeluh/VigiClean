@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAC237D067B00419F2C /* SignUpViewController.swift */; };
+		94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */; };
 		941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F7E1A237B084400044A0D /* ProfileViewController.swift */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
@@ -53,6 +55,8 @@
 		30F149764B943B7441F22A7A /* libPods-VigiClean.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VigiClean.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5134AA4F92C49E79CE95113C /* libPods-VigiCleanTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VigiCleanTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6230A23E08C3B15710CDB865 /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
+		94138AAC237D067B00419F2C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenter.swift; sourceTree = "<group>"; };
 		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			children = (
 				94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */,
 				9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */,
+				94138AAC237D067B00419F2C /* SignUpViewController.swift */,
 				941F7E1A237B084400044A0D /* ProfileViewController.swift */,
 				94EB57742372D8B800582990 /* DashBoardViewController.swift */,
 				94EB57762372DB1E00582990 /* ScannerViewController.swift */,
@@ -156,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */,
+				94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -439,6 +445,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */,
+				94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */,
 				941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */,
 				94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */,
 				9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */,

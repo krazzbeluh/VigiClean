@@ -10,13 +10,13 @@ import UIKit
 import Firebase
 
 protocol SignInView: class {
-    
+    func showAlert(with type: Error)
+    func performSegue()
 }
 
 class SignInViewController: UIViewController, SignInView {
     // MARK: Properties
     var presenter: SignInViewPresenter!
-    var isInscription = true
     
     // MARK: Outlets
     @IBOutlet weak var emailTextField: UITextField!
@@ -28,7 +28,6 @@ class SignInViewController: UIViewController, SignInView {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = SignInPresenter(view: self)
-        performButton.setTitle(isInscription ? "Inscription" : "Connexion", for: .normal)
         
         if #available(iOS 13, *) {
             dismissButton.isHidden = true
@@ -38,7 +37,7 @@ class SignInViewController: UIViewController, SignInView {
     // MARK: Actions
     @IBAction func didTapPerformButton(_ sender: Any) {
         performButton.isHidden = true
-        connection()
+        presenter.signIn(email: emailTextField.text, password: passwordTextField.text)
     }
     
     @IBAction func dismiss(_ sender: Any) {
@@ -52,16 +51,8 @@ class SignInViewController: UIViewController, SignInView {
     
     // MARK: Methods
     
-    func connection() {
-        presenter.connection(email: emailTextField.text, password: passwordTextField.text) { result in
-            switch result {
-            case .success:
-                self.performSegue(withIdentifier: "segueToDashboard", sender: nil)
-            case .failure(let error):
-                self.showAlert(with: error)
-            }
-            self.performButton.isHidden = false
-        }
+    func performSegue() {
+        performSegue(withIdentifier: "segueToDashboard", sender: nil)
     }
     
     // MARK: Segues
