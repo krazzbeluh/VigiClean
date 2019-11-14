@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F7E1A237B084400044A0D /* ProfileViewController.swift */; };
-		9462DCC1237B5D81003AEFB9 /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* ConnectionViewController.swift */; };
+		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
 		94BE5AA42370A9FE00CE3060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */; };
 		94BE5AA72370ABC300CE3060 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA62370ABC300CE3060 /* .swiftlint.yml */; };
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
-		94CDC9AC237C35FC003295AD /* ConnectionViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AB237C35FC003295AD /* ConnectionViewPresenter.swift */; };
+		94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */; };
 		94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AD237C3AF2003295AD /* UserAccount.swift */; };
 		94CDC9B0237C48F9003295AD /* ChooseAccountingMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */; };
 		94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */; };
@@ -54,14 +54,14 @@
 		5134AA4F92C49E79CE95113C /* libPods-VigiCleanTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VigiCleanTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6230A23E08C3B15710CDB865 /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
 		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
-		9462DCC0237B5D81003AEFB9 /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
+		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94BE5AA62370ABC300CE3060 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		94CDC9AB237C35FC003295AD /* ConnectionViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewPresenter.swift; sourceTree = "<group>"; };
+		94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPresenter.swift; sourceTree = "<group>"; };
 		94CDC9AD237C3AF2003295AD /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountingMethodViewController.swift; sourceTree = "<group>"; };
 		94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */,
-				9462DCC0237B5D81003AEFB9 /* ConnectionViewController.swift */,
+				9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */,
 				941F7E1A237B084400044A0D /* ProfileViewController.swift */,
 				94EB57742372D8B800582990 /* DashBoardViewController.swift */,
 				94EB57762372DB1E00582990 /* ScannerViewController.swift */,
@@ -155,7 +155,7 @@
 		94BE5A9F2370A6AB00CE3060 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				94CDC9AB237C35FC003295AD /* ConnectionViewPresenter.swift */,
+				94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -441,10 +441,10 @@
 			files = (
 				941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */,
 				94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */,
-				9462DCC1237B5D81003AEFB9 /* ConnectionViewController.swift in Sources */,
+				9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */,
 				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
 				94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */,
-				94CDC9AC237C35FC003295AD /* ConnectionViewPresenter.swift in Sources */,
+				94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */,
 				94CDC9B0237C48F9003295AD /* ChooseAccountingMethodViewController.swift in Sources */,
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,

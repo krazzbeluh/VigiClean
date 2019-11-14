@@ -13,6 +13,7 @@ class ChooseAccountingMethodViewController: UIViewController {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     // MARK: Actions
@@ -26,7 +27,7 @@ class ChooseAccountingMethodViewController: UIViewController {
             return
         }
         
-        guard let successVC = segue.destination as? ConnectionViewController else {
+        guard let successVC = segue.destination as? SignInViewController else {
             return
         }
         

@@ -8,8 +8,18 @@
 
 import Foundation
 
-class ConnectionViewPresenter {
-    init() {}
+protocol SignInViewPresenter {
+    init(view: SignInView)
+    func connection(email: String?, password: String?, completion: @escaping ((Result<Void, Error>) -> Void))
+    func inscription(email: String?, password: String?, completion: @escaping ((Result<Void, Error>) -> Void))
+}
+
+class SignInPresenter: SignInViewPresenter {
+    unowned let view: SignInView
+    
+    required init(view: SignInView) {
+        self.view = view
+    }
     
     func inscription(email: String?, password: String?, completion: @escaping ((Result<Void, Error>) -> Void)) {
         guard let email = email, let password = password else {
