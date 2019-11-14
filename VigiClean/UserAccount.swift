@@ -32,4 +32,15 @@ class UserAccount {
             completion(.success(Void()))
         }
     }
+    
+    static func anonymousSignIn(completion: @escaping((Result<Void, Error>) -> Void)) {
+        Auth.auth().signInAnonymously { (authResult, error) in // swiftlint:disable:this unused_closure_parameter line_length
+            guard error == nil else {
+                print(error.debugDescription)
+                completion(.failure(error!))
+                return
+            }
+            completion(.success(Void()))
+        }
+    }
 }

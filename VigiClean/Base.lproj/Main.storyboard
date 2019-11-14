@@ -277,7 +277,8 @@
                                     <color key="titleColor" name="Background"/>
                                 </state>
                                 <connections>
-                                    <segue destination="mag-T7-Jig" kind="show" id="2Sb-bF-GVj"/>
+                                    <action selector="didTapAnonymousButton:" destination="Juh-5h-mMU" eventType="touchUpInside" id="zzr-Eq-3O8"/>
+                                    <segue destination="mag-T7-Jig" kind="show" identifier="segueToDashboard" id="2Sb-bF-GVj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -537,7 +538,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VZ-Cd-HBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="g2K-ll-2j6"/>
             </objects>
-            <point key="canvasLocation" x="390" y="591"/>
+            <point key="canvasLocation" x="390" y="590"/>
         </scene>
     </scenes>
     <resources>
@@ -552,6 +553,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mVQ-7p-GZc"/>
+        <segue reference="2Sb-bF-GVj"/>
     </inferredMetricsTieBreakers>
 </document>

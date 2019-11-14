@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAC237D067B00419F2C /* SignUpViewController.swift */; };
 		94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */; };
+		94138AB1237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AB0237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift */; };
 		941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F7E1A237B084400044A0D /* ProfileViewController.swift */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
@@ -57,6 +58,7 @@
 		6230A23E08C3B15710CDB865 /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
 		94138AAC237D067B00419F2C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenter.swift; sourceTree = "<group>"; };
+		94138AB0237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountingMethodViewPresenter.swift; sourceTree = "<group>"; };
 		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */,
 				94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */,
+				94138AB0237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				94CDC9B0237C48F9003295AD /* ChooseAccountingMethodViewController.swift in Sources */,
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
+				94138AB1237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift in Sources */,
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
