@@ -278,7 +278,6 @@
                                 </state>
                                 <connections>
                                     <action selector="didTapAnonymousButton:" destination="Juh-5h-mMU" eventType="touchUpInside" id="zzr-Eq-3O8"/>
-                                    <segue destination="mag-T7-Jig" kind="show" identifier="segueToDashboard" id="2Sb-bF-GVj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -303,6 +302,9 @@
                         <viewLayoutGuide key="safeArea" id="e9F-aV-ZyL"/>
                     </view>
                     <navigationItem key="navigationItem" id="ats-Jd-dKu"/>
+                    <connections>
+                        <segue destination="mag-T7-Jig" kind="show" identifier="segueToDashboard" id="DoU-Ap-lh0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUH-Lh-2K2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -553,6 +555,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Sb-bF-GVj"/>
+        <segue reference="DoU-Ap-lh0"/>
     </inferredMetricsTieBreakers>
 </document>

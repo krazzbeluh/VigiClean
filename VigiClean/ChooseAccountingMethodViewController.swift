@@ -14,15 +14,17 @@ protocol ChooseAccountingMethodView: class {
 }
 
 class ChooseAccountingMethodViewController: UIViewController, ChooseAccountingMethodView {
+    var presenter: ChooseAccountingMethodViewPresenter!
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presenter = ChooseAccountingMethodPresenter(view: self)
     }
     
     // MARK: Actions
     @IBAction func didTapAnonymousButton(_ sender: Any) {
+        presenter.signIn()
     }
     
     // MARK: Methods
