@@ -11,6 +11,7 @@ import Foundation
 protocol ChooseAccountingMethodViewPresenter {
     init(view: ChooseAccountingMethodView)
     func signIn()
+    func checkConnection()
 }
 
 class ChooseAccountingMethodPresenter: ChooseAccountingMethodViewPresenter {
@@ -28,6 +29,12 @@ class ChooseAccountingMethodPresenter: ChooseAccountingMethodViewPresenter {
             case .failure(let error):
                 self.view.showAlert(with: error)
             }
+        }
+    }
+    
+    func checkConnection() {
+        if UserAccount.checkConnection() {
+            view.performSegue()
         }
     }
 }

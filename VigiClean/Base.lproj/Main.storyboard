@@ -266,6 +266,13 @@
                                     <segue destination="2KX-Fa-dnk" kind="show" identifier="segueToLogIn" id="zU4-dr-Sst"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-xZ-1Rg">
+                                <rect key="frame" x="182" y="742" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7Sv-xZ-1Rg" secondAttribute="height" multiplier="1:1" id="VY1-im-bB8"/>
+                                </constraints>
+                                <color key="color" name="VigiClean"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjI-G4-ank">
                                 <rect key="frame" x="20" y="742" width="374" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -287,13 +294,16 @@
                             <constraint firstItem="FZF-tb-hcL" firstAttribute="leading" secondItem="e9F-aV-ZyL" secondAttribute="leading" constant="70" id="3f4-wi-cVw"/>
                             <constraint firstItem="e9F-aV-ZyL" firstAttribute="bottom" secondItem="MjI-G4-ank" secondAttribute="bottom" constant="70" id="9o5-FB-2JH"/>
                             <constraint firstItem="eJr-4f-lOX" firstAttribute="centerX" secondItem="MjI-G4-ank" secondAttribute="centerX" id="FPg-hd-tWg"/>
+                            <constraint firstItem="7Sv-xZ-1Rg" firstAttribute="centerY" secondItem="MjI-G4-ank" secondAttribute="centerY" id="L8b-xX-EHr"/>
                             <constraint firstItem="eJr-4f-lOX" firstAttribute="centerX" secondItem="Xf7-Yc-FcD" secondAttribute="centerX" id="RDP-yT-8SG"/>
                             <constraint firstItem="Xc1-T8-vAX" firstAttribute="height" secondItem="MjI-G4-ank" secondAttribute="height" id="Upf-bZ-S2U"/>
+                            <constraint firstItem="7Sv-xZ-1Rg" firstAttribute="centerX" secondItem="MjI-G4-ank" secondAttribute="centerX" id="WmF-fh-PKN"/>
                             <constraint firstItem="MjI-G4-ank" firstAttribute="leading" secondItem="e9F-aV-ZyL" secondAttribute="leading" constant="20" id="dJx-0B-meO"/>
                             <constraint firstItem="FZF-tb-hcL" firstAttribute="centerX" secondItem="Xf7-Yc-FcD" secondAttribute="centerX" id="fz5-u5-V39"/>
                             <constraint firstItem="eJr-4f-lOX" firstAttribute="top" secondItem="Xc1-T8-vAX" secondAttribute="bottom" constant="8" id="htj-in-68G"/>
                             <constraint firstItem="eJr-4f-lOX" firstAttribute="width" secondItem="MjI-G4-ank" secondAttribute="width" id="l5B-xh-5La"/>
                             <constraint firstItem="MjI-G4-ank" firstAttribute="top" secondItem="eJr-4f-lOX" secondAttribute="bottom" constant="8" id="nWx-IU-Pgv"/>
+                            <constraint firstItem="7Sv-xZ-1Rg" firstAttribute="height" secondItem="MjI-G4-ank" secondAttribute="height" id="p3T-aA-O3R"/>
                             <constraint firstItem="MjI-G4-ank" firstAttribute="centerX" secondItem="Xf7-Yc-FcD" secondAttribute="centerX" id="pEx-xm-bXN"/>
                             <constraint firstItem="eJr-4f-lOX" firstAttribute="height" secondItem="MjI-G4-ank" secondAttribute="height" id="qtQ-bl-OMA"/>
                             <constraint firstItem="Xc1-T8-vAX" firstAttribute="width" secondItem="MjI-G4-ank" secondAttribute="width" id="uqq-iN-X0u"/>
@@ -303,7 +313,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="ats-Jd-dKu"/>
                     <connections>
-                        <segue destination="mag-T7-Jig" kind="show" identifier="segueToDashboard" id="DoU-Ap-lh0"/>
+                        <outlet property="anonymousButton" destination="MjI-G4-ank" id="ooj-fx-b6j"/>
+                        <segue destination="mag-T7-Jig" kind="show" identifier="segueToDashboard" animates="NO" id="DoU-Ap-lh0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUH-Lh-2K2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -43,4 +43,8 @@ class UserAccount {
             completion(.success(Void()))
         }
     }
+    
+    static func checkConnection() -> Bool {
+        return Auth.auth().currentUser != nil
+    }
 }

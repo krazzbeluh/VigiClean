@@ -14,7 +14,11 @@ protocol ChooseAccountingMethodView: class {
 }
 
 class ChooseAccountingMethodViewController: UIViewController, ChooseAccountingMethodView {
+    // MARK: Properties
     var presenter: ChooseAccountingMethodViewPresenter!
+    
+    // MARK: Outlets
+    @IBOutlet weak var anonymousButton: UIButton!
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -22,8 +26,14 @@ class ChooseAccountingMethodViewController: UIViewController, ChooseAccountingMe
         presenter = ChooseAccountingMethodPresenter(view: self)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.checkConnection()
+    }
+    
     // MARK: Actions
     @IBAction func didTapAnonymousButton(_ sender: Any) {
+        anonymousButton.isHidden = true
         presenter.signIn()
     }
     
@@ -33,7 +43,4 @@ class ChooseAccountingMethodViewController: UIViewController, ChooseAccountingMe
     }
     
     // MARK: Segues
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segue.destination.modalPresentationStyle = .fullScreen
-    }
 }
