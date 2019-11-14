@@ -69,7 +69,7 @@ class SignInViewController: UIViewController, SignInView {
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField != emailTextField {
-            passwordTextField.resignFirstResponder()
+            textField.resignFirstResponder()
             signIn()
         } else {
             textField.resignFirstResponder()
