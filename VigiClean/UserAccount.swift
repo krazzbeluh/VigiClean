@@ -14,9 +14,31 @@ class UserAccount {
         case emptyTextField, notMatchingPassword
     }
     
-    static func signUp(email: String, password: String, completion: @escaping((Error?) -> Void)) {
+    static func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter line_length
-            completion(error)
+            
+            guard error == nil else {
+                completion(error)
+                return
+            }
+            
+            guard let user = Auth.auth().currentUser else {
+                print("Error 0")
+                return
+            }
+            
+            let db = Firestore.firestore()
+            let documentName = user.uid
+            db.collection("User").document(documentName).setData(["credits": 0, "lastName": NSNull(), "firstName": NSNull(), "username": username]) { error in
+                guard error == nil else {
+                    print(error ?? "Erreur")
+                    return
+                }
+                print("Document successfully created (named: \(documentName))")
+            }
+            
+            completion(nil)
+            return
         }
     }
     
