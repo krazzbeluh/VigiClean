@@ -8,18 +8,19 @@
 
 import UIKit
 
-protocol SignUpView: class {
-    func showAlert(with error: Error)
-    func performSegue()
+protocol SignUpView: SharedAccountingMethodsView {
+    
 }
 
 class SignUpViewController: UIViewController, SignUpView {
+    
     // MARK: Properties
     var presenter: SignUpViewPresenter!
     
     // MARK: Outlets
     @IBOutlet var textFields: [UITextField]!
     @IBOutlet weak var performButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var dismissButton: UIButton!
     
     // MARK: View Life Cycle
@@ -45,8 +46,12 @@ class SignUpViewController: UIViewController, SignUpView {
     
     // MARK: Methods
     func signUp() {
-        performButton.isHidden = true
         presenter.signUp(email: textFields[1].text, password: textFields[2].text)
+    }
+    
+    func switchActivityIndicator(hidden: Bool) {
+        activityIndicator.isHidden = hidden
+        performButton.isHidden = !hidden
     }
     
     // MARK: Segues

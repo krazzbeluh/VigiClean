@@ -9,9 +9,14 @@
 import UIKit
 import Firebase
 
-protocol SignInView: class {
+protocol SharedAccountingMethodsView: class {
+    var activityIndicator: UIActivityIndicatorView! { get set }
     func showAlert(with type: Error)
     func performSegue()
+    func switchActivityIndicator(hidden: Bool)
+}
+
+protocol SignInView: SharedAccountingMethodsView {
 }
 
 class SignInViewController: UIViewController, SignInView {
@@ -21,6 +26,7 @@ class SignInViewController: UIViewController, SignInView {
     // MARK: Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var performButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
     
@@ -51,12 +57,16 @@ class SignInViewController: UIViewController, SignInView {
     // MARK: Methods
     
     func signIn() {
-        performButton.isHidden = true
         presenter.signIn(email: emailTextField.text, password: passwordTextField.text)
     }
     
     func performSegue() {
         performSegue(withIdentifier: "segueToDashboard", sender: nil)
+    }
+    
+    func switchActivityIndicator(hidden: Bool) {
+        activityIndicator.isHidden = hidden
+        performButton.isHidden = !hidden
     }
     
     // MARK: Segues

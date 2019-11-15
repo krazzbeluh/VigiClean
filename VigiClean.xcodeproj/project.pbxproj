@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -152,9 +152,9 @@
 		94BE5A9E2370A6A600CE3060 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				941F7E17237B080200044A0D /* Controller */,
 				94F0A02D2370A1CA00037210 /* Main.storyboard */,
 				947FFAEE237213C800F01487 /* ScoreView.swift */,
-				941F7E17237B080200044A0D /* Controller */,
 			);
 			name = View;
 			sourceTree = "<group>";

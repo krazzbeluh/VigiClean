@@ -21,14 +21,17 @@ class SignInPresenter: SignInViewPresenter {
     } 
     
     func signIn(email: String?, password: String?) {
-        guard let email = email, let password = password else {
+        guard let email = email, let password = password, email != "", password != "" else {
             print("erreur")
             return
         }
         
+        view.switchActivityIndicator(hidden: false)
+        
         UserAccount.signIn(email: email, password: password) { error in
             guard error == nil else {
                 self.view.showAlert(with: error!)
+                self.view.switchActivityIndicator(hidden: true)
                 return
             }
             self.view.performSegue()
