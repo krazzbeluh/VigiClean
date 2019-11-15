@@ -22,7 +22,7 @@ class SignInPresenter: SignInViewPresenter {
     
     func signIn(email: String?, password: String?) {
         guard let email = email, let password = password, email != "", password != "" else {
-            print("erreur")
+            view.showAlert(with: UserAccount.UAccountError.emptyTextField)
             return
         }
         

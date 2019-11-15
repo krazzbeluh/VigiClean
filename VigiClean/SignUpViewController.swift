@@ -46,7 +46,10 @@ class SignUpViewController: UIViewController, SignUpView {
     
     // MARK: Methods
     func signUp() {
-        presenter.signUp(email: textFields[1].text, password: textFields[2].text)
+        presenter.signUp(username: textFields[0].text,
+                         email: textFields[1].text,
+                         password: textFields[2].text,
+                         confirmPassword: textFields[3].text)
     }
     
     func switchActivityIndicator(hidden: Bool) {

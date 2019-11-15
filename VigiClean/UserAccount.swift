@@ -10,6 +10,10 @@ import Foundation
 import Firebase
 
 class UserAccount {
+    enum UAccountError: Error {
+        case emptyTextField, notMatchingPassword
+    }
+    
     static func signUp(email: String, password: String, completion: @escaping((Error?) -> Void)) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter line_length
             completion(error)

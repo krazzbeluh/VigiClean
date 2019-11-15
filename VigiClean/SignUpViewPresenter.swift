@@ -28,12 +28,12 @@ class SignUpPresenter: SignUpViewPresenter {
             username != "", email != "",
             password != "",
             confirmPassword != "" else {
-            print("erreur")
+                view.showAlert(with: UserAccount.UAccountError.emptyTextField)
             return
         }
         
         guard password == confirmPassword else {
-            print("erreur")
+            view.showAlert(with: UserAccount.UAccountError.notMatchingPassword)
             return
         }
         
