@@ -11,32 +11,17 @@ import Firebase
 
 class UserAccount {
     enum UAccountError: Error {
-        case emptyTextField, notMatchingPassword
+        case emptyTextField, notMatchingPassword, userDocumentNotCreated
     }
     
     static func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter line_length
             
-            guard error == nil else {
+            guard error == nil else { // if no error, user is created
                 completion(error)
                 return
             }
-            
-            guard let user = Auth.auth().currentUser else {
-                print("Error 0")
-                return
-            }
-            
-            let db = Firestore.firestore()
-            let documentName = user.uid
-            db.collection("User").document(documentName).setData(["credits": 0, "lastName": NSNull(), "firstName": NSNull(), "username": username]) { error in
-                guard error == nil else {
-                    print(error ?? "Erreur")
-                    return
-                }
-                print("Document successfully created (named: \(documentName))")
-            }
-            
+
             completion(nil)
             return
         }
@@ -64,5 +49,15 @@ class UserAccount {
         }
         
         return errCode
+    }
+    
+    private static func createUserDocument(for user: User, named: String?, completion: @escaping (Error?) -> Void) {
+        let db = Firestore.firestore()
+        let uid = user.uid // getting uid to create user's document
+        db.collection("User").document(uid).setData(["credits": 0, "lastName": NSNull(), "firstName": NSNull(), "username": named ?? uid]) { error in // creating user's document ; Deleting user if error
+            completion(error)
+        }
+        
+        completion(nil)
     }
 }
