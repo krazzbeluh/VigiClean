@@ -10,7 +10,7 @@
 		13E835E4B83E2DF9071BDF16 /* Pods_VigiCleanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4200EDA43A0030723CDE46 /* Pods_VigiCleanTests.framework */; };
 		94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAC237D067B00419F2C /* SignUpViewController.swift */; };
 		94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */; };
-		94138AB1237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AB0237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift */; };
+		94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */; };
 		941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F7E1A237B084400044A0D /* ProfileViewController.swift */; };
 		94504A4B238219FC0054BE70 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 94504A4A238219FC0054BE70 /* .swiftlint.yml */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
@@ -21,7 +21,7 @@
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
 		94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */; };
 		94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AD237C3AF2003295AD /* UserAccount.swift */; };
-		94CDC9B0237C48F9003295AD /* ChooseAccountingMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */; };
+		94CDC9B0237C48F9003295AD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */; };
 		94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */; };
 		94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashBoardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
@@ -60,7 +60,7 @@
 		849CECC00E6B415F3F5660F8 /* Pods-VigiCleanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.release.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.release.xcconfig"; sourceTree = "<group>"; };
 		94138AAC237D067B00419F2C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenter.swift; sourceTree = "<group>"; };
-		94138AB0237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountingMethodViewPresenter.swift; sourceTree = "<group>"; };
+		94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewPresenter.swift; sourceTree = "<group>"; };
 		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		94504A4A238219FC0054BE70 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPresenter.swift; sourceTree = "<group>"; };
 		94CDC9AD237C3AF2003295AD /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
-		94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountingMethodViewController.swift; sourceTree = "<group>"; };
+		94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		941F7E17237B080200044A0D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				94CDC9AF237C48F9003295AD /* ChooseAccountingMethodViewController.swift */,
+				94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */,
 				9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */,
 				94138AAC237D067B00419F2C /* SignUpViewController.swift */,
 				941F7E1A237B084400044A0D /* ProfileViewController.swift */,
@@ -171,7 +171,7 @@
 			children = (
 				94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */,
 				94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */,
-				94138AB0237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift */,
+				94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -523,10 +523,10 @@
 				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
 				94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */,
 				94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */,
-				94CDC9B0237C48F9003295AD /* ChooseAccountingMethodViewController.swift in Sources */,
+				94CDC9B0237C48F9003295AD /* WelcomeViewController.swift in Sources */,
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
-				94138AB1237D0EEA00419F2C /* ChooseAccountingMethodViewPresenter.swift in Sources */,
+				94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */,
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

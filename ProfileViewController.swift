@@ -14,6 +14,8 @@ class ProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    // MARK: Actions
+    
 }
 
 extension ProfileViewController: UITableViewDataSource {

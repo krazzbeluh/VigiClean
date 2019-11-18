@@ -1,5 +1,5 @@
 //
-//  ChooseAccountingMethodViewPresenter.swift
+//  WelcomeViewPresenter.swift
 //  VigiClean
 //
 //  Created by Paul Leclerc on 14/11/2019.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-protocol ChooseAccountingMethodViewPresenter {
-    init(view: ChooseAccountingMethodView)
+protocol WelcomeViewPresenter {
+    init(view: WelcomeView)
     func signIn()
     func performSegueIfUserIsConnected()
 }
 
-class ChooseAccountingMethodPresenter: ChooseAccountingMethodViewPresenter {
-    unowned let view: ChooseAccountingMethodView
+class WelcomePresenter: WelcomeViewPresenter {
+    unowned let view: WelcomeView
     
-    required init(view: ChooseAccountingMethodView) {
+    required init(view: WelcomeView) {
         self.view = view
     }
     

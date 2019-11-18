@@ -66,6 +66,15 @@ class UserAccount {
         }
     }
     
+    static func signOut(completion: (Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            completion(error)
+        }
+        completion(nil)
+    }
+    
     static func convertError(_ error: Error) -> AuthErrorCode? {
         guard let errCode = AuthErrorCode(rawValue: error._code) else {
             return nil

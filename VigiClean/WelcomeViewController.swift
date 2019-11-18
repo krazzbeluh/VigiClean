@@ -1,5 +1,5 @@
 //
-//  ChooseAccountingMethodViewController.swift
+//  WelcomeViewController.swift
 //  VigiClean
 //
 //  Created by Paul Leclerc on 13/11/2019.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol ChooseAccountingMethodView: class {
+protocol WelcomeView: class {
     func performSegue()
     func showAlert(with error: Error)
 }
 
-class ChooseAccountingMethodViewController: UIViewController, ChooseAccountingMethodView {
+class WelcomeViewController: UIViewController, WelcomeView {
     // MARK: Properties
-    var presenter: ChooseAccountingMethodViewPresenter!
+    var presenter: WelcomeViewPresenter!
     
     // MARK: Outlets
     @IBOutlet weak var anonymousButton: UIButton!
@@ -23,7 +23,7 @@ class ChooseAccountingMethodViewController: UIViewController, ChooseAccountingMe
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = ChooseAccountingMethodPresenter(view: self)
+        presenter = WelcomePresenter(view: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +35,15 @@ class ChooseAccountingMethodViewController: UIViewController, ChooseAccountingMe
     @IBAction func didTapAnonymousButton(_ sender: Any) {
         anonymousButton.isHidden = true
         presenter.signIn()
+    }
+    
+    @IBAction func unwindToWelcome(segue: UIStoryboardSegue) {
+        UserAccount.signOut { error in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+        }
     }
     
     // MARK: Methods

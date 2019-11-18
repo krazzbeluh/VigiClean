@@ -168,6 +168,9 @@
                                                     <state key="normal" title="Se déconnecter">
                                                         <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="TbZ-GO-RbZ" kind="unwind" unwindAction="unwindToWelcomeWithSegue:" id="ofi-kh-yaS"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" name="Background"/>
@@ -214,6 +217,7 @@
                     <navigationItem key="navigationItem" id="ps0-aI-1ew"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xB2-as-eav" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="TbZ-GO-RbZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2094" y="-154"/>
         </scene>
@@ -253,10 +257,10 @@
             </objects>
             <point key="canvasLocation" x="1238" y="429"/>
         </scene>
-        <!--Choose Accounting Method View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="8dF-Yn-HC3">
             <objects>
-                <viewController id="Juh-5h-mMU" customClass="ChooseAccountingMethodViewController" customModule="VigiClean" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Juh-5h-mMU" customClass="WelcomeViewController" customModule="VigiClean" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xf7-Yc-FcD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

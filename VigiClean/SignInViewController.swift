@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 protocol SharedAccountingMethodsView: class {
     var activityIndicator: UIActivityIndicatorView! { get set }
