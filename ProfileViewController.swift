@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol ProfileView: class {
+}
+
 class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +18,15 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     // MARK: Actions
+    @IBAction func didTapDisconnectButton(_ sender: Any) {
+        UserAccount.signOut { error in
+            guard error == nil else {
+                print(error!) // TODO : display error
+                return
+            }
+            performSegue(withIdentifier: "unwindToWelcome", sender: self)
+        }
+    }
     
 }
 

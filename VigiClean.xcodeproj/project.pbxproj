@@ -13,6 +13,8 @@
 		94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */; };
 		941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F7E1A237B084400044A0D /* ProfileViewController.swift */; };
 		94504A4B238219FC0054BE70 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 94504A4A238219FC0054BE70 /* .swiftlint.yml */; };
+		94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */; };
+		94504A622382CD940054BE70 /* UserAccountTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A612382CD940054BE70 /* UserAccountTestCase.swift */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
@@ -29,7 +31,6 @@
 		94F0A02F2370A1CA00037210 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A02D2370A1CA00037210 /* Main.storyboard */; };
 		94F0A0312370A1CB00037210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0302370A1CB00037210 /* Assets.xcassets */; };
 		94F0A0342370A1CB00037210 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0322370A1CB00037210 /* LaunchScreen.storyboard */; };
-		94F0A03F2370A1CC00037210 /* VigiCleanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A03E2370A1CC00037210 /* VigiCleanTests.swift */; };
 		94F0A04A2370A1CC00037210 /* VigiCleanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0492370A1CC00037210 /* VigiCleanUITests.swift */; };
 		ADFF9F63D49B040574129BAD /* Pods_VigiClean_VigiCleanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DD46DA58F2287BEA49BAA8 /* Pods_VigiClean_VigiCleanUITests.framework */; };
 		B1CCD79A18776965BE27E1E1 /* Pods_VigiClean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E107DF481DDA4A29EECFAF9 /* Pods_VigiClean.framework */; };
@@ -63,6 +64,8 @@
 		94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewPresenter.swift; sourceTree = "<group>"; };
 		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		94504A4A238219FC0054BE70 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
+		94504A612382CD940054BE70 /* UserAccountTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserAccountTestCase.swift; path = VigiClean/UserAccountTestCase.swift; sourceTree = SOURCE_ROOT; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		94F0A0332370A1CB00037210 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94F0A0352370A1CB00037210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F0A03A2370A1CC00037210 /* VigiCleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VigiCleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		94F0A03E2370A1CC00037210 /* VigiCleanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VigiCleanTests.swift; sourceTree = "<group>"; };
 		94F0A0402370A1CC00037210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F0A0452370A1CC00037210 /* VigiCleanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VigiCleanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0A0492370A1CC00037210 /* VigiCleanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VigiCleanUITests.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		94BE5A9F2370A6AB00CE3060 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */,
 				94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */,
 				94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */,
 				94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */,
@@ -228,7 +231,7 @@
 		94F0A03D2370A1CC00037210 /* VigiCleanTests */ = {
 			isa = PBXGroup;
 			children = (
-				94F0A03E2370A1CC00037210 /* VigiCleanTests.swift */,
+				94504A612382CD940054BE70 /* UserAccountTestCase.swift */,
 				94F0A0402370A1CC00037210 /* Info.plist */,
 			);
 			path = VigiCleanTests;
@@ -518,6 +521,7 @@
 				94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */,
 				94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */,
 				941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */,
+				94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */,
 				94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */,
 				9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */,
 				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
@@ -535,7 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94F0A03F2370A1CC00037210 /* VigiCleanTests.swift in Sources */,
+				94504A622382CD940054BE70 /* UserAccountTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

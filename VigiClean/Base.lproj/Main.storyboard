@@ -169,7 +169,7 @@
                                                         <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="TbZ-GO-RbZ" kind="unwind" unwindAction="unwindToWelcomeWithSegue:" id="ofi-kh-yaS"/>
+                                                        <action selector="didTapDisconnectButton:" destination="PVg-Oh-QbQ" eventType="touchUpInside" id="XWT-pu-C8E"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -215,6 +215,9 @@
                         <viewLayoutGuide key="safeArea" id="hSn-0T-nEO"/>
                     </view>
                     <navigationItem key="navigationItem" id="ps0-aI-1ew"/>
+                    <connections>
+                        <segue destination="TbZ-GO-RbZ" kind="unwind" identifier="unwindToWelcome" unwindAction="unwindToWelcomeWithSegue:" id="hT6-RL-CWq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xB2-as-eav" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="TbZ-GO-RbZ" userLabel="Exit" sceneMemberID="exit"/>

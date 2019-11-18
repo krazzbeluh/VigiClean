@@ -53,7 +53,9 @@ class UserAccount {
                 }
                 
                 createUserDocument(for: user, named: email, merge: true) { error in
-                    print(error ?? "An unknown error occured while creating user document in method signIn(email:password:completion:") // swiftlint:disable:this line_length
+                    if let error = error {
+                        print(error)
+                    }
                 }
                 
                 completion(nil)

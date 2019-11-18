@@ -37,13 +37,8 @@ class WelcomeViewController: UIViewController, WelcomeView {
         presenter.signIn()
     }
     
-    @IBAction func unwindToWelcome(segue: UIStoryboardSegue) {
-        UserAccount.signOut { error in
-            guard error == nil else {
-                print(error!)
-                return
-            }
-        }
+    @IBAction func unwindToWelcome(segue: UIStoryboardSegue) { 
+        
     }
     
     // MARK: Methods

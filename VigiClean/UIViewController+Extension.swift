@@ -19,7 +19,7 @@ extension UIViewController: DisplayAlert {
     
     func showAlert(with error: Error) { // configures alert
         let message: String
-        
+        // TODO: Move to presenter
         let authError = UserAccount.convertError(error)
         if authError != nil {
             switch authError {

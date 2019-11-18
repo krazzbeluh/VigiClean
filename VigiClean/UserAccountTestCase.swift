@@ -1,15 +1,14 @@
 //
-//  VigiCleanTests.swift
+//  UserAccountTestCase.swift
 //  VigiCleanTests
 //
-//  Created by Paul Leclerc on 04/11/2019.
+//  Created by Paul Leclerc on 18/11/2019.
 //  Copyright © 2019 Paul Leclerc. All rights reserved.
 //
 
 import XCTest
-@testable import VigiClean
 
-class VigiCleanTests: XCTestCase {
+class UserAccountTestCase: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
