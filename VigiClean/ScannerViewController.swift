@@ -9,6 +9,7 @@
 import AVFoundation
 import UIKit
 
+//TODO : Separate in MVP
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
@@ -53,6 +54,29 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         view.layer.addSublayer(previewLayer)
         
         captureSession.startRunning()
+        
+        //MARK: Notifications
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
+    func scheduleNotifications() {
+
+        let content = UNMutableNotificationContent()
+        let requestIdentifier = "foundNotVigiCleanUrl"
+        
+        content.title = "This is a rich notification"
+        content.subtitle = "Hello there, I am Rajan Maheshwari"
+        content.body = "Hello body"
+        content.categoryIdentifier = "actionCategory"
+
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request) { (error: Error?) in
+
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+            print("Notification Register Success")
+        }
     }
     
     func failed() {
@@ -92,10 +116,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             found(code: stringValue)
         }
         
-        dismiss(animated: true)
+//        dismiss(animated: true)
     }
     
     func found(code: String) {
+        scheduleNotifications()
         print(code)
     }
     
