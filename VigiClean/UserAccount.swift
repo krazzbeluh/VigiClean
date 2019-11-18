@@ -10,20 +10,22 @@ import Foundation
 import Firebase
 
 class UserAccount {
+    static var auth = Auth.auth()
+    
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated
     }
     
     static var isConnected: Bool {
-        return Auth.auth().currentUser != nil
+        return auth.currentUser != nil
     }
     
     static var isConnectedWithEmail: Bool {
-        return Auth.auth().currentUser?.email != nil
+        return auth.currentUser?.email != nil
     }
     
     static func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
-        Auth.auth().createUser(
+        auth.createUser(
             withEmail: email,
             password: password) { (authResult, error) in
                 
@@ -43,7 +45,7 @@ class UserAccount {
     }
     
     static func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) {
-        Auth.auth().signIn(
+        auth.signIn(
             withEmail: email,
             password: password) { (authResult, error) in
                 guard error == nil,
@@ -63,14 +65,14 @@ class UserAccount {
     }
     
     static func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
-        Auth.auth().signInAnonymously { (authResult, error) in // swiftlint:disable:this unused_closure_parameter line_length
+        auth.signInAnonymously { (authResult, error) in // swiftlint:disable:this unused_closure_parameter
             completion(error)
         }
     }
     
     static func signOut(completion: (Error?) -> Void) {
         do {
-            try Auth.auth().signOut()
+            try auth.signOut()
         } catch let error {
             completion(error)
         }

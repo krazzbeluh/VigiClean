@@ -43,5 +43,7 @@
 	<array>
 		<string>Hamish.otf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Cette application nécessite l&apos;accès à l&apos;appareil photo pour scanner les codes.</string>
 </dict>
 </plist>

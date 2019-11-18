@@ -464,10 +464,10 @@
             </objects>
             <point key="canvasLocation" x="390" y="-881"/>
         </scene>
-        <!--View Controller-->
+        <!--Scanner View Controller-->
         <scene sceneID="Ytr-W3-jbg">
             <objects>
-                <viewController id="abG-QR-EGL" sceneMemberID="viewController">
+                <viewController id="abG-QR-EGL" customClass="ScannerViewController" customModule="VigiClean" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RUh-Qc-Xyq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

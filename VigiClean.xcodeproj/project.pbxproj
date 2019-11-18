@@ -15,6 +15,7 @@
 		94504A4B238219FC0054BE70 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 94504A4A238219FC0054BE70 /* .swiftlint.yml */; };
 		94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */; };
 		94504A622382CD940054BE70 /* UserAccountTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A612382CD940054BE70 /* UserAccountTestCase.swift */; };
+		94504A642382D16F0054BE70 /* AuthFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A632382D16F0054BE70 /* AuthFake.swift */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
@@ -66,6 +67,7 @@
 		94504A4A238219FC0054BE70 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
 		94504A612382CD940054BE70 /* UserAccountTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserAccountTestCase.swift; path = VigiClean/UserAccountTestCase.swift; sourceTree = SOURCE_ROOT; };
+		94504A632382D16F0054BE70 /* AuthFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFake.swift; sourceTree = "<group>"; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		94504A652382D1740054BE70 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				94504A632382D16F0054BE70 /* AuthFake.swift */,
+			);
+			name = Mock;
+			sourceTree = "<group>";
+		};
 		94BE5A9C2370A69700CE3060 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				94504A612382CD940054BE70 /* UserAccountTestCase.swift */,
+				94504A652382D1740054BE70 /* Mock */,
 				94F0A0402370A1CC00037210 /* Info.plist */,
 			);
 			path = VigiCleanTests;
@@ -539,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94504A642382D16F0054BE70 /* AuthFake.swift in Sources */,
 				94504A622382CD940054BE70 /* UserAccountTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
