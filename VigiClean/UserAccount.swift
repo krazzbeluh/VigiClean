@@ -89,13 +89,26 @@ class UserAccount {
                                            completion: @escaping (Error?) -> Void) {
         let database = Firestore.firestore()
         let uid = user.uid // getting uid to create user's document
-        database.collection("User").document(uid).setData(
-            ["credits": 0,
-             "lastName": NSNull(),
-             "firstName": NSNull(),
-             "username": named ?? uid],
-            merge: merge) { error in // creating user's document
-                completion(error)
+        let docRef = database.collection("User").document(uid)
+        docRef.getDocument { (document, error) in
+            guard let document = document else {
+                //TODO : Display error
+                return
+            }
+            
+            if document.exists {
+                //TODO: Display error (if necessary)
+                completion(nil)
+            } else {
+                docRef.setData(
+                    ["credits": 0,
+                     "lastName": NSNull(),
+                     "firstName": NSNull(),
+                     "username": named ?? uid],
+                    merge: merge) { error in // creating user's document
+                        completion(error)
+                }
+            }
         }
         
         completion(nil)
