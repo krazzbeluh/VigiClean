@@ -30,7 +30,9 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: UserAccount.isConnectedWithEmail ? "DisconnectCell" : "ConnectionCell",
+            for: indexPath)
         
         return cell
     }

@@ -28,7 +28,7 @@ class ChooseAccountingMethodViewController: UIViewController, ChooseAccountingMe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.checkConnection()
+        presenter.performSegueIfUserIsConnected()
     }
     
     // MARK: Actions

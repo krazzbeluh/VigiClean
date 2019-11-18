@@ -156,6 +156,29 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DisconnectCell" rowHeight="43" id="Jg3-Eh-cVm">
+                                        <rect key="frame" x="0.0" y="71" width="374" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jg3-Eh-cVm" id="sXH-Vr-3Do">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gua-ah-C2g">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                                    <state key="normal" title="Se déconnecter">
+                                                        <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" name="Background"/>
+                                            <constraints>
+                                                <constraint firstItem="Gua-ah-C2g" firstAttribute="top" secondItem="sXH-Vr-3Do" secondAttribute="top" id="OPU-df-Uj9"/>
+                                                <constraint firstAttribute="trailing" secondItem="Gua-ah-C2g" secondAttribute="trailing" id="lyg-OH-Y84"/>
+                                                <constraint firstAttribute="bottom" secondItem="Gua-ah-C2g" secondAttribute="bottom" id="o8b-j9-uxF"/>
+                                                <constraint firstItem="Gua-ah-C2g" firstAttribute="leading" secondItem="sXH-Vr-3Do" secondAttribute="leading" id="wTF-1j-mXz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <sections/>
                                 <connections>
