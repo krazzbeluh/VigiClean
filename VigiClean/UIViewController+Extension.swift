@@ -60,7 +60,9 @@ extension UIViewController: UNUserNotificationCenterDelegate {
     }
 
     // For handling tap and user actions
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                       didReceive response: UNNotificationResponse,
+                                       withCompletionHandler completionHandler: @escaping () -> Void) {
 
         switch response.actionIdentifier {
         case "action1":

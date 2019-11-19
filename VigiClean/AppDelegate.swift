@@ -12,9 +12,9 @@ import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -25,27 +25,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
     }
     
     func registerForRichNotifications() {
-
-       UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
-            if error != nil {
-                print(error?.localizedDescription)
+        
+        UNUserNotificationCenter.current().requestAuthorization(
+        options: [.alert, .badge, .sound]) { (granted: Bool, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
             }
             if granted {
                 print("Permission granted")
@@ -53,25 +54,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Permission not granted")
             }
         }
-
+        
         //actions defination
         let action1 = UNNotificationAction(identifier: "action1", title: "Action First", options: [.foreground])
         let action2 = UNNotificationAction(identifier: "action2", title: "Action Second", options: [.foreground])
-
-        let category = UNNotificationCategory(identifier: "actionCategory", actions: [action1,action2], intentIdentifiers: [], options: [])
-
+        
+        let category = UNNotificationCategory(identifier: "actionCategory",
+                                              actions: [action1, action2],
+                                              intentIdentifiers: [],
+                                              options: [])
+        
         UNUserNotificationCenter.current().setNotificationCategories([category])
-
+        
     }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         print(response.notification.request.content.userInfo)
         completionHandler()
     }
-
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {//swiftlint:disable:this line_length
         completionHandler([.alert])
     }
