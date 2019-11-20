@@ -9,7 +9,6 @@
 import UIKit
 
 protocol SharedAccountingMethodsView: class {
-    var activityIndicator: UIActivityIndicatorView! { get set }
     func showAlert(with type: Error)
     func userSignedIn()
     func switchActivityIndicator(hidden: Bool)
@@ -60,6 +59,7 @@ class SignInViewController: UIViewController, SignInView {
     }
     
     func userSignedIn() {
+        switchActivityIndicator(hidden: true)
         performSegue(withIdentifier: "segueToDashboard", sender: nil)
     }
     

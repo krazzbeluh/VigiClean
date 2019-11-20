@@ -62,6 +62,8 @@ class UserAccount {
         auth.signInAnonymously { (authResult, error) in // swiftlint:disable:this unused_closure_parameter
             completion(error)
         }
+        
+        completion(nil)
     }
     
     static func signOut(completion: (Error?) -> Void) {

@@ -11,6 +11,7 @@ import UIKit
 protocol WelcomeView: class {
     func performSegue()
     func showAlert(with error: Error)
+    func switchActivityIndicator(hidden: Bool)
 }
 
 class WelcomeViewController: UIViewController, WelcomeView {
@@ -20,6 +21,7 @@ class WelcomeViewController: UIViewController, WelcomeView {
     
     // MARK: Outlets
     @IBOutlet weak var anonymousButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class WelcomeViewController: UIViewController, WelcomeView {
     
     // MARK: Actions
     @IBAction func didTapAnonymousButton(_ sender: Any) {
-        anonymousButton.isHidden = true
+        switchActivityIndicator(hidden: false)
         presenter.signIn() // TODO: SwitchActivityIndicatorIfError
     }
     
@@ -43,7 +45,13 @@ class WelcomeViewController: UIViewController, WelcomeView {
     
     // MARK: Methods
     func performSegue() {
+        switchActivityIndicator(hidden: true)
         performSegue(withIdentifier: "segueToDashboard", sender: nil)
+    }
+    
+    func switchActivityIndicator(hidden: Bool) {
+        activityIndicator.isHidden = hidden
+        anonymousButton.isHidden = !hidden
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

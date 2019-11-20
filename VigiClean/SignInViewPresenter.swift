@@ -31,7 +31,6 @@ class SignInPresenter: SignInViewPresenter {
         UserAccount.signIn(email: email, password: password) { error in
             guard error == nil else {
                 self.view.showAlert(with: error!)
-                self.view.switchActivityIndicator(hidden: true)
                 return
             }
             self.view.userSignedIn()

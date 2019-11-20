@@ -383,6 +383,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ats-Jd-dKu"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="7Sv-xZ-1Rg" id="ikq-qL-chl"/>
                         <outlet property="anonymousButton" destination="MjI-G4-ank" id="ooj-fx-b6j"/>
                         <segue destination="mag-T7-Jig" kind="show" identifier="segueToDashboard" id="BeE-Qq-JGV"/>
                     </connections>
@@ -697,6 +698,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aYO-w9-Rhi"/>
+        <segue reference="BeE-Qq-JGV"/>
     </inferredMetricsTieBreakers>
 </document>
