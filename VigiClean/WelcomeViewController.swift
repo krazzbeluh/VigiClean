@@ -36,7 +36,7 @@ class WelcomeViewController: UIViewController, WelcomeView {
     // MARK: Actions
     @IBAction func didTapAnonymousButton(_ sender: Any) {
         switchActivityIndicator(hidden: false)
-        presenter.signIn() // TODO: SwitchActivityIndicatorIfError
+        presenter.signIn()
     }
     
     @IBAction func unwindToWelcome(segue: UIStoryboardSegue) { 

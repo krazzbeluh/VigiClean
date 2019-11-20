@@ -15,6 +15,7 @@ class UserAccount {
     
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated
+        case documentNotCreated
     }
     
     static var isConnected: Bool {
@@ -50,8 +51,8 @@ class UserAccount {
             withEmail: email,
             password: password) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter
                 guard error == nil else {
-                        completion(error)
-                        return
+                    completion(error)
+                    return
                 }
                 
                 completion(nil)
@@ -89,28 +90,21 @@ class UserAccount {
                                            completion: @escaping (Error?) -> Void) {
         let database = Firestore.firestore()
         let uid = user.uid // getting uid to create user's document
-        let docRef = database.collection("User").document(uid)
-        docRef.getDocument { (document, error) in
-            guard let document = document else {
-                //TODO : Display error
-                return
-            }
-            
-            if document.exists {
-                //TODO: Display error (if necessary)
-                completion(nil)
-            } else {
-                docRef.setData(
-                    ["credits": 0,
-                     "lastName": NSNull(),
-                     "firstName": NSNull(),
-                     "username": named ?? uid],
-                    merge: merge) { error in // creating user's document
-                        completion(error)
+        database.collection("User").document(uid).setData(
+            ["credits": 0,
+             "lastName": NSNull(),
+             "firstName": NSNull(),
+             "username": named ?? uid]) { error in
+                guard error == nil else {
+                    completion(error)
+                    return
                 }
-            }
+                
+                completion(nil)
         }
         
         completion(nil)
     }
 }
+
+
