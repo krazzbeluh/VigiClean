@@ -10,7 +10,7 @@ import AVFoundation
 import UIKit
 
 //TODO: Separate in MVP
-//TODO: scan only one time a code except if a certain delay is passed (5 sec)
+//TODO: scan only one time a code except if notification disappears
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     // MARK: Properties
     var captureSession: AVCaptureSession!
@@ -41,21 +41,19 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         } else {
-            scanNotSupported()
-            print("error") //TODO: display error
+            showAlert(with: Scanner.ScannerError.scanNotSupported)
             return
         }
         
         let metadataOutput = AVCaptureMetadataOutput()
-
+        
         if captureSession.canAddOutput(metadataOutput) {
             captureSession.addOutput(metadataOutput)
-
+            
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
-            scanNotSupported()
-            print("error") // TODO: display error
+            showAlert(with: Scanner.ScannerError.scanNotSupported)
             return
         }
         
@@ -73,27 +71,18 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
         if captureSession?.isRunning == true {
             captureSession.stopRunning()
         }
     }
     
     // MARK: methods
-func scanNotSupported() { // TODO: use showAlert with Error instead of new method
-     // TODO: Add button to send position
-        let alertController = UIAlertController(title: "Scanning not supported",
-                                                message: "Cet appareil n'a pas la capacité de scanner un code !",
-                                                preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alertController, animated: true)
-        captureSession = nil
-    }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput,
                         didOutput metadataObjects: [AVMetadataObject],
                         from connection: AVCaptureConnection) {
-
+        
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }

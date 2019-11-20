@@ -15,7 +15,6 @@ class UserAccount {
     
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated
-        case documentNotCreated
     }
     
     static var isConnected: Bool {
@@ -106,5 +105,3 @@ class UserAccount {
         completion(nil)
     }
 }
-
-

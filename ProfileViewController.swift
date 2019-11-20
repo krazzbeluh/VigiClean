@@ -20,11 +20,11 @@ class ProfileViewController: UIViewController {
     // MARK: Actions
     @IBAction func didTapDisconnectButton(_ sender: Any) {
         UserAccount.signOut { error in
-            guard error == nil else {
-                print(error!) // TODO : display error
-                return
+            if let error = error {
+                showAlert(with: error)
+            } else {
+                performSegue(withIdentifier: "unwindToWelcome", sender: self)
             }
-            performSegue(withIdentifier: "unwindToWelcome", sender: self)
         }
     }
     
