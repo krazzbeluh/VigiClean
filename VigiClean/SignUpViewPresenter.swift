@@ -45,7 +45,7 @@ class SignUpPresenter: SignUpViewPresenter {
                 self.view.switchActivityIndicator(hidden: true)
                 return
             }
-            self.view.performSegue()
+            self.view.userSignedIn()
         }
     }
 }

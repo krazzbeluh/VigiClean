@@ -14,6 +14,7 @@ protocol WelcomeView: class {
 }
 
 class WelcomeViewController: UIViewController, WelcomeView {
+    
     // MARK: Properties
     var presenter: WelcomeViewPresenter!
     
@@ -28,13 +29,12 @@ class WelcomeViewController: UIViewController, WelcomeView {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.performSegueIfUserIsConnected()
     }
     
     // MARK: Actions
     @IBAction func didTapAnonymousButton(_ sender: Any) {
         anonymousButton.isHidden = true
-        presenter.signIn()
+        presenter.signIn() // TODO: SwitchActivityIndicatorIfError
     }
     
     @IBAction func unwindToWelcome(segue: UIStoryboardSegue) { 

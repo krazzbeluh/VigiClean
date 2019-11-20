@@ -16,6 +16,8 @@
 		94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */; };
 		94504A622382CD940054BE70 /* UserAccountTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A612382CD940054BE70 /* UserAccountTestCase.swift */; };
 		94504A642382D16F0054BE70 /* AuthFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A632382D16F0054BE70 /* AuthFake.swift */; };
+		94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA4238583C90054BE70 /* SignInContracts.swift */; };
+		94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA723858CCF0054BE70 /* LaunchViewController.swift */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
@@ -68,6 +70,8 @@
 		94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
 		94504A612382CD940054BE70 /* UserAccountTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserAccountTestCase.swift; path = VigiClean/UserAccountTestCase.swift; sourceTree = SOURCE_ROOT; };
 		94504A632382D16F0054BE70 /* AuthFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFake.swift; sourceTree = "<group>"; };
+		94504AA4238583C90054BE70 /* SignInContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContracts.swift; sourceTree = "<group>"; };
+		94504AA723858CCF0054BE70 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 		941F7E17237B080200044A0D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				94504AA723858CCF0054BE70 /* LaunchViewController.swift */,
 				94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */,
 				9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */,
 				94138AAC237D067B00419F2C /* SignUpViewController.swift */,
@@ -158,6 +163,14 @@
 				94504A632382D16F0054BE70 /* AuthFake.swift */,
 			);
 			name = Mock;
+			sourceTree = "<group>";
+		};
+		94504AA6238583D00054BE70 /* Contracts */ = {
+			isa = PBXGroup;
+			children = (
+				94504AA4238583C90054BE70 /* SignInContracts.swift */,
+			);
+			name = Contracts;
 			sourceTree = "<group>";
 		};
 		94BE5A9C2370A69700CE3060 /* Model */ = {
@@ -230,6 +243,7 @@
 		94F0A0262370A1CA00037210 /* VigiClean */ = {
 			isa = PBXGroup;
 			children = (
+				94504AA6238583D00054BE70 /* Contracts */,
 				94BE5A9C2370A69700CE3060 /* Model */,
 				94BE5A9F2370A6AB00CE3060 /* Presenter */,
 				94BE5A9E2370A6A600CE3060 /* View */,
@@ -538,11 +552,13 @@
 				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
 				94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */,
 				94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */,
+				94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */,
 				94CDC9B0237C48F9003295AD /* WelcomeViewController.swift in Sources */,
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
 				94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */,
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,
+				94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

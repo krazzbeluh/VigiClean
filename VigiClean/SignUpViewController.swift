@@ -58,7 +58,7 @@ class SignUpViewController: UIViewController, SignUpView {
     }
     
     // MARK: Segues
-    func performSegue() {
+    func userSignedIn() {
         performSegue(withIdentifier: "segueToDashboard", sender: nil)
     }
     

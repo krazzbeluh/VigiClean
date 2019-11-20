@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class UserAccount {
     static var auth = Auth.auth()
@@ -47,17 +48,10 @@ class UserAccount {
     static func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) {
         auth.signIn(
             withEmail: email,
-            password: password) { (authResult, error) in
-                guard error == nil,
-                    let user = authResult?.user else {
+            password: password) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter
+                guard error == nil else {
                         completion(error)
                         return
-                }
-                
-                createUserDocument(for: user, named: email, merge: true) { error in
-                    if let error = error {
-                        print(error)
-                    }
                 }
                 
                 completion(nil)

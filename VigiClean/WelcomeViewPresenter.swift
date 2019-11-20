@@ -11,7 +11,6 @@ import Foundation
 protocol WelcomeViewPresenter {
     init(view: WelcomeView)
     func signIn()
-    func performSegueIfUserIsConnected()
 }
 
 class WelcomePresenter: WelcomeViewPresenter {
@@ -28,12 +27,6 @@ class WelcomePresenter: WelcomeViewPresenter {
                 return
             }
             self.view.performSegue()
-        }
-    }
-    
-    func performSegueIfUserIsConnected() {
-        if UserAccount.isConnected {
-            view.performSegue()
         }
     }
 }
