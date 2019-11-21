@@ -27,7 +27,6 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -40,13 +39,20 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return UserAccount.isConnectedWithEmail ? 1 : 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: UserAccount.isConnected ? "DisconnectCell" : "ConnectionCell",
-            for: indexPath) // TODO: make connectionCell attachEmailCell
+        let cell: UITableViewCell
+        
+        switch indexPath.row {
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: "DisconnectCell", for: indexPath)
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionCell", for: indexPath)
+        default:
+            cell = UITableViewCell()
+        } // TODO: make connectionCell attachEmailCell
         
         return cell
     }

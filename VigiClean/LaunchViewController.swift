@@ -21,11 +21,17 @@ class LaunchViewController: UIViewController {
         
         if UserAccount.isConnected {
             print(1)
+            UserAccount.wasAlreadyConnectedAtLaunch = true
             performSegue(withIdentifier: "segueToDashboard", sender: nil)
         } else {
             print(2)
+            UserAccount.wasAlreadyConnectedAtLaunch = false
             performSegue(withIdentifier: "segueToWelcome", sender: nil)
         }
+    }
+    
+    @IBAction func unwindToWelcome(segue: UIStoryboardSegue) {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

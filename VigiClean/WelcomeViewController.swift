@@ -39,10 +39,6 @@ class WelcomeViewController: UIViewController, WelcomeView {
         presenter.signIn()
     }
     
-    @IBAction func unwindToWelcome(segue: UIStoryboardSegue) { 
-        
-    }
-    
     // MARK: Methods
     func performSegue() {
         switchActivityIndicator(hidden: true)
