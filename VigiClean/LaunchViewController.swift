@@ -20,12 +20,8 @@ class LaunchViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if UserAccount.isConnected {
-            print(1)
-            UserAccount.wasAlreadyConnectedAtLaunch = true
             performSegue(withIdentifier: "segueToDashboard", sender: nil)
         } else {
-            print(2)
-            UserAccount.wasAlreadyConnectedAtLaunch = false
             performSegue(withIdentifier: "segueToWelcome", sender: nil)
         }
     }

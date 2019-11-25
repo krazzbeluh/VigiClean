@@ -9,11 +9,11 @@
 import UIKit
 
 class DashBoardViewController: UIViewController {
+    // MARK: Outlets
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        modalPresentationStyle = .fullScreen
+        
         // Do any additional setup after loading the view.
     }
 

@@ -38,12 +38,6 @@
                                     <constraint firstItem="9u7-OU-DnV" firstAttribute="leading" secondItem="7N0-wx-fld" secondAttribute="leading" id="p73-qe-6HK"/>
                                     <constraint firstItem="9u7-OU-DnV" firstAttribute="centerX" secondItem="7N0-wx-fld" secondAttribute="centerX" id="tsv-NZ-5kW"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lb8-av-c4K">
                                 <rect key="frame" x="342.33333333333331" y="129.33333333333334" width="51.666666666666686" height="52"/>
