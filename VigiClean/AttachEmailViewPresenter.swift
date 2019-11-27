@@ -8,11 +8,6 @@
 
 import Foundation
 
-protocol AttachEmailViewPresenter {
-    init(view: AttachEmailView)
-    func attachEmail(username: String?, email: String?, password: String?, confirmPassword: String?)
-}
-
 class AttachEmailPresenter: AttachEmailViewPresenter {
     unowned let view: AttachEmailView
     

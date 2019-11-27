@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol AttachEmailView: class {
-    func showAlert(with type: Error)
-    func switchActivityIndicator(hidden: Bool)
-    func emailAttached()
-}
-
 class AttachEmailViewController: UIViewController, AttachEmailView {
     
     // MARK: Properties

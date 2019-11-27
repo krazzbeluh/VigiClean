@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol SignUpView: class {
-    func showAlert(with type: Error)
-    func switchActivityIndicator(hidden: Bool)
-    func userSignedUp()
-}
-
 class SignUpViewController: UIViewController, SignUpView {
     
     // MARK: Properties

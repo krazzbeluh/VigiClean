@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol ProfileViewPresenter {
-    init(view: ProfileView)
-}
-
 class ProfilePresenter: ProfileViewPresenter {
     unowned let view: ProfileView
     

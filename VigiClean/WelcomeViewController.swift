@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol WelcomeView: class {
-    func performSegue()
-    func showAlert(with error: Error)
-    func switchActivityIndicator(hidden: Bool)
-}
-
 class WelcomeViewController: UIViewController, WelcomeView {
     
     // MARK: Properties

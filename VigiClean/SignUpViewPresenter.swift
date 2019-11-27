@@ -8,11 +8,6 @@
 
 import Foundation
 
-protocol SignUpViewPresenter {
-    init(view: SignUpView)
-    func signUp(username: String?, email: String?, password: String?, confirmPassword: String?)
-}
-
 class SignUpPresenter: SignUpViewPresenter {
     unowned let view: SignUpView
     
