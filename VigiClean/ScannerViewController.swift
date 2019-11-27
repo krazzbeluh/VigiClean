@@ -16,6 +16,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    var lastCode = ""
+    
     // MARK: Outlets
     @IBOutlet weak var scannerView: UIView!
     @IBOutlet weak var qrScope: UIView!
@@ -86,6 +88,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
+            guard stringValue != lastCode else { return }
+            lastCode = stringValue
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
         }
@@ -93,10 +97,17 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     func found(code: String) {
         print(code)
+        captureSession.stopRunning()
+        performSegue(withIdentifier: "segueToRequest", sender: nil) // TODO: if code starts by vigiclean.com
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     // MARK: Actions
+    
+    // MARK: Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.modalPresentationStyle = .fullScreen
+    }
 }

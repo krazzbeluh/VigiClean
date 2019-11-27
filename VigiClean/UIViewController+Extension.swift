@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol SharedMethodsView: class {
+    
+}
+
 protocol DisplayAlert: UIViewController { // protocol to add method to every UIViewController
     func showAlert(with type: Error)
 }

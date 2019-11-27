@@ -8,16 +8,8 @@
 
 import UIKit
 
-protocol SharedAccountingMethodsView: class {
-    func showAlert(with type: Error)
-    func userSignedIn()
-    func switchActivityIndicator(hidden: Bool)
-}
-
-protocol SignInView: SharedAccountingMethodsView {
-}
-
 class SignInViewController: UIViewController, SignInView {
+    
     // MARK: Properties
     var presenter: SignInViewPresenter!
     

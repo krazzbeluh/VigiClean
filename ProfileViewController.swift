@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
             if let error = error {
                 showAlert(with: error)
             } else {
-                performSegue(withIdentifier: "unwindToWelcome", sender: self)
+                performSegue(withIdentifier: "unwindToLaunch", sender: self)
             }
         }
     }

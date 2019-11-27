@@ -66,6 +66,24 @@ class UserAccount {
         completion(nil)
     }
     
+    static func attachEmail(email: String,
+                            password: String,
+                            completion: @escaping ((Error?) -> Void)) {
+        Auth.auth().currentUser?.updateEmail(to: email) { (error) in
+            guard error == nil else {
+                completion(error)
+                return
+            }
+            Auth.auth().currentUser?.updatePassword(to: password) { (error) in
+                guard error == nil else {
+                    completion(error)
+                    return
+                }
+                completion(nil)
+            }
+        }
+    }
+    
     static func signOut(completion: (Error?) -> Void) {
         do {
             try auth.signOut()
@@ -104,4 +122,5 @@ class UserAccount {
         
         completion(nil)
     }
+    
 }

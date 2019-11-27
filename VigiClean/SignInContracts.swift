@@ -9,18 +9,14 @@
 import Foundation
 import UIKit
 
-class SignInContracts {
-    private init() {}
-    
-//    protocol SignInViewPresenter {
-//        init(view: SignInView) {}
-//        func signIn(email: String?, password: String?) {}
-//    }
-//    
-//    class SignInView {
-//        var activityIndicator: UIActivityIndicatorView! = nil
-//        func showAlert(with type: Error) {}
-//        func performSegue() {}
-//        func switchActivityIndicator(hidden: Bool) {}
-//    }
+protocol SignInViewPresenter {
+    init(view: SignInView)
+    func signIn(email: String?, password: String?)
+}
+
+protocol SignInView: class {
+    var activityIndicator: UIActivityIndicatorView! { get set }
+    func showAlert(with type: Error)
+    func userSignedIn()
+    func switchActivityIndicator(hidden: Bool)
 }

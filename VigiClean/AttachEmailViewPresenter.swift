@@ -1,26 +1,26 @@
 //
-//  SignUpViewPresenter.swift
+//  AttachEmailViewPresenter.swift
 //  VigiClean
 //
-//  Created by Paul Leclerc on 14/11/2019.
+//  Created by Paul Leclerc on 25/11/2019.
 //  Copyright © 2019 Paul Leclerc. All rights reserved.
 //
 
 import Foundation
 
-protocol SignUpViewPresenter {
-    init(view: SignUpView)
-    func signUp(username: String?, email: String?, password: String?, confirmPassword: String?)
+protocol AttachEmailViewPresenter {
+    init(view: AttachEmailView)
+    func attachEmail(username: String?, email: String?, password: String?, confirmPassword: String?)
 }
 
-class SignUpPresenter: SignUpViewPresenter {
-    unowned let view: SignUpView
+class AttachEmailPresenter: AttachEmailViewPresenter {
+    unowned let view: AttachEmailView
     
-    required init(view: SignUpView) {
+    required init(view: AttachEmailView) {
         self.view = view
     }
     
-    func signUp(username: String?, email: String?, password: String?, confirmPassword: String?) {
+    func attachEmail(username: String?, email: String?, password: String?, confirmPassword: String?) {
         guard let username = username,
             let email = email,
             let password = password,
@@ -39,14 +39,12 @@ class SignUpPresenter: SignUpViewPresenter {
         
         view.switchActivityIndicator(hidden: false)
         
-        UserAccount.signUp(username: username, email: email, password: password) { error in
+        UserAccount.attachEmail(email: email, password: password, completion: { error in
             if let error = error {
                 self.view.showAlert(with: error)
-                self.view.switchActivityIndicator(hidden: true)
-                return
             } else {
-                self.view.userSignedUp()
+                self.view.emailAttached()
             }
-        }
+        })
     }
 }

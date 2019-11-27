@@ -25,10 +25,8 @@ class LaunchViewController: UIViewController {
             performSegue(withIdentifier: "segueToWelcome", sender: nil)
         }
     }
-    
-    @IBAction func unwindToWelcome(segue: UIStoryboardSegue) {
-        
-    }
+
+    @IBAction func unwindToLaunch(segue: UIStoryboardSegue) {}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.modalPresentationStyle = .fullScreen
