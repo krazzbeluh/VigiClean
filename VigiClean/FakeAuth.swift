@@ -13,15 +13,14 @@ class FakeAuth: Auth {
     let result: AuthDataResult?
     let error: Error?
     
-    var isConnected = false
-    var user: User?
+    private var user: User?
     override var currentUser: User? {
         get {
-            if isConnected {
-                return user
-            } else {
-                return nil
-            }
+            return user
+        }
+        
+        set {
+            user = newValue
         }
     }
     var currentFakeUser: FakeUser? {
@@ -34,8 +33,7 @@ class FakeAuth: Auth {
     }
     
     func signIn(email: String?) {
-        isConnected = true
-        user = FakeUser(mail: email, id: email ?? "anonymous")
+        user = FakeUser(mail: email, identifier: email ?? "anonymous")
     }
     
     override func signInAnonymously(completion: AuthDataResultCallback? = nil) {
@@ -46,7 +44,7 @@ class FakeAuth: Auth {
     override func createUser(withEmail email: String, password: String, completion: AuthDataResultCallback? = nil) {
         signIn(email: email)
         
-        FakeServer.users.append(FakeUser(mail: email, id: email))
+        FakeServer.users.append(FakeUser(mail: email, identifier: email))
         completion!(result, error)
     }
 }

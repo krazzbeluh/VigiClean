@@ -41,7 +41,9 @@ class UserAccountTestCase: XCTestCase {
     
     // MARK: Sign Up
     func testSignUpShouldntReturnErrorIfSuccess() {
-        UserAccount.auth = FakeAuth(result: FakeAuthDataResult(user: FakeUser(mail: nil, id: "signedUpUser")), error: nil)
+        UserAccount.auth = FakeAuth(result: FakeAuthDataResult(user: FakeUser(mail: nil,
+                                                                              identifier: "signedUpUser")),
+                                    error: nil)
         UserAccount.database = FakeFirestore.init(error: nil)
         
         UserAccount.signUp(username: "Username", email: "Email", password: "Password") { error in
@@ -53,7 +55,9 @@ class UserAccountTestCase: XCTestCase {
     }
     
     func testSignUpShouldReturlErrorIfNotSuccess() {
-        UserAccount.auth = FakeAuth(result: FakeAuthDataResult(user: FakeUser(mail: nil, id: "signedUpUser")), error: EasyError())
+        UserAccount.auth = FakeAuth(result: FakeAuthDataResult(user: FakeUser(mail: nil,
+                                                                              identifier: "signedUpUser")),
+                                    error: EasyError())
         UserAccount.database = FakeFirestore.init(error: nil)
         
         UserAccount.signUp(username: "Username", email: "Email", password: "Password") { error in

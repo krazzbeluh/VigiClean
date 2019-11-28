@@ -21,19 +21,19 @@ class FakeUser: User {
         }
     }
     
-    var id: String
+    var identifier: String
     override var uid: String {
         get {
-            return id
+            return identifier
         }
         
         set {
-            id = newValue
+            identifier = newValue
         }
     }
     
-    init(mail: String?, id: String) {
+    init(mail: String?, identifier: String) {
         self.mail = mail
-        self.id = id
+        self.identifier = identifier
     }
 }

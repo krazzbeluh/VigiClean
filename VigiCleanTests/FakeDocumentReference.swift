@@ -16,7 +16,7 @@ class FakeDocumentReference: DocumentReference {
         self.error = error
     }
     
-    override func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)? = nil) {
+    override func setData(_ documentData: [String: Any], completion: ((Error?) -> Void)? = nil) {
         completion!(error)
     }
 }

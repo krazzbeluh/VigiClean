@@ -37,7 +37,7 @@ class UserAccount {
                         return
                 }
                 
-                createUserDocument(for: user, named: username, merge: true) { error in
+                createUserDocument(for: user, named: username) { error in
                     completion(error)
                 }
                 
@@ -101,15 +101,14 @@ class UserAccount {
     }
     
     private static func createUserDocument(for user: User,
-                                           named: String?,
-                                           merge: Bool,
+                                           named: String,
                                            completion: @escaping (Error?) -> Void) {
         let uid = user.uid // getting uid to create user's document
         database.collection("User").document(uid).setData(
             ["credits": 0,
              "lastName": NSNull(),
              "firstName": NSNull(),
-             "username": named ?? uid]) { error in
+             "username": named]) { error in
                 completion(error)
         }
     }
