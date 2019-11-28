@@ -7,15 +7,33 @@
 //
 
 import XCTest
+import FirebaseAuth
 @testable import VigiClean
 
 class UserAccountTestCase: XCTestCase {
     
     override func setUp() {
-//        UserAccount.auth = AuthFake()
     }
 
-    func testIsConnectedShouldReturnTrueIfUserLoggedIn() {
-//        UserAccount.isConnected
+    // MARK: Anonymous Sign In
+    func testAnonymousSignInShouldntReturnErrorIfSuccess() {
+        UserAccount.auth = FakeAuth(result: nil, error: nil)
+        UserAccount.anonymousSignIn { error in
+            XCTAssertNil(error)
+        }
+        
+        XCTAssertTrue(UserAccount.isConnected)
+        XCTAssertFalse(UserAccount.isConnectedWithEmail)
+    }
+    
+    func testAnonymousSignInShouldReturnErrorIfNotSuccess() {
+        UserAccount.auth = FakeAuth(result: nil, error: UserAccount.UAccountError.userDocumentNotCreated)
+        UserAccount.anonymousSignIn { error in
+            print(error)
+            XCTAssertNotNil(error)
+        }
+        
+        XCTAssertTrue(UserAccount.isConnected)
+        XCTAssertFalse(UserAccount.isConnectedWithEmail)
     }
 }

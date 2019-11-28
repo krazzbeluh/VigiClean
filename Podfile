@@ -6,11 +6,11 @@ target 'VigiClean' do
   use_frameworks!
 
   # Pods for VigiClean
-  pod 'Firebase/Core'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Core', '6.13.0'
+  pod 'Firebase/Analytics', '6.13.0'
+  pod 'Firebase/Auth', '6.13.0
+  pod 'Firebase/Firestore', '6.13.0'
+  pod 'FirebaseFirestoreSwift', '0.2'
   pod 'IQKeyboardManagerSwift', '6.3.0'
 
   target 'VigiCleanTests' do
