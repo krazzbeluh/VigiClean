@@ -29,7 +29,7 @@ class UserAccountTestCase: XCTestCase {
     }
     
     func testAnonymousSignInShouldReturnErrorIfNotSuccess() {
-        UserAccount.auth = FakeAuth(result: nil, error: UserAccount.UAccountError.userDocumentNotCreated)
+        UserAccount.auth = FakeAuth(result: nil, error: EasyError())
         // TODO: Use Firebase Errors
         UserAccount.anonymousSignIn { error in
             XCTAssertNotNil(error)
@@ -42,9 +42,22 @@ class UserAccountTestCase: XCTestCase {
     // MARK: Sign Up
     func testSignUpShouldntReturnErrorIfSuccess() {
         UserAccount.auth = FakeAuth(result: FakeAuthDataResult(user: FakeUser(mail: nil, id: "signedUpUser")), error: nil)
+        UserAccount.database = FakeFirestore.init(error: nil)
         
         UserAccount.signUp(username: "Username", email: "Email", password: "Password") { error in
             XCTAssertNil(error)
+        }
+        
+        XCTAssertTrue(UserAccount.isConnected)
+        XCTAssertTrue(UserAccount.isConnectedWithEmail)
+    }
+    
+    func testSignUpShouldReturlErrorIfNotSuccess() {
+        UserAccount.auth = FakeAuth(result: FakeAuthDataResult(user: FakeUser(mail: nil, id: "signedUpUser")), error: EasyError())
+        UserAccount.database = FakeFirestore.init(error: nil)
+        
+        UserAccount.signUp(username: "Username", email: "Email", password: "Password") { error in
+            XCTAssertNotNil(error)
         }
         
         XCTAssertTrue(UserAccount.isConnected)

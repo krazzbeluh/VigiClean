@@ -12,6 +12,7 @@ import FirebaseFirestore
 
 class UserAccount {
     static var auth = Auth.auth()
+    static var database = Firestore.firestore()
     
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated
@@ -103,22 +104,14 @@ class UserAccount {
                                            named: String?,
                                            merge: Bool,
                                            completion: @escaping (Error?) -> Void) {
-        let database = Firestore.firestore()
         let uid = user.uid // getting uid to create user's document
         database.collection("User").document(uid).setData(
             ["credits": 0,
              "lastName": NSNull(),
              "firstName": NSNull(),
              "username": named ?? uid]) { error in
-                guard error == nil else {
-                    completion(error)
-                    return
-                }
-                
-                completion(nil)
+                completion(error)
         }
-        
-        completion(nil)
     }
     
 }

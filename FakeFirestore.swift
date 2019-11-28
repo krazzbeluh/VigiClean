@@ -10,13 +10,13 @@ import Foundation
 import FirebaseFirestore
 
 class FakeFirestore: Firestore {
-    let error: Error
+    let error: Error?
     
-    init(error: Error) {
+    init(error: Error?) {
         self.error = error
     }
     
     override func collection(_ collectionPath: String) -> CollectionReference {
-        return FakeCollectionReference(michel: true)
+        return FakeCollectionReference(error: error)
     }
 }
