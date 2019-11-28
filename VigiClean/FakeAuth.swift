@@ -12,10 +12,13 @@ import FirebaseAuth
 class FakeAuth: Auth {
     let result: AuthDataResult?
     let error: Error?
+    
+    var isConnected = false
+    var user: User?
     override var currentUser: User? {
         get {
-            if FakeUser.isConnected {
-                return FakeUser(michel: true)
+            if isConnected {
+                return user
             } else {
                 return nil
             }
@@ -30,9 +33,20 @@ class FakeAuth: Auth {
         self.error = error
     }
     
+    func signIn(email: String?) {
+        isConnected = true
+        user = FakeUser(mail: email, id: email ?? "anonymous")
+    }
+    
     override func signInAnonymously(completion: AuthDataResultCallback? = nil) {
-        FakeUser.isConnected = true
-        currentFakeUser?.email = nil
+        signIn(email: nil)
+        completion!(result, error)
+    }
+    
+    override func createUser(withEmail email: String, password: String, completion: AuthDataResultCallback? = nil) {
+        signIn(email: email)
+        
+        FakeServer.users.append(FakeUser(mail: email, id: email))
         completion!(result, error)
     }
 }

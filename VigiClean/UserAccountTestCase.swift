@@ -6,6 +6,8 @@
 //  Copyright © 2019 Paul Leclerc. All rights reserved.
 //
 
+struct EasyError: Error {}
+
 import XCTest
 import FirebaseAuth
 @testable import VigiClean
@@ -28,12 +30,24 @@ class UserAccountTestCase: XCTestCase {
     
     func testAnonymousSignInShouldReturnErrorIfNotSuccess() {
         UserAccount.auth = FakeAuth(result: nil, error: UserAccount.UAccountError.userDocumentNotCreated)
+        // TODO: Use Firebase Errors
         UserAccount.anonymousSignIn { error in
-            print(error)
             XCTAssertNotNil(error)
         }
         
         XCTAssertTrue(UserAccount.isConnected)
         XCTAssertFalse(UserAccount.isConnectedWithEmail)
+    }
+    
+    // MARK: Sign Up
+    func testSignUpShouldntReturnErrorIfSuccess() {
+        UserAccount.auth = FakeAuth(result: FakeAuthDataResult(user: FakeUser(mail: nil, id: "signedUpUser")), error: nil)
+        
+        UserAccount.signUp(username: "Username", email: "Email", password: "Password") { error in
+            XCTAssertNil(error)
+        }
+        
+        XCTAssertTrue(UserAccount.isConnected)
+        XCTAssertTrue(UserAccount.isConnectedWithEmail)
     }
 }

@@ -29,6 +29,11 @@
 		94BA1EF2238E6AAA00FE19A1 /* WelcomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EF1238E6AAA00FE19A1 /* WelcomeContracts.swift */; };
 		94BA1EF42390060800FE19A1 /* FakeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EF32390060800FE19A1 /* FakeAuth.swift */; };
 		94BA1EF723900EF000FE19A1 /* FakeUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EF623900EF000FE19A1 /* FakeUser.swift */; };
+		94BA1EF923901E9200FE19A1 /* FakeServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EF823901E9200FE19A1 /* FakeServer.swift */; };
+		94BA1EFB2390267B00FE19A1 /* FakeAuthDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EFA2390267B00FE19A1 /* FakeAuthDataResult.swift */; };
+		94BA1F022390349900FE19A1 /* FakeFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F012390349900FE19A1 /* FakeFirestore.swift */; };
+		94BA1F042390350100FE19A1 /* FakeCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F032390350100FE19A1 /* FakeCollectionReference.swift */; };
+		94BA1F062390363700FE19A1 /* FakeDocumentReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */; };
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
 		94BE5AA42370A9FE00CE3060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */; };
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
@@ -92,6 +97,11 @@
 		94BA1EF1238E6AAA00FE19A1 /* WelcomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeContracts.swift; sourceTree = "<group>"; };
 		94BA1EF32390060800FE19A1 /* FakeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeAuth.swift; path = VigiClean/FakeAuth.swift; sourceTree = SOURCE_ROOT; };
 		94BA1EF623900EF000FE19A1 /* FakeUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUser.swift; sourceTree = "<group>"; };
+		94BA1EF823901E9200FE19A1 /* FakeServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeServer.swift; sourceTree = "<group>"; };
+		94BA1EFA2390267B00FE19A1 /* FakeAuthDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthDataResult.swift; sourceTree = "<group>"; };
+		94BA1F012390349900FE19A1 /* FakeFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFirestore.swift; sourceTree = SOURCE_ROOT; };
+		94BA1F032390350100FE19A1 /* FakeCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCollectionReference.swift; sourceTree = SOURCE_ROOT; };
+		94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDocumentReference.swift; sourceTree = "<group>"; };
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -180,6 +190,7 @@
 		94504A652382D1740054BE70 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				94BA1EFE23902EF500FE19A1 /* Firestore */,
 				94BA1EF523900ED700FE19A1 /* Auth */,
 			);
 			name = Mock;
@@ -202,8 +213,20 @@
 			children = (
 				94BA1EF32390060800FE19A1 /* FakeAuth.swift */,
 				94BA1EF623900EF000FE19A1 /* FakeUser.swift */,
+				94BA1EFA2390267B00FE19A1 /* FakeAuthDataResult.swift */,
+				94BA1EF823901E9200FE19A1 /* FakeServer.swift */,
 			);
 			name = Auth;
+			sourceTree = "<group>";
+		};
+		94BA1EFE23902EF500FE19A1 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				94BA1F012390349900FE19A1 /* FakeFirestore.swift */,
+				94BA1F032390350100FE19A1 /* FakeCollectionReference.swift */,
+				94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */,
+			);
+			name = Firestore;
 			sourceTree = "<group>";
 		};
 		94BE5A9C2370A69700CE3060 /* Model */ = {
@@ -610,8 +633,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				94BA1EF723900EF000FE19A1 /* FakeUser.swift in Sources */,
+				94BA1F022390349900FE19A1 /* FakeFirestore.swift in Sources */,
+				94BA1EF923901E9200FE19A1 /* FakeServer.swift in Sources */,
+				94BA1F062390363700FE19A1 /* FakeDocumentReference.swift in Sources */,
+				94BA1EFB2390267B00FE19A1 /* FakeAuthDataResult.swift in Sources */,
 				94BA1EF42390060800FE19A1 /* FakeAuth.swift in Sources */,
 				94504A622382CD940054BE70 /* UserAccountTestCase.swift in Sources */,
+				94BA1F042390350100FE19A1 /* FakeCollectionReference.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

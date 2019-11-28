@@ -10,8 +10,6 @@ import Foundation
 import FirebaseAuth
 
 class FakeUser: User {
-    static var isConnected = false
-    
     var mail: String?
     override var email: String? {
         get {
@@ -23,6 +21,19 @@ class FakeUser: User {
         }
     }
     
-    init(michel: Bool) {
+    var id: String
+    override var uid: String {
+        get {
+            return id
+        }
+        
+        set {
+            id = newValue
+        }
+    }
+    
+    init(mail: String?, id: String) {
+        self.mail = mail
+        self.id = id
     }
 }
