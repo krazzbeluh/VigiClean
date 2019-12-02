@@ -10,8 +10,12 @@ import Foundation
 
 protocol ScannerViewPresenter {
     init(view: ScannerView)
+    
+    func verifyCode(code: String)
 }
 
 protocol ScannerView: class {
     func showAlert(with error: Error)
+    func startVibration()
+    func validCodeFound()
 }

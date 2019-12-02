@@ -18,8 +18,6 @@ class ScannerViewController: UIViewController, ScannerView, AVCaptureMetadataOut
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
-    var lastCode = ""
-    
     // MARK: Outlets
     @IBOutlet weak var scannerView: UIView!
     @IBOutlet weak var qrScope: UIView!
@@ -93,23 +91,17 @@ class ScannerViewController: UIViewController, ScannerView, AVCaptureMetadataOut
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
             
-            guard stringValue != lastCode else { return }
-            lastCode = stringValue
-            found(code: stringValue)
+            presenter.verifyCode(code: stringValue)
         }
     }
     
-    func found(code: String) {
-        print(code)
+    func startVibration() {
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-        
-        if code.starts(with: "https://www.vigiclean.com/") {
-
-            captureSession.stopRunning()
-            performSegue(withIdentifier: "segueToRequest", sender: nil)
-        } else {
-            print("VigiClean KO") // TODO: Display alert: not a vigiclean code
-        }
+    }
+    
+    func validCodeFound() {
+        captureSession.stopRunning()
+        performSegue(withIdentifier: "segueToRequest", sender: nil)
     }
     
     override var prefersStatusBarHidden: Bool {
