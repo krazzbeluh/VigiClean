@@ -34,6 +34,9 @@
 		94BA1F022390349900FE19A1 /* FakeFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F012390349900FE19A1 /* FakeFirestore.swift */; };
 		94BA1F042390350100FE19A1 /* FakeCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F032390350100FE19A1 /* FakeCollectionReference.swift */; };
 		94BA1F062390363700FE19A1 /* FakeDocumentReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */; };
+		94BA1F082395509600FE19A1 /* ScannerViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */; };
+		94BA1F0A239550EB00FE19A1 /* ScannerContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */; };
+		94BA1F0C239551C900FE19A1 /* Contracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F0B239551C900FE19A1 /* Contracts.swift */; };
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
 		94BE5AA42370A9FE00CE3060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */; };
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
@@ -102,6 +105,9 @@
 		94BA1F012390349900FE19A1 /* FakeFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFirestore.swift; sourceTree = SOURCE_ROOT; };
 		94BA1F032390350100FE19A1 /* FakeCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCollectionReference.swift; sourceTree = SOURCE_ROOT; };
 		94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDocumentReference.swift; sourceTree = "<group>"; };
+		94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewPresenter.swift; sourceTree = "<group>"; };
+		94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerContracts.swift; sourceTree = "<group>"; };
+		94BA1F0B239551C900FE19A1 /* Contracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contracts.swift; sourceTree = "<group>"; };
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 				94504AA4238583C90054BE70 /* SignInContracts.swift */,
 				94BA1EEF238E6A6B00FE19A1 /* ProfileContracts.swift */,
 				94BA1EF1238E6AAA00FE19A1 /* WelcomeContracts.swift */,
+				94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */,
 			);
 			name = Contracts;
 			sourceTree = "<group>";
@@ -227,6 +234,14 @@
 				94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */,
 			);
 			name = Firestore;
+			sourceTree = "<group>";
+		};
+		94BA1F0D239551CE00FE19A1 /* Exemples */ = {
+			isa = PBXGroup;
+			children = (
+				94BA1F0B239551C900FE19A1 /* Contracts.swift */,
+			);
+			name = Exemples;
 			sourceTree = "<group>";
 		};
 		94BE5A9C2370A69700CE3060 /* Model */ = {
@@ -256,6 +271,7 @@
 				94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */,
 				94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */,
 				94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */,
+				94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -301,6 +317,7 @@
 		94F0A0262370A1CA00037210 /* VigiClean */ = {
 			isa = PBXGroup;
 			children = (
+				94BA1F0D239551CE00FE19A1 /* Exemples */,
 				94504AA6238583D00054BE70 /* Contracts */,
 				94BE5A9C2370A69700CE3060 /* Model */,
 				94BE5A9F2370A6AB00CE3060 /* Presenter */,
@@ -607,11 +624,14 @@
 				94BA1EEE238E6A3900FE19A1 /* AttachEmailContracts.swift in Sources */,
 				94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */,
 				941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */,
+				94BA1F0A239550EB00FE19A1 /* ScannerContracts.swift in Sources */,
 				94BA1EF2238E6AAA00FE19A1 /* WelcomeContracts.swift in Sources */,
 				94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */,
 				94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */,
 				9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */,
+				94BA1F0C239551C900FE19A1 /* Contracts.swift in Sources */,
 				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
+				94BA1F082395509600FE19A1 /* ScannerViewPresenter.swift in Sources */,
 				94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */,
 				94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */,
 				94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */,

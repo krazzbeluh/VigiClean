@@ -10,9 +10,11 @@ import AVFoundation
 import UIKit
 
 //TODO: Separate in MVP
-//TODO: scan only one time a code except if notification disappears
-class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScannerViewController: UIViewController, ScannerView, AVCaptureMetadataOutputObjectsDelegate {
+    
     // MARK: Properties
+    var presenter: ScannerViewPresenter!
+    
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
@@ -25,6 +27,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter = ScannerPresenter(view: self)
         
         captureSession = AVCaptureSession()
         
