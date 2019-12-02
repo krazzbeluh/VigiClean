@@ -8,22 +8,34 @@
 
 import UIKit
 
-class RequestViewController: UIViewController {
+class RequestViewController: UIViewController, RequestView {
+    
+    var presenter: RequestViewPresenter!
+    
+    // MARK: Properties
+    var code: String! {
+        didSet {
+            print(code)
+        }
+    }
 
+    // MARK: Outlets
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var grayOutView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        presenter = RequestPresenter(view: self)
+        
+        guard code != nil else {
+            fatalError("No code in requestVC !")
+        }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loading(grayed: Bool) {
+        activityIndicator.isHidden = !grayed
+        grayOutView.isHidden = !grayed
     }
-    */
-
 }

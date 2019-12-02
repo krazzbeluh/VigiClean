@@ -11,6 +11,8 @@ import Foundation
 protocol ScannerViewPresenter {
     init(view: ScannerView)
     
+    var objectCode: String { get }
+    
     func verifyCode(code: String)
 }
 

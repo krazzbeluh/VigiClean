@@ -111,6 +111,15 @@ class ScannerViewController: UIViewController, ScannerView, AVCaptureMetadataOut
     
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segue.destination.modalPresentationStyle = .fullScreen
+        guard segue.identifier == "segueToRequest" else {
+            return
+        }
+        
+        guard let destination = segue.destination as? RequestViewController else {
+            return
+        }
+        
+        destination.code = presenter.objectCode
+        destination.modalPresentationStyle = .fullScreen
     }
 }

@@ -568,10 +568,10 @@
             </objects>
             <point key="canvasLocation" x="2093" y="-881"/>
         </scene>
-        <!--View Controller-->
+        <!--Request View Controller-->
         <scene sceneID="NpL-NP-lVn">
             <objects>
-                <viewController id="GWr-bf-MJh" sceneMemberID="viewController">
+                <viewController id="GWr-bf-MJh" customClass="RequestViewController" customModule="VigiClean" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vFi-el-SC3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -629,6 +629,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxg-xO-ZrW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Sz2-hT-8hb">
+                                <rect key="frame" x="188.66666666666666" y="402.66666666666669" width="37" height="37"/>
+                                <color key="color" name="VigiClean"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
@@ -637,13 +645,19 @@
                             <constraint firstItem="uOY-5S-RB7" firstAttribute="leading" secondItem="ERu-e3-KkG" secondAttribute="leading" constant="50" id="BeX-9Z-v76"/>
                             <constraint firstItem="Kld-xZ-Woz" firstAttribute="top" secondItem="ERu-e3-KkG" secondAttribute="top" id="Fsc-tt-jSm"/>
                             <constraint firstItem="1Fy-L7-w3f" firstAttribute="trailing" secondItem="ERu-e3-KkG" secondAttribute="trailing" id="PmI-Fd-PWS"/>
+                            <constraint firstItem="vxg-xO-ZrW" firstAttribute="top" secondItem="vFi-el-SC3" secondAttribute="top" id="Qq2-9C-dED"/>
                             <constraint firstItem="uOY-5S-RB7" firstAttribute="top" secondItem="1Fy-L7-w3f" secondAttribute="bottom" constant="8" id="Qvc-c3-6gC"/>
                             <constraint firstItem="Dvp-ds-bLN" firstAttribute="top" secondItem="HtE-hg-avV" secondAttribute="bottom" constant="20" id="Shf-zd-V5y"/>
                             <constraint firstAttribute="trailing" secondItem="Dvp-ds-bLN" secondAttribute="trailing" id="Vr2-FW-qsm"/>
+                            <constraint firstItem="Sz2-hT-8hb" firstAttribute="centerY" secondItem="vFi-el-SC3" secondAttribute="centerY" id="WMm-eY-ae1"/>
                             <constraint firstItem="uOY-5S-RB7" firstAttribute="centerX" secondItem="vFi-el-SC3" secondAttribute="centerX" id="XFk-kR-u2N"/>
+                            <constraint firstItem="Sz2-hT-8hb" firstAttribute="centerX" secondItem="vFi-el-SC3" secondAttribute="centerX" id="aOJ-Rj-db3"/>
+                            <constraint firstItem="vxg-xO-ZrW" firstAttribute="trailing" secondItem="vFi-el-SC3" secondAttribute="trailing" id="c4g-50-HPa"/>
                             <constraint firstItem="1Fy-L7-w3f" firstAttribute="top" secondItem="28W-cM-aCX" secondAttribute="bottom" id="cV8-Om-Zbj"/>
+                            <constraint firstItem="vxg-xO-ZrW" firstAttribute="leading" secondItem="vFi-el-SC3" secondAttribute="leading" id="czi-Ld-YAz"/>
                             <constraint firstItem="Dvp-ds-bLN" firstAttribute="leading" secondItem="ERu-e3-KkG" secondAttribute="leading" id="f3g-Mg-F1u"/>
                             <constraint firstItem="ERu-e3-KkG" firstAttribute="bottom" secondItem="uOY-5S-RB7" secondAttribute="bottom" constant="20" id="fA6-Uh-em6"/>
+                            <constraint firstAttribute="bottom" secondItem="vxg-xO-ZrW" secondAttribute="bottom" id="hd9-af-zI7"/>
                             <constraint firstItem="HtE-hg-avV" firstAttribute="leading" secondItem="ERu-e3-KkG" secondAttribute="leading" id="jN1-XR-Nmf"/>
                             <constraint firstItem="28W-cM-aCX" firstAttribute="centerX" secondItem="vFi-el-SC3" secondAttribute="centerX" id="jcj-GF-Fry"/>
                             <constraint firstItem="HtE-hg-avV" firstAttribute="height" secondItem="vFi-el-SC3" secondAttribute="height" multiplier="0.13" id="nMD-ZQ-2eg"/>
@@ -653,10 +667,14 @@
                         <viewLayoutGuide key="safeArea" id="ERu-e3-KkG"/>
                     </view>
                     <navigationItem key="navigationItem" id="TZp-zq-JOi"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Sz2-hT-8hb" id="3HY-GU-SfG"/>
+                        <outlet property="grayOutView" destination="vxg-xO-ZrW" id="Zew-Rj-Sl0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dro-NE-cEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3040.8000000000002" y="-881.10944527736137"/>
+            <point key="canvasLocation" x="3040.579710144928" y="-881.25"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="JOt-ow-UtH">

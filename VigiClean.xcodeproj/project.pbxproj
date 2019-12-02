@@ -37,6 +37,8 @@
 		94BA1F082395509600FE19A1 /* ScannerViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */; };
 		94BA1F0A239550EB00FE19A1 /* ScannerContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */; };
 		94BA1F0C239551C900FE19A1 /* Contracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F0B239551C900FE19A1 /* Contracts.swift */; };
+		94BA1F132395A4F400FE19A1 /* RequestContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F122395A4F400FE19A1 /* RequestContracts.swift */; };
+		94BA1F152395A53000FE19A1 /* RequestViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */; };
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
 		94BE5AA42370A9FE00CE3060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */; };
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
@@ -108,6 +110,8 @@
 		94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewPresenter.swift; sourceTree = "<group>"; };
 		94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerContracts.swift; sourceTree = "<group>"; };
 		94BA1F0B239551C900FE19A1 /* Contracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contracts.swift; sourceTree = "<group>"; };
+		94BA1F122395A4F400FE19A1 /* RequestContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestContracts.swift; sourceTree = "<group>"; };
+		94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewPresenter.swift; sourceTree = "<group>"; };
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -179,7 +183,6 @@
 		941F7E17237B080200044A0D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */,
 				94504AA723858CCF0054BE70 /* LaunchViewController.swift */,
 				94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */,
 				9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */,
@@ -188,6 +191,7 @@
 				94EB57742372D8B800582990 /* DashBoardViewController.swift */,
 				94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */,
 				94EB57762372DB1E00582990 /* ScannerViewController.swift */,
+				94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */,
 				94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */,
 			);
 			name = Controller;
@@ -211,6 +215,7 @@
 				94BA1EEF238E6A6B00FE19A1 /* ProfileContracts.swift */,
 				94BA1EF1238E6AAA00FE19A1 /* WelcomeContracts.swift */,
 				94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */,
+				94BA1F122395A4F400FE19A1 /* RequestContracts.swift */,
 			);
 			name = Contracts;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */,
 				94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */,
 				94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */,
+				94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -645,6 +651,8 @@
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,
 				94BA1EF0238E6A6B00FE19A1 /* ProfileContracts.swift in Sources */,
 				94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */,
+				94BA1F152395A53000FE19A1 /* RequestViewPresenter.swift in Sources */,
+				94BA1F132395A4F400FE19A1 /* RequestContracts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

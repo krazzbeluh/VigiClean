@@ -13,6 +13,10 @@ class ScannerPresenter: ScannerViewPresenter {
     
     var lastCode: String!
     
+    var objectCode: String {
+        return lastCode.replacingOccurrences(of: "https://www.vigiclean.com/?code=", with: "")
+    }
+    
     required init(view: ScannerView) {
         self.view = view
     }
@@ -20,8 +24,6 @@ class ScannerPresenter: ScannerViewPresenter {
     func verifyCode(code: String) {
         guard code != lastCode else { return }
         lastCode = code
-        
-        print(code)
         
         if code.starts(with: "https://www.vigiclean.com/") {
             view.startVibration()
