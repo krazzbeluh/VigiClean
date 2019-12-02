@@ -88,17 +88,24 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
+            
             guard stringValue != lastCode else { return }
             lastCode = stringValue
-            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
         }
     }
     
     func found(code: String) {
         print(code)
-        captureSession.stopRunning()
-        performSegue(withIdentifier: "segueToRequest", sender: nil) // TODO: if code starts by vigiclean.com
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        
+        if code.starts(with: "https://www.vigiclean.com/") {
+
+            captureSession.stopRunning()
+            performSegue(withIdentifier: "segueToRequest", sender: nil)
+        } else {
+            print("VigiClean KO") // TODO: Display alert: not a vigiclean code
+        }
     }
     
     override var prefersStatusBarHidden: Bool {

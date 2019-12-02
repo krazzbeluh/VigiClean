@@ -54,7 +54,7 @@ class UserAccountTestCase: XCTestCase {
         XCTAssertTrue(UserAccount.isConnectedWithEmail)
     }
     
-    func testSignUpShouldReturlErrorIfNotSuccess() {
+    func testSignUpShouldReturnErrorIfNotSuccess() {
         UserAccount.auth = FakeAuth(result: FakeAuthDataResult(user: FakeUser(mail: nil,
                                                                               identifier: "signedUpUser")),
                                     error: EasyError())
