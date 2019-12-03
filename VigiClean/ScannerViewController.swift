@@ -123,7 +123,6 @@ class ScannerViewController: UIViewController, ScannerView {
             return
         }
         
-        destination.object = Object.currentObject  // TODO
         destination.modalPresentationStyle = .fullScreen
     }
 }

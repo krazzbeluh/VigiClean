@@ -14,5 +14,5 @@ protocol RequestViewPresenter {
 }
 
 protocol RequestView: class {
-    
+    func configure(with object: Object)
 }

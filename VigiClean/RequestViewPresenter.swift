@@ -13,5 +13,11 @@ class RequestPresenter: RequestViewPresenter {
     
     required init(view: RequestView) {
         self.view = view
+        
+        guard let object = Object.currentObject else {
+            fatalError("No object found when preparing request")
+        }
+        
+        view.configure(with: object)
     }
 }

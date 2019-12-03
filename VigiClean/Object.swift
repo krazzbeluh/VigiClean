@@ -26,7 +26,6 @@ class Object {
     static var currentObject: Object?
     
     static func getObject(code: String, callback: @escaping (Error?) -> Void) {
-        // TODO: call firebase firestore
         let docRef = FirebaseInterface.database.collection("Object").document(code)
         docRef.getDocument { (document, error) in
             guard let document = document, document.exists else {
