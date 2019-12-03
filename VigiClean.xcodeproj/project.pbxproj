@@ -39,10 +39,12 @@
 		94BA1F0C239551C900FE19A1 /* Contracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F0B239551C900FE19A1 /* Contracts.swift */; };
 		94BA1F132395A4F400FE19A1 /* RequestContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F122395A4F400FE19A1 /* RequestContracts.swift */; };
 		94BA1F152395A53000FE19A1 /* RequestViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */; };
+		94BA1F172395D4A900FE19A1 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F162395D4A900FE19A1 /* Object.swift */; };
+		94BA1F192395D72F00FE19A1 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F182395D72F00FE19A1 /* Scanner.swift */; };
+		94BA1F1B2396983600FE19A1 /* FirebaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */; };
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
 		94BE5AA42370A9FE00CE3060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */; };
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
-		94C539C82385BE9600D4993A /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C539C72385BE9600D4993A /* Scanner.swift */; };
 		94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */; };
 		94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AD237C3AF2003295AD /* UserAccount.swift */; };
 		94CDC9B0237C48F9003295AD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */; };
@@ -112,10 +114,12 @@
 		94BA1F0B239551C900FE19A1 /* Contracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contracts.swift; sourceTree = "<group>"; };
 		94BA1F122395A4F400FE19A1 /* RequestContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestContracts.swift; sourceTree = "<group>"; };
 		94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewPresenter.swift; sourceTree = "<group>"; };
+		94BA1F162395D4A900FE19A1 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		94BA1F182395D72F00FE19A1 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInterface.swift; sourceTree = "<group>"; };
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		94C539C72385BE9600D4993A /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPresenter.swift; sourceTree = "<group>"; };
 		94CDC9AD237C3AF2003295AD /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -252,8 +256,10 @@
 		94BE5A9C2370A69700CE3060 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				94C539C72385BE9600D4993A /* Scanner.swift */,
+				94BA1F162395D4A900FE19A1 /* Object.swift */,
+				94BA1F182395D72F00FE19A1 /* Scanner.swift */,
 				94CDC9AD237C3AF2003295AD /* UserAccount.swift */,
+				94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				94BA1EF2238E6AAA00FE19A1 /* WelcomeContracts.swift in Sources */,
 				94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */,
 				94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */,
+				94BA1F172395D4A900FE19A1 /* Object.swift in Sources */,
 				9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */,
 				94BA1F0C239551C900FE19A1 /* Contracts.swift in Sources */,
 				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
@@ -643,15 +650,16 @@
 				94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */,
 				94CDC9B0237C48F9003295AD /* WelcomeViewController.swift in Sources */,
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
-				94C539C82385BE9600D4993A /* Scanner.swift in Sources */,
 				94BA1EE8238C223500FE19A1 /* AttachEmailViewPresenter.swift in Sources */,
 				94BA1EEC238E696800FE19A1 /* SignUpContracts.swift in Sources */,
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
 				94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */,
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,
+				94BA1F1B2396983600FE19A1 /* FirebaseInterface.swift in Sources */,
 				94BA1EF0238E6A6B00FE19A1 /* ProfileContracts.swift in Sources */,
 				94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */,
 				94BA1F152395A53000FE19A1 /* RequestViewPresenter.swift in Sources */,
+				94BA1F192395D72F00FE19A1 /* Scanner.swift in Sources */,
 				94BA1F132395A4F400FE19A1 /* RequestContracts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

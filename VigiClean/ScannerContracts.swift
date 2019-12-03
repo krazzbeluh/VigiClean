@@ -19,5 +19,7 @@ protocol ScannerViewPresenter {
 protocol ScannerView: class {
     func showAlert(with error: Error)
     func startVibration()
-    func validCodeFound()
+    func displayLoadViews(_ statement: Bool)
+    func validObjectFound()
+    func invalidCodeFound(error: Error)
 }

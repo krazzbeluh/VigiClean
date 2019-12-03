@@ -544,21 +544,36 @@
                                     <constraint firstAttribute="width" secondItem="gEF-QP-7Wq" secondAttribute="height" multiplier="1:1" id="Bsk-qv-tjd"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4T-FZ-dOJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="X3a-eY-xru">
+                                <rect key="frame" x="188.66666666666666" y="402.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="nZb-0W-31b" firstAttribute="top" secondItem="RUh-Qc-Xyq" secondAttribute="top" id="4Yx-4S-fBC"/>
                             <constraint firstAttribute="bottom" secondItem="nZb-0W-31b" secondAttribute="bottom" id="BPT-SJ-Lle"/>
+                            <constraint firstItem="a4T-FZ-dOJ" firstAttribute="top" secondItem="OZO-aD-m0t" secondAttribute="top" id="CWJ-l9-a5y"/>
                             <constraint firstItem="nZb-0W-31b" firstAttribute="leading" secondItem="RUh-Qc-Xyq" secondAttribute="leading" id="Ddx-ab-NDm"/>
                             <constraint firstAttribute="trailing" secondItem="nZb-0W-31b" secondAttribute="trailing" id="PkN-wp-nnQ"/>
                             <constraint firstItem="gEF-QP-7Wq" firstAttribute="centerY" secondItem="RUh-Qc-Xyq" secondAttribute="centerY" id="QRg-A7-THI"/>
+                            <constraint firstItem="a4T-FZ-dOJ" firstAttribute="leading" secondItem="RUh-Qc-Xyq" secondAttribute="leading" id="cka-Xe-e7C"/>
                             <constraint firstItem="gEF-QP-7Wq" firstAttribute="leading" secondItem="OZO-aD-m0t" secondAttribute="leading" constant="35" id="fB8-Bx-hc8"/>
+                            <constraint firstItem="X3a-eY-xru" firstAttribute="centerX" secondItem="RUh-Qc-Xyq" secondAttribute="centerX" id="gjy-lo-3VC"/>
+                            <constraint firstAttribute="trailing" secondItem="a4T-FZ-dOJ" secondAttribute="trailing" id="sgn-Dy-4sv"/>
                             <constraint firstItem="gEF-QP-7Wq" firstAttribute="centerX" secondItem="RUh-Qc-Xyq" secondAttribute="centerX" id="vs0-Mq-ciS"/>
+                            <constraint firstItem="X3a-eY-xru" firstAttribute="centerY" secondItem="RUh-Qc-Xyq" secondAttribute="centerY" id="xwA-GG-WhT"/>
+                            <constraint firstAttribute="bottom" secondItem="a4T-FZ-dOJ" secondAttribute="bottom" id="y0e-oY-nux"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OZO-aD-m0t"/>
                     </view>
                     <navigationItem key="navigationItem" id="wNd-Ka-Q0i"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="X3a-eY-xru" id="pFE-pS-02a"/>
+                        <outlet property="grayOutView" destination="a4T-FZ-dOJ" id="v1W-16-TPO"/>
                         <outlet property="qrScope" destination="gEF-QP-7Wq" id="5Pg-lF-Cs8"/>
                         <outlet property="scannerView" destination="nZb-0W-31b" id="KOT-yV-CDg"/>
                         <segue destination="GWr-bf-MJh" kind="show" identifier="segueToRequest" id="PLn-ML-gJy"/>
@@ -629,11 +644,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxg-xO-ZrW">
+                            <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxg-xO-ZrW">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Sz2-hT-8hb">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Sz2-hT-8hb">
                                 <rect key="frame" x="188.66666666666666" y="402.66666666666669" width="37" height="37"/>
                                 <color key="color" name="VigiClean"/>
                             </activityIndicatorView>

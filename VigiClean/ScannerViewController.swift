@@ -10,8 +10,7 @@ import AVFoundation
 import UIKit
 
 //TODO: Separate in MVP
-class ScannerViewController: UIViewController, ScannerView, AVCaptureMetadataOutputObjectsDelegate {
-    
+class ScannerViewController: UIViewController, ScannerView {
     // MARK: Properties
     var presenter: ScannerViewPresenter!
     
@@ -21,6 +20,8 @@ class ScannerViewController: UIViewController, ScannerView, AVCaptureMetadataOut
     // MARK: Outlets
     @IBOutlet weak var scannerView: UIView!
     @IBOutlet weak var qrScope: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var grayOutView: UIView!
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -83,25 +84,28 @@ class ScannerViewController: UIViewController, ScannerView, AVCaptureMetadataOut
     
     // MARK: methods
     
-    func metadataOutput(_ output: AVCaptureMetadataOutput,
-                        didOutput metadataObjects: [AVMetadataObject],
-                        from connection: AVCaptureConnection) {
-        
-        if let metadataObject = metadataObjects.first {
-            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
-            guard let stringValue = readableObject.stringValue else { return }
-            
-            presenter.verifyCode(code: stringValue)
+    func displayLoadViews(_ statement: Bool) {
+        if statement {
+            captureSession.stopRunning()
+        } else {
+            captureSession.startRunning()
         }
+        activityIndicator.isHidden = !statement
+        grayOutView.isHidden = !statement
     }
     
     func startVibration() {
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
-    func validCodeFound() {
-        captureSession.stopRunning()
-        performSegue(withIdentifier: "segueToRequest", sender: nil)
+    func validObjectFound() {
+        displayLoadViews(false)
+        performSegue(withIdentifier: "segueToRequest", sender: self)
+    }
+    
+    func invalidCodeFound(error: Error) {
+        print(error) // TODO: display error
+        displayLoadViews(false)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -119,7 +123,21 @@ class ScannerViewController: UIViewController, ScannerView, AVCaptureMetadataOut
             return
         }
         
-        destination.code = presenter.objectCode
+        destination.object = Object.currentObject  // TODO
         destination.modalPresentationStyle = .fullScreen
+    }
+}
+
+extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
+    func metadataOutput(_ output: AVCaptureMetadataOutput,
+                        didOutput metadataObjects: [AVMetadataObject],
+                        from connection: AVCaptureConnection) {
+        
+        if let metadataObject = metadataObjects.first {
+            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
+            guard let stringValue = readableObject.stringValue else { return }
+            
+            presenter.verifyCode(code: stringValue)
+        }
     }
 }

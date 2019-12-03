@@ -11,23 +11,21 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class UserAccount {
-    static var auth = Auth.auth()
-    static var database = Firestore.firestore()
     
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated
     }
     
     static var isConnected: Bool {
-        return auth.currentUser != nil
+        return FirebaseInterface.auth.currentUser != nil
     }
     
     static var isConnectedWithEmail: Bool {
-        return auth.currentUser?.email != nil
+        return FirebaseInterface.auth.currentUser?.email != nil
     }
     
     static func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
-        auth.createUser(
+        FirebaseInterface.auth.createUser(
             withEmail: email,
             password: password) { (authResult, error) in
                 
@@ -47,7 +45,7 @@ class UserAccount {
     }
     
     static func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) {
-        auth.signIn(
+        FirebaseInterface.auth.signIn(
             withEmail: email,
             password: password) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter
                 guard error == nil else {
@@ -60,7 +58,7 @@ class UserAccount {
     }
     
     static func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
-        auth.signInAnonymously { (authResult, error) in // swiftlint:disable:this unused_closure_parameter
+        FirebaseInterface.auth.signInAnonymously { (authResult, error) in // swiftlint:disable:this unused_closure_parameter
             completion(error)
         }
     }
@@ -68,12 +66,12 @@ class UserAccount {
     static func attachEmail(email: String,
                             password: String,
                             completion: @escaping ((Error?) -> Void)) {
-        Auth.auth().currentUser?.updateEmail(to: email) { (error) in
+        FirebaseInterface.auth.currentUser?.updateEmail(to: email) { (error) in
             guard error == nil else {
                 completion(error)
                 return
             }
-            Auth.auth().currentUser?.updatePassword(to: password) { (error) in
+            FirebaseInterface.auth.currentUser?.updatePassword(to: password) { (error) in
                 guard error == nil else {
                     completion(error)
                     return
@@ -85,7 +83,7 @@ class UserAccount {
     
     static func signOut(completion: (Error?) -> Void) {
         do {
-            try auth.signOut()
+            try FirebaseInterface.auth.signOut()
         } catch let error {
             completion(error)
         }
@@ -104,7 +102,7 @@ class UserAccount {
                                            named: String,
                                            completion: @escaping (Error?) -> Void) {
         let uid = user.uid // getting uid to create user's document
-        database.collection("User").document(uid).setData(
+        FirebaseInterface.database.collection("User").document(uid).setData(
             ["credits": 0,
              "lastName": NSNull(),
              "firstName": NSNull(),

@@ -13,23 +13,18 @@ class RequestViewController: UIViewController, RequestView {
     var presenter: RequestViewPresenter!
     
     // MARK: Properties
-    var code: String! {
-        didSet {
-            print(code)
-        }
-    }
+    var object: Object!
 
     // MARK: Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var grayOutView: UIView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presenter = RequestPresenter(view: self)
         
-        guard code != nil else {
+        guard object != nil else {
             fatalError("No code in requestVC !")
         }
     }

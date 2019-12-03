@@ -27,9 +27,18 @@ class ScannerPresenter: ScannerViewPresenter {
         
         if code.starts(with: "https://www.vigiclean.com/") {
             view.startVibration()
-            view.validCodeFound()
+            
+            view.displayLoadViews(true)
+            Object.getObject(code: objectCode) { error in
+                if let error = error {
+                    self.view.invalidCodeFound(error: error)
+                    return
+                }
+                
+                self.view.validObjectFound()
+            }
         } else {
-            print("VigiClean KO") // TODO: Display alert: not a vigiclean code
+            view.invalidCodeFound(error: UserAccount.UAccountError.notMatchingPassword) // TODO: use valid error
         }
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 
 protocol RequestViewPresenter {
     init(view: RequestView)
+    
 }
 
 protocol RequestView: class {
