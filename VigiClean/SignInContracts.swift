@@ -16,7 +16,7 @@ protocol SignInViewPresenter {
 
 protocol SignInView: class {
     var activityIndicator: UIActivityIndicatorView! { get set }
-    func showAlert(with type: Error)
+    func sendAlert(message: String)
     func userSignedIn()
     func switchActivityIndicator(hidden: Bool)
 }

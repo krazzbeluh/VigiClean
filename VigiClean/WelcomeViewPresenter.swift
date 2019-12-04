@@ -17,8 +17,8 @@ class WelcomePresenter: WelcomeViewPresenter {
     
     func signIn() {
         UserAccount.anonymousSignIn { error in
-            guard error == nil else {
-                self.view.showAlert(with: error!)
+            if let error = error {
+                self.view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
                 return
             }
             self.view.performSegue()

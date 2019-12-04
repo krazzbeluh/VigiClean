@@ -54,7 +54,7 @@ class RequestViewController: UIViewController, RequestView {
     
     @IBAction func sendRequest(_ sender: Any) {
         guard let action = action.text else {
-            showAlert(with: UserAccount.UAccountError.emptyTextField) // TODO: use correct error
+            sendAlert(message: SharedMethodsPresenter.prepareAlert(with: UserAccount.UAccountError.emptyTextField)) // TODO: use correct error
             return
         }
         

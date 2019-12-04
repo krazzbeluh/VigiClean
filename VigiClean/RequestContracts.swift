@@ -16,6 +16,6 @@ protocol RequestViewPresenter {
 
 protocol RequestView: class {
     func configure(with object: Object)
-    func showAlert(with type: Error)
+    func sendAlert(message: String)
     func requestSent()
 }

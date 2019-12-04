@@ -23,12 +23,12 @@ class SignUpPresenter: SignUpViewPresenter {
             username != "", email != "",
             password != "",
             confirmPassword != "" else {
-                view.showAlert(with: UserAccount.UAccountError.emptyTextField)
+                view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: UserAccount.UAccountError.emptyTextField))
             return
         }
         
         guard password == confirmPassword else {
-            view.showAlert(with: UserAccount.UAccountError.notMatchingPassword)
+            view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: UserAccount.UAccountError.notMatchingPassword))
             return
         }
         
@@ -36,7 +36,7 @@ class SignUpPresenter: SignUpViewPresenter {
         
         UserAccount.signUp(username: username, email: email, password: password) { error in
             if let error = error {
-                self.view.showAlert(with: error)
+                self.view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
                 self.view.switchActivityIndicator(hidden: true)
                 return
             } else {

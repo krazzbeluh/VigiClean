@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AttachEmailView: class {
-    func showAlert(with type: Error)
+    func sendAlert(message: String)
     func switchActivityIndicator(hidden: Bool)
     func emailAttached()
 }

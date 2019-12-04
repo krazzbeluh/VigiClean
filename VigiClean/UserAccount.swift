@@ -94,14 +94,6 @@ class UserAccount {
         completion(nil)
     }
     
-    static func convertError(_ error: Error) -> AuthErrorCode? {
-        guard let errCode = AuthErrorCode(rawValue: error._code) else {
-            return nil
-        }
-        
-        return errCode
-    }
-    
     private static func createUserDocument(for user: User,
                                            named: String,
                                            completion: @escaping (Error?) -> Void) {

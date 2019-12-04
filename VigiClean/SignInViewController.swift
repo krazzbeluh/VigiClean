@@ -9,7 +9,6 @@
 import UIKit
 
 class SignInViewController: UIViewController, SignInView {
-    
     // MARK: Properties
     var presenter: SignInViewPresenter!
     

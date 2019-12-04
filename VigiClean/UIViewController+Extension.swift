@@ -8,42 +8,12 @@
 import Foundation
 import UIKit
 
-protocol SharedMethodsView: class {
-    
-}
-
-protocol DisplayAlert: UIViewController { // protocol to add method to every UIViewController
-    func showAlert(with type: Error)
-}
-
-extension UIViewController: DisplayAlert {
+extension UIViewController {
     enum UIError: Error { // UIErrors
         case nilInTextField
     }
     
-    func showAlert(with error: Error) { // configures alert
-        let message: String
-        // TODO: Move to presenter
-        // TODO: List all errors
-        let authError = UserAccount.convertError(error)
-        if authError != nil {
-            switch authError {
-            case .userNotFound:
-                message = "Utilisateur inconnu !"
-            default:
-                message = "\(error)"
-            }
-        } else {
-            switch error {
-            default:
-                message = "\(error)"
-            }
-        }
-        
-        sendAlert(message: message)
-    }
-    
-    private func sendAlert(message: String) { // sends alert
+    func sendAlert(message: String) { // sends alert
         let alertVC = UIAlertController(title: "Erreur !", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)

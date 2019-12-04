@@ -15,6 +15,6 @@ protocol WelcomeViewPresenter {
 
 protocol WelcomeView: class {
     func performSegue()
-    func showAlert(with error: Error)
+    func sendAlert(message: String)
     func switchActivityIndicator(hidden: Bool)
 }

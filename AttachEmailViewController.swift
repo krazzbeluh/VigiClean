@@ -9,7 +9,6 @@
 import UIKit
 
 class AttachEmailViewController: UIViewController, AttachEmailView {
-    
     // MARK: Properties
     var presenter: AttachEmailViewPresenter!
 

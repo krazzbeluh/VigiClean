@@ -17,15 +17,15 @@ class SignInPresenter: SignInViewPresenter {
     
     func signIn(email: String?, password: String?) {
         guard let email = email, let password = password, email != "", password != "" else {
-            view.showAlert(with: UserAccount.UAccountError.emptyTextField)
+            view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: UserAccount.UAccountError.emptyTextField))
             return
         }
         
         view.switchActivityIndicator(hidden: false)
         
         UserAccount.signIn(email: email, password: password) { error in
-            guard error == nil else {
-                self.view.showAlert(with: error!)
+            if let error = error {
+                self.view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
                 return
             }
             self.view.userSignedIn()

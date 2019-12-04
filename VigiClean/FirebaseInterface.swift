@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 class FirebaseInterface {
     enum FIRInterfaceError: Error {
-        case unableToDecodeData
+        case unableToDecodeData, unableToDecodeError
     }
     
     static var auth = Auth.auth()

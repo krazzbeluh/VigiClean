@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     @IBAction func didTapDisconnectButton(_ sender: Any) {
         UserAccount.signOut { error in
             if let error = error {
-                showAlert(with: error)
+                sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
             } else {
                 performSegue(withIdentifier: "unwindToLaunch", sender: self)
             }

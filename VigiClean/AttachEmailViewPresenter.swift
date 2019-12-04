@@ -23,12 +23,12 @@ class AttachEmailPresenter: AttachEmailViewPresenter {
             username != "", email != "",
             password != "",
             confirmPassword != "" else {
-                view.showAlert(with: UserAccount.UAccountError.emptyTextField)
+                view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: UserAccount.UAccountError.emptyTextField))
             return
         }
         
         guard password == confirmPassword else {
-            view.showAlert(with: UserAccount.UAccountError.notMatchingPassword)
+            view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: UserAccount.UAccountError.notMatchingPassword))
             return
         }
         
@@ -36,7 +36,7 @@ class AttachEmailPresenter: AttachEmailViewPresenter {
         
         UserAccount.attachEmail(email: email, password: password, completion: { error in
             if let error = error {
-                self.view.showAlert(with: error)
+                self.view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
             } else {
                 self.view.emailAttached()
             }

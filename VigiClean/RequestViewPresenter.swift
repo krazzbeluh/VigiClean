@@ -46,7 +46,7 @@ class RequestPresenter: RequestViewPresenter {
         
         Object.sendRequest(for: object, with: action) { error in
             if let error = error {
-                self.view.showAlert(with: error)
+                self.view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
                 return
             }
             
