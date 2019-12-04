@@ -156,7 +156,6 @@ class SharedMethodsPresenter {
         return message
     }
     
-    
     private static func convertAuthError(_ error: Error) throws -> AuthErrorCode {
         guard let errCode = AuthErrorCode(rawValue: error._code) else {
             throw FirebaseInterface.FIRInterfaceError.unableToDecodeError

@@ -17,6 +17,7 @@ class SignInPresenter: SignInViewPresenter {
     
     func signIn(email: String?, password: String?) {
         guard let email = email, let password = password, email != "", password != "" else {
+            view.switchActivityIndicator(hidden: true)
             view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: UserAccount.UAccountError.emptyTextField))
             return
         }
@@ -25,6 +26,7 @@ class SignInPresenter: SignInViewPresenter {
         
         UserAccount.signIn(email: email, password: password) { error in
             if let error = error {
+                self.view.switchActivityIndicator(hidden: true)
                 self.view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
                 return
             }
