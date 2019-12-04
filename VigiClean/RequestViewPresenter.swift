@@ -46,11 +46,11 @@ class RequestPresenter: RequestViewPresenter {
         
         Object.sendRequest(for: object, with: action) { error in
             if let error = error {
-                view.showAlert(with: error)
+                self.view.showAlert(with: error)
                 return
             }
             
-            view.requestSent()
+            self.view.requestSent()
         }
     }
 }

@@ -108,8 +108,6 @@ class UserAccount {
         let uid = user.uid // getting uid to create user's document
         FirebaseInterface.database.collection("User").document(uid).setData(
             ["credits": 0,
-             "lastName": NSNull(),
-             "firstName": NSNull(),
              "username": named]) { error in
                 completion(error)
         }

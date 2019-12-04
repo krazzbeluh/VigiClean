@@ -30,6 +30,8 @@ class RequestViewController: UIViewController, RequestView {
         myPicker.delegate = self
         myPicker.dataSource = self
         action.inputView = myPicker
+        
+        action.text = presenter.actions.first
     }
     
     // MARK: Methods
@@ -45,7 +47,7 @@ class RequestViewController: UIViewController, RequestView {
     }
     
     func requestSent() {
-        print("OK")
+        performSegue(withIdentifier: "segueToCongrats", sender: self)
     }
     
     // MARK: Actions
@@ -59,6 +61,15 @@ class RequestViewController: UIViewController, RequestView {
         presenter.sendRequest(with: action)
     }
     
+    @IBAction func dismissSelector(_ sender: Any) {
+        action.resignFirstResponder()
+    }
+    
+    // MARK: Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.modalPresentationStyle = .fullScreen
+    }
 }
 
 extension RequestViewController: UIPickerViewDelegate, UIPickerViewDataSource {
