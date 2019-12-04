@@ -11,8 +11,11 @@ import Foundation
 protocol RequestViewPresenter {
     init(view: RequestView)
     var actions: [String] { get }
+    func sendRequest(with action: String)
 }
 
 protocol RequestView: class {
     func configure(with object: Object)
+    func showAlert(with type: Error)
+    func requestSent()
 }

@@ -656,6 +656,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendRequest:" destination="GWr-bf-MJh" eventType="touchUpInside" id="GZg-WR-9oW"/>
+                                </connections>
                             </button>
                             <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxg-xO-ZrW">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>

@@ -9,6 +9,7 @@
 import Foundation
 
 class RequestPresenter: RequestViewPresenter {
+    
     var actions: [String] {
         guard let object = Object.currentObject else {
             return ["1 - autre"]
@@ -35,5 +36,21 @@ class RequestPresenter: RequestViewPresenter {
         }
         
         view.configure(with: object)
+    }
+    
+    func sendRequest(with action: String) {
+        
+        guard let object = Object.currentObject else {
+            return
+        }
+        
+        Object.sendRequest(for: object, with: action) { error in
+            if let error = error {
+                view.showAlert(with: error)
+                return
+            }
+            
+            view.requestSent()
+        }
     }
 }

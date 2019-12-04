@@ -19,6 +19,7 @@ class Object {
     let organization: String
     let type: String
     let name: String
+    let code: String
     
     let actions: [String]
     
@@ -27,6 +28,7 @@ class Object {
         self.organization = organization
         self.type = type
         self.name = name
+        self.code = code
         self.actions = actions
     }
     
@@ -90,6 +92,23 @@ class Object {
                 case .failure(let error):
                     callback(error)
                 }
+            }
+        }
+    }
+    
+    static func sendRequest(for object: Object, with action: String, callback: (Error?) -> Void) {
+        var ref: DocumentReference?
+        ref = FirebaseInterface.database.collection("Request").addDocument(data: [
+            "code": object.code,
+            "action": action,
+            "date": Date(),
+            "user": UserAccount.currentUser?.uid ?? "Anonymous",
+            "isValidOperation": NSNull()
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
             }
         }
     }

@@ -16,12 +16,16 @@ class UserAccount {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated
     }
     
+    static var currentUser: User? {
+        return FirebaseInterface.auth.currentUser
+    }
+    
     static var isConnected: Bool {
-        return FirebaseInterface.auth.currentUser != nil
+        currentUser != nil
     }
     
     static var isConnectedWithEmail: Bool {
-        return FirebaseInterface.auth.currentUser?.email != nil
+        currentUser?.email != nil
     }
     
     static func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
@@ -66,12 +70,12 @@ class UserAccount {
     static func attachEmail(email: String,
                             password: String,
                             completion: @escaping ((Error?) -> Void)) {
-        FirebaseInterface.auth.currentUser?.updateEmail(to: email) { (error) in
+        currentUser?.updateEmail(to: email) { (error) in
             guard error == nil else {
                 completion(error)
                 return
             }
-            FirebaseInterface.auth.currentUser?.updatePassword(to: password) { (error) in
+            currentUser?.updatePassword(to: password) { (error) in
                 guard error == nil else {
                     completion(error)
                     return

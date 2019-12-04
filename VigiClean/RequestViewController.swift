@@ -9,7 +9,6 @@
 import UIKit
 
 class RequestViewController: UIViewController, RequestView {
-    
     var presenter: RequestViewPresenter!
     
     // MARK: Properties
@@ -43,6 +42,21 @@ class RequestViewController: UIViewController, RequestView {
         nameLabel.text = object.name
         organizationLabel.text = object.organization
         typeLabel.text = object.type
+    }
+    
+    func requestSent() {
+        print("OK")
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func sendRequest(_ sender: Any) {
+        guard let action = action.text else {
+            showAlert(with: UserAccount.UAccountError.emptyTextField) // TODO: use correct error
+            return
+        }
+        
+        presenter.sendRequest(with: action)
     }
     
 }
