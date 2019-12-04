@@ -10,17 +10,52 @@ import Foundation
 import FirebaseFirestore
 
 class Object {
+    enum ObjectError: Error {
+        case documentDoesNotExists, unableToDecodeData
+    }
+    
     // MARK: Properties
     let coords: GeoPoint
     let organization: String
     let type: String
     let name: String
     
-    private init(coords: GeoPoint, organization: String, type: String, name: String, code: String) {
+    let actions: [String]
+    
+    private init(coords: GeoPoint, organization: String, type: String, name: String, code: String, actions: [String]) {
         self.coords = coords
         self.organization = organization
         self.type = type
         self.name = name
+        self.actions = actions
+    }
+    
+    private static func getActions(for type: String, callback: @escaping (Result<[String], Error>) -> Void) {
+        let docRef = FirebaseInterface.database.collection("actions").document(type)
+        docRef.getDocument { document, error in
+            if let error = error {
+                callback(.failure(error))
+                return
+            }
+            
+            guard let document = document, document.exists else {
+                callback(.failure(ObjectError.documentDoesNotExists))
+                return
+            }
+            
+            guard let data = document.data() as? [String: String] else {
+                callback(.failure(ObjectError.unableToDecodeData))
+                return
+            }
+            
+            var actions = [String]()
+            
+            for (action, _) in data {
+                actions.append(action)
+            }
+
+            callback(.success(actions))
+        }
     }
     
     static var currentObject: Object?
@@ -42,8 +77,20 @@ class Object {
                     return
             }
             
-            currentObject = Object(coords: coords, organization: organization, type: type, name: name, code: code)
-            callback(nil)
+            getActions(for: type) { result in
+                switch result {
+                case .success(let actions):
+                    currentObject = Object(coords: coords,
+                                           organization: organization,
+                                           type: type,
+                                           name: name,
+                                           code: code,
+                                           actions: actions)
+                    callback(nil)
+                case .failure(let error):
+                    callback(error)
+                }
+            }
         }
     }
 }

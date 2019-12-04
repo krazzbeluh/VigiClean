@@ -9,7 +9,6 @@
 import UIKit
 
 class RequestViewController: UIViewController, RequestView {
-    let testArrayForPickerView = ["Coucou", "La poubelle est pleine", "La poubelle est endommagée"]
     
     var presenter: RequestViewPresenter!
     
@@ -54,14 +53,14 @@ extension RequestViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return testArrayForPickerView.count
+        return presenter.actions.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return testArrayForPickerView[row]
+        return presenter.actions[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        action.text = testArrayForPickerView[row]
+        action.text = presenter.actions[row]
     }
 }

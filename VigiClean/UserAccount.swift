@@ -47,7 +47,7 @@ class UserAccount {
     static func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) {
         FirebaseInterface.auth.signIn(
             withEmail: email,
-            password: password) { (authResult, error) in // swiftlint:disable:this unused_closure_parameter
+            password: password) { (_, error) in
                 guard error == nil else {
                     completion(error)
                     return
@@ -58,7 +58,7 @@ class UserAccount {
     }
     
     static func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
-        FirebaseInterface.auth.signInAnonymously { (authResult, error) in // swiftlint:disable:this unused_closure_parameter
+        FirebaseInterface.auth.signInAnonymously { (_, error) in
             completion(error)
         }
     }

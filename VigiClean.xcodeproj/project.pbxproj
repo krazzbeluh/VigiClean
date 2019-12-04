@@ -36,7 +36,6 @@
 		94BA1F062390363700FE19A1 /* FakeDocumentReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */; };
 		94BA1F082395509600FE19A1 /* ScannerViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */; };
 		94BA1F0A239550EB00FE19A1 /* ScannerContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */; };
-		94BA1F0C239551C900FE19A1 /* Contracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F0B239551C900FE19A1 /* Contracts.swift */; };
 		94BA1F132395A4F400FE19A1 /* RequestContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F122395A4F400FE19A1 /* RequestContracts.swift */; };
 		94BA1F152395A53000FE19A1 /* RequestViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */; };
 		94BA1F172395D4A900FE19A1 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F162395D4A900FE19A1 /* Object.swift */; };
@@ -111,7 +110,6 @@
 		94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDocumentReference.swift; sourceTree = "<group>"; };
 		94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewPresenter.swift; sourceTree = "<group>"; };
 		94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerContracts.swift; sourceTree = "<group>"; };
-		94BA1F0B239551C900FE19A1 /* Contracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contracts.swift; sourceTree = "<group>"; };
 		94BA1F122395A4F400FE19A1 /* RequestContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestContracts.swift; sourceTree = "<group>"; };
 		94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewPresenter.swift; sourceTree = "<group>"; };
 		94BA1F162395D4A900FE19A1 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
@@ -245,14 +243,6 @@
 			name = Firestore;
 			sourceTree = "<group>";
 		};
-		94BA1F0D239551CE00FE19A1 /* Exemples */ = {
-			isa = PBXGroup;
-			children = (
-				94BA1F0B239551C900FE19A1 /* Contracts.swift */,
-			);
-			name = Exemples;
-			sourceTree = "<group>";
-		};
 		94BE5A9C2370A69700CE3060 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,7 +319,6 @@
 		94F0A0262370A1CA00037210 /* VigiClean */ = {
 			isa = PBXGroup;
 			children = (
-				94BA1F0D239551CE00FE19A1 /* Exemples */,
 				94504AA6238583D00054BE70 /* Contracts */,
 				94BE5A9C2370A69700CE3060 /* Model */,
 				94BE5A9F2370A6AB00CE3060 /* Presenter */,
@@ -642,7 +631,6 @@
 				94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */,
 				94BA1F172395D4A900FE19A1 /* Object.swift in Sources */,
 				9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */,
-				94BA1F0C239551C900FE19A1 /* Contracts.swift in Sources */,
 				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
 				94BA1F082395509600FE19A1 /* ScannerViewPresenter.swift in Sources */,
 				94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */,
