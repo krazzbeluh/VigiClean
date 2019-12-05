@@ -38,7 +38,7 @@ class ScannerPresenter: ScannerViewPresenter {
                 self.view.validObjectFound()
             }
         } else {
-            view.invalidCodeFound(error: UserAccount.UAccountError.notMatchingPassword) // TODO: use valid error
+            view.invalidCodeFound(error: Scanner.ScannerError.invalidQRCode)
         }
     }
 }

@@ -10,9 +10,9 @@ import Foundation
 import FirebaseAuth
 
 class SharedMethodsPresenter {
-    static func prepareAlert(with error: Error) -> String { // swiftlint:disable:this cyclomatic_complexity function_body_length
+    static func prepareAlert(with error: Error) -> String { // swiftlint:disable:this cyclomatic_complexity function_body_length line_length
         let message: String
-        
+        // TODO: scannerError, FireStoreError, ObjectError, UAccountError, FIRInterfaceError, UIError
         if let error = try? convertAuthError(error) {
             switch error {
             case .invalidCustomToken:

@@ -10,6 +10,6 @@ import Foundation
 
 class Scanner {
     enum ScannerError: Error {
-        case scanNotSupported
+        case scanNotSupported, invalidQRCode
     }
 }

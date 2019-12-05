@@ -104,7 +104,7 @@ class ScannerViewController: UIViewController, ScannerView {
     }
     
     func invalidCodeFound(error: Error) {
-        print(error) // TODO: display error
+        sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error)) 
         displayLoadViews(false)
     }
     
