@@ -19,7 +19,7 @@ class UserAccountTestCase: XCTestCase {
 
     // MARK: Anonymous Sign In
     func testAnonymousSignInShouldntReturnErrorIfSuccess() {
-        UserAccount.auth = FakeAuth(result: nil, error: nil)
+        FirebaseInterface.auth = FakeAuth(result: nil, error: nil)
         UserAccount.anonymousSignIn { error in
             XCTAssertNil(error)
         }

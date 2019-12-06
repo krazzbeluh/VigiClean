@@ -9,6 +9,8 @@
 import Foundation
 import FirebaseAuth
 
+// TODO: Change unowned to weak
+
 class SharedMethodsPresenter {
     static func prepareAlert(with error: Error) -> String { // swiftlint:disable:this cyclomatic_complexity function_body_length line_length
         let message: String

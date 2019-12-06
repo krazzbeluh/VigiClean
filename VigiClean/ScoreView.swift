@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO: count objects and their types to do a diagram. The number is the user's credit
 class ScoreView: UIView {
     private var color: UIColor {
         return UIColor(displayP3Red: red, green: green, blue: 0, alpha: 1)
