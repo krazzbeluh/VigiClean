@@ -9,7 +9,6 @@
 import AVFoundation
 import UIKit
 
-//TODO: Separate in MVP
 class ScannerViewController: UIViewController, ScannerView {
     // MARK: Properties
     var presenter: ScannerViewPresenter!

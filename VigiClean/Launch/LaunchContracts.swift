@@ -10,6 +10,7 @@ import Foundation
 
 protocol LaunchViewPresenter {
     init(view: LaunchView)
+    var accountManager: AccountManager { get }
 }
 
 protocol LaunchView: class {

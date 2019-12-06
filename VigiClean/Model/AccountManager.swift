@@ -11,35 +11,18 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class AccountManager {
-    init() {}
+    init() {
+        self.auth = Auth.auth()
+        self.database = Firestore.firestore()
+    }
     
     init(auth: Auth, database: Firestore) {
         self.auth = auth
         self.database = database
     }
     
-    // TODO: WTF
-    var fauth: Auth?
-    var auth: Auth {
-        get {
-            return fauth ?? Auth.auth()
-        }
-        
-        set {
-            fauth = newValue
-        }
-    }
-    
-    var fdatabase: Firestore?
-    var database: Firestore {
-        get {
-            return fdatabase ?? Firestore.firestore()
-        }
-        
-        set {
-            fdatabase = newValue
-        }
-    }
+    let auth: Auth
+    let database: Firestore
     
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated
@@ -58,7 +41,7 @@ class AccountManager {
     }
     
     func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
-        FirebaseInterface.auth.createUser(
+        auth.createUser(
             withEmail: email,
             password: password) { (authResult, error) in
                 
@@ -78,7 +61,7 @@ class AccountManager {
     }
     
     func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) {
-        FirebaseInterface.auth.signIn(
+        auth.signIn(
             withEmail: email,
             password: password) { (_, error) in
                 guard error == nil else {
@@ -91,7 +74,7 @@ class AccountManager {
     }
     
     func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
-        FirebaseInterface.auth.signInAnonymously { (_, error) in
+        auth.signInAnonymously { (_, error) in
             completion(error)
         }
     }
@@ -116,7 +99,7 @@ class AccountManager {
     
     func signOut(completion: (Error?) -> Void) {
         do {
-            try FirebaseInterface.auth.signOut()
+            try auth.signOut()
         } catch let error {
             completion(error)
         }
@@ -127,7 +110,7 @@ class AccountManager {
                                     named: String,
                                     completion: @escaping (Error?) -> Void) {
         let uid = user.uid // getting uid to create user's document
-        FirebaseInterface.database.collection("User").document(uid).setData(
+        database.collection("User").document(uid).setData(
             ["credits": 0,
              "username": named]) { error in
                 completion(error)

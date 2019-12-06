@@ -11,8 +11,6 @@ import UIKit
 class LaunchViewController: UIViewController, LaunchView {
     var presenter: LaunchViewPresenter!
     
-    let accountManager = AccountManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +20,7 @@ class LaunchViewController: UIViewController, LaunchView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if accountManager.isConnected {
+        if presenter.accountManager.isConnected {
             performSegue(withIdentifier: "segueToDashboard", sender: nil)
         } else {
             performSegue(withIdentifier: "segueToWelcome", sender: nil)

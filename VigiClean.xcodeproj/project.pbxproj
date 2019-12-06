@@ -44,13 +44,13 @@
 		94BA1F152395A53000FE19A1 /* RequestViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */; };
 		94BA1F172395D4A900FE19A1 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F162395D4A900FE19A1 /* Object.swift */; };
 		94BA1F192395D72F00FE19A1 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F182395D72F00FE19A1 /* Scanner.swift */; };
-		94BA1F1B2396983600FE19A1 /* FirebaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */; };
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
 		94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */; };
 		94CDC9AE237C3AF2003295AD /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AD237C3AF2003295AD /* AccountManager.swift */; };
 		94CDC9B0237C48F9003295AD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */; };
 		94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */; };
+		94DC7C20239ADA0E00C414DA /* ObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */; };
 		94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashBoardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
 		94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0272370A1CA00037210 /* AppDelegate.swift */; };
@@ -121,13 +121,13 @@
 		94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewPresenter.swift; sourceTree = "<group>"; };
 		94BA1F162395D4A900FE19A1 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		94BA1F182395D72F00FE19A1 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
-		94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInterface.swift; sourceTree = "<group>"; };
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPresenter.swift; sourceTree = "<group>"; };
 		94CDC9AD237C3AF2003295AD /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectManager.swift; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		94F0A0242370A1CA00037210 /* VigiClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VigiClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,9 +289,9 @@
 			isa = PBXGroup;
 			children = (
 				94BA1F162395D4A900FE19A1 /* Object.swift */,
+				94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */,
 				94BA1F182395D72F00FE19A1 /* Scanner.swift */,
 				94CDC9AD237C3AF2003295AD /* AccountManager.swift */,
-				94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -690,6 +690,7 @@
 				94BA1EEA238DA11C00FE19A1 /* RequestViewController.swift in Sources */,
 				94BA1EEE238E6A3900FE19A1 /* AttachEmailContracts.swift in Sources */,
 				94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */,
+				94DC7C20239ADA0E00C414DA /* ObjectManager.swift in Sources */,
 				941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */,
 				94BA1F0A239550EB00FE19A1 /* ScannerContracts.swift in Sources */,
 				94BA1EF2238E6AAA00FE19A1 /* WelcomeContracts.swift in Sources */,
@@ -709,7 +710,6 @@
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
 				94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */,
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,
-				94BA1F1B2396983600FE19A1 /* FirebaseInterface.swift in Sources */,
 				9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */,
 				94BA1EF0238E6A6B00FE19A1 /* ProfileContracts.swift in Sources */,
 				94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */,

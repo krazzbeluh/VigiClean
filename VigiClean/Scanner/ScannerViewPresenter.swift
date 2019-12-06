@@ -13,6 +13,8 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
     
     var lastCode: String!
     
+    let objectManager = ObjectManager()
+    
     var objectCode: String {
         return lastCode.replacingOccurrences(of: "https://www.vigiclean.com/?code=", with: "")
     }
@@ -29,7 +31,7 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
             view.startVibration()
             
             view.displayLoadViews(true)
-            Object.getObject(code: objectCode) { error in
+            objectManager.getObject(code: objectCode) { error in
                 if let error = error {
                     self.view.invalidCodeFound(error: error)
                     return

@@ -158,7 +158,7 @@ class BasePresenter {
     
     private func convertAuthError(_ error: Error) throws -> AuthErrorCode {
         guard let errCode = AuthErrorCode(rawValue: error._code) else {
-            throw FirebaseInterface.FIRInterfaceError.unableToDecodeError
+            throw FIRInterfaceError.unableToDecodeError
         }
         
         return errCode
