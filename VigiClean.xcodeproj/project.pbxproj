@@ -18,6 +18,7 @@
 		94504A622382CD940054BE70 /* UserAccountTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A612382CD940054BE70 /* UserAccountTestCase.swift */; };
 		94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA4238583C90054BE70 /* SignInContracts.swift */; };
 		94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA723858CCF0054BE70 /* LaunchViewController.swift */; };
+		94623695239A9F780026DD95 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94623694239A9F780026DD95 /* GoogleService-Info.plist */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
@@ -43,7 +44,6 @@
 		94BA1F192395D72F00FE19A1 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F182395D72F00FE19A1 /* Scanner.swift */; };
 		94BA1F1B2396983600FE19A1 /* FirebaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */; };
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
-		94BE5AA42370A9FE00CE3060 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */; };
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
 		94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */; };
 		94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AD237C3AF2003295AD /* UserAccount.swift */; };
@@ -93,6 +93,7 @@
 		94504A612382CD940054BE70 /* UserAccountTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserAccountTestCase.swift; path = VigiClean/UserAccountTestCase.swift; sourceTree = SOURCE_ROOT; };
 		94504AA4238583C90054BE70 /* SignInContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContracts.swift; sourceTree = "<group>"; };
 		94504AA723858CCF0054BE70 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		94623694239A9F780026DD95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
@@ -118,7 +119,6 @@
 		94BA1F182395D72F00FE19A1 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInterface.swift; sourceTree = "<group>"; };
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPresenter.swift; sourceTree = "<group>"; };
 		94CDC9AD237C3AF2003295AD /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
@@ -282,6 +282,17 @@
 			name = Mock;
 			sourceTree = "<group>";
 		};
+		94623696239A9FCF0026DD95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				94BA1F162395D4A900FE19A1 /* Object.swift */,
+				94BA1F182395D72F00FE19A1 /* Scanner.swift */,
+				94CDC9AD237C3AF2003295AD /* UserAccount.swift */,
+				94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		94BA1EF523900ED700FE19A1 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,17 +314,6 @@
 			name = Firestore;
 			sourceTree = "<group>";
 		};
-		94BE5A9C2370A69700CE3060 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				94BA1F162395D4A900FE19A1 /* Object.swift */,
-				94BA1F182395D72F00FE19A1 /* Scanner.swift */,
-				94CDC9AD237C3AF2003295AD /* UserAccount.swift */,
-				94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		94BE5A9E2370A6A600CE3060 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,7 +326,7 @@
 		94BE5AA02370A6C000CE3060 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				94BE5AA32370A9FE00CE3060 /* GoogleService-Info.plist */,
+				94623694239A9F780026DD95 /* GoogleService-Info.plist */,
 				94F0A0302370A1CB00037210 /* Assets.xcassets */,
 				94F0A0272370A1CA00037210 /* AppDelegate.swift */,
 				94F0A0322370A1CB00037210 /* LaunchScreen.storyboard */,
@@ -364,6 +364,8 @@
 		94F0A0262370A1CA00037210 /* VigiClean */ = {
 			isa = PBXGroup;
 			children = (
+				94623696239A9FCF0026DD95 /* Model */,
+				94BE5A9E2370A6A600CE3060 /* View */,
 				9402E9A4239A92290070E910 /* Shared */,
 				9402E9A1239A8DF90070E910 /* Request */,
 				9402E9A0239A8DDC0070E910 /* Scanner */,
@@ -372,8 +374,6 @@
 				9402E99D239A8D710070E910 /* Profile */,
 				9402E99C239A8D2C0070E910 /* SignUp */,
 				9402E99B239A8D070070E910 /* AttachEmail */,
-				94BE5A9C2370A69700CE3060 /* Model */,
-				94BE5A9E2370A6A600CE3060 /* View */,
 				94BE5AA02370A6C000CE3060 /* Supporting Files */,
 			);
 			path = VigiClean;
@@ -519,11 +519,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				94504A4B238219FC0054BE70 /* .swiftlint.yml in Resources */,
+				94623695239A9F780026DD95 /* GoogleService-Info.plist in Resources */,
 				94BE5AA92370ACA900CE3060 /* .gitignore in Resources */,
 				94F0A0342370A1CB00037210 /* LaunchScreen.storyboard in Resources */,
 				9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */,
 				94F0A0312370A1CB00037210 /* Assets.xcassets in Resources */,
-				94BE5AA42370A9FE00CE3060 /* GoogleService-Info.plist in Resources */,
 				94BE5AA22370A81100CE3060 /* Podfile in Resources */,
 				94F0A02F2370A1CA00037210 /* Main.storyboard in Resources */,
 			);
