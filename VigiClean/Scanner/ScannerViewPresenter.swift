@@ -8,8 +8,8 @@
 
 import Foundation
 
-class ScannerPresenter: ScannerViewPresenter {
-    weak let view: ScannerView
+class ScannerPresenter: BasePresenter, ScannerViewPresenter {
+    weak var view: ScannerView!
     
     var lastCode: String!
     

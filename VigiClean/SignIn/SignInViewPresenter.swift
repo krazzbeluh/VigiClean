@@ -8,8 +8,8 @@
 
 import Foundation
 
-class SignInPresenter: SignInViewPresenter {
-    weak let view: SignInView
+class SignInPresenter: BasePresenter, SignInViewPresenter {
+    weak var view: SignInView!
     
     required init(view: SignInView) {
         self.view = view
@@ -18,7 +18,7 @@ class SignInPresenter: SignInViewPresenter {
     func signIn(email: String?, password: String?) {
         guard let email = email, let password = password, email != "", password != "" else {
             view.switchActivityIndicator(hidden: true)
-            view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: UserAccount.UAccountError.emptyTextField))
+            view.sendAlert(message: convertAlert(with: UserAccount.UAccountError.emptyTextField))
             return
         }
         
@@ -27,7 +27,7 @@ class SignInPresenter: SignInViewPresenter {
         UserAccount.signIn(email: email, password: password) { error in
             if let error = error {
                 self.view.switchActivityIndicator(hidden: true)
-                self.view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
+                self.view.sendAlert(message: self.convertAlert(with: error))
                 return
             }
             self.view.userSignedIn()

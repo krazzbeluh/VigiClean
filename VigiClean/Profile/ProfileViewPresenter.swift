@@ -8,8 +8,8 @@
 
 import Foundation
 
-class ProfilePresenter: ProfileViewPresenter {
-    weak let view: ProfileView
+class ProfilePresenter: BasePresenter, ProfileViewPresenter {
+    weak var view: ProfileView!
     
     required init(view: ProfileView) {
         self.view = view

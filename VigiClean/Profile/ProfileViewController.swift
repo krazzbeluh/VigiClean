@@ -8,17 +8,18 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, ProfileView {
+    var presenter: ProfileViewPresenter!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        presenter = ProfilePresenter(view: self)
     }
     // MARK: Actions
     @IBAction func didTapDisconnectButton(_ sender: Any) {
         UserAccount.signOut { error in
             if let error = error {
-                sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
+                sendAlert(message: presenter.convertAlert(with: error))
             } else {
                 performSegue(withIdentifier: "unwindToLaunch", sender: self)
             }

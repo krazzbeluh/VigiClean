@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ScannerViewPresenter {
+protocol ScannerViewPresenter: BasePresenter {
     init(view: ScannerView)
     
     var objectCode: String { get }

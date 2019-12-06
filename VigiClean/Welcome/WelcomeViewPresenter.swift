@@ -8,8 +8,8 @@
 
 import Foundation
 
-class WelcomePresenter: WelcomeViewPresenter {
-    weak let view: WelcomeView
+class WelcomePresenter: BasePresenter, WelcomeViewPresenter {
+    weak var view: WelcomeView!
     
     required init(view: WelcomeView) {
         self.view = view
@@ -18,7 +18,7 @@ class WelcomePresenter: WelcomeViewPresenter {
     func signIn() {
         UserAccount.anonymousSignIn { error in
             if let error = error {
-                self.view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
+                self.view.sendAlert(message: self.convertAlert(with: error))
                 return
             }
             self.view.performSegue()

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ProfileViewPresenter {
+protocol ProfileViewPresenter: BasePresenter {
     init(view: ProfileView)
 }
 

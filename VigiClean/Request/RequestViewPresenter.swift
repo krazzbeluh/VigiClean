@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RequestPresenter: RequestViewPresenter {
+class RequestPresenter: BasePresenter, RequestViewPresenter {
     
     var actions: [String] {
         guard let object = Object.currentObject else {
@@ -26,7 +26,7 @@ class RequestPresenter: RequestViewPresenter {
         return actions
     }
     
-    weak let view: RequestView
+    weak var view: RequestView!
     
     required init(view: RequestView) {
         self.view = view
@@ -46,7 +46,7 @@ class RequestPresenter: RequestViewPresenter {
         
         Object.sendRequest(for: object, with: action) { error in
             if let error = error {
-                self.view.sendAlert(message: SharedMethodsPresenter.prepareAlert(with: error))
+                self.view.sendAlert(message: self.convertAlert(with: error))
                 return
             }
             

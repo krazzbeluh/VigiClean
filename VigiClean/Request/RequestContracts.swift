@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RequestViewPresenter {
+protocol RequestViewPresenter: BasePresenter {
     init(view: RequestView)
     var actions: [String] { get }
     func sendRequest(with action: String)
