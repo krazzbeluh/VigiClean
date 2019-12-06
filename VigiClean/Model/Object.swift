@@ -14,6 +14,8 @@ class Object {
         case documentDoesNotExists, unableToDecodeData
     }
     
+    let accountManager = AccountManager()
+    
     // MARK: Properties
     let coords: GeoPoint
     let organization: String
@@ -101,7 +103,7 @@ class Object {
             "code": object.code,
             "action": action,
             "date": Date(),
-            "user": UserAccount.currentUser?.uid ?? "Anonymous",
+            "user": /*accountManager.currentUser?.uid ?? */"Anonymous", // TODO
             "isValidOperation": NSNull()
         ]) { error in
             callback(error)

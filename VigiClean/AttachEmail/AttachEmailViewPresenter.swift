@@ -11,6 +11,8 @@ import Foundation
 class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
     weak var view: AttachEmailView!
     
+    let accountManager = AccountManager()
+    
     required init(view: AttachEmailView) {
         self.view = view
     }
@@ -24,19 +26,19 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
             password != "",
             confirmPassword != "" else {
                 view.sendAlert(message: convertAlert(with:
-                    UserAccount.UAccountError.emptyTextField))
+                    AccountManager.UAccountError.emptyTextField))
             return
         }
         
         guard password == confirmPassword else {
             view.sendAlert(message: convertAlert(with:
-                UserAccount.UAccountError.notMatchingPassword))
+                AccountManager.UAccountError.notMatchingPassword))
             return
         }
         
         view.switchActivityIndicator(hidden: false)
         
-        UserAccount.attachEmail(email: email, password: password, completion: { error in
+        accountManager.attachEmail(email: email, password: password, completion: { error in
             if let error = error {
                 self.view.sendAlert(message: self.convertAlert(with: error))
             } else {

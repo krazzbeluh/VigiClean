@@ -11,6 +11,8 @@ import Foundation
 class SignUpPresenter: BasePresenter, SignUpViewPresenter {
     weak var view: SignUpView!
     
+    let accountManager = AccountManager()
+    
     required init(view: SignUpView) {
         self.view = view
     }
@@ -24,19 +26,19 @@ class SignUpPresenter: BasePresenter, SignUpViewPresenter {
             password != "",
             confirmPassword != "" else {
                 view.sendAlert(message: convertAlert(with:
-                    UserAccount.UAccountError.emptyTextField))
+                    AccountManager.UAccountError.emptyTextField))
             return
         }
         
         guard password == confirmPassword else {
             view.sendAlert(message: convertAlert(with:
-                UserAccount.UAccountError.notMatchingPassword))
+                AccountManager.UAccountError.notMatchingPassword))
             return
         }
         
         view.switchActivityIndicator(hidden: false)
         
-        UserAccount.signUp(username: username, email: email, password: password) { error in
+        accountManager.signUp(username: username, email: email, password: password) { error in
             if let error = error {
                 self.view.sendAlert(message: self.convertAlert(with: error))
                 self.view.switchActivityIndicator(hidden: true)

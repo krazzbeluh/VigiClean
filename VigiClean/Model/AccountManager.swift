@@ -1,5 +1,5 @@
 //
-//  UserAccount.swift
+//  AccountManager.swift
 //  VigiClean
 //
 //  Created by Paul Leclerc on 13/11/2019.
@@ -10,25 +10,54 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class UserAccount {
+class AccountManager {
+    init() {}
+    
+    init(auth: Auth, database: Firestore) {
+        self.auth = auth
+        self.database = database
+    }
+    
+    // TODO: WTF
+    var fauth: Auth?
+    var auth: Auth {
+        get {
+            return fauth ?? Auth.auth()
+        }
+        
+        set {
+            fauth = newValue
+        }
+    }
+    
+    var fdatabase: Firestore?
+    var database: Firestore {
+        get {
+            return fdatabase ?? Firestore.firestore()
+        }
+        
+        set {
+            fdatabase = newValue
+        }
+    }
     
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated
     }
     
-    static var currentUser: User? {
-        return FirebaseInterface.auth.currentUser
+    var currentUser: User? {
+        return auth.currentUser
     }
     
-    static var isConnected: Bool {
+    var isConnected: Bool {
         currentUser != nil
     }
     
-    static var isConnectedWithEmail: Bool {
+    var isConnectedWithEmail: Bool {
         currentUser?.email != nil
     }
     
-    static func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
+    func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
         FirebaseInterface.auth.createUser(
             withEmail: email,
             password: password) { (authResult, error) in
@@ -39,7 +68,7 @@ class UserAccount {
                         return
                 }
                 
-                createUserDocument(for: user, named: username) { error in
+                self.createUserDocument(for: user, named: username) { error in
                     completion(error)
                 }
                 
@@ -48,7 +77,7 @@ class UserAccount {
         }
     }
     
-    static func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) {
+    func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) {
         FirebaseInterface.auth.signIn(
             withEmail: email,
             password: password) { (_, error) in
@@ -61,21 +90,21 @@ class UserAccount {
         }
     }
     
-    static func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
+    func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
         FirebaseInterface.auth.signInAnonymously { (_, error) in
             completion(error)
         }
     }
     
-    static func attachEmail(email: String,
-                            password: String,
-                            completion: @escaping ((Error?) -> Void)) {
+    func attachEmail(email: String,
+                     password: String,
+                     completion: @escaping ((Error?) -> Void)) {
         currentUser?.updateEmail(to: email) { (error) in
             guard error == nil else {
                 completion(error)
                 return
             }
-            currentUser?.updatePassword(to: password) { (error) in
+            self.currentUser?.updatePassword(to: password) { (error) in
                 guard error == nil else {
                     completion(error)
                     return
@@ -85,7 +114,7 @@ class UserAccount {
         }
     }
     
-    static func signOut(completion: (Error?) -> Void) {
+    func signOut(completion: (Error?) -> Void) {
         do {
             try FirebaseInterface.auth.signOut()
         } catch let error {
@@ -94,9 +123,9 @@ class UserAccount {
         completion(nil)
     }
     
-    private static func createUserDocument(for user: User,
-                                           named: String,
-                                           completion: @escaping (Error?) -> Void) {
+    private func createUserDocument(for user: User,
+                                    named: String,
+                                    completion: @escaping (Error?) -> Void) {
         let uid = user.uid // getting uid to create user's document
         FirebaseInterface.database.collection("User").document(uid).setData(
             ["credits": 0,

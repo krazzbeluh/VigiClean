@@ -19,6 +19,8 @@
 		94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA4238583C90054BE70 /* SignInContracts.swift */; };
 		94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA723858CCF0054BE70 /* LaunchViewController.swift */; };
 		94623695239A9F780026DD95 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94623694239A9F780026DD95 /* GoogleService-Info.plist */; };
+		94623699239AC4F50026DD95 /* LaunchContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94623698239AC4F50026DD95 /* LaunchContracts.swift */; };
+		9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
@@ -46,7 +48,7 @@
 		94BE5AA22370A81100CE3060 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA12370A81100CE3060 /* Podfile */; };
 		94BE5AA92370ACA900CE3060 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94BE5AA82370ACA900CE3060 /* .gitignore */; };
 		94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */; };
-		94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AD237C3AF2003295AD /* UserAccount.swift */; };
+		94CDC9AE237C3AF2003295AD /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AD237C3AF2003295AD /* AccountManager.swift */; };
 		94CDC9B0237C48F9003295AD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */; };
 		94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */; };
 		94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashBoardViewController.swift */; };
@@ -94,6 +96,8 @@
 		94504AA4238583C90054BE70 /* SignInContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContracts.swift; sourceTree = "<group>"; };
 		94504AA723858CCF0054BE70 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		94623694239A9F780026DD95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		94623698239AC4F50026DD95 /* LaunchContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchContracts.swift; sourceTree = "<group>"; };
+		9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewPresenter.swift; sourceTree = "<group>"; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
@@ -121,7 +125,7 @@
 		94BE5AA12370A81100CE3060 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94BE5AA82370ACA900CE3060 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPresenter.swift; sourceTree = "<group>"; };
-		94CDC9AD237C3AF2003295AD /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		94CDC9AD237C3AF2003295AD /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
@@ -267,7 +271,6 @@
 		941F7E17237B080200044A0D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				94504AA723858CCF0054BE70 /* LaunchViewController.swift */,
 				94EB57742372D8B800582990 /* DashBoardViewController.swift */,
 			);
 			name = Controller;
@@ -287,10 +290,20 @@
 			children = (
 				94BA1F162395D4A900FE19A1 /* Object.swift */,
 				94BA1F182395D72F00FE19A1 /* Scanner.swift */,
-				94CDC9AD237C3AF2003295AD /* UserAccount.swift */,
+				94CDC9AD237C3AF2003295AD /* AccountManager.swift */,
 				94BA1F1A2396983600FE19A1 /* FirebaseInterface.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		94623697239AC45C0026DD95 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				94623698239AC4F50026DD95 /* LaunchContracts.swift */,
+				9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */,
+				94504AA723858CCF0054BE70 /* LaunchViewController.swift */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		94BA1EF523900ED700FE19A1 /* Auth */ = {
@@ -367,6 +380,7 @@
 				94623696239A9FCF0026DD95 /* Model */,
 				94BE5A9E2370A6A600CE3060 /* View */,
 				9402E9A4239A92290070E910 /* Shared */,
+				94623697239AC45C0026DD95 /* Launch */,
 				9402E9A1239A8DF90070E910 /* Request */,
 				9402E9A0239A8DDC0070E910 /* Scanner */,
 				9402E99F239A8DB10070E910 /* Welcome */,
@@ -683,7 +697,7 @@
 				94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */,
 				94BA1F172395D4A900FE19A1 /* Object.swift in Sources */,
 				9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */,
-				94CDC9AE237C3AF2003295AD /* UserAccount.swift in Sources */,
+				94CDC9AE237C3AF2003295AD /* AccountManager.swift in Sources */,
 				94BA1F082395509600FE19A1 /* ScannerViewPresenter.swift in Sources */,
 				94EB57752372D8B800582990 /* DashBoardViewController.swift in Sources */,
 				94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */,
@@ -696,8 +710,10 @@
 				94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */,
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,
 				94BA1F1B2396983600FE19A1 /* FirebaseInterface.swift in Sources */,
+				9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */,
 				94BA1EF0238E6A6B00FE19A1 /* ProfileContracts.swift in Sources */,
 				94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */,
+				94623699239AC4F50026DD95 /* LaunchContracts.swift in Sources */,
 				94BA1F152395A53000FE19A1 /* RequestViewPresenter.swift in Sources */,
 				94BA1F192395D72F00FE19A1 /* Scanner.swift in Sources */,
 				94BA1F132395A4F400FE19A1 /* RequestContracts.swift in Sources */,

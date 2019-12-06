@@ -10,6 +10,9 @@ import UIKit
 
 class ProfileViewController: UIViewController, ProfileView {
     var presenter: ProfileViewPresenter!
+    
+    let accountManager = AccountManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,7 +20,7 @@ class ProfileViewController: UIViewController, ProfileView {
     }
     // MARK: Actions
     @IBAction func didTapDisconnectButton(_ sender: Any) {
-        UserAccount.signOut { error in
+        accountManager.signOut { error in
             if let error = error {
                 sendAlert(message: presenter.convertAlert(with: error))
             } else {
@@ -37,7 +40,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserAccount.isConnectedWithEmail ? 1 : 2
+        return accountManager.isConnectedWithEmail ? 1 : 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

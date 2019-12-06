@@ -8,18 +8,21 @@
 
 import UIKit
 
-class LaunchViewController: UIViewController {
-
+class LaunchViewController: UIViewController, LaunchView {
+    var presenter: LaunchViewPresenter!
+    
+    let accountManager = AccountManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        presenter = LaunchPresenter(view: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if UserAccount.isConnected {
+        if accountManager.isConnected {
             performSegue(withIdentifier: "segueToDashboard", sender: nil)
         } else {
             performSegue(withIdentifier: "segueToWelcome", sender: nil)
