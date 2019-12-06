@@ -9,7 +9,7 @@
 import Foundation
 
 class ProfilePresenter: ProfileViewPresenter {
-    unowned let view: ProfileView
+    weak let view: ProfileView
     
     required init(view: ProfileView) {
         self.view = view

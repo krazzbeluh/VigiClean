@@ -9,7 +9,7 @@
 import Foundation
 
 class SignInPresenter: SignInViewPresenter {
-    unowned let view: SignInView
+    weak let view: SignInView
     
     required init(view: SignInView) {
         self.view = view

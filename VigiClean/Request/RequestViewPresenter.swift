@@ -26,7 +26,7 @@ class RequestPresenter: RequestViewPresenter {
         return actions
     }
     
-    unowned let view: RequestView
+    weak let view: RequestView
     
     required init(view: RequestView) {
         self.view = view

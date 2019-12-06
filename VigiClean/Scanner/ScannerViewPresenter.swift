@@ -9,7 +9,7 @@
 import Foundation
 
 class ScannerPresenter: ScannerViewPresenter {
-    unowned let view: ScannerView
+    weak let view: ScannerView
     
     var lastCode: String!
     

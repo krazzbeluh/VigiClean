@@ -9,7 +9,7 @@
 import Foundation
 
 class AttachEmailPresenter: AttachEmailViewPresenter {
-    unowned let view: AttachEmailView
+    weak let view: AttachEmailView
     
     required init(view: AttachEmailView) {
         self.view = view

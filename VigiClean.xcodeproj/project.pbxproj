@@ -87,7 +87,7 @@
 		94138AAC237D067B00419F2C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenter.swift; sourceTree = "<group>"; };
 		94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewPresenter.swift; sourceTree = "<group>"; };
-		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
+		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = VigiClean/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		94504A4A238219FC0054BE70 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
 		94504A612382CD940054BE70 /* UserAccountTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserAccountTestCase.swift; path = VigiClean/UserAccountTestCase.swift; sourceTree = SOURCE_ROOT; };
@@ -96,7 +96,7 @@
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
-		94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewController.swift; sourceTree = SOURCE_ROOT; };
+		94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AttachEmailViewController.swift; path = VigiClean/AttachEmail/AttachEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewPresenter.swift; sourceTree = "<group>"; };
 		94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		94BA1EEB238E696800FE19A1 /* SignUpContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContracts.swift; sourceTree = "<group>"; };
@@ -184,18 +184,81 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9402E99B239A8D070070E910 /* AttachEmail */ = {
+			isa = PBXGroup;
+			children = (
+				94BA1EED238E6A3900FE19A1 /* AttachEmailContracts.swift */,
+				94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */,
+				94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */,
+			);
+			path = AttachEmail;
+			sourceTree = "<group>";
+		};
+		9402E99C239A8D2C0070E910 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				94BA1EEB238E696800FE19A1 /* SignUpContracts.swift */,
+				94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */,
+				94138AAC237D067B00419F2C /* SignUpViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		9402E99D239A8D710070E910 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				94BA1EEF238E6A6B00FE19A1 /* ProfileContracts.swift */,
+				94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */,
+				941F7E1A237B084400044A0D /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		9402E99E239A8D860070E910 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				94504AA4238583C90054BE70 /* SignInContracts.swift */,
+				94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */,
+				9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		9402E99F239A8DB10070E910 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				94BA1EF1238E6AAA00FE19A1 /* WelcomeContracts.swift */,
+				94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */,
+				94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		9402E9A0239A8DDC0070E910 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */,
+				94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */,
+				94EB57762372DB1E00582990 /* ScannerViewController.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
+		9402E9A1239A8DF90070E910 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				94BA1F122395A4F400FE19A1 /* RequestContracts.swift */,
+				94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */,
+				94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		941F7E17237B080200044A0D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				94504AA723858CCF0054BE70 /* LaunchViewController.swift */,
-				94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */,
-				9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */,
-				94138AAC237D067B00419F2C /* SignUpViewController.swift */,
-				941F7E1A237B084400044A0D /* ProfileViewController.swift */,
 				94EB57742372D8B800582990 /* DashBoardViewController.swift */,
-				94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */,
-				94EB57762372DB1E00582990 /* ScannerViewController.swift */,
-				94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */,
 				94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */,
 			);
 			name = Controller;
@@ -213,13 +276,6 @@
 		94504AA6238583D00054BE70 /* Contracts */ = {
 			isa = PBXGroup;
 			children = (
-				94BA1EED238E6A3900FE19A1 /* AttachEmailContracts.swift */,
-				94BA1EEB238E696800FE19A1 /* SignUpContracts.swift */,
-				94504AA4238583C90054BE70 /* SignInContracts.swift */,
-				94BA1EEF238E6A6B00FE19A1 /* ProfileContracts.swift */,
-				94BA1EF1238E6AAA00FE19A1 /* WelcomeContracts.swift */,
-				94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */,
-				94BA1F122395A4F400FE19A1 /* RequestContracts.swift */,
 			);
 			name = Contracts;
 			sourceTree = "<group>";
@@ -269,13 +325,6 @@
 		94BE5A9F2370A6AB00CE3060 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */,
-				94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */,
-				94CDC9AB237C35FC003295AD /* SignInViewPresenter.swift */,
-				94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */,
-				94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */,
-				94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */,
-				94BA1F142395A53000FE19A1 /* RequestViewPresenter.swift */,
 				9402E996239851550070E910 /* SharedMethodsPresenter.swift */,
 			);
 			name = Presenter;
@@ -322,6 +371,13 @@
 		94F0A0262370A1CA00037210 /* VigiClean */ = {
 			isa = PBXGroup;
 			children = (
+				9402E9A1239A8DF90070E910 /* Request */,
+				9402E9A0239A8DDC0070E910 /* Scanner */,
+				9402E99F239A8DB10070E910 /* Welcome */,
+				9402E99E239A8D860070E910 /* SignIn */,
+				9402E99D239A8D710070E910 /* Profile */,
+				9402E99C239A8D2C0070E910 /* SignUp */,
+				9402E99B239A8D070070E910 /* AttachEmail */,
 				94504AA6238583D00054BE70 /* Contracts */,
 				94BE5A9C2370A69700CE3060 /* Model */,
 				94BE5A9F2370A6AB00CE3060 /* Presenter */,
