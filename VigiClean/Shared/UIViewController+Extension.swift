@@ -8,11 +8,14 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-    enum UIError: Error { // UIErrors
-        case nilInTextField
-    }
-    
+protocol AlertManager: UIViewController {
+    func sendAlert(message: String)
+}
+
+extension AlertManager {
+//    enum UIError: Error { // UIErrors
+//        case nilInTextField
+//    } TODO
     func sendAlert(message: String) { // sends alert
         let alertVC = UIAlertController(title: "Erreur !", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

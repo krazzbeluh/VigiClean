@@ -14,7 +14,7 @@ protocol RequestViewPresenter: BasePresenter {
     func sendRequest(with action: String)
 }
 
-protocol RequestView: class {
+protocol RequestView: AlertManager {
     func configure(with object: Object)
     func sendAlert(message: String)
     func requestSent()

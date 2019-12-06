@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SignUpView: class {
+protocol SignUpView: AlertManager {
     func sendAlert(message: String)
     func switchActivityIndicator(hidden: Bool)
     func userSignedUp()

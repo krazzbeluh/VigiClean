@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol AttachEmailView: class {
+protocol AttachEmailView: AlertManager {
     func sendAlert(message: String)
     func switchActivityIndicator(hidden: Bool)
     func emailAttached()

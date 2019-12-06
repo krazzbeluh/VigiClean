@@ -12,5 +12,6 @@ protocol ProfileViewPresenter: BasePresenter {
     init(view: ProfileView)
 }
 
-protocol ProfileView: class {
+protocol ProfileView: AlertManager {
+    
 }
