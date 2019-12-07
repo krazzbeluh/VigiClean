@@ -10,12 +10,12 @@ import Foundation
 import FirebaseFirestore
 
 enum FIRInterfaceError: Error { // TODO
-    case unableToDecodeData, unableToDecodeError
+    case documentDoesNotExists, unableToDecodeData, unableToDecodeError
 }
 
 class ObjectManager {
     enum ObjectError: Error {
-        case documentDoesNotExists, unableToDecodeData, nilInTextField
+        case unableToDecodeData, userNotLoggedIn, nilInTextField
     }
     
     let database = Firestore.firestore()
@@ -64,7 +64,7 @@ class ObjectManager {
             }
             
             guard let document = document, document.exists else {
-                callback(.failure(ObjectError.documentDoesNotExists))
+                callback(.failure(FIRInterfaceError.documentDoesNotExists))
                 return
             }
             
@@ -84,11 +84,16 @@ class ObjectManager {
     }
     
     func sendRequest(for object: Object, with action: String, callback: @escaping (Error?) -> Void) {
+        guard let uid = accountManager.currentUser?.uid else {
+            callback(ObjectError.userNotLoggedIn)
+            return
+        }
+        
         database.collection("Request").addDocument(data: [
             "code": object.code,
             "action": action,
             "date": Date(),
-            "user": accountManager.currentUser?.uid ?? "Anonymous", // TODO
+            "user": uid,
             "isValidOperation": NSNull()
         ]) { error in
             callback(error)

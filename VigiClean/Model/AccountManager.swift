@@ -24,8 +24,11 @@ class AccountManager {
     let auth: Auth
     let database: Firestore
     
+    var credits = 0
+    var username: String?
+    
     enum UAccountError: Error {
-        case emptyTextField, notMatchingPassword, userDocumentNotCreated
+        case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound
     }
     
     var currentUser: User? {
@@ -69,13 +72,23 @@ class AccountManager {
                     return
                 }
                 
-                completion(nil)
+                self.getDocument { (error) in
+                    completion(error)
+                }
         }
     }
     
     func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
-        auth.signInAnonymously { (_, error) in
-            completion(error)
+        auth.signInAnonymously { (authResult, error) in
+            guard error == nil,
+                let result = authResult else {
+                    completion(error)
+                    return
+            }
+            
+            self.createUserDocument(for: result.user, named: nil) { (error) in
+                completion(error)
+            }
         }
     }
     
@@ -107,14 +120,57 @@ class AccountManager {
     }
     
     private func createUserDocument(for user: User,
-                                    named: String,
+                                    named: String?,
                                     completion: @escaping (Error?) -> Void) {
         let uid = user.uid // getting uid to create user's document
         database.collection("User").document(uid).setData(
             ["credits": 0,
-             "username": named]) { error in
+             "username": named ?? NSNull()]) { error in
                 completion(error)
         }
     }
     
+    func getDocument(callback: @escaping (Error?) -> Void) {
+        guard let uid = currentUser?.uid else {
+            callback(UAccountError.unknownUID)
+            return
+        }
+        database.collection("User").document(uid).getDocument { (document, error) in
+            if let error = error {
+                callback(error)
+                return
+            }
+            
+            guard let document = document, document.exists else {
+                callback(FIRInterfaceError.documentDoesNotExists)
+                return
+            }
+            
+            guard let data = document.data() as? [String: String] else {
+                callback(FIRInterfaceError.unableToDecodeData)
+                return
+            }
+            
+            guard let creditsStr = data["credits"],
+                let credits = Int(creditsStr) else {
+                    self.credits = 0
+                    callback(UAccountError.noCreditsFound)
+                    return
+            }
+            
+            self.credits = credits
+            self.username = data["username"]
+        }
+    }
+    
+    func giveCredits(callback: @escaping (Error?) -> Void) {
+        guard let uid = currentUser?.uid else {
+            callback(UAccountError.unknownUID)
+            return
+        }
+        
+        database.collection("User").document(uid).updateData(["credits": credits + 5]) { (error) in
+            callback(error)
+        }
+    }
 }

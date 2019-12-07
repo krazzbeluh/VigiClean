@@ -48,7 +48,6 @@ class RequestViewController: UIViewController, RequestView {
     
     func requestSent() {
         performSegue(withIdentifier: "segueToCongrats", sender: self)
-        // TODO: add credits
     }
     
     // MARK: Actions

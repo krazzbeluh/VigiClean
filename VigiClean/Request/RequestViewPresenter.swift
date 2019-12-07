@@ -9,6 +9,7 @@
 import Foundation
 
 class RequestPresenter: BasePresenter, RequestViewPresenter {
+    let accountManager = AccountManager()
     
     let objectManager = ObjectManager()
     
@@ -50,6 +51,13 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             if let error = error {
                 self.view.sendAlert(message: self.convertAlert(with: error))
                 return
+            }
+            
+            self.accountManager.giveCredits { (error) in
+                if let error = error {
+                    self.view.sendAlert(message: self.convertAlert(with: error))
+                    return
+                }
             }
             
             self.view.requestSent()
