@@ -15,7 +15,7 @@ enum FIRInterfaceError: Error { // TODO
 
 class ObjectManager {
     enum ObjectError: Error {
-        case documentDoesNotExists, unableToDecodeData
+        case documentDoesNotExists, unableToDecodeData, nilInTextField
     }
     
     let database = Firestore.firestore()

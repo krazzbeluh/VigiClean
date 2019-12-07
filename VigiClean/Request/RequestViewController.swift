@@ -54,9 +54,9 @@ class RequestViewController: UIViewController, RequestView {
     // MARK: Actions
     
     @IBAction func sendRequest(_ sender: Any) {
-        guard let action = action.text else {
-//            sendAlert(message: presenter.convertAlert(
-//                with: UIError.nilInTextField))
+        guard let action = action.text, action != "" else {
+            sendAlert(message: presenter.convertAlert(
+                with: ObjectManager.ObjectError.nilInTextField))
             return
         }
         

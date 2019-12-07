@@ -25,6 +25,11 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
         if #available(iOS 13, *) {
             dismissButton.isHidden = true
         }
+        
+        if #available(iOS 12, *) {
+            textFields[2].textContentType = .oneTimeCode
+            textFields[3].textContentType = .oneTimeCode
+        }
     }
 
     // MARK: Actions

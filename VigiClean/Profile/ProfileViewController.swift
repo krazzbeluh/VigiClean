@@ -50,10 +50,10 @@ extension ProfileViewController: UITableViewDataSource {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: "DisconnectCell", for: indexPath)
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionCell", for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: "AttachEmailCell", for: indexPath)
         default:
             cell = UITableViewCell()
-        } // TODO: make connectionCell attachEmailCell
+        }
         
         return cell
     }

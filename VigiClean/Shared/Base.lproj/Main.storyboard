@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Dash Board View Controller-->
+        <!--Dashboard View Controller-->
         <scene sceneID="DbG-D5-v78">
             <objects>
-                <viewController id="mag-T7-Jig" customClass="DashBoardViewController" customModule="VigiClean" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mag-T7-Jig" customClass="DashboardViewController" customModule="VigiClean" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N56-T9-4uu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,7 +129,7 @@
                                 <rect key="frame" x="20" y="288" width="374" height="500"/>
                                 <color key="backgroundColor" name="Background"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConnectionCell" rowHeight="43" id="g6m-x3-Z0u">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AttachEmailCell" rowHeight="43" id="g6m-x3-Z0u">
                                         <rect key="frame" x="0.0" y="28" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g6m-x3-Z0u" id="kMK-gw-2ED">

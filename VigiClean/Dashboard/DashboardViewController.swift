@@ -1,5 +1,5 @@
 //
-//  DashBoardViewController.swift
+//  DashboardViewController.swift
 //  VigiClean
 //
 //  Created by Paul Leclerc on 06/11/2019.
@@ -8,13 +8,15 @@
 
 import UIKit
 
-class DashBoardViewController: UIViewController {
+class DashboardViewController: UIViewController, DashboardView {
     // MARK: Outlets
+    
+    var presenter: DashboardViewPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        presenter = DashboardPresenter(view: self)
     }
 
     @IBAction func unwindToDashboard(segue: UIStoryboardSegue) {}
