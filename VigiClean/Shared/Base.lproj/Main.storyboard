@@ -53,15 +53,6 @@
                                 <rect key="frame" x="138" y="770" width="138" height="30"/>
                                 <state key="normal" title="Code endommagé ?"/>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYj-Wb-9Rv">
-                                <rect key="frame" x="50" y="264" width="314" height="314"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="hYj-Wb-9Rv" secondAttribute="height" multiplier="1:1" id="7Oc-9E-4G6"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="9Cl-O6-wY1" kind="embed" id="OBD-MS-GV1"/>
-                                </connections>
-                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kav-Ke-XC3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="109.33333333333333"/>
                                 <subviews>
@@ -79,29 +70,65 @@
                                     <constraint firstItem="RBU-3M-OZO" firstAttribute="leading" secondItem="Kav-Ke-XC3" secondAttribute="leading" id="iaw-br-gDW"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nV6-tx-khr" customClass="ScoreView" customModule="VigiClean" customModuleProvider="target">
+                                <rect key="frame" x="50" y="264" width="314" height="314"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oWM-tz-hqU">
+                                        <rect key="frame" x="8" y="8" width="298" height="298"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="oWM-tz-hqU" secondAttribute="height" multiplier="1:1" id="gZX-TL-nHT"/>
+                                        </constraints>
+                                        <color key="color" name="VigiClean"/>
+                                    </activityIndicatorView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-ew-3qq">
+                                        <rect key="frame" x="8" y="8" width="298" height="298"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
+                                        <color key="textColor" name="VigiClean"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Background"/>
+                                <constraints>
+                                    <constraint firstItem="oWM-tz-hqU" firstAttribute="width" secondItem="1eR-ew-3qq" secondAttribute="width" id="1lU-pV-0EF"/>
+                                    <constraint firstItem="1eR-ew-3qq" firstAttribute="centerY" secondItem="nV6-tx-khr" secondAttribute="centerY" id="3BP-50-h3F"/>
+                                    <constraint firstItem="oWM-tz-hqU" firstAttribute="centerX" secondItem="1eR-ew-3qq" secondAttribute="centerX" id="4X4-Nf-Hfo"/>
+                                    <constraint firstAttribute="width" secondItem="nV6-tx-khr" secondAttribute="height" multiplier="1:1" id="56H-O5-Fl0"/>
+                                    <constraint firstItem="oWM-tz-hqU" firstAttribute="centerY" secondItem="1eR-ew-3qq" secondAttribute="centerY" id="RLG-zc-4yj"/>
+                                    <constraint firstItem="1eR-ew-3qq" firstAttribute="centerX" secondItem="nV6-tx-khr" secondAttribute="centerX" id="YuE-dc-nLy"/>
+                                    <constraint firstItem="1eR-ew-3qq" firstAttribute="leading" secondItem="nV6-tx-khr" secondAttribute="leading" constant="8" id="bgB-mT-Pxl"/>
+                                    <constraint firstItem="1eR-ew-3qq" firstAttribute="top" secondItem="nV6-tx-khr" secondAttribute="top" constant="8" id="kai-Ft-DI1"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="oWM-tz-hqU" id="h9g-TT-ORv"/>
+                                    <outlet property="scoreLabel" destination="1eR-ew-3qq" id="fEo-WR-iSp"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="ezg-5l-AbO" firstAttribute="leading" secondItem="EWC-VY-GCU" secondAttribute="leading" constant="50" id="6LS-if-AaK"/>
                             <constraint firstItem="ezg-5l-AbO" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="70G-zv-gk2"/>
+                            <constraint firstItem="nV6-tx-khr" firstAttribute="centerY" secondItem="N56-T9-4uu" secondAttribute="centerY" id="Gem-sf-EeY"/>
                             <constraint firstItem="Kav-Ke-XC3" firstAttribute="top" secondItem="N56-T9-4uu" secondAttribute="top" id="Hh6-ns-B5I"/>
                             <constraint firstItem="lb8-av-c4K" firstAttribute="width" secondItem="N56-T9-4uu" secondAttribute="width" multiplier="1/8" id="QYC-q5-IsE"/>
-                            <constraint firstItem="hYj-Wb-9Rv" firstAttribute="leading" secondItem="EWC-VY-GCU" secondAttribute="leading" constant="50" id="cXY-5q-V5v"/>
                             <constraint firstItem="vJL-n8-ceg" firstAttribute="top" secondItem="ezg-5l-AbO" secondAttribute="bottom" id="coG-3z-dJd"/>
                             <constraint firstItem="Kav-Ke-XC3" firstAttribute="leading" secondItem="EWC-VY-GCU" secondAttribute="leading" id="eXr-Gy-gLh"/>
                             <constraint firstItem="EWC-VY-GCU" firstAttribute="bottom" secondItem="vJL-n8-ceg" secondAttribute="bottom" constant="8" id="g0l-ej-TDH"/>
+                            <constraint firstItem="nV6-tx-khr" firstAttribute="leading" secondItem="EWC-VY-GCU" secondAttribute="leading" constant="50" id="khG-sZ-WYx"/>
                             <constraint firstItem="EWC-VY-GCU" firstAttribute="trailing" secondItem="Kav-Ke-XC3" secondAttribute="trailing" id="kyZ-bp-frk"/>
                             <constraint firstItem="vJL-n8-ceg" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="p4g-E0-MFN"/>
                             <constraint firstItem="EWC-VY-GCU" firstAttribute="trailing" secondItem="lb8-av-c4K" secondAttribute="trailing" constant="20" id="pTC-GP-s2I"/>
                             <constraint firstItem="Kav-Ke-XC3" firstAttribute="height" secondItem="N56-T9-4uu" secondAttribute="height" multiplier="0.13" id="thO-kt-IFA"/>
-                            <constraint firstItem="hYj-Wb-9Rv" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="w1g-4E-QB0"/>
+                            <constraint firstItem="nV6-tx-khr" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="xdt-UR-0R7"/>
                             <constraint firstItem="RBU-3M-OZO" firstAttribute="top" secondItem="EWC-VY-GCU" secondAttribute="top" id="yG7-0u-TUS"/>
-                            <constraint firstItem="hYj-Wb-9Rv" firstAttribute="centerY" secondItem="N56-T9-4uu" secondAttribute="centerY" id="z1d-Tp-hmx"/>
                             <constraint firstItem="lb8-av-c4K" firstAttribute="top" secondItem="Kav-Ke-XC3" secondAttribute="bottom" constant="20" id="zd4-2J-2TE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EWC-VY-GCU"/>
                     </view>
                     <navigationItem key="navigationItem" id="LnF-tz-2Hr"/>
+                    <connections>
+                        <outlet property="scoreView" destination="nV6-tx-khr" id="8VG-BZ-Jgj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsM-yw-ANx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -220,42 +247,6 @@
                 <exit id="TbZ-GO-RbZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2094" y="-154"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="N9p-mp-T7h">
-            <objects>
-                <viewController id="9Cl-O6-wY1" sceneMemberID="viewController">
-                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="y60-Dd-iZ3" customClass="ScoreView" customModule="VigiClean" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="314" height="314"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx8-1w-Wkm">
-                                <rect key="frame" x="0.0" y="0.0" width="314" height="314"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
-                                <color key="textColor" name="VigiClean"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="2" height="3"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" name="Background"/>
-                        <constraints>
-                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="centerY" secondItem="y60-Dd-iZ3" secondAttribute="centerY" id="4Jm-Wq-1en"/>
-                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="centerY" secondItem="y60-Dd-iZ3" secondAttribute="centerY" id="EAr-L7-Sdg"/>
-                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="leading" secondItem="ExE-V2-QmD" secondAttribute="leading" id="VIw-lY-x4B"/>
-                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="centerX" secondItem="y60-Dd-iZ3" secondAttribute="centerX" id="Zgg-TR-w5m"/>
-                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="centerX" secondItem="y60-Dd-iZ3" secondAttribute="centerX" id="dqc-IG-ATB"/>
-                            <constraint firstItem="bx8-1w-Wkm" firstAttribute="top" secondItem="y60-Dd-iZ3" secondAttribute="top" id="e40-Xt-Net"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ExE-V2-QmD"/>
-                        <connections>
-                            <outlet property="scoreLabel" destination="bx8-1w-Wkm" id="Xzj-18-gM5"/>
-                        </connections>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2WJ-gA-j5D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="QmD-tx-G28"/>
-            </objects>
-            <point key="canvasLocation" x="1238" y="429"/>
         </scene>
         <!--Launch View Controller-->
         <scene sceneID="SUS-JI-Ikb">

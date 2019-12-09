@@ -10,12 +10,12 @@ import UIKit
 
 class DashboardViewController: UIViewController, DashboardView {
     // MARK: Outlets
+    @IBOutlet weak var scoreView: ScoreView!
     
     var presenter: DashboardViewPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         presenter = DashboardPresenter(view: self)
     }
 

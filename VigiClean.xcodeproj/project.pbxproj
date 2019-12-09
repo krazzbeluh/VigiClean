@@ -52,6 +52,8 @@
 		94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */; };
 		94D20949239B08560089759B /* DashboardContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D20948239B08560089759B /* DashboardContracts.swift */; };
 		94D2094B239B09920089759B /* DashboardViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D2094A239B09920089759B /* DashboardViewPresenter.swift */; };
+		94D20954239EBD590089759B /* ScoreViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D20953239EBD580089759B /* ScoreViewPresenter.swift */; };
+		94D20956239EBD9D0089759B /* ScoreContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D20955239EBD9D0089759B /* ScoreContracts.swift */; };
 		94DC7C20239ADA0E00C414DA /* ObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */; };
 		94EB57752372D8B800582990 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashboardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
@@ -131,6 +133,8 @@
 		94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		94D20948239B08560089759B /* DashboardContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContracts.swift; sourceTree = "<group>"; };
 		94D2094A239B09920089759B /* DashboardViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewPresenter.swift; sourceTree = "<group>"; };
+		94D20953239EBD580089759B /* ScoreViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewPresenter.swift; sourceTree = "<group>"; };
+		94D20955239EBD9D0089759B /* ScoreContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreContracts.swift; sourceTree = "<group>"; };
 		94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectManager.swift; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -236,8 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				94BA1EF1238E6AAA00FE19A1 /* WelcomeContracts.swift */,
-				94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */,
 				94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */,
+				94CDC9AF237C48F9003295AD /* WelcomeViewController.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -334,7 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				941F7E17237B080200044A0D /* Controller */,
-				947FFAEE237213C800F01487 /* ScoreView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -360,6 +363,16 @@
 				94EB57742372D8B800582990 /* DashboardViewController.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		94D20952239EBD3B0089759B /* ScoreView */ = {
+			isa = PBXGroup;
+			children = (
+				94D20955239EBD9D0089759B /* ScoreContracts.swift */,
+				94D20953239EBD580089759B /* ScoreViewPresenter.swift */,
+				947FFAEE237213C800F01487 /* ScoreView.swift */,
+			);
+			path = ScoreView;
 			sourceTree = "<group>";
 		};
 		94F0A01B2370A1CA00037210 = {
@@ -402,6 +415,7 @@
 				9402E99D239A8D710070E910 /* Profile */,
 				9402E99C239A8D2C0070E910 /* SignUp */,
 				9402E99B239A8D070070E910 /* AttachEmail */,
+				94D20952239EBD3B0089759B /* ScoreView */,
 				94BE5AA02370A6C000CE3060 /* Supporting Files */,
 			);
 			path = VigiClean;
@@ -700,6 +714,8 @@
 			files = (
 				94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */,
 				9402E9A3239A8EF80070E910 /* BasePresenter.swift in Sources */,
+				94D20954239EBD590089759B /* ScoreViewPresenter.swift in Sources */,
+				94D20956239EBD9D0089759B /* ScoreContracts.swift in Sources */,
 				94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */,
 				94BA1EEA238DA11C00FE19A1 /* RequestViewController.swift in Sources */,
 				94D20949239B08560089759B /* DashboardContracts.swift in Sources */,

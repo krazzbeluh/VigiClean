@@ -9,7 +9,18 @@
 import UIKit
 
 // TODO: count objects and their types to do a diagram. The number is the user's credit
-class ScoreView: UIView {
+class ScoreView: UIView, ScoreViewContract {
+    var presenter: ScoreViewPresenterContract!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        presenter = ScoreViewPresenter(view: self)
+        layer.borderWidth = 25
+        layer.cornerRadius = self.frame.width / 2
+        presenter.listenForUserCreditChange { newValue in
+            self.setScore(to: newValue)
+        }
+    }
     private var color: UIColor {
         return UIColor(displayP3Red: red, green: green, blue: 0, alpha: 1)
     }
@@ -41,6 +52,7 @@ class ScoreView: UIView {
     }
     
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var score: Int? {
         guard let scoreText = scoreLabel.text else {
             return nil
@@ -53,12 +65,12 @@ class ScoreView: UIView {
         return score
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.borderWidth = 25
-        layer.cornerRadius = self.frame.width / 2
+    func setScore(to score: Int) {
+        scoreLabel.text = String(score)
+        activityIndicator.isHidden = true
+        scoreLabel.isHidden = false
+        
         layer.borderColor = color.cgColor
         scoreLabel.textColor = color
     }
-
 }

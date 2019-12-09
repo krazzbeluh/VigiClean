@@ -11,8 +11,10 @@ import Foundation
 class DashboardPresenter: DashboardViewPresenter {
     weak var view: DashboardView!
     
+    var accountManager: AccountManager
+    
     required init(view: DashboardView) {
         self.view = view
+        accountManager = AccountManager()
     }
-    
 }

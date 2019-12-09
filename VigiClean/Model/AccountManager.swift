@@ -24,9 +24,6 @@ class AccountManager {
     let auth: Auth
     let database: Firestore
     
-    var credits = 0
-    var username: String?
-    
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound
     }
@@ -70,10 +67,6 @@ class AccountManager {
                 guard error == nil else {
                     completion(error)
                     return
-                }
-                
-                self.getDocument { (error) in
-                    completion(error)
                 }
         }
     }
@@ -130,47 +123,37 @@ class AccountManager {
         }
     }
     
-    func getDocument(callback: @escaping (Error?) -> Void) {
-        guard let uid = currentUser?.uid else {
-            callback(UAccountError.unknownUID)
-            return
-        }
-        database.collection("User").document(uid).getDocument { (document, error) in
-            if let error = error {
-                callback(error)
-                return
-            }
-            
-            guard let document = document, document.exists else {
-                callback(FIRInterfaceError.documentDoesNotExists)
-                return
-            }
-            
-            guard let data = document.data() as? [String: String] else {
-                callback(FIRInterfaceError.unableToDecodeData)
-                return
-            }
-            
-            guard let creditsStr = data["credits"],
-                let credits = Int(creditsStr) else {
-                    self.credits = 0
-                    callback(UAccountError.noCreditsFound)
-                    return
-            }
-            
-            self.credits = credits
-            self.username = data["username"]
-        }
-    }
-    
     func giveCredits(callback: @escaping (Error?) -> Void) {
         guard let uid = currentUser?.uid else {
             callback(UAccountError.unknownUID)
             return
         }
         
-        database.collection("User").document(uid).updateData(["credits": credits + 5]) { (error) in
+        database.collection("User").document(uid).updateData(["credits": FieldValue.increment(Int64(5))]) { (error) in
             callback(error)
+        }
+    }
+    
+    // MARK: Tests
+    func listenForUserCreditsChanges(onChange userCreditsChanged: @escaping (Int) -> Void) {
+        database.collection("User").document(currentUser?.uid ?? "")
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                print("Current data: \(data)")
+                
+                guard let credits = data["credits"] as? Int else {
+                    print("HGKFKUGILUJ")
+                    return
+                }
+                
+                userCreditsChanged(credits)
         }
     }
 }
