@@ -22,4 +22,24 @@ class ScoreViewPresenter: ScoreViewPresenterContract {
             valueChanged(newValue)
         }
     }
+    
+    func getColorCode(for score: Int) -> Color {
+        return Color(r: redValue(for: score), g: greenValue(for: score), b: 0, a: 1)
+    }
+    
+    private func redValue(for score: Int) -> Double {
+        var value: Double = 1
+        if score > 50 {
+            value = Double(100 - score) / 50
+        }
+        return value * 0.85
+    }
+    
+    private func greenValue(for score: Int) -> Double {
+        var value: Double = 1
+        if score <= 50 {
+            value = Double(score) / 50
+        }
+        return value * 0.85
+    }
 }

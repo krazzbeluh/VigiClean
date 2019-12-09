@@ -226,7 +226,7 @@ class BasePresenter {
             return "\(error)"
         } else if let error = error as? AccountManager.UAccountError {
             return "\(error)"
-        } else if let error = error as? FIRInterfaceError {
+        } else if let error = error as? FirebaseInterface.FIRInterfaceError {
             return "\(error)"
         } else {
             return nil

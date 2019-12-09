@@ -11,6 +11,7 @@ import Foundation
 protocol ScoreViewPresenterContract {
     init(view: ScoreViewContract)
     func listenForUserCreditChange(valueChanged: @escaping (Int) -> Void)
+    func getColorCode(for score: Int) -> Color
 }
 
 protocol ScoreViewContract: class {

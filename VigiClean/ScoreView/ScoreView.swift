@@ -21,34 +21,13 @@ class ScoreView: UIView, ScoreViewContract {
             self.setScore(to: newValue)
         }
     }
+    
     private var color: UIColor {
-        return UIColor(displayP3Red: red, green: green, blue: 0, alpha: 1)
-    }
-    
-    private var red: CGFloat {
-        var value: Double = 1
-        
-        guard let score = score else {
-            return 1
-        }
-        
-        if score > 50 {
-            value = Double(100 - score) / 50
-        }
-        return CGFloat(value * 0.85)
-    }
-    
-    private var green: CGFloat {
-        var value: Double = 1
-        
-        guard let score = score else {
-            return 0
-        }
-        
-        if score <= 50 {
-            value = Double(score) / 50
-        }
-        return CGFloat(value * 0.85)
+        let color = presenter.getColorCode(for: score ?? 0)
+        return UIColor(displayP3Red: CGFloat(color.red),
+                       green: CGFloat(color.green),
+                       blue: CGFloat(color.blue),
+                       alpha: CGFloat(color.alpha))
     }
     
     @IBOutlet weak var scoreLabel: UILabel!

@@ -149,7 +149,7 @@ class AccountManager {
                 print("Current data: \(data)")
                 
                 guard let credits = data["credits"] as? Int else {
-                    print("HGKFKUGILUJ")
+                    print("Error : unable to decode data")
                     return
                 }
                 

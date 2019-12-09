@@ -9,10 +9,6 @@
 import Foundation
 import FirebaseFirestore
 
-enum FIRInterfaceError: Error { // TODO
-    case documentDoesNotExists, unableToDecodeData, unableToDecodeError
-}
-
 class ObjectManager {
     enum ObjectError: Error {
         case unableToDecodeData, userNotLoggedIn, nilInTextField
@@ -25,7 +21,7 @@ class ObjectManager {
         let docRef = database.collection("Object").document(code)
         docRef.getDocument { (document, error) in
             guard let document = document, document.exists else {
-                callback(error ?? FIRInterfaceError.documentDoesNotExists)
+                callback(error ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists)
                 return
             }
             
@@ -34,7 +30,7 @@ class ObjectManager {
                 let organization = data["organization"] as? String,
                 let type = data["type"] as? String,
                 let name = data["name"] as? String else {
-                    callback(FIRInterfaceError.unableToDecodeData)
+                    callback(FirebaseInterface.FIRInterfaceError.unableToDecodeData)
                     return
             }
             
@@ -64,7 +60,7 @@ class ObjectManager {
             }
             
             guard let document = document, document.exists else {
-                callback(.failure(FIRInterfaceError.documentDoesNotExists))
+                callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
                 return
             }
             
