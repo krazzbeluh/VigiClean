@@ -8,160 +8,213 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 class BasePresenter {
-    func convertAlert(with error: Error) -> String { // swiftlint:disable:this cyclomatic_complexity function_body_length line_length
+    func convertAlert(with error: Error) -> String {
         let message: String
         // TODO: review method. convertAuthError never throws
         // TODO: scannerError, FireStoreError, ObjectError, UAccountError, FIRInterfaceError, UIError
-        if let error = try? convertAuthError(error) {
-            switch error {
-            case .invalidCustomToken:
-                message = "Error: \(error)"
-            case .customTokenMismatch:
-                message = "Error: \(error)"
-            case .invalidCredential:
-                message = "Error: \(error)"
-            case .userDisabled:
-                message = "Error: \(error)"
-            case .operationNotAllowed:
-                message = "Error: \(error)"
-            case .emailAlreadyInUse:
-                message = "Error: \(error)"
-            case .invalidEmail:
-                message = "Error: \(error)"
-            case .wrongPassword:
-                message = "Error: \(error)"
-            case .tooManyRequests:
-                message = "Error: \(error)"
-            case .userNotFound:
-                message = "Error: \(error)"
-            case .accountExistsWithDifferentCredential:
-                message = "Error: \(error)"
-            case .requiresRecentLogin:
-                message = "Error: \(error)"
-            case .providerAlreadyLinked:
-                message = "Error: \(error)"
-            case .noSuchProvider:
-                message = "Error: \(error)"
-            case .invalidUserToken:
-                message = "Error: \(error)"
-            case .networkError:
-                message = "Error: \(error)"
-            case .userTokenExpired:
-                message = "Error: \(error)"
-            case .invalidAPIKey:
-                message = "Error: \(error)"
-            case .userMismatch:
-                message = "Error: \(error)"
-            case .credentialAlreadyInUse:
-                message = "Error: \(error)"
-            case .weakPassword:
-                message = "Error: \(error)"
-            case .appNotAuthorized:
-                message = "Error: \(error)"
-            case .expiredActionCode:
-                message = "Error: \(error)"
-            case .invalidActionCode:
-                message = "Error: \(error)"
-            case .invalidMessagePayload:
-                message = "Error: \(error)"
-            case .invalidSender:
-                message = "Error: \(error)"
-            case .invalidRecipientEmail:
-                message = "Error: \(error)"
-            case .missingEmail:
-                message = "Error: \(error)"
-            case .missingIosBundleID:
-                message = "Error: \(error)"
-            case .missingAndroidPackageName:
-                message = "Error: \(error)"
-            case .unauthorizedDomain:
-                message = "Error: \(error)"
-            case .invalidContinueURI:
-                message = "Error: \(error)"
-            case .missingContinueURI:
-                message = "Error: \(error)"
-            case .missingPhoneNumber:
-                message = "Error: \(error)"
-            case .invalidPhoneNumber:
-                message = "Error: \(error)"
-            case .missingVerificationCode:
-                message = "Error: \(error)"
-            case .invalidVerificationCode:
-                message = "Error: \(error)"
-            case .missingVerificationID:
-                message = "Error: \(error)"
-            case .invalidVerificationID:
-                message = "Error: \(error)"
-            case .missingAppCredential:
-                message = "Error: \(error)"
-            case .invalidAppCredential:
-                message = "Error: \(error)"
-            case .sessionExpired:
-                message = "Error: \(error)"
-            case .quotaExceeded:
-                message = "Error: \(error)"
-            case .missingAppToken:
-                message = "Error: \(error)"
-            case .notificationNotForwarded:
-                message = "Error: \(error)"
-            case .appNotVerified:
-                message = "Error: \(error)"
-            case .captchaCheckFailed:
-                message = "Error: \(error)"
-            case .webContextAlreadyPresented:
-                message = "Error: \(error)"
-            case .webContextCancelled:
-                message = "Error: \(error)"
-            case .appVerificationUserInteractionFailure:
-                message = "Error: \(error)"
-            case .invalidClientID:
-                message = "Error: \(error)"
-            case .webNetworkRequestFailed:
-                message = "Error: \(error)"
-            case .webInternalError:
-                message = "Error: \(error)"
-            case .webSignInUserInteractionFailure:
-                message = "Error: \(error)"
-            case .localPlayerNotAuthenticated:
-                message = "Error: \(error)"
-            case .nullUser:
-                message = "Error: \(error)"
-            case .dynamicLinkNotActivated:
-                message = "Error: \(error)"
-            case .invalidProviderID:
-                message = "Error: \(error)"
-            case .invalidDynamicLinkDomain:
-                message = "Error: \(error)"
-            case .rejectedCredential:
-                message = "Error: \(error)"
-            case .gameKitNotLinked:
-                message = "Error: \(error)"
-            case .missingOrInvalidNonce:
-                message = "Error: \(error)"
-            case .missingClientIdentifier:
-                message = "Error: \(error)"
-            case .keychainError:
-                message = "Error: \(error)"
-            case .internalError:
-                message = "Error: \(error)"
-            case .malformedJWT:
-                message = "Error: \(error)"
-            @unknown default:
-                message = "Error: Unknown error: \(error)"
-            }
-        } else {
-            message = ""
-        }
+        
+        message = convertFirestoreError(error) ?? convertAuthError(error) ?? "Unknown error !"
+        
         return message
     }
     
-    private func convertAuthError(_ error: Error) throws -> AuthErrorCode {
+    private func convertAuthError(_ error: Error) -> String? { // swiftlint:disable:this cyclomatic_complexity function_body_length line_length
+
         guard let errCode = AuthErrorCode(rawValue: error._code) else {
-            throw FIRInterfaceError.unableToDecodeError
+            return nil
         }
         
-        return errCode
+        let message: String
+        
+        switch errCode {
+        case .invalidCustomToken:
+            message = "\(errCode)"
+        case .customTokenMismatch:
+            message = "\(errCode)"
+        case .invalidCredential:
+            message = "\(errCode)"
+        case .userDisabled:
+            message = "\(errCode)"
+        case .operationNotAllowed:
+            message = "\(errCode)"
+        case .emailAlreadyInUse:
+            message = "\(errCode)"
+        case .invalidEmail:
+            message = "\(errCode)"
+        case .wrongPassword:
+            message = "\(errCode)"
+        case .tooManyRequests:
+            message = "\(errCode)"
+        case .userNotFound:
+            message = "userNotFound"
+        case .accountExistsWithDifferentCredential:
+            message = "\(errCode)"
+        case .requiresRecentLogin:
+            message = "\(errCode)"
+        case .providerAlreadyLinked:
+            message = "\(errCode)"
+        case .noSuchProvider:
+            message = "\(errCode)"
+        case .invalidUserToken:
+            message = "\(errCode)"
+        case .networkError:
+            message = "\(errCode)"
+        case .userTokenExpired:
+            message = "\(errCode)"
+        case .invalidAPIKey:
+            message = "\(errCode)"
+        case .userMismatch:
+            message = "\(errCode)"
+        case .credentialAlreadyInUse:
+            message = "\(errCode)"
+        case .weakPassword:
+            message = "\(errCode)"
+        case .appNotAuthorized:
+            message = "\(errCode)"
+        case .expiredActionCode:
+            message = "\(errCode)"
+        case .invalidActionCode:
+            message = "\(errCode)"
+        case .invalidMessagePayload:
+            message = "\(errCode)"
+        case .invalidSender:
+            message = "\(errCode)"
+        case .invalidRecipientEmail:
+            message = "\(errCode)"
+        case .missingEmail:
+            message = "\(errCode)"
+        case .missingIosBundleID:
+            message = "\(errCode)"
+        case .missingAndroidPackageName:
+            message = "\(errCode)"
+        case .unauthorizedDomain:
+            message = "\(errCode)"
+        case .invalidContinueURI:
+            message = "\(errCode)"
+        case .missingContinueURI:
+            message = "\(errCode)"
+        case .missingPhoneNumber:
+            message = "\(errCode)"
+        case .invalidPhoneNumber:
+            message = "\(errCode)"
+        case .missingVerificationCode:
+            message = "\(errCode)"
+        case .invalidVerificationCode:
+            message = "\(errCode)"
+        case .missingVerificationID:
+            message = "\(errCode)"
+        case .invalidVerificationID:
+            message = "\(errCode)"
+        case .missingAppCredential:
+            message = "\(errCode)"
+        case .invalidAppCredential:
+            message = "\(errCode)"
+        case .sessionExpired:
+            message = "\(errCode)"
+        case .quotaExceeded:
+            message = "\(errCode)"
+        case .missingAppToken:
+            message = "\(errCode)"
+        case .notificationNotForwarded:
+            message = "\(errCode)"
+        case .appNotVerified:
+            message = "\(errCode)"
+        case .captchaCheckFailed:
+            message = "\(errCode)"
+        case .webContextAlreadyPresented:
+            message = "\(errCode)"
+        case .webContextCancelled:
+            message = "\(errCode)"
+        case .appVerificationUserInteractionFailure:
+            message = "\(errCode)"
+        case .invalidClientID:
+            message = "\(errCode)"
+        case .webNetworkRequestFailed:
+            message = "\(errCode)"
+        case .webInternalError:
+            message = "\(errCode)"
+        case .webSignInUserInteractionFailure:
+            message = "\(errCode)"
+        case .localPlayerNotAuthenticated:
+            message = "\(errCode)"
+        case .nullUser:
+            message = "\(errCode)"
+        case .dynamicLinkNotActivated:
+            message = "\(errCode)"
+        case .invalidProviderID:
+            message = "\(errCode)"
+        case .invalidDynamicLinkDomain:
+            message = "\(errCode)"
+        case .rejectedCredential:
+            message = "\(errCode)"
+        case .gameKitNotLinked:
+            message = "\(errCode)"
+        case .missingOrInvalidNonce:
+            message = "\(errCode)"
+        case .missingClientIdentifier:
+            message = "\(errCode)"
+        case .keychainError:
+            message = "\(errCode)"
+        case .internalError:
+            message = "\(errCode)"
+        case .malformedJWT:
+            message = "\(errCode)"
+        @unknown default:
+            return nil
+        }
+        
+        return message
+    }
+    
+    func convertFirestoreError(_ error: Error) -> String? { // swiftlint:disable:this cyclomatic_complexity line_length function_body_length
+        guard let errCode = FirestoreErrorCode(rawValue: error._code) else {
+            return nil
+        }
+        
+        let message: String
+        
+        switch errCode {
+        case .OK:
+            message = "\(errCode)"
+        case .cancelled:
+            message = "\(errCode)"
+        case .unknown:
+            message = "\(errCode)"
+        case .invalidArgument:
+            message = "\(errCode)"
+        case .deadlineExceeded:
+            message = "\(errCode)"
+        case .notFound:
+            message = "\(errCode)"
+        case .alreadyExists:
+            message = "\(errCode)"
+        case .permissionDenied:
+            message = "\(errCode)"
+        case .resourceExhausted:
+            message = "\(errCode)"
+        case .failedPrecondition:
+            message = "\(errCode)"
+        case .aborted:
+            message = "\(errCode)"
+        case .outOfRange:
+            message = "\(errCode)"
+        case .unimplemented:
+            message = "\(errCode)"
+        case .internal:
+            message = "\(errCode)"
+        case .unavailable:
+            message = "\(errCode)"
+        case .dataLoss:
+            message = "\(errCode)"
+        case .unauthenticated:
+            message = "\(errCode)"
+        @unknown default:
+            return nil
+        }
+        
+        return message
     }
 }

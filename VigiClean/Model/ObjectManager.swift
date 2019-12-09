@@ -25,7 +25,7 @@ class ObjectManager {
         let docRef = database.collection("Object").document(code)
         docRef.getDocument { (document, error) in
             guard let document = document, document.exists else {
-                callback(error)
+                callback(error ?? FIRInterfaceError.documentDoesNotExists)
                 return
             }
             

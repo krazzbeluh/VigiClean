@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LaunchViewPresenter {
+protocol LaunchViewPresenter: BasePresenter {
     init(view: LaunchView)
     var accountManager: AccountManager { get }
 }
