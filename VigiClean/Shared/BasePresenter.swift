@@ -13,10 +13,11 @@ import FirebaseFirestore
 class BasePresenter {
     func convertAlert(with error: Error) -> String {
         let message: String
-        // TODO: review method. convertAuthError never throws
-        // TODO: scannerError, FireStoreError, ObjectError, UAccountError, FIRInterfaceError, UIError
         
-        message = convertFirestoreError(error) ?? convertAuthError(error) ?? "Unknown error !"
+        message = convertVigiCleanError(error)
+            ?? convertFirestoreError(error)
+            ?? convertAuthError(error)
+            ?? "Unknown error !"
         
         return message
     }
@@ -216,5 +217,19 @@ class BasePresenter {
         }
         
         return message
+    }
+    
+    func convertVigiCleanError(_ error: Error) -> String? {
+        if let error = error as? Scanner.ScannerError {
+            return "\(error)"
+        } else if let error = error as? ObjectManager.ObjectError {
+            return "\(error)"
+        } else if let error = error as? AccountManager.UAccountError {
+            return "\(error)"
+        } else if let error = error as? FIRInterfaceError {
+            return "\(error)"
+        } else {
+            return nil
+        }
     }
 }

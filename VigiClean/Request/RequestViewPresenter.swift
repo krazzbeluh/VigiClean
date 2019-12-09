@@ -12,10 +12,6 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
     let accountManager = AccountManager()
     let objectManager = ObjectManager()
     
-    enum UIErrors: Error {
-        case nilInTextField
-    }
-    
     var actions: [String] {
         guard let object = Object.currentObject else {
             return ["1 - autre"]
