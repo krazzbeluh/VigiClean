@@ -24,7 +24,7 @@ class ScoreViewPresenter: ScoreViewPresenterContract {
     }
     
     func getColorCode(for score: Int) -> Color {
-        return Color(r: redValue(for: score), g: greenValue(for: score), b: 0, a: 1)
+        return Color(red: redValue(for: score), green: greenValue(for: score), blue: 0, alpha: 1)
     }
     
     private func redValue(for score: Int) -> Double {

@@ -11,8 +11,6 @@ import FirebaseFirestore
 
 class Object {
     
-    let accountManager = AccountManager()
-    
     // MARK: Properties
     let coords: GeoPoint
     let organization: String

@@ -15,7 +15,6 @@
 		941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F7E1A237B084400044A0D /* ProfileViewController.swift */; };
 		94504A4B238219FC0054BE70 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 94504A4A238219FC0054BE70 /* .swiftlint.yml */; };
 		94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */; };
-		94504A622382CD940054BE70 /* UserAccountTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A612382CD940054BE70 /* UserAccountTestCase.swift */; };
 		94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA4238583C90054BE70 /* SignInContracts.swift */; };
 		94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA723858CCF0054BE70 /* LaunchViewController.swift */; };
 		94623695239A9F780026DD95 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94623694239A9F780026DD95 /* GoogleService-Info.plist */; };
@@ -31,13 +30,6 @@
 		94BA1EEE238E6A3900FE19A1 /* AttachEmailContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EED238E6A3900FE19A1 /* AttachEmailContracts.swift */; };
 		94BA1EF0238E6A6B00FE19A1 /* ProfileContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EEF238E6A6B00FE19A1 /* ProfileContracts.swift */; };
 		94BA1EF2238E6AAA00FE19A1 /* WelcomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EF1238E6AAA00FE19A1 /* WelcomeContracts.swift */; };
-		94BA1EF42390060800FE19A1 /* FakeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EF32390060800FE19A1 /* FakeAuth.swift */; };
-		94BA1EF723900EF000FE19A1 /* FakeUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EF623900EF000FE19A1 /* FakeUser.swift */; };
-		94BA1EF923901E9200FE19A1 /* FakeServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EF823901E9200FE19A1 /* FakeServer.swift */; };
-		94BA1EFB2390267B00FE19A1 /* FakeAuthDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EFA2390267B00FE19A1 /* FakeAuthDataResult.swift */; };
-		94BA1F022390349900FE19A1 /* FakeFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F012390349900FE19A1 /* FakeFirestore.swift */; };
-		94BA1F042390350100FE19A1 /* FakeCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F032390350100FE19A1 /* FakeCollectionReference.swift */; };
-		94BA1F062390363700FE19A1 /* FakeDocumentReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */; };
 		94BA1F082395509600FE19A1 /* ScannerViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */; };
 		94BA1F0A239550EB00FE19A1 /* ScannerContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */; };
 		94BA1F132395A4F400FE19A1 /* RequestContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1F122395A4F400FE19A1 /* RequestContracts.swift */; };
@@ -56,6 +48,9 @@
 		94D20956239EBD9D0089759B /* ScoreContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D20955239EBD9D0089759B /* ScoreContracts.swift */; };
 		94D20958239EDE080089759B /* FirebaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D20957239EDE080089759B /* FirebaseInterface.swift */; };
 		94D2095A239EE14D0089759B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D20959239EE14D0089759B /* Color.swift */; };
+		94D20966239EE8030089759B /* AccountManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D20965239EE8030089759B /* AccountManagerTestCase.swift */; };
+		94D20969239EE9D10089759B /* AuthFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D20968239EE9D10089759B /* AuthFake.swift */; };
+		94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D2096A239EEB0B0089759B /* FirestoreFake.swift */; };
 		94DC7C20239ADA0E00C414DA /* ObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */; };
 		94EB57752372D8B800582990 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashboardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
@@ -63,20 +58,11 @@
 		94F0A02F2370A1CA00037210 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A02D2370A1CA00037210 /* Main.storyboard */; };
 		94F0A0312370A1CB00037210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0302370A1CB00037210 /* Assets.xcassets */; };
 		94F0A0342370A1CB00037210 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0322370A1CB00037210 /* LaunchScreen.storyboard */; };
-		94F0A04A2370A1CC00037210 /* VigiCleanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0492370A1CC00037210 /* VigiCleanUITests.swift */; };
-		ADFF9F63D49B040574129BAD /* Pods_VigiClean_VigiCleanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DD46DA58F2287BEA49BAA8 /* Pods_VigiClean_VigiCleanUITests.framework */; };
 		B1CCD79A18776965BE27E1E1 /* Pods_VigiClean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E107DF481DDA4A29EECFAF9 /* Pods_VigiClean.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		94F0A03B2370A1CC00037210 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94F0A01C2370A1CA00037210 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 94F0A0232370A1CA00037210;
-			remoteInfo = VigiClean;
-		};
-		94F0A0462370A1CC00037210 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94F0A01C2370A1CA00037210 /* Project object */;
 			proxyType = 1;
@@ -98,7 +84,6 @@
 		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = VigiClean/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		94504A4A238219FC0054BE70 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
-		94504A612382CD940054BE70 /* UserAccountTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserAccountTestCase.swift; path = VigiClean/UserAccountTestCase.swift; sourceTree = SOURCE_ROOT; };
 		94504AA4238583C90054BE70 /* SignInContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContracts.swift; sourceTree = "<group>"; };
 		94504AA723858CCF0054BE70 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		94623694239A9F780026DD95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -114,13 +99,6 @@
 		94BA1EED238E6A3900FE19A1 /* AttachEmailContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailContracts.swift; sourceTree = "<group>"; };
 		94BA1EEF238E6A6B00FE19A1 /* ProfileContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContracts.swift; sourceTree = "<group>"; };
 		94BA1EF1238E6AAA00FE19A1 /* WelcomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeContracts.swift; sourceTree = "<group>"; };
-		94BA1EF32390060800FE19A1 /* FakeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeAuth.swift; path = VigiClean/FakeAuth.swift; sourceTree = SOURCE_ROOT; };
-		94BA1EF623900EF000FE19A1 /* FakeUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUser.swift; sourceTree = "<group>"; };
-		94BA1EF823901E9200FE19A1 /* FakeServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeServer.swift; sourceTree = "<group>"; };
-		94BA1EFA2390267B00FE19A1 /* FakeAuthDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthDataResult.swift; sourceTree = "<group>"; };
-		94BA1F012390349900FE19A1 /* FakeFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFirestore.swift; sourceTree = SOURCE_ROOT; };
-		94BA1F032390350100FE19A1 /* FakeCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCollectionReference.swift; sourceTree = SOURCE_ROOT; };
-		94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDocumentReference.swift; sourceTree = "<group>"; };
 		94BA1F072395509600FE19A1 /* ScannerViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewPresenter.swift; sourceTree = "<group>"; };
 		94BA1F09239550EB00FE19A1 /* ScannerContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerContracts.swift; sourceTree = "<group>"; };
 		94BA1F122395A4F400FE19A1 /* RequestContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestContracts.swift; sourceTree = "<group>"; };
@@ -139,6 +117,9 @@
 		94D20955239EBD9D0089759B /* ScoreContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreContracts.swift; sourceTree = "<group>"; };
 		94D20957239EDE080089759B /* FirebaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInterface.swift; sourceTree = "<group>"; };
 		94D20959239EE14D0089759B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		94D20965239EE8030089759B /* AccountManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagerTestCase.swift; sourceTree = "<group>"; };
+		94D20968239EE9D10089759B /* AuthFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFake.swift; sourceTree = "<group>"; };
+		94D2096A239EEB0B0089759B /* FirestoreFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFake.swift; sourceTree = "<group>"; };
 		94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectManager.swift; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -150,9 +131,6 @@
 		94F0A0352370A1CB00037210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F0A03A2370A1CC00037210 /* VigiCleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VigiCleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0A0402370A1CC00037210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94F0A0452370A1CC00037210 /* VigiCleanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VigiCleanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		94F0A0492370A1CC00037210 /* VigiCleanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VigiCleanUITests.swift; sourceTree = "<group>"; };
-		94F0A04B2370A1CC00037210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB9F459A37ABB10FE183AFA6 /* Pods-VigiClean-VigiCleanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean-VigiCleanUITests.release.xcconfig"; path = "Target Support Files/Pods-VigiClean-VigiCleanUITests/Pods-VigiClean-VigiCleanUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CFA8A988CB517D586C2E48AD /* Pods-VigiCleanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.debug.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F6BA5311AD8F45CF4137BD81 /* Pods-VigiClean-VigiCleanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean-VigiCleanUITests.debug.xcconfig"; path = "Target Support Files/Pods-VigiClean-VigiCleanUITests/Pods-VigiClean-VigiCleanUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,14 +151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				13E835E4B83E2DF9071BDF16 /* Pods_VigiCleanTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		94F0A0422370A1CC00037210 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ADFF9F63D49B040574129BAD /* Pods_VigiClean_VigiCleanUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,15 +250,6 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		94504A652382D1740054BE70 /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				94BA1EFE23902EF500FE19A1 /* Firestore */,
-				94BA1EF523900ED700FE19A1 /* Auth */,
-			);
-			name = Mock;
-			sourceTree = "<group>";
-		};
 		94623696239A9FCF0026DD95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,27 +271,6 @@
 				94504AA723858CCF0054BE70 /* LaunchViewController.swift */,
 			);
 			path = Launch;
-			sourceTree = "<group>";
-		};
-		94BA1EF523900ED700FE19A1 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				94BA1EF32390060800FE19A1 /* FakeAuth.swift */,
-				94BA1EF623900EF000FE19A1 /* FakeUser.swift */,
-				94BA1EFA2390267B00FE19A1 /* FakeAuthDataResult.swift */,
-				94BA1EF823901E9200FE19A1 /* FakeServer.swift */,
-			);
-			name = Auth;
-			sourceTree = "<group>";
-		};
-		94BA1EFE23902EF500FE19A1 /* Firestore */ = {
-			isa = PBXGroup;
-			children = (
-				94BA1F012390349900FE19A1 /* FakeFirestore.swift */,
-				94BA1F032390350100FE19A1 /* FakeCollectionReference.swift */,
-				94BA1F052390363700FE19A1 /* FakeDocumentReference.swift */,
-			);
-			name = Firestore;
 			sourceTree = "<group>";
 		};
 		94BE5AA02370A6C000CE3060 /* Supporting Files */ = {
@@ -366,6 +306,31 @@
 			path = ScoreView;
 			sourceTree = "<group>";
 		};
+		94D20967239EE9B90089759B /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				94D2096D239EF0F40089759B /* Auth */,
+				94D2096E239EF0F80089759B /* Firestore */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		94D2096D239EF0F40089759B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				94D20968239EE9D10089759B /* AuthFake.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		94D2096E239EF0F80089759B /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				94D2096A239EEB0B0089759B /* FirestoreFake.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
 		94F0A01B2370A1CA00037210 = {
 			isa = PBXGroup;
 			children = (
@@ -374,7 +339,6 @@
 				94BE5AA12370A81100CE3060 /* Podfile */,
 				94F0A0262370A1CA00037210 /* VigiClean */,
 				94F0A03D2370A1CC00037210 /* VigiCleanTests */,
-				94F0A0482370A1CC00037210 /* VigiCleanUITests */,
 				94F0A0252370A1CA00037210 /* Products */,
 				4D002501E48799779E32FE97 /* Pods */,
 				F11B4D88F71D3C0810F6B89A /* Frameworks */,
@@ -386,7 +350,6 @@
 			children = (
 				94F0A0242370A1CA00037210 /* VigiClean.app */,
 				94F0A03A2370A1CC00037210 /* VigiCleanTests.xctest */,
-				94F0A0452370A1CC00037210 /* VigiCleanUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -414,20 +377,11 @@
 		94F0A03D2370A1CC00037210 /* VigiCleanTests */ = {
 			isa = PBXGroup;
 			children = (
-				94504A612382CD940054BE70 /* UserAccountTestCase.swift */,
-				94504A652382D1740054BE70 /* Mock */,
+				94D20965239EE8030089759B /* AccountManagerTestCase.swift */,
+				94D20967239EE9B90089759B /* Mock */,
 				94F0A0402370A1CC00037210 /* Info.plist */,
 			);
 			path = VigiCleanTests;
-			sourceTree = "<group>";
-		};
-		94F0A0482370A1CC00037210 /* VigiCleanUITests */ = {
-			isa = PBXGroup;
-			children = (
-				94F0A0492370A1CC00037210 /* VigiCleanUITests.swift */,
-				94F0A04B2370A1CC00037210 /* Info.plist */,
-			);
-			path = VigiCleanUITests;
 			sourceTree = "<group>";
 		};
 		F11B4D88F71D3C0810F6B89A /* Frameworks */ = {
@@ -482,26 +436,6 @@
 			productReference = 94F0A03A2370A1CC00037210 /* VigiCleanTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		94F0A0442370A1CC00037210 /* VigiCleanUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 94F0A0542370A1CC00037210 /* Build configuration list for PBXNativeTarget "VigiCleanUITests" */;
-			buildPhases = (
-				BCEBCE06F7D71E33460D8AF0 /* [CP] Check Pods Manifest.lock */,
-				94F0A0412370A1CC00037210 /* Sources */,
-				94F0A0422370A1CC00037210 /* Frameworks */,
-				94F0A0432370A1CC00037210 /* Resources */,
-				9E227E100D7A89DB3838D30F /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				94F0A0472370A1CC00037210 /* PBXTargetDependency */,
-			);
-			name = VigiCleanUITests;
-			productName = VigiCleanUITests;
-			productReference = 94F0A0452370A1CC00037210 /* VigiCleanUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -517,10 +451,7 @@
 					};
 					94F0A0392370A1CC00037210 = {
 						CreatedOnToolsVersion = 11.1;
-						TestTargetID = 94F0A0232370A1CA00037210;
-					};
-					94F0A0442370A1CC00037210 = {
-						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1120;
 						TestTargetID = 94F0A0232370A1CA00037210;
 					};
 				};
@@ -540,7 +471,6 @@
 			targets = (
 				94F0A0232370A1CA00037210 /* VigiClean */,
 				94F0A0392370A1CC00037210 /* VigiCleanTests */,
-				94F0A0442370A1CC00037210 /* VigiCleanUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -568,13 +498,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		94F0A0432370A1CC00037210 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -594,23 +517,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		9E227E100D7A89DB3838D30F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VigiClean-VigiCleanUITests/Pods-VigiClean-VigiCleanUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VigiClean-VigiCleanUITests/Pods-VigiClean-VigiCleanUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VigiClean-VigiCleanUITests/Pods-VigiClean-VigiCleanUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		A373B4BBA02B7324A9FE59B0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -673,28 +579,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VigiClean/Pods-VigiClean-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BCEBCE06F7D71E33460D8AF0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VigiClean-VigiCleanUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -748,22 +632,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94BA1EF723900EF000FE19A1 /* FakeUser.swift in Sources */,
-				94BA1F022390349900FE19A1 /* FakeFirestore.swift in Sources */,
-				94BA1EF923901E9200FE19A1 /* FakeServer.swift in Sources */,
-				94BA1F062390363700FE19A1 /* FakeDocumentReference.swift in Sources */,
-				94BA1EFB2390267B00FE19A1 /* FakeAuthDataResult.swift in Sources */,
-				94BA1EF42390060800FE19A1 /* FakeAuth.swift in Sources */,
-				94504A622382CD940054BE70 /* UserAccountTestCase.swift in Sources */,
-				94BA1F042390350100FE19A1 /* FakeCollectionReference.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		94F0A0412370A1CC00037210 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				94F0A04A2370A1CC00037210 /* VigiCleanUITests.swift in Sources */,
+				94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */,
+				94D20969239EE9D10089759B /* AuthFake.swift in Sources */,
+				94D20966239EE8030089759B /* AccountManagerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,11 +645,6 @@
 			isa = PBXTargetDependency;
 			target = 94F0A0232370A1CA00037210 /* VigiClean */;
 			targetProxy = 94F0A03B2370A1CC00037210 /* PBXContainerItemProxy */;
-		};
-		94F0A0472370A1CC00037210 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 94F0A0232370A1CA00037210 /* VigiClean */;
-			targetProxy = 94F0A0462370A1CC00037210 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -859,6 +725,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -913,6 +780,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -966,6 +834,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QW59HMZCU4;
 				INFOPLIST_FILE = VigiCleanTests/Info.plist;
@@ -977,6 +846,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulleclerc.VigiCleanTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VigiClean.app/VigiClean";
@@ -989,6 +861,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QW59HMZCU4;
 				INFOPLIST_FILE = VigiCleanTests/Info.plist;
@@ -1000,51 +873,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulleclerc.VigiCleanTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VigiClean.app/VigiClean";
-			};
-			name = Release;
-		};
-		94F0A0552370A1CC00037210 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6BA5311AD8F45CF4137BD81 /* Pods-VigiClean-VigiCleanUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QW59HMZCU4;
-				INFOPLIST_FILE = VigiCleanUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulleclerc.VigiCleanUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = VigiClean;
-			};
-			name = Debug;
-		};
-		94F0A0562370A1CC00037210 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB9F459A37ABB10FE183AFA6 /* Pods-VigiClean-VigiCleanUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QW59HMZCU4;
-				INFOPLIST_FILE = VigiCleanUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulleclerc.VigiCleanUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = VigiClean;
 			};
 			name = Release;
 		};
@@ -1074,15 +907,6 @@
 			buildConfigurations = (
 				94F0A0522370A1CC00037210 /* Debug */,
 				94F0A0532370A1CC00037210 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		94F0A0542370A1CC00037210 /* Build configuration list for PBXNativeTarget "VigiCleanUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				94F0A0552370A1CC00037210 /* Debug */,
-				94F0A0562370A1CC00037210 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

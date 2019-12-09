@@ -21,8 +21,8 @@ class AccountManager {
         self.database = database
     }
     
-    let auth: Auth
-    let database: Firestore
+    var auth: Auth
+    var database: Firestore
     
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound
