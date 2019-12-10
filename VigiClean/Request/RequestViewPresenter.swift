@@ -12,6 +12,13 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
     let accountManager = AccountManager()
     let objectManager = ObjectManager()
     
+    var employeeMode = false
+    
+    func switchEmployeeMode(to employeeMode: Bool) {
+        self.employeeMode = employeeMode
+        print(employeeMode)
+    }
+    
     var actions: [String] {
         guard let object = Object.currentObject else {
             return ["1 - autre"]
@@ -19,8 +26,14 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         
         var actions = [String]()
         
-        for index in 1 ... object.actions.count {
-            actions.append("\(index) - \(object.actions[index - 1])")
+        if !employeeMode {
+            for index in 1 ... object.actions.count {
+                actions.append("\(index) - \(object.actions[index - 1])")
+            }
+        } else {
+            for index in 1 ... object.employeeActions.count {
+                actions.append("\(index) - \(object.employeeActions[index - 1])")
+            }
         }
         
         actions.append("\(actions.count + 1) - Autre")
@@ -38,6 +51,18 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         }
         
         view.configure(with: object)
+    }
+    
+    func fetchRole(callback: @escaping (Bool) -> Void) {
+        accountManager.fetchRole { result in
+            switch result {
+            case .success(let isEmployee):
+                callback(isEmployee)
+            case .failure(let error):
+                print(error)
+                callback(false)
+            }
+        }
     }
     
     func sendRequest(with action: String) {

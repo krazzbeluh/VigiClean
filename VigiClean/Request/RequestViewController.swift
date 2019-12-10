@@ -21,6 +21,8 @@ class RequestViewController: UIViewController, RequestView {
     @IBOutlet weak var organizationLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var action: UITextField!
+    @IBOutlet weak var employeeLabel: UILabel!
+    @IBOutlet weak var switchMode: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,15 @@ class RequestViewController: UIViewController, RequestView {
         action.inputView = myPicker
         
         action.text = presenter.actions.first
+        
+        presenter.fetchRole { isEmployee in
+            self.employeeLabel.isHidden = !isEmployee
+            self.switchMode.isHidden = !isEmployee
+            self.switchMode.isOn = isEmployee
+        }
+        
+        switchMode.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+
     }
     
     // MARK: Methods
@@ -48,6 +59,11 @@ class RequestViewController: UIViewController, RequestView {
     
     func requestSent() {
         performSegue(withIdentifier: "segueToCongrats", sender: self)
+    }
+    
+    @objc func switchChanged(mySwitch: UISwitch) {
+        let value = mySwitch.isOn
+        presenter.switchEmployeeMode(to: value)
     }
     
     // MARK: Actions

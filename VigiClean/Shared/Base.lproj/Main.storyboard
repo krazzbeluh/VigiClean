@@ -626,6 +626,16 @@
                                     <constraint firstAttribute="width" secondItem="28W-cM-aCX" secondAttribute="height" multiplier="1:1" id="Arx-au-Xjl"/>
                                 </constraints>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode employé" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caO-V8-mdF">
+                                <rect key="frame" x="20" y="608" width="317" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4kh-P9-ekn">
+                                <rect key="frame" x="345" y="603" width="51" height="31"/>
+                                <color key="onTintColor" name="VigiClean"/>
+                            </switch>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBJ-uc-gFq">
                                 <rect key="frame" x="20" y="654" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -669,13 +679,16 @@
                             <constraint firstItem="uOY-5S-RB7" firstAttribute="leading" secondItem="ERu-e3-KkG" secondAttribute="leading" constant="20" id="BeX-9Z-v76"/>
                             <constraint firstItem="UBJ-uc-gFq" firstAttribute="width" secondItem="uOY-5S-RB7" secondAttribute="width" id="CBv-7I-9ZW"/>
                             <constraint firstItem="UBJ-uc-gFq" firstAttribute="top" secondItem="28W-cM-aCX" secondAttribute="bottom" constant="80" id="CXo-fY-Cln"/>
+                            <constraint firstItem="ERu-e3-KkG" firstAttribute="trailing" secondItem="4kh-P9-ekn" secondAttribute="trailing" constant="20" id="Egr-yF-NqF"/>
                             <constraint firstItem="Kld-xZ-Woz" firstAttribute="top" secondItem="ERu-e3-KkG" secondAttribute="top" id="Fsc-tt-jSm"/>
                             <constraint firstItem="ssx-d7-4x4" firstAttribute="centerX" secondItem="Dvp-ds-bLN" secondAttribute="centerX" id="Htn-1f-g4P"/>
                             <constraint firstItem="1wy-ol-9kU" firstAttribute="centerX" secondItem="Dvp-ds-bLN" secondAttribute="centerX" id="M0W-rm-K3P"/>
+                            <constraint firstItem="4kh-P9-ekn" firstAttribute="leading" secondItem="caO-V8-mdF" secondAttribute="trailing" constant="8" id="QKI-Du-H5m"/>
                             <constraint firstItem="vxg-xO-ZrW" firstAttribute="top" secondItem="vFi-el-SC3" secondAttribute="top" id="Qq2-9C-dED"/>
                             <constraint firstItem="Sz2-hT-8hb" firstAttribute="centerY" secondItem="vFi-el-SC3" secondAttribute="centerY" id="WMm-eY-ae1"/>
                             <constraint firstItem="1wy-ol-9kU" firstAttribute="width" secondItem="Dvp-ds-bLN" secondAttribute="width" id="Wpz-c5-kaX"/>
                             <constraint firstItem="uOY-5S-RB7" firstAttribute="centerX" secondItem="vFi-el-SC3" secondAttribute="centerX" id="XFk-kR-u2N"/>
+                            <constraint firstItem="caO-V8-mdF" firstAttribute="centerY" secondItem="4kh-P9-ekn" secondAttribute="centerY" id="ZsK-d8-vKw"/>
                             <constraint firstItem="ssx-d7-4x4" firstAttribute="width" secondItem="Dvp-ds-bLN" secondAttribute="width" id="aIb-dO-y4m"/>
                             <constraint firstItem="Sz2-hT-8hb" firstAttribute="centerX" secondItem="vFi-el-SC3" secondAttribute="centerX" id="aOJ-Rj-db3"/>
                             <constraint firstItem="1wy-ol-9kU" firstAttribute="top" secondItem="HtE-hg-avV" secondAttribute="bottom" constant="20" id="aW4-HF-IYY"/>
@@ -690,7 +703,9 @@
                             <constraint firstItem="HtE-hg-avV" firstAttribute="height" secondItem="vFi-el-SC3" secondAttribute="height" multiplier="0.13" id="nMD-ZQ-2eg"/>
                             <constraint firstItem="ssx-d7-4x4" firstAttribute="top" secondItem="Dvp-ds-bLN" secondAttribute="bottom" constant="8" id="q9E-uV-vPh"/>
                             <constraint firstItem="UBJ-uc-gFq" firstAttribute="centerX" secondItem="uOY-5S-RB7" secondAttribute="centerX" id="t9C-zh-7BE"/>
+                            <constraint firstItem="caO-V8-mdF" firstAttribute="leading" secondItem="ERu-e3-KkG" secondAttribute="leading" constant="20" id="tiU-lk-AHE"/>
                             <constraint firstItem="28W-cM-aCX" firstAttribute="top" secondItem="ssx-d7-4x4" secondAttribute="bottom" constant="12" id="waD-Eo-TcA"/>
+                            <constraint firstItem="UBJ-uc-gFq" firstAttribute="top" secondItem="4kh-P9-ekn" secondAttribute="bottom" constant="20" id="wcU-31-hSU"/>
                             <constraint firstItem="HtE-hg-avV" firstAttribute="trailing" secondItem="ERu-e3-KkG" secondAttribute="trailing" id="y4r-Qw-X6p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ERu-e3-KkG"/>
@@ -702,9 +717,11 @@
                     <connections>
                         <outlet property="action" destination="UBJ-uc-gFq" id="G3L-Pb-Cb7"/>
                         <outlet property="activityIndicator" destination="Sz2-hT-8hb" id="3HY-GU-SfG"/>
+                        <outlet property="employeeLabel" destination="caO-V8-mdF" id="7op-3B-4t2"/>
                         <outlet property="grayOutView" destination="vxg-xO-ZrW" id="Zew-Rj-Sl0"/>
                         <outlet property="nameLabel" destination="Dvp-ds-bLN" id="b6o-1s-mhG"/>
                         <outlet property="organizationLabel" destination="1wy-ol-9kU" id="8Dq-7b-Y12"/>
+                        <outlet property="switchMode" destination="4kh-P9-ekn" id="zsz-o8-eEn"/>
                         <outlet property="typeLabel" destination="ssx-d7-4x4" id="bHC-xx-Hm5"/>
                         <segue destination="LtL-1J-3O1" kind="show" identifier="segueToCongrats" id="7CM-EY-VzZ"/>
                     </connections>

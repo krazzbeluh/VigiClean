@@ -134,7 +134,6 @@ class AccountManager {
         }
     }
     
-    // MARK: Tests
     func listenForUserCreditsChanges(onChange userCreditsChanged: @escaping (Int) -> Void) {
         database.collection("User").document(currentUser?.uid ?? "")
             .addSnapshotListener { documentSnapshot, error in
@@ -154,6 +153,31 @@ class AccountManager {
                 }
                 
                 userCreditsChanged(credits)
+        }
+    }
+    
+    func fetchRole(callback: @escaping (Result<Bool, Error>) -> Void) {
+        guard let uid = currentUser?.uid else {
+            return
+        }
+        
+        database.collection("User").document(uid).getDocument { document, error in
+            if let error = error {
+                callback(.failure(error))
+            }
+            
+            guard let document = document, document.exists else {
+                callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                return
+            }
+            
+            guard let data = document.data(),
+            let role = data["isMaintainer"] as? Bool else {
+                callback(.failure(FirebaseInterface.FIRInterfaceError.unableToDecodeData))
+                return
+            }
+            
+            callback(.success(role))
         }
     }
 }

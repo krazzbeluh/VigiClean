@@ -36,14 +36,23 @@ class ObjectManager {
             
             self.getActions(for: type) { result in
                 switch result {
-                case .success(let actions):
-                    Object.currentObject = Object(coords: coords,
-                                           organization: organization,
-                                           type: type,
-                                           name: name,
-                                           code: code,
-                                           actions: actions)
-                    callback(nil)
+                case .success(let userActions):
+                    self.getEmployeeActions(for: type) { result in
+                        switch result {
+                        case .success(let employeeActions):
+                            Object.currentObject = Object(coords: coords,
+                            organization: organization,
+                            type: type,
+                            name: name,
+                            code: code,
+                            userActions: userActions,
+                            employeeActions: employeeActions)
+
+                            callback(nil)
+                        case .failure(let error):
+                            callback(error)
+                        }
+                    }
                 case .failure(let error):
                     callback(error)
                 }
@@ -72,6 +81,34 @@ class ObjectManager {
             var actions = [String]()
             
             for (action, _) in data {
+                actions.append(action)
+            }
+
+            callback(.success(actions))
+        }
+    }
+    
+    private func getEmployeeActions(for type: String, callback: @escaping (Result<[String], Error>) -> Void) {
+        let docRef = database.collection("performedActions").document(type)
+        docRef.getDocument { document, error in
+            if let error = error {
+                callback(.failure(error))
+                return
+            }
+            
+            guard let document = document, document.exists else {
+                callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                return
+            }
+            
+            guard let data = document.data() as? [String: String] else {
+                callback(.failure(ObjectError.unableToDecodeData))
+                return
+            }
+            
+            var actions = [String]()
+            
+            for (_, action) in data {
                 actions.append(action)
             }
 

@@ -19,14 +19,22 @@ class Object {
     let code: String
     
     let actions: [String]
+    let employeeActions: [String]
     
-    init(coords: GeoPoint, organization: String, type: String, name: String, code: String, actions: [String]) {
+    init(coords: GeoPoint,
+         organization: String,
+         type: String,
+         name: String,
+         code: String,
+         userActions: [String],
+         employeeActions: [String]) {
         self.coords = coords
         self.organization = organization
         self.type = type
         self.name = name
         self.code = code
-        self.actions = actions
+        self.actions = userActions
+        self.employeeActions = employeeActions
     }
     
     static var currentObject: Object?
