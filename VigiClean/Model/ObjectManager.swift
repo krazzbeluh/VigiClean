@@ -41,13 +41,13 @@ class ObjectManager {
                         switch result {
                         case .success(let employeeActions):
                             Object.currentObject = Object(coords: coords,
-                            organization: organization,
-                            type: type,
-                            name: name,
-                            code: code,
-                            userActions: userActions,
-                            employeeActions: employeeActions)
-
+                                                          organization: organization,
+                                                          type: type,
+                                                          name: name,
+                                                          code: code,
+                                                          userActions: userActions,
+                                                          employeeActions: employeeActions)
+                            
                             callback(nil)
                         case .failure(let error):
                             callback(error)
@@ -60,7 +60,7 @@ class ObjectManager {
         }
     }
     
-    private func getActions(for type: String, callback: @escaping (Result<[String], Error>) -> Void) {
+    private func getActions(for type: String, callback: @escaping (Result<[Action], Error>) -> Void) {
         let docRef = database.collection("actions").document(type)
         docRef.getDocument { document, error in
             if let error = error {
@@ -78,17 +78,19 @@ class ObjectManager {
                 return
             }
             
-            var actions = [String]()
+            var actions = [Action]()
             
-            for (action, _) in data {
-                actions.append(action)
+            for (strIndex, action) in data {
+                if let index = Int(strIndex) {
+                    actions.append(Action(index: index, message: action))
+                }
             }
-
+            
             callback(.success(actions))
         }
     }
     
-    private func getEmployeeActions(for type: String, callback: @escaping (Result<[String], Error>) -> Void) {
+    private func getEmployeeActions(for type: String, callback: @escaping (Result<[Action], Error>) -> Void) {
         let docRef = database.collection("performedActions").document(type)
         docRef.getDocument { document, error in
             if let error = error {
@@ -106,17 +108,19 @@ class ObjectManager {
                 return
             }
             
-            var actions = [String]()
+            var actions = [Action]()
             
-            for (_, action) in data {
-                actions.append(action)
+            for (strIndex, action) in data {
+                if let index = Int(strIndex) {
+                    actions.append(Action(index: index, message: action))
+                }
             }
-
+            
             callback(.success(actions))
         }
     }
     
-    func sendRequest(for object: Object, with action: String, callback: @escaping (Error?) -> Void) {
+    func sendRequest(for object: Object, with action: Action, callback: @escaping (Error?) -> Void) {
         guard let uid = accountManager.currentUser?.uid else {
             callback(ObjectError.userNotLoggedIn)
             return
@@ -124,12 +128,42 @@ class ObjectManager {
         
         database.collection("Request").addDocument(data: [
             "code": object.code,
-            "action": action,
+            "action": action.index,
             "date": Date(),
             "user": uid,
             "isValidOperation": NSNull()
         ]) { error in
             callback(error)
+        }
+    }
+    
+    func resolvedRequest(for object: Object, with action: Action, callback: @escaping(Error?) -> Void) {
+        print(action)
+        
+        let docRef = database.collection("Request")
+            .whereField("code", isEqualTo: object.code)
+            .whereField("action", isEqualTo: action.index)
+            .whereField("isValidOperation", isEqualTo: NSNull())
+        
+        docRef.getDocuments { (snapshot, error) in
+            guard error == nil else {
+                callback(error)
+                return
+            }
+            
+            // Get new write batch
+            let batch = self.database.batch()
+            
+            for document in snapshot!.documents {
+                batch.updateData(["isValidOperation": true], forDocument: document.reference)
+            }
+            
+            batch.commit { error in
+                if let error = error {
+                    print("Error writing batch \(error)")
+                }
+                callback(error)
+            }
         }
     }
 }

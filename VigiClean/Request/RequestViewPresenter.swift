@@ -21,22 +21,22 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
     
     var actions: [String] {
         guard let object = Object.currentObject else {
-            return ["1 - autre"]
+            return ["Autre"]
         }
         
         var actions = [String]()
         
         if !employeeMode {
             for index in 1 ... object.actions.count {
-                actions.append("\(index) - \(object.actions[index - 1])")
+                actions.append(object.actions[index - 1].message)
             }
         } else {
             for index in 1 ... object.employeeActions.count {
-                actions.append("\(index) - \(object.employeeActions[index - 1])")
+                actions.append(object.employeeActions[index - 1].message)
             }
         }
         
-        actions.append("\(actions.count + 1) - Autre")
+        actions.append("Autre")
         
         return actions
     }
@@ -71,20 +71,51 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             return
         }
         
-        objectManager.sendRequest(for: object, with: action) { error in
-            if let error = error {
-                self.view.sendAlert(message: self.convertAlert(with: error))
+        if !employeeMode {
+            var sendingAction: Action?
+            for act in object.actions where act.message == action {
+                sendingAction = act
+                break
+            }
+            
+            guard let action = sendingAction else {
                 return
             }
             
-            self.accountManager.giveCredits { (error) in
+            objectManager.sendRequest(for: object, with: action) { error in
                 if let error = error {
                     self.view.sendAlert(message: self.convertAlert(with: error))
                     return
                 }
+                
+                self.accountManager.giveCredits { (error) in
+                    if let error = error {
+                        self.view.sendAlert(message: self.convertAlert(with: error))
+                        return
+                    }
+                }
+                
+                self.view.requestSent()
+            }
+        } else {
+            var sendingAction: Action?
+            for act in object.employeeActions where act.message == action {
+                sendingAction = act
+                break
             }
             
-            self.view.requestSent()
+            guard let action = sendingAction else {
+                return
+            }
+            
+            objectManager.resolvedRequest(for: object, with: action) { (error) in
+                if let error = error {
+                    self.view.sendAlert(message: self.convertAlert(with: error))
+                    return
+                }
+                
+            }
         }
+        
     }
 }

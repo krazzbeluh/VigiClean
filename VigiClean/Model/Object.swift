@@ -18,16 +18,16 @@ class Object {
     let name: String
     let code: String
     
-    let actions: [String]
-    let employeeActions: [String]
+    let actions: [Action]
+    let employeeActions: [Action]
     
     init(coords: GeoPoint,
          organization: String,
          type: String,
          name: String,
          code: String,
-         userActions: [String],
-         employeeActions: [String]) {
+         userActions: [Action],
+         employeeActions: [Action]) {
         self.coords = coords
         self.organization = organization
         self.type = type
