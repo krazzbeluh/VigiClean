@@ -591,12 +591,27 @@
                                         <color key="textColor" name="Background"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJT-RR-Rkx">
+                                        <rect key="frame" x="20" y="39.666666666666664" width="30" height="29.999999999999993"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="eJT-RR-Rkx" secondAttribute="height" multiplier="1:1" id="fYK-A4-22r"/>
+                                            <constraint firstAttribute="width" constant="30" id="n8f-Kh-f0J"/>
+                                        </constraints>
+                                        <state key="normal" image="Close">
+                                            <color key="titleColor" name="Background"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="uGM-jn-ltq" kind="unwind" unwindAction="unwindToDashboardWithSegue:" id="n7N-yd-ZJV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="VigiClean"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Kld-xZ-Woz" secondAttribute="bottom" id="EuI-pR-Ns0"/>
                                     <constraint firstAttribute="trailing" secondItem="Kld-xZ-Woz" secondAttribute="trailing" id="U5G-rJ-Rbz"/>
                                     <constraint firstItem="Kld-xZ-Woz" firstAttribute="leading" secondItem="HtE-hg-avV" secondAttribute="leading" id="t0G-8K-tFG"/>
+                                    <constraint firstItem="eJT-RR-Rkx" firstAttribute="centerY" secondItem="Kld-xZ-Woz" secondAttribute="centerY" id="vSo-33-cdB"/>
+                                    <constraint firstItem="eJT-RR-Rkx" firstAttribute="leading" secondItem="HtE-hg-avV" secondAttribute="leading" constant="20" id="yXq-ba-P51"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wy-ol-9kU">
@@ -727,6 +742,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dro-NE-cEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="uGM-jn-ltq" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="cU5-ez-Oaq">
                     <connections>
                         <action selector="dismissSelector:" destination="GWr-bf-MJh" id="Npo-Le-fdr"/>
