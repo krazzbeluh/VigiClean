@@ -16,12 +16,9 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
     
     func switchEmployeeMode(to employeeMode: Bool) {
         self.employeeMode = employeeMode
-        print(employeeMode)
     }
     
     var actions: [String] {
-        
-        print(employeeMode)
         guard let object = Object.currentObject else {
             return ["Autre"]
         }

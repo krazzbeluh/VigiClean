@@ -138,8 +138,6 @@ class ObjectManager {
     }
     
     func resolvedRequest(for object: Object, with action: Action, callback: @escaping(Error?) -> Void) {
-        print(action)
-        
         let docRef = database.collection("Request")
             .whereField("code", isEqualTo: object.code)
             .whereField("action", isEqualTo: action.index)
