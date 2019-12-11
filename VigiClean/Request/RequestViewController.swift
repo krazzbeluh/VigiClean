@@ -33,12 +33,12 @@ class RequestViewController: UIViewController, RequestView {
         myPicker.dataSource = self
         action.inputView = myPicker
         
-        action.text = presenter.actions.first
-        
         presenter.fetchRole { isEmployee in
             self.employeeLabel.isHidden = !isEmployee
             self.switchMode.isHidden = !isEmployee
             self.switchMode.isOn = isEmployee
+            self.switchChanged(mySwitch: self.switchMode)
+            self.action.text = self.presenter.actions.first
         }
         
         switchMode.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
@@ -64,6 +64,7 @@ class RequestViewController: UIViewController, RequestView {
     @objc func switchChanged(mySwitch: UISwitch) {
         let value = mySwitch.isOn
         presenter.switchEmployeeMode(to: value)
+        action.text = presenter.actions.first
     }
     
     // MARK: Actions

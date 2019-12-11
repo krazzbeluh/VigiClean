@@ -20,6 +20,8 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
     }
     
     var actions: [String] {
+        
+        print(employeeMode)
         guard let object = Object.currentObject else {
             return ["Autre"]
         }

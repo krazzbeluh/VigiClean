@@ -49,7 +49,7 @@
                                     <segue destination="abG-QR-EGL" kind="show" id="lWe-RH-GHX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJL-n8-ceg">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJL-n8-ceg">
                                 <rect key="frame" x="138" y="770" width="138" height="30"/>
                                 <state key="normal" title="Code endommagé ?"/>
                             </button>
