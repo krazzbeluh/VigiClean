@@ -11,7 +11,7 @@ import Foundation
 protocol RequestViewPresenter: BasePresenter {
     init(view: RequestView)
     var actions: [String] { get }
-    func sendRequest(with action: String)
+    func sendRequest(with action: String, isValid: Bool)
     func fetchRole(callback: @escaping (Bool) -> Void)
     func switchEmployeeMode(to employeeMode: Bool)
     func prepareMap()

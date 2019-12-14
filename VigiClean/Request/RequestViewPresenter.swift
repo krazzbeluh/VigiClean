@@ -75,7 +75,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         view.configureMap(with: sanjose)
     }
     
-    func sendRequest(with action: String) {
+    func sendRequest(with action: String, isValid: Bool) {
         
         guard let object = Object.currentObject else {
             return
@@ -118,7 +118,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
                 return
             }
             
-            objectManager.resolvedRequest(for: object, with: action) { (error) in
+            objectManager.resolvedRequest(for: object, with: action, isValid: isValid) { (error) in
                 if let error = error {
                     self.view.sendAlert(message: self.convertAlert(with: error))
                     return

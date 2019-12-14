@@ -24,6 +24,8 @@ class RequestViewController: UIViewController, RequestView {
     @IBOutlet weak var action: UITextField!
     @IBOutlet weak var employeeLabel: UILabel!
     @IBOutlet weak var switchMode: UISwitch!
+    @IBOutlet weak var necessaryLabel: UILabel!
+    @IBOutlet weak var validSwitch: UISwitch!
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -41,6 +43,8 @@ class RequestViewController: UIViewController, RequestView {
             self.switchMode.isOn = isEmployee
             self.switchChanged(mySwitch: self.switchMode)
             self.action.text = self.presenter.actions.first
+            self.necessaryLabel.isHidden = !isEmployee
+            self.validSwitch.isHidden = !isEmployee
         }
         
         switchMode.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
@@ -79,7 +83,7 @@ class RequestViewController: UIViewController, RequestView {
             return
         }
         
-        presenter.sendRequest(with: action)
+        presenter.sendRequest(with: action, isValid: validSwitch.isOn)
     }
     
     @IBAction func dismissSelector(_ sender: Any) {

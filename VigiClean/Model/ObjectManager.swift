@@ -137,7 +137,7 @@ class ObjectManager {
         }
     }
     
-    func resolvedRequest(for object: Object, with action: Action, callback: @escaping(Error?) -> Void) {
+    func resolvedRequest(for object: Object, with action: Action, isValid: Bool, callback: @escaping(Error?) -> Void) {
         let docRef = database.collection("Request")
             .whereField("code", isEqualTo: object.code)
             .whereField("action", isEqualTo: action.index)
@@ -153,7 +153,7 @@ class ObjectManager {
             let batch = self.database.batch()
             
             for document in snapshot!.documents {
-                batch.updateData(["isValidOperation": true], forDocument: document.reference)
+                batch.updateData(["isValidOperation": isValid], forDocument: document.reference)
             }
             
             batch.commit { error in
