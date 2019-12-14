@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class RequestViewController: UIViewController, RequestView {
     var presenter: RequestViewPresenter!
@@ -23,6 +24,7 @@ class RequestViewController: UIViewController, RequestView {
     @IBOutlet weak var action: UITextField!
     @IBOutlet weak var employeeLabel: UILabel!
     @IBOutlet weak var switchMode: UISwitch!
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,8 @@ class RequestViewController: UIViewController, RequestView {
         }
         
         switchMode.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-
+        
+        presenter.prepareMap()
     }
     
     // MARK: Methods
@@ -105,5 +108,19 @@ extension RequestViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         action.text = presenter.actions[row]
+    }
+}
+
+// MARK: MapKit
+extension RequestViewController: MKMapViewDelegate {
+    func configureMap(with location: Poi) {
+        let regionMeters: CLLocationDistance = 100
+        let region = MKCoordinateRegion(center: location.coordinate,
+                                        latitudinalMeters: regionMeters,
+                                        longitudinalMeters: regionMeters)
+        mapView.setRegion(region, animated: true)
+        
+        mapView.delegate = self
+        mapView.addAnnotation(location)
     }
 }

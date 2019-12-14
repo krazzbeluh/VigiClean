@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZUd-7a-16C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZUd-7a-16C">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -635,12 +635,15 @@
                                 <color key="textColor" name="VigiClean"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="MapKit" translatesAutoresizingMaskIntoConstraints="NO" id="28W-cM-aCX">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUA-1M-Fkp">
                                 <rect key="frame" x="40.333333333333343" y="240.33333333333334" width="333.33333333333326" height="333.66666666666663"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="28W-cM-aCX" secondAttribute="height" multiplier="1:1" id="Arx-au-Xjl"/>
+                                    <constraint firstAttribute="width" secondItem="wUA-1M-Fkp" secondAttribute="height" multiplier="1:1" id="bkd-wp-Ypi"/>
                                 </constraints>
-                            </imageView>
+                                <connections>
+                                    <outlet property="delegate" destination="GWr-bf-MJh" id="UnE-ah-Vql"/>
+                                </connections>
+                            </mapView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode employé" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caO-V8-mdF">
                                 <rect key="frame" x="20" y="608" width="317" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -693,7 +696,7 @@
                             <constraint firstItem="HtE-hg-avV" firstAttribute="top" secondItem="vFi-el-SC3" secondAttribute="top" id="5Sy-qy-XsP"/>
                             <constraint firstItem="uOY-5S-RB7" firstAttribute="leading" secondItem="ERu-e3-KkG" secondAttribute="leading" constant="20" id="BeX-9Z-v76"/>
                             <constraint firstItem="UBJ-uc-gFq" firstAttribute="width" secondItem="uOY-5S-RB7" secondAttribute="width" id="CBv-7I-9ZW"/>
-                            <constraint firstItem="UBJ-uc-gFq" firstAttribute="top" secondItem="28W-cM-aCX" secondAttribute="bottom" constant="80" id="CXo-fY-Cln"/>
+                            <constraint firstItem="wUA-1M-Fkp" firstAttribute="centerX" secondItem="vFi-el-SC3" secondAttribute="centerX" id="DzN-7X-TbO"/>
                             <constraint firstItem="ERu-e3-KkG" firstAttribute="trailing" secondItem="4kh-P9-ekn" secondAttribute="trailing" constant="20" id="Egr-yF-NqF"/>
                             <constraint firstItem="Kld-xZ-Woz" firstAttribute="top" secondItem="ERu-e3-KkG" secondAttribute="top" id="Fsc-tt-jSm"/>
                             <constraint firstItem="ssx-d7-4x4" firstAttribute="centerX" secondItem="Dvp-ds-bLN" secondAttribute="centerX" id="Htn-1f-g4P"/>
@@ -707,6 +710,7 @@
                             <constraint firstItem="ssx-d7-4x4" firstAttribute="width" secondItem="Dvp-ds-bLN" secondAttribute="width" id="aIb-dO-y4m"/>
                             <constraint firstItem="Sz2-hT-8hb" firstAttribute="centerX" secondItem="vFi-el-SC3" secondAttribute="centerX" id="aOJ-Rj-db3"/>
                             <constraint firstItem="1wy-ol-9kU" firstAttribute="top" secondItem="HtE-hg-avV" secondAttribute="bottom" constant="20" id="aW4-HF-IYY"/>
+                            <constraint firstItem="UBJ-uc-gFq" firstAttribute="top" secondItem="wUA-1M-Fkp" secondAttribute="bottom" constant="80" id="bgx-gY-7sE"/>
                             <constraint firstItem="vxg-xO-ZrW" firstAttribute="trailing" secondItem="vFi-el-SC3" secondAttribute="trailing" id="c4g-50-HPa"/>
                             <constraint firstItem="vxg-xO-ZrW" firstAttribute="leading" secondItem="vFi-el-SC3" secondAttribute="leading" id="czi-Ld-YAz"/>
                             <constraint firstItem="Dvp-ds-bLN" firstAttribute="leading" secondItem="ERu-e3-KkG" secondAttribute="leading" id="f3g-Mg-F1u"/>
@@ -714,14 +718,13 @@
                             <constraint firstItem="Dvp-ds-bLN" firstAttribute="centerX" secondItem="vFi-el-SC3" secondAttribute="centerX" id="g3U-uc-hpQ"/>
                             <constraint firstAttribute="bottom" secondItem="vxg-xO-ZrW" secondAttribute="bottom" id="hd9-af-zI7"/>
                             <constraint firstItem="HtE-hg-avV" firstAttribute="leading" secondItem="ERu-e3-KkG" secondAttribute="leading" id="jN1-XR-Nmf"/>
-                            <constraint firstItem="28W-cM-aCX" firstAttribute="centerX" secondItem="vFi-el-SC3" secondAttribute="centerX" id="jcj-GF-Fry"/>
                             <constraint firstItem="HtE-hg-avV" firstAttribute="height" secondItem="vFi-el-SC3" secondAttribute="height" multiplier="0.13" id="nMD-ZQ-2eg"/>
                             <constraint firstItem="ssx-d7-4x4" firstAttribute="top" secondItem="Dvp-ds-bLN" secondAttribute="bottom" constant="8" id="q9E-uV-vPh"/>
                             <constraint firstItem="UBJ-uc-gFq" firstAttribute="centerX" secondItem="uOY-5S-RB7" secondAttribute="centerX" id="t9C-zh-7BE"/>
                             <constraint firstItem="caO-V8-mdF" firstAttribute="leading" secondItem="ERu-e3-KkG" secondAttribute="leading" constant="20" id="tiU-lk-AHE"/>
-                            <constraint firstItem="28W-cM-aCX" firstAttribute="top" secondItem="ssx-d7-4x4" secondAttribute="bottom" constant="12" id="waD-Eo-TcA"/>
                             <constraint firstItem="UBJ-uc-gFq" firstAttribute="top" secondItem="4kh-P9-ekn" secondAttribute="bottom" constant="20" id="wcU-31-hSU"/>
                             <constraint firstItem="HtE-hg-avV" firstAttribute="trailing" secondItem="ERu-e3-KkG" secondAttribute="trailing" id="y4r-Qw-X6p"/>
+                            <constraint firstItem="wUA-1M-Fkp" firstAttribute="top" secondItem="ssx-d7-4x4" secondAttribute="bottom" constant="12" id="yYp-nx-RrF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ERu-e3-KkG"/>
                         <connections>
@@ -734,6 +737,7 @@
                         <outlet property="activityIndicator" destination="Sz2-hT-8hb" id="3HY-GU-SfG"/>
                         <outlet property="employeeLabel" destination="caO-V8-mdF" id="7op-3B-4t2"/>
                         <outlet property="grayOutView" destination="vxg-xO-ZrW" id="Zew-Rj-Sl0"/>
+                        <outlet property="mapView" destination="wUA-1M-Fkp" id="w3F-1g-3L3"/>
                         <outlet property="nameLabel" destination="Dvp-ds-bLN" id="b6o-1s-mhG"/>
                         <outlet property="organizationLabel" destination="1wy-ol-9kU" id="8Dq-7b-Y12"/>
                         <outlet property="switchMode" destination="4kh-P9-ekn" id="zsz-o8-eEn"/>
@@ -772,7 +776,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VigiClean vous offre 5 points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUm-Gr-eOS">
-                                <rect key="frame" x="97.333333333333329" y="439.66666666666669" width="219.66666666666669" height="21"/>
+                                <rect key="frame" x="97" y="439.66666666666669" width="220" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1132,7 +1136,6 @@
         <image name="Close" width="92" height="92"/>
         <image name="Default Avatar" width="129" height="130"/>
         <image name="Logo" width="533.33331298828125" height="533.33331298828125"/>
-        <image name="MapKit" width="600" height="602"/>
         <namedColor name="Background">
             <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

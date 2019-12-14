@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class RequestPresenter: BasePresenter, RequestViewPresenter {
     let accountManager = AccountManager()
@@ -62,6 +63,16 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
                 callback(false)
             }
         }
+    }
+    
+    func prepareMap() {
+        guard let object = Object.currentObject else {
+            return
+        }
+        let sanjose = Poi(title: "\(object.name) - \(object.organization)",
+            coordinate: CLLocationCoordinate2D(latitude: object.coords.latitude,
+                                               longitude: object.coords.longitude), info: object.type)
+        view.configureMap(with: sanjose)
     }
     
     func sendRequest(with action: String) {

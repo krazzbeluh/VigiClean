@@ -53,6 +53,7 @@
 		94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D2096A239EEB0B0089759B /* FirestoreFake.swift */; };
 		94D20970239FEBA90089759B /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D2096F239FEBA90089759B /* Action.swift */; };
 		94DC7C20239ADA0E00C414DA /* ObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */; };
+		94DF01F423A514370016CA24 /* Poi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF01F323A514370016CA24 /* Poi.swift */; };
 		94EB57752372D8B800582990 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashboardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
 		94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0272370A1CA00037210 /* AppDelegate.swift */; };
@@ -123,6 +124,7 @@
 		94D2096A239EEB0B0089759B /* FirestoreFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFake.swift; sourceTree = "<group>"; };
 		94D2096F239FEBA90089759B /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectManager.swift; sourceTree = "<group>"; };
+		94DF01F323A514370016CA24 /* Poi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poi.swift; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		94F0A0242370A1CA00037210 /* VigiClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VigiClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,7 @@
 		94623696239A9FCF0026DD95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94DF01F323A514370016CA24 /* Poi.swift */,
 				94D2096F239FEBA90089759B /* Action.swift */,
 				94D20959239EE14D0089759B /* Color.swift */,
 				94BA1F162395D4A900FE19A1 /* Object.swift */,
@@ -598,6 +601,7 @@
 				94D20949239B08560089759B /* DashboardContracts.swift in Sources */,
 				94BA1EEE238E6A3900FE19A1 /* AttachEmailContracts.swift in Sources */,
 				94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */,
+				94DF01F423A514370016CA24 /* Poi.swift in Sources */,
 				94DC7C20239ADA0E00C414DA /* ObjectManager.swift in Sources */,
 				941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */,
 				94BA1F0A239550EB00FE19A1 /* ScannerContracts.swift in Sources */,

@@ -14,10 +14,12 @@ protocol RequestViewPresenter: BasePresenter {
     func sendRequest(with action: String)
     func fetchRole(callback: @escaping (Bool) -> Void)
     func switchEmployeeMode(to employeeMode: Bool)
+    func prepareMap()
 }
 
 protocol RequestView: AlertManager {
     func configure(with object: Object)
     func sendAlert(message: String)
     func requestSent()
+    func configureMap(with location: Poi)
 }
