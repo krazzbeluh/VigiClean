@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseFunctions
 
 class ObjectManager {
     enum ObjectError: Error {
@@ -16,6 +17,7 @@ class ObjectManager {
     
     let database = Firestore.firestore()
     let accountManager = AccountManager()
+    lazy var functions = Functions.functions()
     
     func getObject(code: String, callback: @escaping (Error?) -> Void) {
         let docRef = database.collection("Object").document(code)
@@ -138,30 +140,15 @@ class ObjectManager {
     }
     
     func resolvedRequest(for object: Object, with action: Action, isValid: Bool, callback: @escaping(Error?) -> Void) {
-        let docRef = database.collection("Request")
-            .whereField("code", isEqualTo: object.code)
-            .whereField("action", isEqualTo: action.index)
-            .whereField("isValidOperation", isEqualTo: NSNull())
-        
-        docRef.getDocuments { (snapshot, error) in
-            guard error == nil else {
-                callback(error)
-                return
-            }
-            
-            // Get new write batch
-            let batch = self.database.batch()
-            
-            for document in snapshot!.documents {
-                batch.updateData(["isValidOperation": isValid], forDocument: document.reference)
-            }
-            
-            batch.commit { error in
-                if let error = error {
-                    print("Error writing batch \(error)")
+        functions.httpsCallable("resolvedRequest?code=\(object.code)&action=\(action.index)")
+            .call { (_, error) in
+                if let error = error as NSError? {
+                    if error.domain == FunctionsErrorDomain {
+                        let code = FunctionsErrorCode(rawValue: error.code)
+                        callback(code)
+                    }
                 }
                 callback(error)
-            }
         }
     }
 }

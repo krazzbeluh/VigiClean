@@ -123,17 +123,6 @@ class AccountManager {
         }
     }
     
-    func giveCredits(callback: @escaping (Error?) -> Void) {
-        guard let uid = currentUser?.uid else {
-            callback(UAccountError.unknownUID)
-            return
-        }
-        
-        database.collection("User").document(uid).updateData(["credits": FieldValue.increment(Int64(5))]) { (error) in
-            callback(error)
-        }
-    }
-    
     func listenForUserCreditsChanges(onChange userCreditsChanged: @escaping (Int) -> Void) {
         database.collection("User").document(currentUser?.uid ?? "")
             .addSnapshotListener { documentSnapshot, error in

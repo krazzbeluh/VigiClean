@@ -98,13 +98,6 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
                     return
                 }
                 
-                self.accountManager.giveCredits { (error) in
-                    if let error = error {
-                        self.view.sendAlert(message: self.convertAlert(with: error))
-                        return
-                    }
-                }
-                
                 self.view.requestSent()
             }
         } else {

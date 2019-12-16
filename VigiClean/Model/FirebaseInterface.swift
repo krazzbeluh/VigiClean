@@ -7,9 +7,14 @@
 //
 
 import Foundation
+import FirebaseFunctions
 
 class FirebaseInterface {
     enum FIRInterfaceError: Error {
         case documentDoesNotExists, unableToDecodeData, unableToDecodeError
     }
+}
+
+extension FunctionsErrorCode: Error {
+    
 }
