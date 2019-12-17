@@ -24,6 +24,79 @@ class BasePresenter { // TODO: review error management with new errors conversio
         return message
     }
     
+    private func convertFirestoreError(_ error: Error) -> String? { // swiftlint:disable:this cyclomatic_complexity line_length function_body_length
+        guard let errCode = FirestoreErrorCode(rawValue: error._code) else {
+            return nil
+        }
+        
+        let message: String
+        
+        switch errCode {
+        case .OK:
+            message = "\(errCode)"
+        case .cancelled:
+            message = "\(errCode)"
+        case .unknown:
+            message = "\(errCode)"
+        case .invalidArgument:
+            message = "\(errCode)"
+        case .deadlineExceeded:
+            message = "\(errCode)"
+        case .notFound:
+            message = "\(errCode)"
+        case .alreadyExists:
+            message = "\(errCode)"
+        case .permissionDenied:
+            message = "\(errCode)"
+        case .resourceExhausted:
+            message = "\(errCode)"
+        case .failedPrecondition:
+            message = "\(errCode)"
+        case .aborted:
+            message = "\(errCode)"
+        case .outOfRange:
+            message = "\(errCode)"
+        case .unimplemented:
+            message = "\(errCode)"
+        case .internal:
+            message = "\(errCode)"
+        case .unavailable:
+            message = "\(errCode)"
+        case .dataLoss:
+            message = "\(errCode)"
+        case .unauthenticated:
+            message = "\(errCode)"
+        @unknown default:
+            return nil
+        }
+        
+        return message
+    }
+    
+    private func convertVigiCleanError(_ error: Error) -> String? {
+        if let error = error as? Scanner.ScannerError {
+            return "\(error)"
+        } else if let error = error as? ObjectManager.ObjectError {
+            return "\(error)"
+        } else if let error = error as? AccountManager.UAccountError {
+            return "\(error)"
+        } else if let error = error as? FirebaseInterface.FIRInterfaceError {
+            return "\(error)"
+        } else {
+            return nil
+        }
+    }
+    
+    private func convertStorageError(_ error: Error) -> String? {
+        guard let error = error as? StorageErrorCode else {
+            return nil
+        }
+        
+        return "wait a minute lol \(error)"
+    }
+}
+
+extension BasePresenter {
     private func convertAuthError(_ error: Error) -> String? { // swiftlint:disable:this cyclomatic_complexity function_body_length line_length
 
         guard let errCode = AuthErrorCode(rawValue: error._code) else {
@@ -170,76 +243,5 @@ class BasePresenter { // TODO: review error management with new errors conversio
         }
         
         return message
-    }
-    
-    func convertFirestoreError(_ error: Error) -> String? { // swiftlint:disable:this cyclomatic_complexity line_length function_body_length
-        guard let errCode = FirestoreErrorCode(rawValue: error._code) else {
-            return nil
-        }
-        
-        let message: String
-        
-        switch errCode {
-        case .OK:
-            message = "\(errCode)"
-        case .cancelled:
-            message = "\(errCode)"
-        case .unknown:
-            message = "\(errCode)"
-        case .invalidArgument:
-            message = "\(errCode)"
-        case .deadlineExceeded:
-            message = "\(errCode)"
-        case .notFound:
-            message = "\(errCode)"
-        case .alreadyExists:
-            message = "\(errCode)"
-        case .permissionDenied:
-            message = "\(errCode)"
-        case .resourceExhausted:
-            message = "\(errCode)"
-        case .failedPrecondition:
-            message = "\(errCode)"
-        case .aborted:
-            message = "\(errCode)"
-        case .outOfRange:
-            message = "\(errCode)"
-        case .unimplemented:
-            message = "\(errCode)"
-        case .internal:
-            message = "\(errCode)"
-        case .unavailable:
-            message = "\(errCode)"
-        case .dataLoss:
-            message = "\(errCode)"
-        case .unauthenticated:
-            message = "\(errCode)"
-        @unknown default:
-            return nil
-        }
-        
-        return message
-    }
-    
-    func convertVigiCleanError(_ error: Error) -> String? {
-        if let error = error as? Scanner.ScannerError {
-            return "\(error)"
-        } else if let error = error as? ObjectManager.ObjectError {
-            return "\(error)"
-        } else if let error = error as? AccountManager.UAccountError {
-            return "\(error)"
-        } else if let error = error as? FirebaseInterface.FIRInterfaceError {
-            return "\(error)"
-        } else {
-            return nil
-        }
-    }
-    
-    func convertStorageError(_ error: Error) -> String? {
-        guard let error = error as? StorageErrorCode else {
-            return nil
-        }
-        
-        return "wait a minute lol \(error)"
     }
 }
