@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lb8-av-c4K">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lb8-av-c4K">
                                 <rect key="frame" x="342.33333333333331" y="129.33333333333334" width="51.666666666666686" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lb8-av-c4K" secondAttribute="height" multiplier="1:1" id="9jG-pS-lcQ"/>
@@ -127,6 +127,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="LnF-tz-2Hr"/>
                     <connections>
+                        <outlet property="avatar" destination="lb8-av-c4K" id="v9B-94-N4n"/>
                         <outlet property="scoreView" destination="nV6-tx-khr" id="8VG-BZ-Jgj"/>
                     </connections>
                 </viewController>

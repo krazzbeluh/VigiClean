@@ -8,10 +8,11 @@
 
 import Foundation
 
-protocol DashboardViewPresenter {
+protocol DashboardViewPresenter: BasePresenter {
     init(view: DashboardView)
+    func getAvatar()
 }
 
-protocol DashboardView: class {
-    
+protocol DashboardView: AlertManager {
+    func setAvatar(with image: Data)
 }

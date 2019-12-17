@@ -9,23 +9,28 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 class AccountManager {
     init() {
         self.auth = Auth.auth()
         self.database = Firestore.firestore()
+        self.storage = Storage.storage()
     }
     
-    init(auth: Auth, database: Firestore) {
+    init(auth: Auth, database: Firestore, storage: Storage) {
         self.auth = auth
         self.database = database
+        self.storage = storage
     }
     
     var auth: Auth
     var database: Firestore
+    var storage: Storage
+    private var avatar: Data?
     
     enum UAccountError: Error {
-        case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound
+        case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound, userNotLoggedIn
     }
     
     var currentUser: User? {
@@ -147,6 +152,7 @@ class AccountManager {
     
     func fetchRole(callback: @escaping (Result<Bool, Error>) -> Void) {
         guard let uid = currentUser?.uid else {
+            callback(.failure(UAccountError.userNotLoggedIn))
             return
         }
         
@@ -161,12 +167,36 @@ class AccountManager {
             }
             
             guard let data = document.data(),
-            let role = data["isMaintainer"] as? Bool else {
-                callback(.failure(FirebaseInterface.FIRInterfaceError.unableToDecodeData))
-                return
+                let role = data["isMaintainer"] as? Bool else {
+                    callback(.failure(FirebaseInterface.FIRInterfaceError.unableToDecodeData))
+                    return
             }
             
             callback(.success(role))
+        }
+    }
+    
+    func getAvatar(callback: @escaping ((Result<Data, Error>) -> Void)) {
+        if let avatar = self.avatar {
+            callback(.success(avatar))
+        } else {
+            guard let uid = currentUser?.uid else {
+                callback(.failure(UAccountError.userNotLoggedIn))
+                return
+            }
+            
+            let imageReference = storage.reference(withPath: "images/\(uid).jpeg")
+            print(imageReference.fullPath)
+            
+            imageReference.getData(maxSize: 60 * 1024 * 1024) { data, error in
+                guard let data = data,
+                    error == nil else {
+                        callback(.failure(FirebaseInterface.convertStorageError(error: error!)))
+                        return
+                }
+                
+                callback(.success(data))
+            }
         }
     }
 }

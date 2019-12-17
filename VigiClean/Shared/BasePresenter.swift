@@ -9,14 +9,16 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
-class BasePresenter {
+class BasePresenter { // TODO: review error management with new errors conversio
     func convertAlert(with error: Error) -> String {
         let message: String
         
         message = convertVigiCleanError(error)
             ?? convertFirestoreError(error)
             ?? convertAuthError(error)
+            ?? convertStorageError(error)
             ?? "Unknown error !"
         
         return message
@@ -231,5 +233,13 @@ class BasePresenter {
         } else {
             return nil
         }
+    }
+    
+    func convertStorageError(_ error: Error) -> String? {
+        guard let error = error as? StorageErrorCode else {
+            return nil
+        }
+        
+        return "wait a minute lol \(error)"
     }
 }

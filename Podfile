@@ -11,6 +11,7 @@ target 'VigiClean' do
   pod 'Firebase/Auth', '6.13.0'
   pod 'Firebase/Firestore', '6.13.0'
   pod 'Firebase/Functions', '6.13.0'
+  pod 'Firebase/Storage', '6.13.0'
   pod 'FirebaseFirestoreSwift', '0.2'
   pod 'IQKeyboardManagerSwift', '6.3.0'
 

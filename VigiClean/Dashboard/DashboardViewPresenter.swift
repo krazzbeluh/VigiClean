@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import FirebaseStorage
 
-class DashboardPresenter: DashboardViewPresenter {
+class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     weak var view: DashboardView!
     
     var accountManager: AccountManager
@@ -16,5 +17,21 @@ class DashboardPresenter: DashboardViewPresenter {
     required init(view: DashboardView) {
         self.view = view
         accountManager = AccountManager()
+    }
+    
+    func getAvatar() {
+        accountManager.getAvatar { (result) in
+            switch result {
+            case .success(let data):
+                self.view.setAvatar(with: data)
+            case .failure(let error):
+                if let error = error as? StorageErrorCode,
+                    error == .objectNotFound {
+                    print("No avatar found")
+                    return
+                }
+                self.view.sendAlert(message: self.convertAlert(with: error)) 
+            }
+        }
     }
 }

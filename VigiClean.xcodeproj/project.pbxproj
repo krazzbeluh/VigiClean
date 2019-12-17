@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49A8B803F1E4F215D4B80C63 /* Pods_VigiCleanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50290F8EC2318523CD4EACBC /* Pods_VigiCleanTests.framework */; };
+		2EDF790BADCB409446220B2E /* Pods_VigiCleanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07C60F1F161004AED1E3929 /* Pods_VigiCleanTests.framework */; };
 		9402E9A3239A8EF80070E910 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9402E9A2239A8EF80070E910 /* BasePresenter.swift */; };
 		94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAC237D067B00419F2C /* SignUpViewController.swift */; };
 		94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */; };
@@ -60,7 +60,7 @@
 		94F0A02F2370A1CA00037210 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A02D2370A1CA00037210 /* Main.storyboard */; };
 		94F0A0312370A1CB00037210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0302370A1CB00037210 /* Assets.xcassets */; };
 		94F0A0342370A1CB00037210 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0322370A1CB00037210 /* LaunchScreen.storyboard */; };
-		CADC9734417AEFCD718CF683 /* Pods_VigiClean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982647F461F6766DC6C1C3E5 /* Pods_VigiClean.framework */; };
+		C823D8DEB606F47307BA1838 /* Pods_VigiClean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291263C3A44A443741F7F553 /* Pods_VigiClean.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,11 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0ECC229967FE68CE4FCB501B /* Pods-VigiCleanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.release.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.release.xcconfig"; sourceTree = "<group>"; };
-		2D20BD4AF406DA49F90B1080 /* Pods-VigiClean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.debug.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.debug.xcconfig"; sourceTree = "<group>"; };
-		50290F8EC2318523CD4EACBC /* Pods_VigiCleanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VigiCleanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D4CF97A61D851EFA4F544D1 /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
-		70EF88F380A2527DD632D388 /* Pods-VigiCleanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.debug.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		291263C3A44A443741F7F553 /* Pods_VigiClean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VigiClean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CEC49AC9E3D47668794328A /* Pods-VigiCleanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.release.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.release.xcconfig"; sourceTree = "<group>"; };
+		77B81D13D6151CE3ED84549F /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
+		7A9FC7A8205830702234610B /* Pods-VigiClean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.debug.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.debug.xcconfig"; sourceTree = "<group>"; };
 		9402E9A2239A8EF80070E910 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		94138AAC237D067B00419F2C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenter.swift; sourceTree = "<group>"; };
@@ -135,7 +134,8 @@
 		94F0A0352370A1CB00037210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F0A03A2370A1CC00037210 /* VigiCleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VigiCleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0A0402370A1CC00037210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		982647F461F6766DC6C1C3E5 /* Pods_VigiClean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VigiClean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B07C60F1F161004AED1E3929 /* Pods_VigiCleanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VigiCleanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAD75F3222AE242513DE9980 /* Pods-VigiCleanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.debug.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CADC9734417AEFCD718CF683 /* Pods_VigiClean.framework in Frameworks */,
+				C823D8DEB606F47307BA1838 /* Pods_VigiClean.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49A8B803F1E4F215D4B80C63 /* Pods_VigiCleanTests.framework in Frameworks */,
+				2EDF790BADCB409446220B2E /* Pods_VigiCleanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,10 +161,10 @@
 		4D002501E48799779E32FE97 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2D20BD4AF406DA49F90B1080 /* Pods-VigiClean.debug.xcconfig */,
-				5D4CF97A61D851EFA4F544D1 /* Pods-VigiClean.release.xcconfig */,
-				70EF88F380A2527DD632D388 /* Pods-VigiCleanTests.debug.xcconfig */,
-				0ECC229967FE68CE4FCB501B /* Pods-VigiCleanTests.release.xcconfig */,
+				7A9FC7A8205830702234610B /* Pods-VigiClean.debug.xcconfig */,
+				77B81D13D6151CE3ED84549F /* Pods-VigiClean.release.xcconfig */,
+				CAD75F3222AE242513DE9980 /* Pods-VigiCleanTests.debug.xcconfig */,
+				3CEC49AC9E3D47668794328A /* Pods-VigiCleanTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -342,7 +342,7 @@
 				94F0A03D2370A1CC00037210 /* VigiCleanTests */,
 				94F0A0252370A1CA00037210 /* Products */,
 				4D002501E48799779E32FE97 /* Pods */,
-				B00D320C440A48C15555D160 /* Frameworks */,
+				9BA05A22AD7E5D21E0362247 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -385,11 +385,11 @@
 			path = VigiCleanTests;
 			sourceTree = "<group>";
 		};
-		B00D320C440A48C15555D160 /* Frameworks */ = {
+		9BA05A22AD7E5D21E0362247 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				982647F461F6766DC6C1C3E5 /* Pods_VigiClean.framework */,
-				50290F8EC2318523CD4EACBC /* Pods_VigiCleanTests.framework */,
+				291263C3A44A443741F7F553 /* Pods_VigiClean.framework */,
+				B07C60F1F161004AED1E3929 /* Pods_VigiCleanTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -401,12 +401,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94F0A04E2370A1CC00037210 /* Build configuration list for PBXNativeTarget "VigiClean" */;
 			buildPhases = (
-				F4A1300AD834666D8B8E91A4 /* [CP] Check Pods Manifest.lock */,
+				3B66E7506A3DE1D6A844A24E /* [CP] Check Pods Manifest.lock */,
 				94F0A0202370A1CA00037210 /* Sources */,
 				94F0A0212370A1CA00037210 /* Frameworks */,
 				94F0A0222370A1CA00037210 /* Resources */,
 				94BE5AA52370AB7400CE3060 /* ShellScript */,
-				67E36A8F8341A2F253FEF7FD /* [CP] Embed Pods Frameworks */,
+				58ED8FE5B2CA0D99055F2665 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -421,7 +421,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94F0A0512370A1CC00037210 /* Build configuration list for PBXNativeTarget "VigiCleanTests" */;
 			buildPhases = (
-				0340FC50CDBED25CD03FD438 /* [CP] Check Pods Manifest.lock */,
+				446AF808C563EF3C701760DD /* [CP] Check Pods Manifest.lock */,
 				94F0A0362370A1CC00037210 /* Sources */,
 				94F0A0372370A1CC00037210 /* Frameworks */,
 				94F0A0382370A1CC00037210 /* Resources */,
@@ -501,7 +501,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0340FC50CDBED25CD03FD438 /* [CP] Check Pods Manifest.lock */ = {
+		3B66E7506A3DE1D6A844A24E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VigiClean-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		446AF808C563EF3C701760DD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -523,7 +545,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67E36A8F8341A2F253FEF7FD /* [CP] Embed Pods Frameworks */ = {
+		58ED8FE5B2CA0D99055F2665 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -556,28 +578,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		F4A1300AD834666D8B8E91A4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VigiClean-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -790,7 +790,7 @@
 		};
 		94F0A04F2370A1CC00037210 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D20BD4AF406DA49F90B1080 /* Pods-VigiClean.debug.xcconfig */;
+			baseConfigurationReference = 7A9FC7A8205830702234610B /* Pods-VigiClean.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -811,7 +811,7 @@
 		};
 		94F0A0502370A1CC00037210 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D4CF97A61D851EFA4F544D1 /* Pods-VigiClean.release.xcconfig */;
+			baseConfigurationReference = 77B81D13D6151CE3ED84549F /* Pods-VigiClean.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -832,7 +832,7 @@
 		};
 		94F0A0522370A1CC00037210 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70EF88F380A2527DD632D388 /* Pods-VigiCleanTests.debug.xcconfig */;
+			baseConfigurationReference = CAD75F3222AE242513DE9980 /* Pods-VigiCleanTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -859,7 +859,7 @@
 		};
 		94F0A0532370A1CC00037210 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ECC229967FE68CE4FCB501B /* Pods-VigiCleanTests.release.xcconfig */;
+			baseConfigurationReference = 3CEC49AC9E3D47668794328A /* Pods-VigiCleanTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
