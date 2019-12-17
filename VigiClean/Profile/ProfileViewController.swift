@@ -14,8 +14,6 @@ import UIKit
 class ProfileViewController: UIViewController, ProfileView {
     var presenter: ProfileViewPresenter!
     
-    let accountManager = AccountManager() // TODO: move to mvp
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,17 +27,17 @@ class ProfileViewController: UIViewController, ProfileView {
                     return
                 }
                 
-                self.launchSignOutRequest()
+                self.presenter.signOut()
             }
         } else {
-            launchSignOutRequest()
+            presenter.signOut()
         }
     }
     
     private func presentDeterDisconect(handler: @escaping (Bool) -> Void) {
         let alertVC = UIAlertController(title: "Êtes-vous sûr ?",
-                                        message: "Toutes vos données, telles que votre score, seront perdues (Vous pouvez vous inscrire pour les sauvegarder)",
-                                        preferredStyle: .alert)
+                                        message: "Toutes vos données, telles que votre score, seront perdues (Vous pouvez vous inscrire pour les sauvegarder)", // swiftlint:disable:this line_length
+            preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Se déconnecter",
                                         style: .destructive,
                                         handler: { _ in
@@ -55,18 +53,13 @@ class ProfileViewController: UIViewController, ProfileView {
         self.present(alertVC, animated: true, completion: nil)
     }
     
-    private func launchSignOutRequest() {
-        self.accountManager.signOut { error in
-            if let error = error {
-                self.sendAlert(message: self.presenter.convertAlert(with: error))
-            } else {
-                self.performSegue(withIdentifier: "unwindToLaunch", sender: self)
-            }
-        }
+    func userSignedOut() {
+        performSegue(withIdentifier: "unwindToLaunch", sender: self)
     }
 }
 
 extension ProfileViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -76,25 +69,17 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accountManager.isConnectedWithEmail ? 3 : 4
+        return !presenter.isConnectedAnonymously ? 3 : 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
-        
-        switch indexPath.row {
-        case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: "DisconnectCell", for: indexPath)
-        case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: "AttachEmailCell", for: indexPath)
-        case 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: "changeAvatarCell", for: indexPath)
-        case 3:
-            cell = tableView.dequeueReusableCell(withIdentifier: "changeUsernameCell", for: indexPath)
-        default:
-            cell = UITableViewCell()
+        let cells: [String]
+        if presenter.isConnectedAnonymously {
+            cells = ["AttachEmailCell", "changeAvatarCell", "changeUsernameCell", "DisconnectCell"]
+        } else {
+            cells = ["changeAvatarCell", "changeUsernameCell", "DisconnectCell"]
         }
         
-        return cell
+        return tableView.dequeueReusableCell(withIdentifier: cells[indexPath.row], for: indexPath)
     }
 }

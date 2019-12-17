@@ -11,8 +11,9 @@ import Foundation
 protocol ProfileViewPresenter: BasePresenter {
     init(view: ProfileView)
     var isConnectedAnonymously: Bool { get }
+    func signOut()
 }
 
 protocol ProfileView: AlertManager {
-    
+    func userSignedOut()
 }
