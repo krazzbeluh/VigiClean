@@ -18,15 +18,15 @@ class AccountManager {
         self.storage = Storage.storage()
     }
     
-    init(auth: Auth, database: Firestore, storage: Storage) {
+    init(auth: Auth, database: Firestore) {
         self.auth = auth
         self.database = database
-        self.storage = storage
+        self.storage = Storage.storage()
     }
     
-    var auth: Auth
-    var database: Firestore
-    var storage: Storage
+    private var auth: Auth
+    private var database: Firestore
+    private var storage: Storage
     private var avatar: Data?
     
     enum UAccountError: Error {
@@ -48,20 +48,8 @@ class AccountManager {
     func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
         auth.createUser(
             withEmail: email,
-            password: password) { (authResult, error) in
-                
-                guard error == nil,
-                    let user = authResult?.user else { // if no error, user is created
-                        completion(error)
-                        return
-                }
-                
-                self.createUserDocument(for: user, named: username) { error in
-                    completion(error)
-                }
-                
-                completion(nil)
-                return
+            password: password) { (_, error) in
+                completion(error)
         }
     }
     
@@ -69,24 +57,13 @@ class AccountManager {
         auth.signIn(
             withEmail: email,
             password: password) { (_, error) in
-                guard error == nil else {
-                    completion(error)
-                    return
-                }
+                completion(error)
         }
     }
     
     func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
-        auth.signInAnonymously { (authResult, error) in
-            guard error == nil,
-                let result = authResult else {
-                    completion(error)
-                    return
-            }
-            
-            self.createUserDocument(for: result.user, named: nil) { (error) in
-                completion(error)
-            }
+        auth.signInAnonymously { (_, error) in
+            completion(error)
         }
     }
     
@@ -113,15 +90,16 @@ class AccountManager {
             try auth.signOut()
         } catch let error {
             completion(error)
+            return
         }
         completion(nil)
     }
     
-    private func createUserDocument(for user: User,
+    private func createUserDocument(for user: String,
                                     named: String?,
                                     completion: @escaping (Error?) -> Void) {
-        let uid = user.uid // getting uid to create user's document
-        database.collection("User").document(uid).setData(
+        
+        database.collection("User").document(user).setData(
             ["credits": 0,
              "username": named ?? NSNull()]) { error in
                 completion(error)
@@ -137,6 +115,13 @@ class AccountManager {
                 }
                 guard let data = document.data() else {
                     print("Document data was empty.")
+                    guard let user = self.currentUser else {
+                        return
+                    }
+                    
+                    self.createUserDocument(for: user.uid, named: nil) { (error) in
+                        print("Error : \(String(describing: error))")
+                    }
                     return
                 }
                 print("Current data: \(data)")

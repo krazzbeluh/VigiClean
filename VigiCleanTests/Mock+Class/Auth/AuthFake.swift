@@ -21,4 +21,20 @@ class AuthFake: Auth {
     override func signInAnonymously(completion: AuthDataResultCallback? = nil) {
         completion!(result, error)
     }
+    
+    override func createUser(withEmail email: String, password: String, completion: AuthDataResultCallback? = nil) {
+        completion!(result, error)
+    }
+    
+    override func signIn(withEmail email: String, password: String, completion: AuthDataResultCallback? = nil) {
+        completion!(result, error)
+    }
+    
+    override func signOut() throws {
+        guard let error = error else {
+            return
+        }
+        
+        throw error
+    }
 }

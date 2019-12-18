@@ -21,6 +21,8 @@
 		94623699239AC4F50026DD95 /* LaunchContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94623698239AC4F50026DD95 /* LaunchContracts.swift */; };
 		9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
+		9463FDAF23AA9CF200827E06 /* EasyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463FDAE23AA9CF200827E06 /* EasyError.swift */; };
+		9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463FDB023AA9DCC00827E06 /* StorageFake.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
 		94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */; };
@@ -91,6 +93,8 @@
 		94623698239AC4F50026DD95 /* LaunchContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchContracts.swift; sourceTree = "<group>"; };
 		9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewPresenter.swift; sourceTree = "<group>"; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		9463FDAE23AA9CF200827E06 /* EasyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyError.swift; sourceTree = "<group>"; };
+		9463FDB023AA9DCC00827E06 /* StorageFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageFake.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
 		94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AttachEmailViewController.swift; path = VigiClean/AttachEmail/AttachEmailViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -249,6 +253,14 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		942E8DDD23AA957200DD0BF7 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				9463FDB023AA9DCC00827E06 /* StorageFake.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		94623696239A9FCF0026DD95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,13 +319,15 @@
 			path = ScoreView;
 			sourceTree = "<group>";
 		};
-		94D20967239EE9B90089759B /* Mock */ = {
+		94D20967239EE9B90089759B /* Mock+Class */ = {
 			isa = PBXGroup;
 			children = (
 				94D2096D239EF0F40089759B /* Auth */,
 				94D2096E239EF0F80089759B /* Firestore */,
+				942E8DDD23AA957200DD0BF7 /* Storage */,
+				9463FDAE23AA9CF200827E06 /* EasyError.swift */,
 			);
-			path = Mock;
+			path = "Mock+Class";
 			sourceTree = "<group>";
 		};
 		94D2096D239EF0F40089759B /* Auth */ = {
@@ -379,7 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				94D20965239EE8030089759B /* AccountManagerTestCase.swift */,
-				94D20967239EE9B90089759B /* Mock */,
+				94D20967239EE9B90089759B /* Mock+Class */,
 				94F0A0402370A1CC00037210 /* Info.plist */,
 			);
 			path = VigiCleanTests;
@@ -636,6 +650,8 @@
 			files = (
 				94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */,
 				94D20969239EE9D10089759B /* AuthFake.swift in Sources */,
+				9463FDAF23AA9CF200827E06 /* EasyError.swift in Sources */,
+				9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */,
 				94D20966239EE8030089759B /* AccountManagerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
