@@ -11,7 +11,6 @@ import Foundation
 class ScoreViewPresenter: ScoreViewPresenterContract {
     unowned let view: ScoreViewContract
     
-    
     required init(view: ScoreViewContract) {
         self.view = view
     }

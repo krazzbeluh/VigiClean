@@ -9,7 +9,7 @@
 import UIKit
 
 // TODO: add avatar
-// TODO: change email
+// TODO: change password
 
 class ProfileViewController: UIViewController, ProfileView {
     var presenter: ProfileViewPresenter!
@@ -21,11 +21,15 @@ class ProfileViewController: UIViewController, ProfileView {
     }
     
     // MARK: Properties
-    var userActions: [String] {
+    private enum UpdateUserInfo {
+        case username, email
+    }
+    
+    private var userActions: [String] {
         if presenter.isConnectedAnonymously {
             return ["AttachEmailCell", "DisconnectCell"]
         } else {
-            return ["changeAvatarCell", "changeUsernameCell", "DisconnectCell"]
+            return ["changeAvatarCell", "changeUsernameCell", "changeEmailCell", "DisconnectCell"]
         }
     }
     
@@ -49,14 +53,24 @@ class ProfileViewController: UIViewController, ProfileView {
     }
     
     @IBAction func changePseudo(_ sender: Any) {
-        prepareAlertForNewPseudo { (text) in
-            self.presenter.updatePseudo(to: text)
+        prepareAlertForNew(.username) { pseudo, password  in
+            self.presenter.updatePseudo(to: pseudo, with: password)
+        }
+    }
+    
+    @IBAction func changeEmail(_ sender: Any) {
+        prepareAlertForNew(.email) { (email, password) in
+            self.presenter.updateEmail(to: email, with: password)
         }
     }
     
     // MARK: methods
     func display(username: String) {
         usernameLabel.text = username
+    }
+    
+    func display(email: String) {
+        emailLabel.text = email
     }
     
     func userSignedOut() {
@@ -82,15 +96,32 @@ class ProfileViewController: UIViewController, ProfileView {
         self.present(alertVC, animated: true, completion: nil)
     }
     
-    private func prepareAlertForNewPseudo(completion: @escaping (String?) -> Void) {
-        let alert = UIAlertController(title: "Nouveau pseudo :", message: nil, preferredStyle: .alert)
+    private func prepareAlertForNew(_ userInfo: UpdateUserInfo, completion: @escaping (String?, String?) -> Void) {
+        let title: String
+        
+        switch userInfo {
+        case .username:
+            title = "Nouveau pseudo:"
+        case .email:
+            title = "Nouvelle adresse email :"
+        }
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
-            textField.placeholder = "Pseudo"
+            textField.placeholder = userInfo == .username ? "Nouveau pseudo" : "Nouvelle adresse email"
+            textField.keyboardType = userInfo == .username ? .default : .emailAddress
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Mot de passe"
+            textField.textContentType = .password
+            textField.isSecureTextEntry = true
         }
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let text = alert?.textFields![0].text // Force unwrapping because we know it exists.
-            completion(text)
+            let changeId = alert?.textFields?[0].text
+            let pass = alert?.textFields?[1].text
+            completion(changeId, pass)
         }))
         
         alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))

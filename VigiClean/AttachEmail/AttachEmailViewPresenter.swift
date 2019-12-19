@@ -40,7 +40,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
             if let error = error {
                 self.view.sendAlert(message: self.convertAlert(with: error))
             } else {
-                AccountManager.shared.updatePseudo(to: username) { (error) in
+                AccountManager.shared.updatePseudo(to: username, with: password) { (error) in
                     guard let error = error else {
                         self.view.emailAttached()
                         return

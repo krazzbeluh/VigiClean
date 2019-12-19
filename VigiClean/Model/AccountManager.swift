@@ -37,8 +37,6 @@ class AccountManager {
     
     var currentUser = VigiCleanUser(username: nil)
     
-    var username, email: String?
-    
     var isConnected: Bool {
         currentUser.user != nil
     }
@@ -87,17 +85,44 @@ class AccountManager {
         }
     }
     
-    func updatePseudo(to newPseudo: String, completion: @escaping (Error?) -> Void) {
-        guard let uid = currentUser.user?.uid else {
+    func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
+        guard let uid = currentUser.user?.uid,
+            let email = currentUser.user?.email else {
             completion(UAccountError.userNotLoggedIn)
             return
         }
         
-        database.collection("User").document(uid).updateData([
-            "username": newPseudo
-        ]) { error in
-            completion(error)
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            self.database.collection("User").document(uid).updateData([
+                "username": newPseudo
+            ]) { error in
+                completion(error)
+            }
+        })
+    }
+    
+    func updateEmail(to newEmail: String, with password: String, completion: @escaping (Error?) -> Void) {
+        guard let email = currentUser.user?.email else {
+            return
         }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            self.currentUser.user?.updateEmail(to: newEmail, completion: { (error) in
+                completion(error)
+            })
+        })
     }
     
     func signOut(completion: (Error?) -> Void) {

@@ -240,8 +240,33 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="changeAvatarCell" id="BGv-cS-O2M">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="changeEmailCell" id="z4A-9K-7IH">
                                         <rect key="frame" x="0.0" y="157" width="374" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z4A-9K-7IH" id="Dvo-TD-nkF">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Hw-Jr-z7f">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                                    <state key="normal" title="Changer l'adresse email"/>
+                                                    <connections>
+                                                        <action selector="changeEmail:" destination="PVg-Oh-QbQ" eventType="touchUpInside" id="1ju-9b-AWZ"/>
+                                                        <action selector="changePseudo:" destination="PVg-Oh-QbQ" eventType="touchUpInside" id="VNw-k2-BcV"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" name="Background"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="5Hw-Jr-z7f" secondAttribute="bottom" id="4Je-Fr-g3z"/>
+                                                <constraint firstAttribute="trailing" secondItem="5Hw-Jr-z7f" secondAttribute="trailing" id="dqI-cd-c7D"/>
+                                                <constraint firstItem="5Hw-Jr-z7f" firstAttribute="top" secondItem="Dvo-TD-nkF" secondAttribute="top" id="fW1-sY-WLd"/>
+                                                <constraint firstItem="5Hw-Jr-z7f" firstAttribute="leading" secondItem="Dvo-TD-nkF" secondAttribute="leading" id="ofa-Bt-vWk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="changeAvatarCell" id="BGv-cS-O2M">
+                                        <rect key="frame" x="0.0" y="200" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BGv-cS-O2M" id="9Lz-jo-SdA">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>

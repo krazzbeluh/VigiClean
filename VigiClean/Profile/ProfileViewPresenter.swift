@@ -20,6 +20,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
         self.view = view
         if AccountManager.shared.isConnectedWithEmail {
             view.display(username: AccountManager.shared.currentUser.username ?? "")
+            view.display(email: AccountManager.shared.currentUser.user?.email ?? "")
         }
     }
     
@@ -33,14 +34,31 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
         }
     }
     
-    func updatePseudo(to newPseudo: String?) {
-        guard let newPseudo = newPseudo else {
-            return
+    func updatePseudo(to newPseudo: String?, with password: String?) {
+        guard let newPseudo = newPseudo,
+            let password = password else {
+                return
         }
         
-        AccountManager.shared.updatePseudo(to: newPseudo) { error in
+        AccountManager.shared.updatePseudo(to: newPseudo, with: password) { error in
             guard let error = error else {
                 self.view.display(username: newPseudo)
+                return
+            }
+            
+            self.view.sendAlert(message: self.convertAlert(with: error))
+        }
+    }
+    
+    func updateEmail(to newEmail: String?, with password: String?) {
+        guard let newEmail = newEmail,
+            let password = password else {
+                return
+        }
+        
+        AccountManager.shared.updateEmail(to: newEmail, with: password) { error in
+            guard let error = error else {
+                self.view.display(email: newEmail)
                 return
             }
             

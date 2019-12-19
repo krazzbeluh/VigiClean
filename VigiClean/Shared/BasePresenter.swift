@@ -121,9 +121,9 @@ extension BasePresenter {
         case .invalidEmail:
             message = "\(errCode)"
         case .wrongPassword:
-            message = "\(errCode)"
+            message = "Mot de passe incorrect"
         case .tooManyRequests:
-            message = "\(errCode)"
+            message = "Opération impossible, veuillez réessayer ultérieurement"
         case .userNotFound:
             message = "userNotFound"
         case .accountExistsWithDifferentCredential:
