@@ -123,7 +123,7 @@ class ObjectManager {
     }
     
     func sendRequest(for object: Object, with action: Action, callback: @escaping (Error?) -> Void) {
-        guard let uid = accountManager.currentUser?.uid else {
+        guard let uid = accountManager.currentUser.user?.uid else {
             callback(ObjectError.userNotLoggedIn)
             return
         }

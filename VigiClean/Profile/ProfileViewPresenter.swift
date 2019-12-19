@@ -20,6 +20,9 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
     
     required init(view: ProfileView) {
         self.view = view
+        if accountManager.isConnectedWithEmail {
+            view.display(username: "")
+        }
     }
     
     func signOut() {
@@ -29,6 +32,21 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
             } else {
                 self.view.userSignedOut()
             }
+        }
+    }
+    
+    func updatePseudo(to newPseudo: String?) {
+        guard let newPseudo = newPseudo else {
+            return
+        }
+        
+        accountManager.updatePseudo(to: newPseudo) { error in
+            guard let error = error else {
+                self.view.display(username: newPseudo)
+                return
+            }
+            
+            self.view.sendAlert(message: self.convertAlert(with: error))
         }
     }
 }

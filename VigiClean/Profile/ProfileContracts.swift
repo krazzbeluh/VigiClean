@@ -12,8 +12,10 @@ protocol ProfileViewPresenter: BasePresenter {
     init(view: ProfileView)
     var isConnectedAnonymously: Bool { get }
     func signOut()
+    func updatePseudo(to newPseudo: String?)
 }
 
 protocol ProfileView: AlertManager {
     func userSignedOut()
+    func display(username: String)
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2EDF790BADCB409446220B2E /* Pods_VigiCleanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07C60F1F161004AED1E3929 /* Pods_VigiCleanTests.framework */; };
+		9402CEFB23ABB3C000C2D671 /* VigiCleanUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9402CEFA23ABB3C000C2D671 /* VigiCleanUser.swift */; };
 		9402E9A3239A8EF80070E910 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9402E9A2239A8EF80070E910 /* BasePresenter.swift */; };
 		94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAC237D067B00419F2C /* SignUpViewController.swift */; };
 		94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */; };
@@ -80,6 +81,7 @@
 		3CEC49AC9E3D47668794328A /* Pods-VigiCleanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.release.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.release.xcconfig"; sourceTree = "<group>"; };
 		77B81D13D6151CE3ED84549F /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
 		7A9FC7A8205830702234610B /* Pods-VigiClean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.debug.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.debug.xcconfig"; sourceTree = "<group>"; };
+		9402CEFA23ABB3C000C2D671 /* VigiCleanUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VigiCleanUser.swift; sourceTree = "<group>"; };
 		9402E9A2239A8EF80070E910 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		94138AAC237D067B00419F2C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenter.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */,
 				94BA1F182395D72F00FE19A1 /* Scanner.swift */,
 				94CDC9AD237C3AF2003295AD /* AccountManager.swift */,
+				9402CEFA23ABB3C000C2D671 /* VigiCleanUser.swift */,
 				94D20957239EDE080089759B /* FirebaseInterface.swift */,
 			);
 			path = Model;
@@ -629,6 +632,7 @@
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
 				94BA1EE8238C223500FE19A1 /* AttachEmailViewPresenter.swift in Sources */,
 				94BA1EEC238E696800FE19A1 /* SignUpContracts.swift in Sources */,
+				9402CEFB23ABB3C000C2D671 /* VigiCleanUser.swift in Sources */,
 				94D20958239EDE080089759B /* FirebaseInterface.swift in Sources */,
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
 				94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */,

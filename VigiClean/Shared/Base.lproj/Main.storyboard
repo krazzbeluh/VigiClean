@@ -162,12 +162,8 @@
                                     <constraint firstAttribute="width" secondItem="VVA-AU-iaZ" secondAttribute="height" multiplier="1:1" id="lpe-Hy-E6a"/>
                                 </constraints>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKB-La-Kvm">
-                                <rect key="frame" x="8" y="238" width="398" height="30"/>
-                                <state key="normal" title="Nouvelle photo de profil"/>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="43" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="07s-Z2-zFR">
-                                <rect key="frame" x="20" y="288" width="374" height="500"/>
+                                <rect key="frame" x="20" y="296" width="374" height="492"/>
                                 <color key="backgroundColor" name="Background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AttachEmailCell" rowHeight="43" id="g6m-x3-Z0u">
@@ -230,6 +226,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWN-Nu-OoV">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
                                                     <state key="normal" title="Changer de pseudo"/>
+                                                    <connections>
+                                                        <action selector="changePseudo:" destination="PVg-Oh-QbQ" eventType="touchUpInside" id="gra-Vv-ZCy"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" name="Background"/>
@@ -276,26 +275,43 @@
                                 </constraints>
                                 <state key="normal" image="Close"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07l-Nz-0B1">
+                                <rect key="frame" x="8" y="242" width="398" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" name="VigiClean"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text@exemple.fr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Di-Tf-A8j">
+                                <rect key="frame" x="8" y="263" width="398" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" name="VigiClean"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="eUb-t3-98D" firstAttribute="top" secondItem="hSn-0T-nEO" secondAttribute="top" constant="12" id="3E0-j3-DPT"/>
-                            <constraint firstItem="07s-Z2-zFR" firstAttribute="top" secondItem="aKB-La-Kvm" secondAttribute="bottom" constant="20" id="92j-Cq-mey"/>
-                            <constraint firstItem="aKB-La-Kvm" firstAttribute="leading" secondItem="hSn-0T-nEO" secondAttribute="leading" constant="8" id="Ca9-D2-5kr"/>
+                            <constraint firstItem="07l-Nz-0B1" firstAttribute="centerX" secondItem="3iZ-bP-61y" secondAttribute="centerX" id="49q-Vx-pEp"/>
+                            <constraint firstItem="8Di-Tf-A8j" firstAttribute="leading" secondItem="hSn-0T-nEO" secondAttribute="leading" constant="8" id="9oz-N0-G14"/>
                             <constraint firstItem="eUb-t3-98D" firstAttribute="leading" secondItem="hSn-0T-nEO" secondAttribute="leading" constant="20" id="EFY-Kd-APh"/>
                             <constraint firstItem="hSn-0T-nEO" firstAttribute="bottom" secondItem="07s-Z2-zFR" secondAttribute="bottom" constant="20" id="FG2-JX-tvO"/>
-                            <constraint firstItem="aKB-La-Kvm" firstAttribute="top" secondItem="VVA-AU-iaZ" secondAttribute="bottom" constant="4" id="J5J-Ai-Cib"/>
+                            <constraint firstItem="07l-Nz-0B1" firstAttribute="leading" secondItem="hSn-0T-nEO" secondAttribute="leading" constant="8" id="FmC-sM-Wse"/>
                             <constraint firstItem="VVA-AU-iaZ" firstAttribute="centerX" secondItem="3iZ-bP-61y" secondAttribute="centerX" id="Ncf-9U-Bl4"/>
+                            <constraint firstItem="07l-Nz-0B1" firstAttribute="top" secondItem="VVA-AU-iaZ" secondAttribute="bottom" constant="8" id="UGs-y7-Xr9"/>
                             <constraint firstItem="07s-Z2-zFR" firstAttribute="leading" secondItem="hSn-0T-nEO" secondAttribute="leading" constant="20" id="UPr-N0-ggu"/>
                             <constraint firstItem="07s-Z2-zFR" firstAttribute="centerX" secondItem="3iZ-bP-61y" secondAttribute="centerX" id="XgW-A9-Jaf"/>
+                            <constraint firstItem="8Di-Tf-A8j" firstAttribute="top" secondItem="07l-Nz-0B1" secondAttribute="bottom" id="Zss-KT-ddu"/>
                             <constraint firstItem="VVA-AU-iaZ" firstAttribute="leading" secondItem="hSn-0T-nEO" secondAttribute="leading" constant="100" id="aPh-cM-YXU"/>
                             <constraint firstItem="VVA-AU-iaZ" firstAttribute="top" secondItem="hSn-0T-nEO" secondAttribute="top" constant="20" id="lK1-Vk-3cO"/>
-                            <constraint firstItem="aKB-La-Kvm" firstAttribute="centerX" secondItem="3iZ-bP-61y" secondAttribute="centerX" id="wne-Js-El3"/>
+                            <constraint firstItem="07s-Z2-zFR" firstAttribute="top" secondItem="8Di-Tf-A8j" secondAttribute="bottom" constant="12" id="nf5-vt-Wd3"/>
+                            <constraint firstItem="8Di-Tf-A8j" firstAttribute="centerX" secondItem="3iZ-bP-61y" secondAttribute="centerX" id="tdZ-vA-B4i"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hSn-0T-nEO"/>
                     </view>
                     <navigationItem key="navigationItem" id="ps0-aI-1ew"/>
                     <connections>
+                        <outlet property="emailLabel" destination="8Di-Tf-A8j" id="Tew-BT-TPb"/>
+                        <outlet property="usernameLabel" destination="07l-Nz-0B1" id="CwF-yo-aee"/>
                         <segue destination="TbZ-GO-RbZ" kind="unwind" identifier="unwindToLaunch" unwindAction="unwindToLaunchWithSegue:" id="ha6-Xg-rbE"/>
                     </connections>
                 </viewController>

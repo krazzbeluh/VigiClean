@@ -18,7 +18,7 @@ class ScoreViewPresenter: ScoreViewPresenterContract {
     }
     
     func listenForUserCreditChange(valueChanged: @escaping (Int) -> Void) {
-        accountManager.listenForUserCreditsChanges { newValue in
+        accountManager.listenForUserDocumentChanges { (newValue) in
             valueChanged(newValue)
         }
     }
