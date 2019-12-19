@@ -227,7 +227,7 @@ class AccountManager {
             imageReference.getData(maxSize: 60 * 1024 * 1024) { data, error in
                 guard let data = data,
                     error == nil else {
-                        callback(.failure(FirebaseInterface.convertStorageError(error: error!)))
+                        callback(.failure(error!))
                         return
                 }
                 

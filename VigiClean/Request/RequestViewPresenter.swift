@@ -93,7 +93,12 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             
             objectManager.sendRequest(for: object, with: action) { error in
                 if let error = error {
-                    self.view.sendAlert(message: self.convertAlert(with: error))
+                    guard let errMessage = self.getFirestoreErrorCode(error: error) else {
+                        // TODO
+                        return
+                    }
+                    
+                    self.view.sendAlert(message: errMessage)
                     return
                 }
                 
@@ -112,7 +117,12 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             
             objectManager.resolvedRequest(for: object, with: action, isValid: isValid) { (error) in
                 if let error = error {
-                    self.view.sendAlert(message: self.convertAlert(with: error))
+                    guard let errMessage = self.getFunctionsErrorCode(error: error) else {
+                        // TODO
+                        return
+                    }
+                    
+                    self.view.sendAlert(message: errMessage)
                     return
                 }
                 

@@ -10,68 +10,19 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseFunctions
 
 class BasePresenter { // TODO: review error management with new errors conversio
-    func convertAlert(with error: Error) -> String {
+    /*func convertAlert(with error: Error) -> String {
         let message: String
         
         message = convertVigiCleanError(error)
             ?? convertFirestoreError(error)
-            ?? convertAuthError(error)
             ?? convertStorageError(error)
             ?? "Unknown error !"
         
         return message
-    }
-    
-    private func convertFirestoreError(_ error: Error) -> String? { // swiftlint:disable:this cyclomatic_complexity line_length function_body_length
-        guard let errCode = FirestoreErrorCode(rawValue: error._code) else {
-            return nil
-        }
-        
-        let message: String
-        
-        switch errCode {
-        case .OK:
-            message = "\(errCode)"
-        case .cancelled:
-            message = "\(errCode)"
-        case .unknown:
-            message = "\(errCode)"
-        case .invalidArgument:
-            message = "\(errCode)"
-        case .deadlineExceeded:
-            message = "\(errCode)"
-        case .notFound:
-            message = "\(errCode)"
-        case .alreadyExists:
-            message = "\(errCode)"
-        case .permissionDenied:
-            message = "\(errCode)"
-        case .resourceExhausted:
-            message = "\(errCode)"
-        case .failedPrecondition:
-            message = "\(errCode)"
-        case .aborted:
-            message = "\(errCode)"
-        case .outOfRange:
-            message = "\(errCode)"
-        case .unimplemented:
-            message = "\(errCode)"
-        case .internal:
-            message = "\(errCode)"
-        case .unavailable:
-            message = "\(errCode)"
-        case .dataLoss:
-            message = "\(errCode)"
-        case .unauthenticated:
-            message = "\(errCode)"
-        @unknown default:
-            return nil
-        }
-        
-        return message
-    }
+    }*/
     
     private func convertVigiCleanError(_ error: Error) -> String? {
         if let error = error as? Scanner.ScannerError {
@@ -86,40 +37,36 @@ class BasePresenter { // TODO: review error management with new errors conversio
             return nil
         }
     }
-    
-    private func convertStorageError(_ error: Error) -> String? {
-        guard let error = error as? StorageErrorCode else {
-            return nil
-        }
-        
-        return "wait a minute lol \(error)" // TODO
-    }
 }
 
+// MARK: Auth
 extension BasePresenter {
-    private func convertAuthError(_ error: Error) -> String? { // swiftlint:disable:this cyclomatic_complexity function_body_length line_length
-
+    func getAuthErrorCode(error: Error) -> String? {
         guard let errCode = AuthErrorCode(rawValue: error._code) else {
             return nil
         }
+        return convertAuthError(errCode)
+    }
+    
+    private func convertAuthError(_ error: AuthErrorCode) -> String? { // swiftlint:disable:this cyclomatic_complexity function_body_length line_length
         
         let message: String
         
-        switch errCode {
+        switch error {
         case .invalidCustomToken:
-            message = "\(errCode)"
+            message = "\(error)"
         case .customTokenMismatch:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidCredential:
-            message = "\(errCode)"
+            message = "\(error)"
         case .userDisabled:
-            message = "\(errCode)"
+            message = "\(error)"
         case .operationNotAllowed:
-            message = "\(errCode)"
+            message = "\(error)"
         case .emailAlreadyInUse:
             message = "Cette adresse mail est déjà utilisée"
         case .invalidEmail:
-            message = "\(errCode)"
+            message = "\(error)"
         case .wrongPassword:
             message = "Mot de passe incorrect"
         case .tooManyRequests:
@@ -127,117 +74,275 @@ extension BasePresenter {
         case .userNotFound:
             message = "userNotFound"
         case .accountExistsWithDifferentCredential:
-            message = "\(errCode)"
+            message = "\(error)"
         case .requiresRecentLogin:
-            message = "\(errCode)"
+            message = "\(error)"
         case .providerAlreadyLinked:
-            message = "\(errCode)"
+            message = "\(error)"
         case .noSuchProvider:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidUserToken:
-            message = "\(errCode)"
+            message = "\(error)"
         case .networkError:
-            message = "\(errCode)"
+            message = "\(error)"
         case .userTokenExpired:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidAPIKey:
-            message = "\(errCode)"
+            message = "\(error)"
         case .userMismatch:
-            message = "\(errCode)"
+            message = "\(error)"
         case .credentialAlreadyInUse:
-            message = "\(errCode)"
+            message = "\(error)"
         case .weakPassword:
-            message = "\(errCode)"
+            message = "\(error)"
         case .appNotAuthorized:
-            message = "\(errCode)"
+            message = "\(error)"
         case .expiredActionCode:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidActionCode:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidMessagePayload:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidSender:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidRecipientEmail:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingEmail:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingIosBundleID:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingAndroidPackageName:
-            message = "\(errCode)"
+            message = "\(error)"
         case .unauthorizedDomain:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidContinueURI:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingContinueURI:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingPhoneNumber:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidPhoneNumber:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingVerificationCode:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidVerificationCode:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingVerificationID:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidVerificationID:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingAppCredential:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidAppCredential:
-            message = "\(errCode)"
+            message = "\(error)"
         case .sessionExpired:
-            message = "\(errCode)"
+            message = "\(error)"
         case .quotaExceeded:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingAppToken:
-            message = "\(errCode)"
+            message = "\(error)"
         case .notificationNotForwarded:
-            message = "\(errCode)"
+            message = "\(error)"
         case .appNotVerified:
-            message = "\(errCode)"
+            message = "\(error)"
         case .captchaCheckFailed:
-            message = "\(errCode)"
+            message = "\(error)"
         case .webContextAlreadyPresented:
-            message = "\(errCode)"
+            message = "\(error)"
         case .webContextCancelled:
-            message = "\(errCode)"
+            message = "\(error)"
         case .appVerificationUserInteractionFailure:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidClientID:
-            message = "\(errCode)"
+            message = "\(error)"
         case .webNetworkRequestFailed:
-            message = "\(errCode)"
+            message = "\(error)"
         case .webInternalError:
-            message = "\(errCode)"
+            message = "\(error)"
         case .webSignInUserInteractionFailure:
-            message = "\(errCode)"
+            message = "\(error)"
         case .localPlayerNotAuthenticated:
-            message = "\(errCode)"
+            message = "\(error)"
         case .nullUser:
-            message = "\(errCode)"
+            message = "\(error)"
         case .dynamicLinkNotActivated:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidProviderID:
-            message = "\(errCode)"
+            message = "\(error)"
         case .invalidDynamicLinkDomain:
-            message = "\(errCode)"
+            message = "\(error)"
         case .rejectedCredential:
-            message = "\(errCode)"
+            message = "\(error)"
         case .gameKitNotLinked:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingOrInvalidNonce:
-            message = "\(errCode)"
+            message = "\(error)"
         case .missingClientIdentifier:
-            message = "\(errCode)"
+            message = "\(error)"
         case .keychainError:
-            message = "\(errCode)"
+            message = "\(error)"
         case .internalError:
-            message = "\(errCode)"
+            message = "\(error)"
         case .malformedJWT:
-            message = "\(errCode)"
+            message = "\(error)"
+        @unknown default:
+            return nil
+        }
+        
+        return message
+    }
+}
+
+// MARK: Storage
+extension BasePresenter {
+    func getStorageErrorCode(error: Error) -> String? {
+        guard let error = error as? StorageErrorCode else {
+            return nil
+        }
+        
+        return convertStorageError(error)
+    }
+    
+    private func convertStorageError(_ error: StorageErrorCode) -> String? { // swiftlint:disable:this cyclomatic_complexity line_length
+        let message: String
+        
+        switch error {
+        case .unknown:
+            message = "\(error)"
+        case .objectNotFound:
+            message = "\(error)"
+        case .bucketNotFound:
+            message = "\(error)"
+        case .projectNotFound:
+            message = "\(error)"
+        case .quotaExceeded:
+            message = "\(error)"
+        case .unauthenticated:
+            message = "\(error)"
+        case .unauthorized:
+            message = "\(error)"
+        case .retryLimitExceeded:
+            message = "\(error)"
+        case .nonMatchingChecksum:
+            message = "\(error)"
+        case .downloadSizeExceeded:
+            message = "\(error)"
+        case .cancelled:
+            message = "\(error)"
+        case .invalidArgument:
+            message = "\(error)"
+        @unknown default:
+            return nil
+        }
+        
+        return message
+    }
+}
+
+// MARK: Firestore
+extension BasePresenter {
+    func getFirestoreErrorCode(error: Error) -> String? {
+        guard let error = error as? FirestoreErrorCode else {
+            return nil
+        }
+        
+        return convertFirestoreError(error)
+    }
+    
+    private func convertFirestoreError(_ error: FirestoreErrorCode) -> String? { // swiftlint:disable:this cyclomatic_complexity line_length
+        let message: String
+        
+        switch error {
+        case .OK:
+            message = "\(error)"
+        case .cancelled:
+            message = "\(error)"
+        case .unknown:
+            message = "\(error)"
+        case .invalidArgument:
+            message = "\(error)"
+        case .deadlineExceeded:
+            message = "\(error)"
+        case .notFound:
+            message = "\(error)"
+        case .alreadyExists:
+            message = "\(error)"
+        case .permissionDenied:
+            message = "\(error)"
+        case .resourceExhausted:
+            message = "\(error)"
+        case .failedPrecondition:
+            message = "\(error)"
+        case .aborted:
+            message = "\(error)"
+        case .outOfRange:
+            message = "\(error)"
+        case .unimplemented:
+            message = "\(error)"
+        case .internal:
+            message = "\(error)"
+        case .unavailable:
+            message = "\(error)"
+        case .dataLoss:
+            message = "\(error)"
+        case .unauthenticated:
+            message = "\(error)"
+        @unknown default:
+            return nil
+        }
+        
+        return message
+    }
+}
+
+// MARK: Functions
+extension BasePresenter {
+    func getFunctionsErrorCode(error: Error) -> String? {
+        guard let error = error as? FunctionsErrorCode else {
+            return nil
+        }
+        
+        return convertFunctionsError(error)
+    }
+    
+    func convertFunctionsError(_ error: FunctionsErrorCode) -> String? { // swiftlint:disable:this cyclomatic_complexity
+        let message: String
+        
+        switch error {
+        case .OK:
+            message = "\(error)"
+        case .cancelled:
+            message = "\(error)"
+        case .unknown:
+            message = "\(error)"
+        case .invalidArgument:
+            message = "\(error)"
+        case .deadlineExceeded:
+            message = "\(error)"
+        case .notFound:
+            message = "\(error)"
+        case .alreadyExists:
+            message = "\(error)"
+        case .permissionDenied:
+            message = "\(error)"
+        case .resourceExhausted:
+            message = "\(error)"
+        case .failedPrecondition:
+            message = "\(error)"
+        case .aborted:
+            message = "\(error)"
+        case .outOfRange:
+            message = "\(error)"
+        case .unimplemented:
+            message = "\(error)"
+        case .internal:
+            message = "\(error)"
+        case .unavailable:
+            message = "\(error)"
+        case .dataLoss:
+            message = "\(error)"
+        case .unauthenticated:
+            message = "\(error)"
         @unknown default:
             return nil
         }

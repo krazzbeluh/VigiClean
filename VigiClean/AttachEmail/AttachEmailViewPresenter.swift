@@ -23,14 +23,14 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
             username != "", email != "",
             password != "",
             confirmPassword != "" else {
-                view.sendAlert(message: convertAlert(with:
-                    AccountManager.UAccountError.emptyTextField))
+//                view.sendAlert(message: convertAlert(with:
+//                    AccountManager.UAccountError.emptyTextField)) // TODO
             return
         }
         
         guard password == confirmPassword else {
-            view.sendAlert(message: convertAlert(with:
-                AccountManager.UAccountError.notMatchingPassword))
+//            view.sendAlert(message: convertAlert(with:
+//                AccountManager.UAccountError.notMatchingPassword)) // TODO
             return
         }
         
@@ -38,14 +38,23 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
         
         AccountManager.shared.attachEmail(email: email, password: password, completion: { error in
             if let error = error {
-                self.view.sendAlert(message: self.convertAlert(with: error))
+                guard let errMessage = self.getAuthErrorCode(error: error) else {
+                    // TODO
+                    return
+                }
+                self.view.sendAlert(message: errMessage)
             } else {
                 AccountManager.shared.updatePseudo(to: username, with: password) { (error) in
                     guard let error = error else {
                         self.view.emailAttached()
                         return
                     }
-                    self.view.sendAlert(message: self.convertAlert(with: error))
+                    
+                    guard let errMessage = self.getAuthErrorCode(error: error) else {
+                        // TODO
+                        return
+                    }
+                    self.view.sendAlert(message: errMessage)
                 }
             }
         })

@@ -14,8 +14,8 @@
             filePath = "VigiClean/Shared/BasePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "convertAuthError(_:)"
             landmarkType = "7">
          </BreakpointContent>

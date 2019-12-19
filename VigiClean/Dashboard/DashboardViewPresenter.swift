@@ -27,7 +27,13 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
                     print("No avatar found")
                     return
                 }
-                self.view.sendAlert(message: self.convertAlert(with: error)) 
+                
+                guard let errMessage = self.getStorageErrorCode(error: error) else {
+                    // TODO
+                    return
+                }
+                
+                self.view.sendAlert(message: errMessage)
             }
         }
     }

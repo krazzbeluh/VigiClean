@@ -81,8 +81,8 @@ class RequestViewController: UIViewController, RequestView {
         loading(grayed: true)
         
         guard let action = action.text, action != "" else {
-            sendAlert(message: presenter.convertAlert(
-                with: ObjectManager.ObjectError.nilInTextField))
+//            sendAlert(message: presenter.convertAlert(
+//                with: ObjectManager.ObjectError.nilInTextField)) // TODO
             return
         }
         
