@@ -47,7 +47,7 @@ class ObjectManager {
                                                           type: type,
                                                           name: name,
                                                           code: code,
-                                                          userActions: userActions,
+                                                          actions: userActions,
                                                           employeeActions: employeeActions)
                             
                             callback(nil)

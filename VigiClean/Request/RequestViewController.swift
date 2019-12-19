@@ -65,6 +65,7 @@ class RequestViewController: UIViewController, RequestView {
     }
     
     func requestSent() {
+        loading(grayed: false)
         performSegue(withIdentifier: "segueToCongrats", sender: self)
     }
     
@@ -77,6 +78,8 @@ class RequestViewController: UIViewController, RequestView {
     // MARK: Actions
     
     @IBAction func sendRequest(_ sender: Any) {
+        loading(grayed: true)
+        
         guard let action = action.text, action != "" else {
             sendAlert(message: presenter.convertAlert(
                 with: ObjectManager.ObjectError.nilInTextField))

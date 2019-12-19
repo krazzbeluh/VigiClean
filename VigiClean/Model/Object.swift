@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseFirestore
 
-class Object {
+struct Object {
     
     // MARK: Properties
     let coords: GeoPoint
@@ -20,22 +20,6 @@ class Object {
     
     let actions: [Action]
     let employeeActions: [Action]
-    
-    init(coords: GeoPoint,
-         organization: String,
-         type: String,
-         name: String,
-         code: String,
-         userActions: [Action],
-         employeeActions: [Action]) {
-        self.coords = coords
-        self.organization = organization
-        self.type = type
-        self.name = name
-        self.code = code
-        self.actions = userActions
-        self.employeeActions = employeeActions
-    }
     
     static var currentObject: Object?
 }
