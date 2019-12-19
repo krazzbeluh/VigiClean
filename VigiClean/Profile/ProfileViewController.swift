@@ -20,6 +20,15 @@ class ProfileViewController: UIViewController, ProfileView {
         presenter = ProfilePresenter(view: self)
     }
     
+    // MARK: Properties
+    var userActions: [String] {
+        if presenter.isConnectedAnonymously {
+            return ["AttachEmailCell", "DisconnectCell"]
+        } else {
+            return ["changeAvatarCell", "changeUsernameCell", "DisconnectCell"]
+        }
+    }
+    
     // MARK: Outlets
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -101,17 +110,10 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return !presenter.isConnectedAnonymously ? 3 : 4
+        return userActions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cells: [String]
-        if presenter.isConnectedAnonymously {
-            cells = ["AttachEmailCell", "changeAvatarCell", "changeUsernameCell", "DisconnectCell"]
-        } else {
-            cells = ["changeAvatarCell", "changeUsernameCell", "DisconnectCell"]
-        }
-        
-        return tableView.dequeueReusableCell(withIdentifier: cells[indexPath.row], for: indexPath)
+        return tableView.dequeueReusableCell(withIdentifier: userActions[indexPath.row], for: indexPath)
     }
 }

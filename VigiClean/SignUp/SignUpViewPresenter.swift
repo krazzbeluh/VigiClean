@@ -11,8 +11,6 @@ import Foundation
 class SignUpPresenter: BasePresenter, SignUpViewPresenter {
     weak var view: SignUpView!
     
-    let accountManager = AccountManager()
-    
     required init(view: SignUpView) {
         self.view = view
     }
@@ -38,7 +36,7 @@ class SignUpPresenter: BasePresenter, SignUpViewPresenter {
         
         view.switchActivityIndicator(hidden: false)
         
-        accountManager.signUp(username: username, email: email, password: password) { error in
+        AccountManager.shared.signUp(username: username, email: email, password: password) { error in
             if let error = error {
                 self.view.sendAlert(message: self.convertAlert(with: error))
                 self.view.switchActivityIndicator(hidden: true)

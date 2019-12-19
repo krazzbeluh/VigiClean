@@ -16,7 +16,6 @@ class ObjectManager {
     }
     
     let database = Firestore.firestore()
-    let accountManager = AccountManager()
     lazy var functions = Functions.functions()
     
     func getObject(code: String, callback: @escaping (Error?) -> Void) {
@@ -123,7 +122,7 @@ class ObjectManager {
     }
     
     func sendRequest(for object: Object, with action: Action, callback: @escaping (Error?) -> Void) {
-        guard let uid = accountManager.currentUser.user?.uid else {
+        guard let uid = AccountManager.shared.currentUser.user?.uid else {
             callback(ObjectError.userNotLoggedIn)
             return
         }

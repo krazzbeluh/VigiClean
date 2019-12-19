@@ -92,7 +92,7 @@ class BasePresenter { // TODO: review error management with new errors conversio
             return nil
         }
         
-        return "wait a minute lol \(error)"
+        return "wait a minute lol \(error)" // TODO
     }
 }
 
@@ -117,7 +117,7 @@ extension BasePresenter {
         case .operationNotAllowed:
             message = "\(errCode)"
         case .emailAlreadyInUse:
-            message = "\(errCode)"
+            message = "Cette adresse mail est déjà utilisée"
         case .invalidEmail:
             message = "\(errCode)"
         case .wrongPassword:

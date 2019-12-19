@@ -11,8 +11,6 @@ import Foundation
 class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     weak var view: LaunchView!
     
-    let accountManager = AccountManager()
-    
     required init(view: LaunchView) {
         self.view = view
     }

@@ -11,8 +11,6 @@ import Foundation
 class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
     weak var view: AttachEmailView!
     
-    let accountManager = AccountManager()
-    
     required init(view: AttachEmailView) {
         self.view = view
     }
@@ -38,11 +36,17 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
         
         view.switchActivityIndicator(hidden: false)
         
-        accountManager.attachEmail(email: email, password: password, completion: { error in
+        AccountManager.shared.attachEmail(email: email, password: password, completion: { error in
             if let error = error {
                 self.view.sendAlert(message: self.convertAlert(with: error))
             } else {
-                self.view.emailAttached()
+                AccountManager.shared.updatePseudo(to: username) { (error) in
+                    guard let error = error else {
+                        self.view.emailAttached()
+                        return
+                    }
+                    self.view.sendAlert(message: self.convertAlert(with: error))
+                }
             }
         })
     }

@@ -11,14 +11,13 @@ import Foundation
 class ScoreViewPresenter: ScoreViewPresenterContract {
     unowned let view: ScoreViewContract
     
-    let accountManager = AccountManager()
     
     required init(view: ScoreViewContract) {
         self.view = view
     }
     
     func listenForUserCreditChange(valueChanged: @escaping (Int) -> Void) {
-        accountManager.listenForUserDocumentChanges { (newValue) in
+        AccountManager.shared.listenForUserDocumentChanges { (newValue) in
             valueChanged(newValue)
         }
     }

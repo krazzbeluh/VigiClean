@@ -20,7 +20,7 @@ class LaunchViewController: UIViewController, LaunchView, AlertManager {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if presenter.accountManager.isConnected {
+        if AccountManager.shared.isConnected {
             performSegue(withIdentifier: "segueToDashboard", sender: nil)
         } else {
             performSegue(withIdentifier: "segueToWelcome", sender: nil)

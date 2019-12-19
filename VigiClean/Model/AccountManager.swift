@@ -12,7 +12,9 @@ import FirebaseFirestore
 import FirebaseStorage
 
 class AccountManager {
-    init() {
+    static var shared = AccountManager()
+    
+    private init() {
         self.auth = Auth.auth()
         self.database = Firestore.firestore()
         self.storage = Storage.storage()

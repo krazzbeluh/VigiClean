@@ -12,15 +12,12 @@ import FirebaseStorage
 class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     weak var view: DashboardView!
     
-    var accountManager: AccountManager
-    
     required init(view: DashboardView) {
         self.view = view
-        accountManager = AccountManager()
     }
     
     func getAvatar() {
-        accountManager.getAvatar { (result) in
+        AccountManager.shared.getAvatar { (result) in
             switch result {
             case .success(let data):
                 self.view.setAvatar(with: data)

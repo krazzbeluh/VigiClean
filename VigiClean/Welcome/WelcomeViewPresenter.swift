@@ -11,14 +11,12 @@ import Foundation
 class WelcomePresenter: BasePresenter, WelcomeViewPresenter {
     weak var view: WelcomeView!
     
-    let accountManager = AccountManager()
-    
     required init(view: WelcomeView) {
         self.view = view
     }
     
     func signIn() {
-        accountManager.anonymousSignIn { error in
+        AccountManager.shared.anonymousSignIn { error in
             if let error = error {
                 self.view.sendAlert(message: self.convertAlert(with: error))
                 return

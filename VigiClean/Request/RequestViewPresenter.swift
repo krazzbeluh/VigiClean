@@ -10,7 +10,6 @@ import Foundation
 import MapKit
 
 class RequestPresenter: BasePresenter, RequestViewPresenter {
-    let accountManager = AccountManager()
     let objectManager = ObjectManager()
     
     var employeeMode = false
@@ -54,7 +53,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
     }
     
     func fetchRole(callback: @escaping (Bool) -> Void) {
-        accountManager.fetchRole { result in
+        AccountManager.shared.fetchRole { result in
             switch result {
             case .success(let isEmployee):
                 callback(isEmployee)
