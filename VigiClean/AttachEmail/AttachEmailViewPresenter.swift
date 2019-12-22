@@ -23,14 +23,14 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
             username != "", email != "",
             password != "",
             confirmPassword != "" else {
-//                view.sendAlert(message: convertAlert(with:
-//                    AccountManager.UAccountError.emptyTextField)) // TODO
-            return
+                //                view.sendAlert(message: convertAlert(with:
+                //                    AccountManager.UAccountError.emptyTextField)) // TODO
+                return
         }
         
         guard password == confirmPassword else {
-//            view.sendAlert(message: convertAlert(with:
-//                AccountManager.UAccountError.notMatchingPassword)) // TODO
+            //            view.sendAlert(message: convertAlert(with:
+            //                AccountManager.UAccountError.notMatchingPassword)) // TODO
             return
         }
         
@@ -38,11 +38,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
         
         AccountManager.shared.attachEmail(email: email, password: password, completion: { error in
             if let error = error {
-                guard let errMessage = self.getAuthErrorCode(error: error) else {
-                    // TODO
-                    return
-                }
-                self.view.sendAlert(message: errMessage)
+                self.view.sendAlert(message: self.convertError(error))
             } else {
                 AccountManager.shared.updatePseudo(to: username, with: password) { (error) in
                     guard let error = error else {
@@ -50,11 +46,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
                         return
                     }
                     
-                    guard let errMessage = self.getAuthErrorCode(error: error) else {
-                        // TODO
-                        return
-                    }
-                    self.view.sendAlert(message: errMessage)
+                    self.view.sendAlert(message: self.convertError(error))
                 }
             }
         })

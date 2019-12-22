@@ -18,6 +18,7 @@
 		94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */; };
 		94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA4238583C90054BE70 /* SignInContracts.swift */; };
 		94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA723858CCF0054BE70 /* LaunchViewController.swift */; };
+		9451DE4A23AE70F10097658C /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451DE4923AE70F10097658C /* ErrorHandler.swift */; };
 		94623695239A9F780026DD95 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94623694239A9F780026DD95 /* GoogleService-Info.plist */; };
 		94623699239AC4F50026DD95 /* LaunchContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94623698239AC4F50026DD95 /* LaunchContracts.swift */; };
 		9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */; };
@@ -91,6 +92,7 @@
 		94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
 		94504AA4238583C90054BE70 /* SignInContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContracts.swift; sourceTree = "<group>"; };
 		94504AA723858CCF0054BE70 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		9451DE4923AE70F10097658C /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		94623694239A9F780026DD95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94623698239AC4F50026DD95 /* LaunchContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchContracts.swift; sourceTree = "<group>"; };
 		9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewPresenter.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */,
 				94BA1F182395D72F00FE19A1 /* Scanner.swift */,
 				94CDC9AD237C3AF2003295AD /* AccountManager.swift */,
+				9451DE4923AE70F10097658C /* ErrorHandler.swift */,
 				9402CEFA23ABB3C000C2D671 /* VigiCleanUser.swift */,
 				94D20957239EDE080089759B /* FirebaseInterface.swift */,
 			);
@@ -611,6 +614,7 @@
 				94BA1EEA238DA11C00FE19A1 /* RequestViewController.swift in Sources */,
 				94D20949239B08560089759B /* DashboardContracts.swift in Sources */,
 				94BA1EEE238E6A3900FE19A1 /* AttachEmailContracts.swift in Sources */,
+				9451DE4A23AE70F10097658C /* ErrorHandler.swift in Sources */,
 				94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */,
 				94DF01F423A514370016CA24 /* Poi.swift in Sources */,
 				94DC7C20239ADA0E00C414DA /* ObjectManager.swift in Sources */,

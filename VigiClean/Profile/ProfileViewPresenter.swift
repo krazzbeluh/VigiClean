@@ -27,12 +27,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
     func signOut() {
         AccountManager.shared.signOut { error in
             if let error = error {
-                guard let errMessage = self.getAuthErrorCode(error: error) else {
-                    // TODO
-                    return
-                }
-                
-                self.view.sendAlert(message: errMessage)
+                self.view.sendAlert(message: self.convertError(error))
             } else {
                 self.view.userSignedOut()
             }
@@ -51,12 +46,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
                 return
             }
             
-            guard let errMessage = self.getStorageErrorCode(error: error) else {
-                // TODO
-                return
-            }
-            
-            self.view.sendAlert(message: errMessage)
+            self.view.sendAlert(message: self.convertError(error))
         }
     }
     
@@ -72,12 +62,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
                 return
             }
             
-            guard let errMessage = self.getAuthErrorCode(error: error) else {
-                // TODO
-                return
-            }
-            
-            self.view.sendAlert(message: errMessage)
+            self.view.sendAlert(message: self.convertError(error))
         }
     }
 }

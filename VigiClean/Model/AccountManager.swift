@@ -49,7 +49,12 @@ class AccountManager {
         auth.createUser(
             withEmail: email,
             password: password) { (_, error) in
-                completion(error)
+                guard let error = error else {
+                    completion(nil)
+                    return
+                }
+                let errCode = ErrorHandler().convertToAuthError(error)
+                completion(errCode)
         }
     }
     
@@ -57,13 +62,23 @@ class AccountManager {
         auth.signIn(
             withEmail: email,
             password: password) { (_, error) in
-                completion(error)
+                guard let error = error else {
+                    completion(nil)
+                    return
+                }
+                let errCode = ErrorHandler().convertToAuthError(error)
+                completion(errCode)
         }
     }
     
     func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
         auth.signInAnonymously { (_, error) in
-            completion(error)
+            guard let error = error else {
+                completion(nil)
+                return
+            }
+            let errCode = ErrorHandler().convertToAuthError(error)
+            completion(errCode)
         }
     }
     
@@ -72,12 +87,14 @@ class AccountManager {
                      completion: @escaping ((Error?) -> Void)) {
         currentUser.user?.updateEmail(to: email) { (error) in
             guard error == nil else {
-                completion(error)
+                let errCode = ErrorHandler().convertToAuthError(error!)
+                completion(errCode)
                 return
             }
             self.currentUser.user?.updatePassword(to: password) { (error) in
                 guard error == nil else {
-                    completion(error)
+                    let errCode = ErrorHandler().convertToAuthError(error!)
+                    completion(errCode)
                     return
                 }
                 completion(nil)
@@ -88,21 +105,27 @@ class AccountManager {
     func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
         guard let uid = currentUser.user?.uid,
             let email = currentUser.user?.email else {
-            completion(UAccountError.userNotLoggedIn)
-            return
+                completion(UAccountError.userNotLoggedIn)
+                return
         }
         
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
             if let error = error {
-                completion(error)
+                let errCode = ErrorHandler().convertToAuthError(error)
+                completion(errCode)
                 return
             }
             
             self.database.collection("User").document(uid).updateData([
                 "username": newPseudo
             ]) { error in
-                completion(error)
+                if let error = error {
+                    let errCode = ErrorHandler().convertToFirestoreError(error)
+                    completion(errCode)
+                    return
+                }
+                completion(nil)
             }
         })
     }
@@ -115,12 +138,18 @@ class AccountManager {
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
             if let error = error {
-                completion(error)
+                let errCode = ErrorHandler().convertToAuthError(error)
+                completion(errCode)
                 return
             }
             
             self.currentUser.user?.updateEmail(to: newEmail, completion: { (error) in
-                completion(error)
+                if let error = error {
+                    let errCode = ErrorHandler().convertToAuthError(error)
+                    completion(errCode)
+                    return
+                }
+                completion(nil)
             })
         })
     }
@@ -129,7 +158,8 @@ class AccountManager {
         do {
             try auth.signOut()
         } catch let error {
-            completion(error)
+            let errCode = ErrorHandler().convertToAuthError(error)
+            completion(errCode)
             return
         }
         completion(nil)
@@ -142,7 +172,12 @@ class AccountManager {
         database.collection("User").document(user).setData(
             ["credits": 0,
              "username": named ?? NSNull()]) { error in
-                completion(error)
+                guard let error = error else {
+                    completion(nil)
+                    return
+                }
+                let errCode = ErrorHandler().convertToAuthError(error)
+                completion(errCode)
         }
     }
     
@@ -194,7 +229,8 @@ class AccountManager {
         
         database.collection("User").document(uid).getDocument { document, error in
             if let error = error {
-                callback(.failure(error))
+                let errCode = ErrorHandler().convertToFirestoreError(error)
+                callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
             }
             
             guard let document = document, document.exists else {
@@ -212,13 +248,12 @@ class AccountManager {
         }
     }
     
-    func getAvatar(callback: @escaping ((Result<Data, Error>) -> Void)) {
+    func getAvatar(callback: @escaping ((Result<Data, Error>) -> Void)) throws {
         if let avatar = self.avatar {
             callback(.success(avatar))
         } else {
             guard let uid = currentUser.user?.uid else {
-                callback(.failure(UAccountError.userNotLoggedIn))
-                return
+                throw UAccountError.userNotLoggedIn
             }
             
             let imageReference = storage.reference(withPath: "images/\(uid).jpeg")
@@ -227,7 +262,8 @@ class AccountManager {
             imageReference.getData(maxSize: 60 * 1024 * 1024) { data, error in
                 guard let data = data,
                     error == nil else {
-                        callback(.failure(error!))
+                        let errCode = ErrorHandler().convertToStorageError(error!)
+                        callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
                         return
                 }
                 

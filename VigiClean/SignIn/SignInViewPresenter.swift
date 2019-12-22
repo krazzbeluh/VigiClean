@@ -26,14 +26,7 @@ class SignInPresenter: BasePresenter, SignInViewPresenter {
         
         AccountManager.shared.signIn(email: email, password: password) { error in
             if let error = error {
-                guard let errMessage = self.getAuthErrorCode(error: error) else {
-                    self.view.switchActivityIndicator(hidden: true)
-                    //self.view.sendAlert(message: self.convertAlert(with: error)) // TODO
-                    return
-                }
-                self.view.switchActivityIndicator(hidden: true)
-                self.view.sendAlert(message: errMessage)
-                return
+                self.view.sendAlert(message: self.convertError(error))
             }
             self.view.userSignedIn()
         }

@@ -18,11 +18,13 @@ class ObjectManager {
     let database = Firestore.firestore()
     lazy var functions = Functions.functions()
     
-    func getObject(code: String, callback: @escaping (Error?) -> Void) {
+    func getObject(code: String, callback: @escaping (Result<Void, Error>) -> Void) {
         let docRef = database.collection("Object").document(code)
         docRef.getDocument { (document, error) in
             guard let document = document, document.exists else {
-                callback(error ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists)
+                let errCode = ErrorHandler().convertToFirestoreError(error!)
+                
+                callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
                 return
             }
             
@@ -31,7 +33,7 @@ class ObjectManager {
                 let organization = data["organization"] as? String,
                 let type = data["type"] as? String,
                 let name = data["name"] as? String else {
-                    callback(FirebaseInterface.FIRInterfaceError.unableToDecodeData)
+                    callback(.failure(FirebaseInterface.FIRInterfaceError.unableToDecodeData))
                     return
             }
             
@@ -49,13 +51,13 @@ class ObjectManager {
                                                           actions: userActions,
                                                           employeeActions: employeeActions)
                             
-                            callback(nil)
+                            callback(.success(Void()))
                         case .failure(let error):
-                            callback(error)
+                            callback(.failure(error))
                         }
                     }
                 case .failure(let error):
-                    callback(error)
+                    callback(.failure(error))
                 }
             }
         }
@@ -65,7 +67,8 @@ class ObjectManager {
         let docRef = database.collection("actions").document(type)
         docRef.getDocument { document, error in
             if let error = error {
-                callback(.failure(error))
+                let errCode = ErrorHandler().convertToFirestoreError(error)
+                callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
                 return
             }
             
@@ -95,7 +98,8 @@ class ObjectManager {
         let docRef = database.collection("performedActions").document(type)
         docRef.getDocument { document, error in
             if let error = error {
-                callback(.failure(error))
+                let errCode = ErrorHandler().convertToFirestoreError(error)
+                callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
                 return
             }
             
@@ -134,14 +138,25 @@ class ObjectManager {
             "user": uid,
             "isValidOperation": NSNull()
         ]) { error in
-            callback(error)
+            guard let error = error else {
+                callback(nil)
+                return
+            }
+            let errCode = ErrorHandler().convertToFirestoreError(error)
+            callback(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists)
         }
     }
     
     func resolvedRequest(for object: Object, with action: Action, isValid: Bool, callback: @escaping(Error?) -> Void) {
         functions.httpsCallable("resolvedRequest?code=\(object.code)&action=\(action.index)")
             .call { (_, error) in
-                callback(error)
+                guard let error = error else {
+                    callback(nil)
+                    return
+                }
+                
+                let errCode = ErrorHandler().convertToFunctionsError(error)
+                callback(errCode)
         }
     }
 }

@@ -17,24 +17,23 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     }
     
     func getAvatar() {
-        AccountManager.shared.getAvatar { (result) in
-            switch result {
-            case .success(let data):
-                self.view.setAvatar(with: data)
-            case .failure(let error):
-                if let error = error as? StorageErrorCode,
-                    error == .objectNotFound {
-                    print("No avatar found")
-                    return
+        do {
+            try AccountManager.shared.getAvatar { (result) in
+                switch result {
+                case .success(let data):
+                    self.view.setAvatar(with: data)
+                case .failure(let error):
+                    if let error = error as? StorageErrorCode,
+                        error == .objectNotFound {
+                        print("No avatar found")
+                        return
+                    }
+                    self.view.sendAlert(message: self.convertError(error))
                 }
-                
-                guard let errMessage = self.getStorageErrorCode(error: error) else {
-                    // TODO
-                    return
-                }
-                
-                self.view.sendAlert(message: errMessage)
             }
+        } catch let error {
+            print(error) // TODO
         }
+        
     }
 }

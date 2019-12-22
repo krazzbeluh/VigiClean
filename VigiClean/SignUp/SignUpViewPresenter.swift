@@ -23,14 +23,14 @@ class SignUpPresenter: BasePresenter, SignUpViewPresenter {
             username != "", email != "",
             password != "",
             confirmPassword != "" else {
-//                view.sendAlert(message: convertAlert(with:
-//                    AccountManager.UAccountError.emptyTextField)) // TODO
-            return
+                //                view.sendAlert(message: convertAlert(with:
+                //                    AccountManager.UAccountError.emptyTextField)) // TODO
+                return
         }
         
         guard password == confirmPassword else {
-//            view.sendAlert(message: convertAlert(with:
-//                AccountManager.UAccountError.notMatchingPassword)) // TODO
+            //            view.sendAlert(message: convertAlert(with:
+            //                AccountManager.UAccountError.notMatchingPassword)) // TODO
             return
         }
         
@@ -38,12 +38,7 @@ class SignUpPresenter: BasePresenter, SignUpViewPresenter {
         
         AccountManager.shared.signUp(username: username, email: email, password: password) { error in
             if let error = error {
-                guard let errMessage = self.getAuthErrorCode(error: error) else {
-//                    self.view.sendAlert(message: self.convertAlert(with: error)) // TODO
-                    self.view.switchActivityIndicator(hidden: true)
-                    return
-                }
-                self.view.sendAlert(message: errMessage)
+                self.view.sendAlert(message: self.convertError(error))
                 self.view.switchActivityIndicator(hidden: true)
                 return
             } else {

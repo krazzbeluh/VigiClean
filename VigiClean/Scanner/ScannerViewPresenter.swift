@@ -31,13 +31,13 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
             view.startVibration()
             
             view.displayLoadViews(true)
-            objectManager.getObject(code: objectCode) { error in
-                if let error = error {
+            objectManager.getObject(code: objectCode) { result in
+                switch result {
+                case .success:
+                    self.view.validObjectFound()
+                case .failure(let error):
                     self.view.invalidCodeFound(error: error)
-                    return
                 }
-                
-                self.view.validObjectFound()
             }
         } else {
             view.invalidCodeFound(error: Scanner.ScannerError.invalidQRCode)

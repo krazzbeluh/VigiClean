@@ -45,7 +45,7 @@ class ScannerViewController: UIViewController, ScannerView {
         if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         } else {
-//            sendAlert(message: presenter.convertAlert(with: Scanner.ScannerError.scanNotSupported)) // TODO
+            //            sendAlert(message: presenter.convertAlert(with: Scanner.ScannerError.scanNotSupported)) // TODO
             return
         }
         
@@ -57,7 +57,7 @@ class ScannerViewController: UIViewController, ScannerView {
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
-//            sendAlert(message: presenter.convertAlert(with: Scanner.ScannerError.scanNotSupported)) // TODO
+            //            sendAlert(message: presenter.convertAlert(with: Scanner.ScannerError.scanNotSupported)) // TODO
             return
         }
         
@@ -103,12 +103,7 @@ class ScannerViewController: UIViewController, ScannerView {
     }
     
     func invalidCodeFound(error: Error) {
-        guard let errMessage = presenter.getFirestoreErrorCode(error: error) else {
-            // TODO
-            return
-        }
-        
-        sendAlert(message: errMessage)
+        sendAlert(message: presenter.convertError(error))
         displayLoadViews(false)
     }
     
