@@ -10,6 +10,11 @@ import Foundation
 
 class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     weak var view: LaunchView!
+    private let accountManager = AccountManager()
+    
+    var isUserConnected: Bool {
+        return accountManager.isConnected
+    }
     
     required init(view: LaunchView) {
         self.view = view

@@ -10,6 +10,7 @@ import Foundation
 
 class SignInPresenter: BasePresenter, SignInViewPresenter {
     weak var view: SignInView!
+    private let accountManager = AccountManager()
     
     required init(view: SignInView) {
         self.view = view
@@ -24,7 +25,7 @@ class SignInPresenter: BasePresenter, SignInViewPresenter {
         
         view.switchActivityIndicator(hidden: false)
         
-        AccountManager.shared.signIn(email: email, password: password) { error in
+        accountManager.signIn(email: email, password: password) { error in
             if let error = error {
                 self.view.sendAlert(message: self.convertError(error))
             }

@@ -10,6 +10,7 @@ import Foundation
 
 protocol LaunchViewPresenter: BasePresenter {
     init(view: LaunchView)
+    var isUserConnected: Bool { get }
 }
 
 protocol LaunchView: class {

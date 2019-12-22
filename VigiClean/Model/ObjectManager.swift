@@ -15,8 +15,8 @@ class ObjectManager {
         case unableToDecodeData, userNotLoggedIn, nilInTextField
     }
     
-    let database = Firestore.firestore()
-    lazy var functions = Functions.functions()
+    private let database = Firestore.firestore()
+    private lazy var functions = Functions.functions()
     
     func getObject(code: String, callback: @escaping (Result<Void, Error>) -> Void) {
         let docRef = database.collection("Object").document(code)
@@ -126,7 +126,7 @@ class ObjectManager {
     }
     
     func sendRequest(for object: Object, with action: Action, callback: @escaping (Error?) -> Void) {
-        guard let uid = AccountManager.shared.currentUser.user?.uid else {
+        guard let uid = AccountManager.currentUser.user?.uid else {
             callback(ObjectError.userNotLoggedIn)
             return
         }

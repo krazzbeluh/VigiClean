@@ -12,9 +12,9 @@ import FirebaseFirestore
 import FirebaseStorage
 
 class AccountManager {
-    static var shared = AccountManager()
+//    static var shared = AccountManager()
     
-    private init() {
+    init() {
         self.auth = Auth.auth()
         self.database = Firestore.firestore()
         self.storage = Storage.storage()
@@ -35,14 +35,14 @@ class AccountManager {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound, userNotLoggedIn
     }
     
-    var currentUser = VigiCleanUser(username: nil)
+    static var currentUser = VigiCleanUser(username: nil)
     
     var isConnected: Bool {
-        currentUser.user != nil
+        AccountManager.currentUser.user != nil
     }
     
     var isConnectedWithEmail: Bool {
-        currentUser.user?.email != nil
+        AccountManager.currentUser.user?.email != nil
     }
     
     func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
@@ -85,13 +85,13 @@ class AccountManager {
     func attachEmail(email: String,
                      password: String,
                      completion: @escaping ((Error?) -> Void)) {
-        currentUser.user?.updateEmail(to: email) { (error) in
+        AccountManager.currentUser.user?.updateEmail(to: email) { (error) in
             guard error == nil else {
                 let errCode = ErrorHandler().convertToAuthError(error!)
                 completion(errCode)
                 return
             }
-            self.currentUser.user?.updatePassword(to: password) { (error) in
+            AccountManager.currentUser.user?.updatePassword(to: password) { (error) in
                 guard error == nil else {
                     let errCode = ErrorHandler().convertToAuthError(error!)
                     completion(errCode)
@@ -103,14 +103,14 @@ class AccountManager {
     }
     
     func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
-        guard let uid = currentUser.user?.uid,
-            let email = currentUser.user?.email else {
+        guard let uid = AccountManager.currentUser.user?.uid,
+            let email = AccountManager.currentUser.user?.email else {
                 completion(UAccountError.userNotLoggedIn)
                 return
         }
         
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-        currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
+        AccountManager.currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
             if let error = error {
                 let errCode = ErrorHandler().convertToAuthError(error)
                 completion(errCode)
@@ -131,19 +131,19 @@ class AccountManager {
     }
     
     func updateEmail(to newEmail: String, with password: String, completion: @escaping (Error?) -> Void) {
-        guard let email = currentUser.user?.email else {
+        guard let email = AccountManager.currentUser.user?.email else {
             return
         }
         
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-        currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
+        AccountManager.currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
             if let error = error {
                 let errCode = ErrorHandler().convertToAuthError(error)
                 completion(errCode)
                 return
             }
             
-            self.currentUser.user?.updateEmail(to: newEmail, completion: { (error) in
+            AccountManager.currentUser.user?.updateEmail(to: newEmail, completion: { (error) in
                 if let error = error {
                     let errCode = ErrorHandler().convertToAuthError(error)
                     completion(errCode)
@@ -182,7 +182,7 @@ class AccountManager {
     }
     
     func listenForUserDocumentChanges(creditsChanged: ((Int) -> Void)?) {
-        database.collection("User").document(currentUser.user?.uid ?? "")
+        database.collection("User").document(AccountManager.currentUser.user?.uid ?? "")
             .addSnapshotListener { (documentSnapshot, error) in
                 guard let document = documentSnapshot else {
                     print("Error fetching document: \(error!)")
@@ -190,7 +190,7 @@ class AccountManager {
                 }
                 guard let data = document.data() else {
                     print("Document data was empty.")
-                    guard let user = self.currentUser.user else {
+                    guard let user = AccountManager.currentUser.user else {
                         return
                     }
                     
@@ -202,11 +202,11 @@ class AccountManager {
                 print("Current data: \(data)")
                 
                 if let username = data["username"] as? String {
-                    self.currentUser.username = username
+                    AccountManager.currentUser.username = username
                 }
                 
                 if let credits = data["credits"] as? Int {
-                    self.currentUser.credits = credits
+                    AccountManager.currentUser.credits = credits
                     
                     guard let creditsChanged = creditsChanged else {
                         return
@@ -216,13 +216,13 @@ class AccountManager {
                 }
                 
                 if let isEemployee = data["isMaintainer"] as? Bool {
-                    self.currentUser.isEmployee = isEemployee
+                    AccountManager.currentUser.isEmployee = isEemployee
                 }
         }
     }
     
     func fetchRole(callback: @escaping (Result<Bool, Error>) -> Void) {
-        guard let uid = currentUser.user?.uid else {
+        guard let uid = AccountManager.currentUser.user?.uid else {
             callback(.failure(UAccountError.userNotLoggedIn))
             return
         }
@@ -252,7 +252,7 @@ class AccountManager {
         if let avatar = self.avatar {
             callback(.success(avatar))
         } else {
-            guard let uid = currentUser.user?.uid else {
+            guard let uid = AccountManager.currentUser.user?.uid else {
                 throw UAccountError.userNotLoggedIn
             }
             

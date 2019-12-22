@@ -9,23 +9,24 @@
 import Foundation
 
 class ProfilePresenter: BasePresenter, ProfileViewPresenter {
+    private let accountManager = AccountManager()
     
     var isConnectedAnonymously: Bool {
-        return !AccountManager.shared.isConnectedWithEmail
+        return !accountManager.isConnectedWithEmail
     }
     
     weak var view: ProfileView!
     
     required init(view: ProfileView) {
         self.view = view
-        if AccountManager.shared.isConnectedWithEmail {
-            view.display(username: AccountManager.shared.currentUser.username ?? "")
-            view.display(email: AccountManager.shared.currentUser.user?.email ?? "")
+        if accountManager.isConnectedWithEmail {
+            view.display(username: AccountManager.currentUser.username ?? "")
+            view.display(email: AccountManager.currentUser.user?.email ?? "")
         }
     }
     
     func signOut() {
-        AccountManager.shared.signOut { error in
+        accountManager.signOut { error in
             if let error = error {
                 self.view.sendAlert(message: self.convertError(error))
             } else {
@@ -40,7 +41,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
                 return
         }
         
-        AccountManager.shared.updatePseudo(to: newPseudo, with: password) { error in
+        accountManager.updatePseudo(to: newPseudo, with: password) { error in
             guard let error = error else {
                 self.view.display(username: newPseudo)
                 return
@@ -56,7 +57,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
                 return
         }
         
-        AccountManager.shared.updateEmail(to: newEmail, with: password) { error in
+        accountManager.updateEmail(to: newEmail, with: password) { error in
             guard let error = error else {
                 self.view.display(email: newEmail)
                 return
