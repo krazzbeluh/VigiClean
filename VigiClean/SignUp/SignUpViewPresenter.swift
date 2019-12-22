@@ -23,14 +23,12 @@ class SignUpPresenter: BasePresenter, SignUpViewPresenter {
             username != "", email != "",
             password != "",
             confirmPassword != "" else {
-                //                view.sendAlert(message: convertAlert(with:
-                //                    AccountManager.UAccountError.emptyTextField)) // TODO
+                view.sendAlert(message: convertError(AccountManager.UAccountError.emptyTextField))
                 return
         }
         
         guard password == confirmPassword else {
-            //            view.sendAlert(message: convertAlert(with:
-            //                AccountManager.UAccountError.notMatchingPassword)) // TODO
+            view.sendAlert(message: convertError(AccountManager.UAccountError.notMatchingPassword))
             return
         }
         

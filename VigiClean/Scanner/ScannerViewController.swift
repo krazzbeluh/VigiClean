@@ -45,7 +45,7 @@ class ScannerViewController: UIViewController, ScannerView {
         if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         } else {
-            //            sendAlert(message: presenter.convertAlert(with: Scanner.ScannerError.scanNotSupported)) // TODO
+                        sendAlert(message: presenter.convertError(Scanner.ScannerError.scanNotSupported))
             return
         }
         
@@ -57,7 +57,7 @@ class ScannerViewController: UIViewController, ScannerView {
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
-            //            sendAlert(message: presenter.convertAlert(with: Scanner.ScannerError.scanNotSupported)) // TODO
+                        sendAlert(message: presenter.convertError(Scanner.ScannerError.scanNotSupported))
             return
         }
         

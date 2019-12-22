@@ -32,7 +32,7 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
                 }
             }
         } catch let error {
-            print(error) // TODO
+            view.sendAlert(message: convertError(error))
         }
         
     }
