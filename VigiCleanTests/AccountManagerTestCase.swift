@@ -18,7 +18,7 @@ class AccountManagerTestCase: XCTestCase {
         let expectation = XCTestExpectation(description: "Wait for callback")
         
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(error: nil, documentSnapshot: nil))
+                                            database: FirestoreFake(error: nil))
         
         accountManager.anonymousSignIn { error in
             XCTAssertNil(error)
@@ -31,7 +31,7 @@ class AccountManagerTestCase: XCTestCase {
     func  testAnonymousSignInShouldReturnErrorCallbackIfFailure() {
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: EasyError(), result: nil),
-                                            database: FirestoreFake(error: nil, documentSnapshot: nil))
+                                            database: FirestoreFake(error: nil))
         
         accountManager.anonymousSignIn { (error) in
             XCTAssertNotNil(error)
@@ -45,7 +45,7 @@ class AccountManagerTestCase: XCTestCase {
     func testSignUpShouldNotReturnErrorCallbackIfSuccess() {
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(error: nil, documentSnapshot: nil))
+                                            database: FirestoreFake(error: nil))
         
         accountManager.signUp(username: "", email: "", password: "") { (error) in
             XCTAssertNil(error)
@@ -58,7 +58,7 @@ class AccountManagerTestCase: XCTestCase {
     func testSignUpShouldReturnErrorCallbackIfFailure() {
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: EasyError(), result: nil),
-                                            database: FirestoreFake(error: nil, documentSnapshot: nil))
+                                            database: FirestoreFake(error: nil))
         
         accountManager.signUp(username: "", email: "", password: "") { (error) in
             XCTAssertNotNil(error)
@@ -72,7 +72,7 @@ class AccountManagerTestCase: XCTestCase {
     func testSignInShouldNotReturnErrorCallbackIfSuccess() {
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(error: nil, documentSnapshot: nil))
+                                            database: FirestoreFake(error: nil))
         
         accountManager.signIn(email: "", password: "") { error in
             XCTAssertNil(error)
@@ -85,7 +85,7 @@ class AccountManagerTestCase: XCTestCase {
     func testSignInShouldReturnErrorCallbackIfFailure() {
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: EasyError(), result: nil),
-                                            database: FirestoreFake(error: nil, documentSnapshot: nil))
+                                            database: FirestoreFake(error: nil))
         
         accountManager.signIn(email: "", password: "") { (error) in
             XCTAssertNotNil(error)
@@ -100,7 +100,7 @@ class AccountManagerTestCase: XCTestCase {
     func testSignOutShouldNotReturnErrorCallbackIfSuccess() {
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(error: nil, documentSnapshot: nil))
+                                            database: FirestoreFake(error: nil))
         
         accountManager.signOut { (error) in
             XCTAssertNil(error)
@@ -113,9 +113,36 @@ class AccountManagerTestCase: XCTestCase {
     func testSignOutShouldReturnErrorCallbackIfFailure() {
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: EasyError(), result: nil),
-                                            database: FirestoreFake(error: nil, documentSnapshot: nil))
+                                            database: FirestoreFake(error: nil))
         
         accountManager.signOut { (error) in
+            XCTAssertNotNil(error)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // MARK: CreateUserDocument
+    func testCreateUserDocumentShouldNotReturnErrorCallbackIfSuccess() {
+        let expectation = XCTestExpectation(description: "Wait for callback")
+        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
+                                            database: FirestoreFake(error: nil))
+        
+        accountManager.createUserDocument(for: "", named: "") { (error) in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testCreateUserDocumentShouldReturnErrorCallbackIfFailure() {
+        let expectation = XCTestExpectation(description: "Wait for callback")
+        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
+                                            database: FirestoreFake(error: EasyError()))
+        
+        accountManager.createUserDocument(for: "", named: nil) { (error) in
             XCTAssertNotNil(error)
             expectation.fulfill()
         }

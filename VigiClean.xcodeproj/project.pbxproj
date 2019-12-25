@@ -19,6 +19,8 @@
 		94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA4238583C90054BE70 /* SignInContracts.swift */; };
 		94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA723858CCF0054BE70 /* LaunchViewController.swift */; };
 		9451DE4A23AE70F10097658C /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451DE4923AE70F10097658C /* ErrorHandler.swift */; };
+		9451DE5023B0ECB10097658C /* ObjectManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451DE4F23B0ECB10097658C /* ObjectManagerTestCase.swift */; };
+		9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451DE5123B0EDFD0097658C /* FunctionsFake.swift */; };
 		94623695239A9F780026DD95 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94623694239A9F780026DD95 /* GoogleService-Info.plist */; };
 		94623699239AC4F50026DD95 /* LaunchContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94623698239AC4F50026DD95 /* LaunchContracts.swift */; };
 		9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */; };
@@ -27,6 +29,9 @@
 		9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463FDB023AA9DCC00827E06 /* StorageFake.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
+		94A5C61A23B1123000752182 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61923B1123000752182 /* FakeResponseData.swift */; };
+		94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */; };
+		94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */; };
 		94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */; };
 		94BA1EE8238C223500FE19A1 /* AttachEmailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */; };
 		94BA1EEA238DA11C00FE19A1 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */; };
@@ -93,6 +98,8 @@
 		94504AA4238583C90054BE70 /* SignInContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContracts.swift; sourceTree = "<group>"; };
 		94504AA723858CCF0054BE70 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		9451DE4923AE70F10097658C /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		9451DE4F23B0ECB10097658C /* ObjectManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectManagerTestCase.swift; sourceTree = "<group>"; };
+		9451DE5123B0EDFD0097658C /* FunctionsFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FunctionsFake.swift; path = "VigiCleanTests/Mock+Class/Functions/FunctionsFake.swift"; sourceTree = SOURCE_ROOT; };
 		94623694239A9F780026DD95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94623698239AC4F50026DD95 /* LaunchContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchContracts.swift; sourceTree = "<group>"; };
 		9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewPresenter.swift; sourceTree = "<group>"; };
@@ -101,6 +108,9 @@
 		9463FDB023AA9DCC00827E06 /* StorageFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageFake.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
+		94A5C61923B1123000752182 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeResponseData.swift; path = VigiCleanTests/FakeResponseData.swift; sourceTree = SOURCE_ROOT; };
+		94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReferenceFake.swift; sourceTree = "<group>"; };
+		94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentReferenceFake.swift; sourceTree = "<group>"; };
 		94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AttachEmailViewController.swift; path = VigiClean/AttachEmail/AttachEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewPresenter.swift; sourceTree = "<group>"; };
 		94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +275,14 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		9451DE5323B0EE030097658C /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				9451DE5123B0EDFD0097658C /* FunctionsFake.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		94623696239A9FCF0026DD95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,9 +346,11 @@
 		94D20967239EE9B90089759B /* Mock+Class */ = {
 			isa = PBXGroup;
 			children = (
+				94A5C61923B1123000752182 /* FakeResponseData.swift */,
 				94D2096D239EF0F40089759B /* Auth */,
 				94D2096E239EF0F80089759B /* Firestore */,
 				942E8DDD23AA957200DD0BF7 /* Storage */,
+				9451DE5323B0EE030097658C /* Functions */,
 				9463FDAE23AA9CF200827E06 /* EasyError.swift */,
 			);
 			path = "Mock+Class";
@@ -348,6 +368,8 @@
 			isa = PBXGroup;
 			children = (
 				94D2096A239EEB0B0089759B /* FirestoreFake.swift */,
+				94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */,
+				94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -399,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				94D20965239EE8030089759B /* AccountManagerTestCase.swift */,
+				9451DE4F23B0ECB10097658C /* ObjectManagerTestCase.swift */,
 				94D20967239EE9B90089759B /* Mock+Class */,
 				94F0A0402370A1CC00037210 /* Info.plist */,
 			);
@@ -658,7 +681,12 @@
 			files = (
 				94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */,
 				94D20969239EE9D10089759B /* AuthFake.swift in Sources */,
+				94A5C61A23B1123000752182 /* FakeResponseData.swift in Sources */,
 				9463FDAF23AA9CF200827E06 /* EasyError.swift in Sources */,
+				9451DE5023B0ECB10097658C /* ObjectManagerTestCase.swift in Sources */,
+				94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */,
+				9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */,
+				94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */,
 				9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */,
 				94D20966239EE8030089759B /* AccountManagerTestCase.swift in Sources */,
 			);

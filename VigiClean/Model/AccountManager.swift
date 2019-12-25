@@ -12,7 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 
 class AccountManager {
-//    static var shared = AccountManager()
+    //    static var shared = AccountManager()
     
     init() {
         self.auth = Auth.auth()
@@ -165,9 +165,9 @@ class AccountManager {
         completion(nil)
     }
     
-    private func createUserDocument(for user: String,
-                                    named: String?,
-                                    completion: @escaping (Error?) -> Void) {
+    func createUserDocument(for user: String,
+                            named: String?,
+                            completion: @escaping (Error?) -> Void) {
         
         database.collection("User").document(user).setData(
             ["credits": 0,
@@ -248,12 +248,13 @@ class AccountManager {
         }
     }
     
-    func getAvatar(callback: @escaping ((Result<Data, Error>) -> Void)) throws {
+    func getAvatar(callback: @escaping ((Result<Data, Error>) -> Void)) {
         if let avatar = self.avatar {
             callback(.success(avatar))
         } else {
             guard let uid = AccountManager.currentUser.user?.uid else {
-                throw UAccountError.userNotLoggedIn
+                callback(.failure(UAccountError.userNotLoggedIn))
+                return
             }
             
             let imageReference = storage.reference(withPath: "images/\(uid).jpeg")

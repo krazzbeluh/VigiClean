@@ -15,8 +15,18 @@ class ObjectManager {
         case unableToDecodeData, userNotLoggedIn, nilInTextField
     }
     
-    private let database = Firestore.firestore()
+    private var database = Firestore.firestore()
     private lazy var functions = Functions.functions()
+    
+    init() {
+        database = Firestore.firestore()
+        functions = Functions.functions()
+    }
+    
+    init(database: Firestore, functions: Functions) {
+        self.database = database
+        self.functions = functions
+    }
     
     func getObject(code: String, callback: @escaping (Result<Void, Error>) -> Void) {
         let docRef = database.collection("Object").document(code)
@@ -77,7 +87,8 @@ class ObjectManager {
                 return
             }
             
-            guard let data = document.data() as? [String: String] else {
+            guard let dataAny = document.data(),
+                let data = dataAny as? [String: String] else {
                 callback(.failure(ObjectError.unableToDecodeData))
                 return
             }
