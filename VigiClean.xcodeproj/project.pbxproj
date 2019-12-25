@@ -32,6 +32,9 @@
 		94A5C61A23B1123000752182 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61923B1123000752182 /* FakeResponseData.swift */; };
 		94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */; };
 		94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */; };
+		94A5C62223B4151800752182 /* DashboardViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C62123B4151800752182 /* DashboardViewPresenterTestCase.swift */; };
+		94A5C62423B4171100752182 /* AccountManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C62323B4171100752182 /* AccountManagerFake.swift */; };
+		94A5C62723B4187600752182 /* FakeDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C62623B4187600752182 /* FakeDashboardView.swift */; };
 		94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */; };
 		94BA1EE8238C223500FE19A1 /* AttachEmailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */; };
 		94BA1EEA238DA11C00FE19A1 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */; };
@@ -111,6 +114,9 @@
 		94A5C61923B1123000752182 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeResponseData.swift; path = VigiCleanTests/FakeResponseData.swift; sourceTree = SOURCE_ROOT; };
 		94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReferenceFake.swift; sourceTree = "<group>"; };
 		94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentReferenceFake.swift; sourceTree = "<group>"; };
+		94A5C62123B4151800752182 /* DashboardViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewPresenterTestCase.swift; sourceTree = SOURCE_ROOT; };
+		94A5C62323B4171100752182 /* AccountManagerFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountManagerFake.swift; path = "VigiCleanTests/Mock+Class/VigiClean/AccountManagerFake.swift"; sourceTree = SOURCE_ROOT; };
+		94A5C62623B4187600752182 /* FakeDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeDashboardView.swift; path = VigiClean/Dashboard/FakeDashboardView.swift; sourceTree = SOURCE_ROOT; };
 		94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AttachEmailViewController.swift; path = VigiClean/AttachEmail/AttachEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewPresenter.swift; sourceTree = "<group>"; };
 		94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +316,15 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		94A5C62523B4171600752182 /* VigiClean */ = {
+			isa = PBXGroup;
+			children = (
+				94A5C62623B4187600752182 /* FakeDashboardView.swift */,
+				94A5C62323B4171100752182 /* AccountManagerFake.swift */,
+			);
+			path = VigiClean;
+			sourceTree = "<group>";
+		};
 		94BE5AA02370A6C000CE3060 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				94A5C61923B1123000752182 /* FakeResponseData.swift */,
+				94A5C62523B4171600752182 /* VigiClean */,
 				94D2096D239EF0F40089759B /* Auth */,
 				94D2096E239EF0F80089759B /* Firestore */,
 				942E8DDD23AA957200DD0BF7 /* Storage */,
@@ -420,6 +436,7 @@
 		94F0A03D2370A1CC00037210 /* VigiCleanTests */ = {
 			isa = PBXGroup;
 			children = (
+				94A5C62123B4151800752182 /* DashboardViewPresenterTestCase.swift */,
 				94D20965239EE8030089759B /* AccountManagerTestCase.swift */,
 				9451DE4F23B0ECB10097658C /* ObjectManagerTestCase.swift */,
 				94D20967239EE9B90089759B /* Mock+Class */,
@@ -679,10 +696,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94A5C62723B4187600752182 /* FakeDashboardView.swift in Sources */,
 				94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */,
 				94D20969239EE9D10089759B /* AuthFake.swift in Sources */,
+				94A5C62423B4171100752182 /* AccountManagerFake.swift in Sources */,
 				94A5C61A23B1123000752182 /* FakeResponseData.swift in Sources */,
 				9463FDAF23AA9CF200827E06 /* EasyError.swift in Sources */,
+				94A5C62223B4151800752182 /* DashboardViewPresenterTestCase.swift in Sources */,
 				9451DE5023B0ECB10097658C /* ObjectManagerTestCase.swift in Sources */,
 				94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */,
 				9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */,

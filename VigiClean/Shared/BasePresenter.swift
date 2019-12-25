@@ -47,7 +47,7 @@ class BasePresenter {
                 return defaultMessage
             }
         default:
-            fatalError(error.localizedDescription)
+            return "Opération impossible : Veuillez réessayer ultérieurement"
         }
     }
 }

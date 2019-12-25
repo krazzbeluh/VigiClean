@@ -11,9 +11,15 @@ import FirebaseStorage
 
 class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     weak var view: DashboardView!
-    private let accountManager = AccountManager()
+    private let accountManager: AccountManager
     
     required init(view: DashboardView) {
+        self.accountManager = AccountManager()
+        self.view = view
+    }
+    
+    init(accountManager: AccountManager, view: DashboardView) {
+        self.accountManager = accountManager
         self.view = view
     }
     
