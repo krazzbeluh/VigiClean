@@ -14,7 +14,7 @@ import XCTest
 class DashboardViewPresenterTestCase: XCTestCase {
     func testgetAvatarShouldCallViewSetAvatarIfSuccess() {
         let view = FakeDashboardView()
-        let accountManager = AccountManagerFake(result: .success("VigiClean".data(using: .utf8)!))
+        let accountManager = AccountManagerFake(resultData: .success("VigiClean".data(using: .utf8)!))
         let presenter = DashboardPresenter(accountManager: accountManager, view: view)
         
         presenter.getAvatar()
@@ -25,7 +25,7 @@ class DashboardViewPresenterTestCase: XCTestCase {
     
     func testgetAvatarShouldCallViewSendAlertIfFailure() {
         let view = FakeDashboardView()
-        let accountManager = AccountManagerFake(result: .failure(EasyError()))
+        let accountManager = AccountManagerFake(resultData: .failure(EasyError()))
         let presenter = DashboardPresenter(accountManager: accountManager, view: view)
         
         presenter.getAvatar()
@@ -36,7 +36,7 @@ class DashboardViewPresenterTestCase: XCTestCase {
     
     func testgetAvatarShouldNotCallViewSendAlertIfFailureWithObjectNotFound() {
         let view = FakeDashboardView()
-        let accountManager = AccountManagerFake(result: .failure(StorageErrorCode.objectNotFound))
+        let accountManager = AccountManagerFake(resultData: .failure(StorageErrorCode.objectNotFound))
         let presenter = DashboardPresenter(accountManager: accountManager, view: view)
         
         presenter.getAvatar()

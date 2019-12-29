@@ -85,7 +85,16 @@ class RequestViewController: UIViewController, RequestView {
             return
         }
         
-        presenter.sendRequest(with: action, isValid: validSwitch.isOn)
+        presenter.sendRequest(with: action, isValid: validSwitch.isOn) { result in
+            switch result {
+            case .success(let employeeMode):
+                if !employeeMode {
+                    self.requestSent()
+                }
+            case .failure(let error):
+                self.sendAlert(message: self.presenter.convertError(error))
+            }
+        }
     }
     
     @IBAction func dismissSelector(_ sender: Any) {

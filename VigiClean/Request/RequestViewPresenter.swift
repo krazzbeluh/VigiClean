@@ -10,8 +10,8 @@ import Foundation
 import MapKit
 
 class RequestPresenter: BasePresenter, RequestViewPresenter {
-    private let objectManager = ObjectManager()
-    private let accountManager = AccountManager()
+    private var objectManager = ObjectManager()
+    private var accountManager = AccountManager()
     
     var employeeMode = false
     
@@ -53,6 +53,12 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         view.configure(with: object)
     }
     
+    init(view: RequestView, objectManager: ObjectManager, accountManager: AccountManager) {
+        self.view = view
+        self.objectManager = objectManager
+        self.accountManager = accountManager
+    }
+    
     func fetchRole(callback: @escaping (Bool) -> Void) {
         accountManager.fetchRole { result in
             switch result {
@@ -69,13 +75,13 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         guard let object = Object.currentObject else {
             return
         }
-        let sanjose = Poi(title: "\(object.name) - \(object.organization)",
+        let poi = Poi(title: "\(object.name) - \(object.organization)",
             coordinate: CLLocationCoordinate2D(latitude: object.coords.latitude,
                                                longitude: object.coords.longitude), info: object.type)
-        view.configureMap(with: sanjose)
+        view.configureMap(with: poi)
     }
     
-    func sendRequest(with action: String, isValid: Bool) {
+    func sendRequest(with action: String, isValid: Bool, callback: @escaping (Result<Bool, Error>) -> Void) {
         
         guard let object = Object.currentObject else {
             return
@@ -94,11 +100,11 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             
             objectManager.sendRequest(for: object, with: action) { error in
                 if let error = error {
-                    self.view.sendAlert(message: self.convertError(error))
+                    callback(.failure(error))
                     return
                 }
                 
-                self.view.requestSent()
+                callback(.success(self.employeeMode))
             }
         } else {
             var sendingAction: Action?
@@ -113,10 +119,10 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             
             objectManager.resolvedRequest(for: object, with: action, isValid: isValid) { (error) in
                 if let error = error {
-                    self.view.sendAlert(message: self.convertError(error))
+                    callback(.failure(error))
                     return
                 }
-                
+                callback(.success(self.employeeMode))
             }
         }
         
