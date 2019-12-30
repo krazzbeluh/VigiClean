@@ -13,8 +13,7 @@ protocol WelcomeViewPresenter {
     func signIn()
 }
 
-protocol WelcomeView: AlertManager {
+protocol WelcomeView: BaseView {
     func performSegue()
-    func sendAlert(message: String)
     func switchActivityIndicator(hidden: Bool)
 }

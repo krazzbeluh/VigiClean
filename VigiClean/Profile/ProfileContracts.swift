@@ -16,7 +16,7 @@ protocol ProfileViewPresenter: BasePresenter {
     func updateEmail(to newEmail: String?, with password: String?)
 }
 
-protocol ProfileView: AlertManager {
+protocol ProfileView: BaseView {
     func userSignedOut()
     func display(username: String)
     func display(email: String)

@@ -18,7 +18,7 @@ protocol RequestViewPresenter: BasePresenter {
     func fetchRole()
 }
 
-protocol RequestView: AlertManager {
+protocol RequestView: BaseView {
     func configure(with object: Object)
     func configureMap(with location: Poi)
     func roleFetched()

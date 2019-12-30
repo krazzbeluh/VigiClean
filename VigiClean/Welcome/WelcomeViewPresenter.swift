@@ -19,7 +19,7 @@ class WelcomePresenter: BasePresenter, WelcomeViewPresenter {
     func signIn() {
         accountManager.anonymousSignIn { error in
             if let error = error {
-                self.view.sendAlert(message: self.convertError(error))
+                self.view.displayError(message: self.convertError(error))
                 return
             }
             self.view.performSegue()

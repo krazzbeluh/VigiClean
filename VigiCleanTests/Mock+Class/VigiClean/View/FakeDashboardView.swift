@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 @testable import VigiClean
 
-class FakeDashboardView: UIViewController, DashboardView {
+class FakeDashboardView: DashboardView {
     var didCallSetAvatar = false
     var didCallSendAlert = false
     
@@ -18,7 +18,7 @@ class FakeDashboardView: UIViewController, DashboardView {
         didCallSetAvatar = true
     }
     
-    func sendAlert(message: String) {
+    func displayError(message: String) {
         didCallSendAlert = true
     }
 }

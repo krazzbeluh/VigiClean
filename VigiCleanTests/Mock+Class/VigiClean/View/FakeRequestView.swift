@@ -8,7 +8,7 @@
 import UIKit
 @testable import VigiClean
 
-class FakeRequestView: UIViewController, RequestView {
+class FakeRequestView: RequestView {
     var location: Poi?
     var alert: String?
     var didCallRoleFetched = false
@@ -28,7 +28,7 @@ class FakeRequestView: UIViewController, RequestView {
         didCallRequestSent = true
     }
     
-    func sendAlert(message: String) {
+    func displayError(message: String) {
         alert = message
     }
 }

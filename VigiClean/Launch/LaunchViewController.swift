@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LaunchViewController: UIViewController, LaunchView, AlertManager {
+class LaunchViewController: UIViewController, LaunchView {
     var presenter: LaunchViewPresenter!
     
     override func viewDidLoad() {

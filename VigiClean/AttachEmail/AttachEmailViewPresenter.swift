@@ -24,12 +24,12 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
             username != "", email != "",
             password != "",
             confirmPassword != "" else {
-                view.sendAlert(message: convertError(AccountManager.UAccountError.emptyTextField))
+                view.displayError(message: convertError(AccountManager.UAccountError.emptyTextField))
                 return
         }
         
         guard password == confirmPassword else {
-            view.sendAlert(message: convertError(AccountManager.UAccountError.notMatchingPassword))
+            view.displayError(message: convertError(AccountManager.UAccountError.notMatchingPassword))
             return
         }
         
@@ -37,7 +37,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
         
         accountManager.attachEmail(email: email, password: password, completion: { error in
             if let error = error {
-                self.view.sendAlert(message: self.convertError(error))
+                self.view.displayError(message: self.convertError(error))
             } else {
                 self.accountManager.updatePseudo(to: username, with: password) { (error) in
                     guard let error = error else {
@@ -45,7 +45,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
                         return
                     }
                     
-                    self.view.sendAlert(message: self.convertError(error))
+                    self.view.displayError(message: self.convertError(error))
                 }
             }
         })

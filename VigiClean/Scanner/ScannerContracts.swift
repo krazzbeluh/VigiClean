@@ -16,8 +16,7 @@ protocol ScannerViewPresenter: BasePresenter {
     func verifyCode(code: String)
 }
 
-protocol ScannerView: AlertManager {
-    func sendAlert(message: String)
+protocol ScannerView: BaseView {
     func startVibration()
     func displayLoadViews(_ statement: Bool)
     func validObjectFound()

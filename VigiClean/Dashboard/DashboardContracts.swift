@@ -13,6 +13,6 @@ protocol DashboardViewPresenter: BasePresenter {
     func getAvatar()
 }
 
-protocol DashboardView: AlertManager {
+protocol DashboardView: BaseView {
     func setAvatar(with image: Data)
 }

@@ -34,7 +34,7 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
                     print("No avatar found")
                     return
                 }
-                self.view.sendAlert(message: self.convertError(error))
+                self.view.displayError(message: self.convertError(error))
             }
         }
         

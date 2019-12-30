@@ -106,7 +106,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             
             objectManager.sendRequest(for: object, with: action) { error in
                 if let error = error {
-                    self.view.sendAlert(message: self.convertError(error))
+                    self.view.displayError(message: self.convertError(error))
                     return
                 }
                 
@@ -125,7 +125,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             
             objectManager.resolvedRequest(for: object, with: action, isValid: isValid) { (error) in
                 if let error = error {
-                    self.view.sendAlert(message: self.convertError(error))
+                    self.view.displayError(message: self.convertError(error))
                     return
                 }
                 self.view.requestSent()

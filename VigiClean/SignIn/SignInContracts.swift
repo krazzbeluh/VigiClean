@@ -14,9 +14,8 @@ protocol SignInViewPresenter {
     func signIn(email: String?, password: String?)
 }
 
-protocol SignInView: AlertManager {
+protocol SignInView: BaseView {
     var activityIndicator: UIActivityIndicatorView! { get set }
-    func sendAlert(message: String)
     func userSignedIn()
     func switchActivityIndicator(hidden: Bool)
 }

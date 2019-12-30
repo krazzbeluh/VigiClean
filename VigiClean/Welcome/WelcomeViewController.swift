@@ -9,7 +9,6 @@
 import UIKit
 
 class WelcomeViewController: UIViewController, WelcomeView {
-    
     // MARK: Properties
     var presenter: WelcomeViewPresenter!
     

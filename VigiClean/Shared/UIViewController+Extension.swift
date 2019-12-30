@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol AlertManager: UIViewController {
-    func sendAlert(message: String)
+protocol BaseView: class {
+    func displayError(message: String)
 }
 
-extension AlertManager {
-    func sendAlert(message: String) { // sends alert
+extension UIViewController: BaseView {
+    func displayError(message: String) { // sends alert
         let alertVC = UIAlertController(title: "Erreur !", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
