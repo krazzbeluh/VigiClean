@@ -10,16 +10,25 @@ import UIKit
 
 class FakeRequestView: UIViewController, RequestView {
     var location: Poi?
+    var alert: String?
+    var didCallRoleFetched = false
+    var didCallRequestSent = false
     
     func configure(with object: Object) {}
     
-//    func requestSent() {
-//        let name = Notification.Name("RequestSent")
-//        let notification = Notification(name: name)
-//        NotificationCenter.default.post(notification)
-//    }
-    
     func configureMap(with location: Poi) {
         self.location = location
+    }
+    
+    func roleFetched() {
+        didCallRoleFetched = true
+    }
+    
+    func requestSent() {
+        didCallRequestSent = true
+    }
+    
+    func sendAlert(message: String) {
+        alert = message
     }
 }

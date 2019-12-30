@@ -12,6 +12,7 @@ import MapKit
 @testable import VigiClean
 
 class RequestViewPresenterTestCase: XCTestCase {
+    var view: FakeRequestView!
     let easyObject  = Object(coords: GeoPoint(latitude: 13, longitude: 42),
                              organization: "VigiClean",
                              type: "Type1",
@@ -20,8 +21,11 @@ class RequestViewPresenterTestCase: XCTestCase {
                              actions: [Action(index: 1, message: "UA1"), Action(index: 2, message: "UA2")],
                              employeeActions: [Action(index: 1, message: "EA1"), Action(index: 2, message: "EA2")])
     
+    override func setUp() {
+        view = FakeRequestView()
+    }
+    
     func testSwitchEmployeeMode() {
-        let view = FakeRequestView()
         let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(error: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
@@ -32,7 +36,6 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testActionsShouldReturnAutreIfNoObject() {
-        let view = FakeRequestView()
         let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(error: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
@@ -43,7 +46,6 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testActionsShouldNotBeTheSameIfEmployeeModeSwitched() {
-        let view = FakeRequestView()
         let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(error: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
@@ -64,40 +66,7 @@ class RequestViewPresenterTestCase: XCTestCase {
         XCTAssertEqual(presenter.actions, eActionsString)
     }
     
-    func testFetchRoleShouldReturnFalseCallbackIfFailure() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        
-        let view = FakeRequestView()
-        let accountManager = AccountManagerFake(resultBool: .failure(EasyError()))
-        let objectManager = ObjectManagerFake(error: nil)
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
-        
-        presenter.fetchRole { (isEmployee) in
-            XCTAssertFalse(isEmployee)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    func testFetchRoleShouldReturnTrueCallbackIfSuccessTrue() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        
-        let view = FakeRequestView()
-        let accountManager = AccountManagerFake(resultBool: .success(true))
-        let objectManager = ObjectManagerFake(error: nil)
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
-        
-        presenter.fetchRole { (isEmployee) in
-            XCTAssertTrue(isEmployee)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
     func testPrepareMapShouldNotCallConfigureMapIfNoObject() {
-        let view = FakeRequestView()
         let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(error: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
@@ -110,7 +79,6 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testPrepareMapShouldCallConfigureMapWithCorrecDatas() {
-        let view = FakeRequestView()
         let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(error: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
@@ -132,9 +100,6 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testSendRequestShouldReturnSuccessCallbackWithIsEmployeeAtTrueIfNoErrorAndIsEmployeeIsTrue() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        
-        let view = FakeRequestView()
         let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(error: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
@@ -146,23 +111,13 @@ class RequestViewPresenterTestCase: XCTestCase {
             return
         }
         
-        presenter.sendRequest(with: action, isValid: true) { (result) in
-            expectation.fulfill()
-            switch result {
-            case .success(let isEmployee):
-                XCTAssertTrue(isEmployee)
-            case .failure(_): // swiftlint:disable:this empty_enum_arguments
-                XCTAssert(false)
-            }
-        }
+        presenter.sendRequest(with: action, isValid: true)
         
-        wait(for: [expectation], timeout: 0.01)
+        XCTAssertTrue(view.didCallRequestSent)
+        XCTAssertNil(view.alert)
     }
     
     func testSendRequestShouldReturnFailureCallbackIfErrorAndIsEmployeeIsTrue() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        
-        let view = FakeRequestView()
         let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(error: EasyError())
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
@@ -174,23 +129,13 @@ class RequestViewPresenterTestCase: XCTestCase {
             return
         }
         
-        presenter.sendRequest(with: action, isValid: true) { (result) in
-            expectation.fulfill()
-            switch result {
-            case .success(_): // swiftlint:disable:this empty_enum_arguments
-                XCTAssert(false)
-            case .failure(_): // swiftlint:disable:this empty_enum_arguments
-                XCTAssert(true)
-            }
-        }
+        presenter.sendRequest(with: action, isValid: true)
         
-        wait(for: [expectation], timeout: 0.01)
+        XCTAssertFalse(view.didCallRequestSent)
+        XCTAssertNotNil(view.alert)
     }
     
     func testSendRequestShouldReturnSuccessCallbackWithIsEmployeeAtFalseIfNoErrorAndIsEmployeeIsFalse() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        
-        let view = FakeRequestView()
         let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(error: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
@@ -202,23 +147,13 @@ class RequestViewPresenterTestCase: XCTestCase {
             return
         }
         
-        presenter.sendRequest(with: action, isValid: true) { (result) in
-            expectation.fulfill()
-            switch result {
-            case .success(let isEmployee):
-                XCTAssertFalse(isEmployee)
-            case .failure(_): // swiftlint:disable:this empty_enum_arguments
-                XCTAssert(false)
-            }
-        }
+        presenter.sendRequest(with: action, isValid: true)
         
-        wait(for: [expectation], timeout: 0.01)
+        XCTAssertTrue(view.didCallRequestSent)
+        XCTAssertNil(view.alert)
     }
     
     func testSendRequestShouldReturnFailureCallbackIfErrorAndIsEmployeeIsFalse() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        
-        let view = FakeRequestView()
         let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(error: EasyError())
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
@@ -230,16 +165,29 @@ class RequestViewPresenterTestCase: XCTestCase {
             return
         }
         
-        presenter.sendRequest(with: action, isValid: true) { (result) in
-            expectation.fulfill()
-            switch result {
-            case .success(_): // swiftlint:disable:this empty_enum_arguments
-                XCTAssert(false)
-            case .failure(_): // swiftlint:disable:this empty_enum_arguments
-                XCTAssert(true)
-            }
-        }
+        presenter.sendRequest(with: action, isValid: true)
         
-        wait(for: [expectation], timeout: 0.01)
+        XCTAssertFalse(view.didCallRequestSent)
+        XCTAssertNotNil(view.alert)
+    }
+    
+    func testFetchRoleShouldCallRoleFetchedIfNoError() {
+        let accountManager = AccountManagerFake(resultBool: .success(true))
+        let objectManager = ObjectManagerFake(error: EasyError())
+        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        
+        presenter.fetchRole()
+        
+        XCTAssertTrue(view.didCallRoleFetched)
+    }
+    
+    func testFetchRoleShouldNotCallRoleFetchedIfError() {
+        let accountManager = AccountManagerFake(resultBool: .failure(EasyError()))
+        let objectManager = ObjectManagerFake(error: EasyError())
+        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        
+        presenter.fetchRole()
+        
+        XCTAssertFalse(view.didCallRoleFetched)
     }
 }

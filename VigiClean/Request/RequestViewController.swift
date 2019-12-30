@@ -37,22 +37,23 @@ class RequestViewController: UIViewController, RequestView {
         myPicker.dataSource = self
         action.inputView = myPicker
         
-        presenter.fetchRole { isEmployee in
-            self.employeeLabel.isHidden = !isEmployee
-            self.switchMode.isHidden = !isEmployee
-            self.switchMode.isOn = isEmployee
-            self.switchChanged(mySwitch: self.switchMode)
-            self.action.text = self.presenter.actions.first
-            self.necessaryLabel.isHidden = !isEmployee
-            self.validSwitch.isHidden = !isEmployee
-        }
-        
         switchMode.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         
         presenter.prepareMap()
     }
     
     // MARK: Methods
+    func roleFetched() {
+        let isEmployee = presenter.isEmployee
+        self.employeeLabel.isHidden = !isEmployee
+        self.switchMode.isHidden = !isEmployee
+        self.switchMode.isOn = isEmployee
+        self.switchChanged(mySwitch: self.switchMode)
+        self.action.text = self.presenter.actions.first
+        self.necessaryLabel.isHidden = !isEmployee
+        self.validSwitch.isHidden = !isEmployee
+    }
+    
     func loading(grayed: Bool) {
         activityIndicator.isHidden = !grayed
         grayOutView.isHidden = !grayed
@@ -85,16 +86,7 @@ class RequestViewController: UIViewController, RequestView {
             return
         }
         
-        presenter.sendRequest(with: action, isValid: validSwitch.isOn) { result in
-            switch result {
-            case .success(let employeeMode):
-                if !employeeMode {
-                    self.requestSent()
-                }
-            case .failure(let error):
-                self.sendAlert(message: self.presenter.convertError(error))
-            }
-        }
+        presenter.sendRequest(with: action, isValid: validSwitch.isOn)
     }
     
     @IBAction func dismissSelector(_ sender: Any) {
