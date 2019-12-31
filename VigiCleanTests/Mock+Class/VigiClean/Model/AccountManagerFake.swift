@@ -65,4 +65,26 @@ class AccountManagerFake: AccountManager {
     override func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
         completion(error)
     }
+    
+    override func updateEmail(to newEmail: String, with password: String, completion: @escaping (Error?) -> Void) {
+        completion(error)
+    }
+    
+    private var connectedWithEmail = false
+    override var isConnectedWithEmail: Bool {
+        get {
+            return connectedWithEmail
+        }
+        set {
+            connectedWithEmail = newValue
+        }
+    }
+    
+    override func signOut(completion: (Error?) -> Void) {
+        completion(error)
+    }
+    
+    override func signIn(email: String, password: String, completion: @escaping ((Error?) -> Void)) {
+        completion(error)
+    }
 }

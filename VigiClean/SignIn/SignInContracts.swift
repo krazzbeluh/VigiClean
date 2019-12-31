@@ -15,7 +15,6 @@ protocol SignInViewPresenter {
 }
 
 protocol SignInView: BaseView {
-    var activityIndicator: UIActivityIndicatorView! { get set }
     func userSignedIn()
     func switchActivityIndicator(hidden: Bool)
 }

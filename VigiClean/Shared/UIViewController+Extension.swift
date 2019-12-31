@@ -45,3 +45,7 @@ extension UIViewController: UNUserNotificationCenterDelegate {
     }
     
 }
+
+enum UserError: Error {
+    case nilInTextField
+}

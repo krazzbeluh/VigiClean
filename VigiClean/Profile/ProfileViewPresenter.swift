@@ -9,7 +9,7 @@
 import Foundation
 
 class ProfilePresenter: BasePresenter, ProfileViewPresenter {
-    private let accountManager = AccountManager()
+    private var accountManager = AccountManager()
     
     var isConnectedAnonymously: Bool {
         return !accountManager.isConnectedWithEmail
@@ -25,6 +25,11 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
         }
     }
     
+    init(view: ProfileView, accountManager: AccountManager) {
+        self.accountManager = accountManager
+        self.view = view
+    }
+    
     func signOut() {
         accountManager.signOut { error in
             if let error = error {
@@ -37,7 +42,9 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
     
     func updatePseudo(to newPseudo: String?, with password: String?) {
         guard let newPseudo = newPseudo,
+            newPseudo != "",
             let password = password else {
+                self.view.displayError(message: self.convertError(UserError.nilInTextField))
                 return
         }
         
@@ -53,7 +60,9 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
     
     func updateEmail(to newEmail: String?, with password: String?) {
         guard let newEmail = newEmail,
+            newEmail != "",
             let password = password else {
+                self.view.displayError(message: self.convertError(UserError.nilInTextField))
                 return
         }
         

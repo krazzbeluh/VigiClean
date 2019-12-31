@@ -10,6 +10,9 @@
 		2EDF790BADCB409446220B2E /* Pods_VigiCleanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07C60F1F161004AED1E3929 /* Pods_VigiCleanTests.framework */; };
 		9402CEFB23ABB3C000C2D671 /* VigiCleanUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9402CEFA23ABB3C000C2D671 /* VigiCleanUser.swift */; };
 		9402E9A3239A8EF80070E910 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9402E9A2239A8EF80070E910 /* BasePresenter.swift */; };
+		9408E17423BB99A90032D671 /* FakeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408E17323BB99A90032D671 /* FakeProfileView.swift */; };
+		9408E17623BBA4960032D671 /* SignInViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */; };
+		9408E17823BBA4C20032D671 /* FakeSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408E17723BBA4C20032D671 /* FakeSignInView.swift */; };
 		94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAC237D067B00419F2C /* SignUpViewController.swift */; };
 		94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */; };
 		94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */; };
@@ -41,6 +44,7 @@
 		94A2FD2C23BB6E3800AE9865 /* FakeScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2B23BB6E3800AE9865 /* FakeScoreView.swift */; };
 		94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift */; };
 		94A2FD3023BB77DC00AE9865 /* FakeAttachEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2F23BB77DC00AE9865 /* FakeAttachEmailView.swift */; };
+		94A2FD3423BB98B800AE9865 /* ProfileViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD3323BB98B800AE9865 /* ProfileViewPresenterTestCase.swift */; };
 		94A5C61A23B1123000752182 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61923B1123000752182 /* FakeResponseData.swift */; };
 		94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */; };
 		94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */; };
@@ -103,6 +107,9 @@
 		7A9FC7A8205830702234610B /* Pods-VigiClean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.debug.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.debug.xcconfig"; sourceTree = "<group>"; };
 		9402CEFA23ABB3C000C2D671 /* VigiCleanUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VigiCleanUser.swift; sourceTree = "<group>"; };
 		9402E9A2239A8EF80070E910 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		9408E17323BB99A90032D671 /* FakeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeProfileView.swift; sourceTree = "<group>"; };
+		9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPresenterTestCase.swift; sourceTree = "<group>"; };
+		9408E17723BBA4C20032D671 /* FakeSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSignInView.swift; sourceTree = "<group>"; };
 		94138AAC237D067B00419F2C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenter.swift; sourceTree = "<group>"; };
 		94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewPresenter.swift; sourceTree = "<group>"; };
@@ -134,6 +141,7 @@
 		94A2FD2B23BB6E3800AE9865 /* FakeScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeScoreView.swift; sourceTree = "<group>"; };
 		94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewPresenterTestCaase.swift; sourceTree = "<group>"; };
 		94A2FD2F23BB77DC00AE9865 /* FakeAttachEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAttachEmailView.swift; sourceTree = "<group>"; };
+		94A2FD3323BB98B800AE9865 /* ProfileViewPresenterTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenterTestCase.swift; sourceTree = "<group>"; };
 		94A5C61923B1123000752182 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeResponseData.swift; path = VigiCleanTests/FakeResponseData.swift; sourceTree = SOURCE_ROOT; };
 		94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReferenceFake.swift; sourceTree = "<group>"; };
 		94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentReferenceFake.swift; sourceTree = "<group>"; };
@@ -350,6 +358,8 @@
 		94A2FD1223B54EFE00AE9865 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9408E17723BBA4C20032D671 /* FakeSignInView.swift */,
+				9408E17323BB99A90032D671 /* FakeProfileView.swift */,
 				94A2FD2F23BB77DC00AE9865 /* FakeAttachEmailView.swift */,
 				94A2FD2B23BB6E3800AE9865 /* FakeScoreView.swift */,
 				94A2FD2723BB646300AE9865 /* FakeSignUpView.swift */,
@@ -480,6 +490,8 @@
 		94F0A03D2370A1CC00037210 /* VigiCleanTests */ = {
 			isa = PBXGroup;
 			children = (
+				94A2FD3323BB98B800AE9865 /* ProfileViewPresenterTestCase.swift */,
+				9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */,
 				94A2FD2123BA511A00AE9865 /* ScannerViewPresenterTestCase.swift */,
 				94A5C62123B4151800752182 /* DashboardViewPresenterTestCase.swift */,
 				94A2FD2523BB639300AE9865 /* SignUpViewPresenterTestCase.swift */,
@@ -750,6 +762,7 @@
 				94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift in Sources */,
 				94A2FD2223BA511A00AE9865 /* ScannerViewPresenterTestCase.swift in Sources */,
 				94A2FD2823BB646400AE9865 /* FakeSignUpView.swift in Sources */,
+				94A2FD3423BB98B800AE9865 /* ProfileViewPresenterTestCase.swift in Sources */,
 				94A5C62423B4171100752182 /* AccountManagerFake.swift in Sources */,
 				94A2FD2423BA51CE00AE9865 /* FakeScannerView.swift in Sources */,
 				94A5C61A23B1123000752182 /* FakeResponseData.swift in Sources */,
@@ -765,6 +778,9 @@
 				94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */,
 				94A2FD1823B5586D00AE9865 /* ObjectManagerFake.swift in Sources */,
 				9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */,
+				9408E17823BBA4C20032D671 /* FakeSignInView.swift in Sources */,
+				9408E17423BB99A90032D671 /* FakeProfileView.swift in Sources */,
+				9408E17623BBA4960032D671 /* SignInViewPresenterTestCase.swift in Sources */,
 				94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */,
 				9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */,
 				94A2FD2C23BB6E3800AE9865 /* FakeScoreView.swift in Sources */,

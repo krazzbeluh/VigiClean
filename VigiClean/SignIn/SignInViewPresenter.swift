@@ -10,11 +10,16 @@ import Foundation
 
 class SignInPresenter: BasePresenter, SignInViewPresenter {
     weak var view: SignInView!
-    private let accountManager = AccountManager()
+    private var accountManager = AccountManager()
     
     required init(view: SignInView) {
         self.view = view
-    } 
+    }
+    
+    init(view: SignInView, accountManager: AccountManager) {
+        self.view = view
+        self.accountManager = accountManager
+    }
     
     func signIn(email: String?, password: String?) {
         guard let email = email, let password = password, email != "", password != "" else {
@@ -28,6 +33,7 @@ class SignInPresenter: BasePresenter, SignInViewPresenter {
         accountManager.signIn(email: email, password: password) { error in
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
+                return
             }
             self.view.userSignedIn()
         }
