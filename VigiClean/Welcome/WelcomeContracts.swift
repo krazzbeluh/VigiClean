@@ -15,5 +15,4 @@ protocol WelcomeViewPresenter {
 
 protocol WelcomeView: BaseView {
     func performSegue()
-    func switchActivityIndicator(hidden: Bool)
 }

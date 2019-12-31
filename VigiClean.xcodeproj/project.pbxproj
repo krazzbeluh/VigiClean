@@ -13,6 +13,8 @@
 		9408E17423BB99A90032D671 /* FakeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408E17323BB99A90032D671 /* FakeProfileView.swift */; };
 		9408E17623BBA4960032D671 /* SignInViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */; };
 		9408E17823BBA4C20032D671 /* FakeSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408E17723BBA4C20032D671 /* FakeSignInView.swift */; };
+		9408E17A23BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408E17923BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift */; };
+		9408E17C23BBAF160032D671 /* FakeWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408E17B23BBAF160032D671 /* FakeWelcomeView.swift */; };
 		94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAC237D067B00419F2C /* SignUpViewController.swift */; };
 		94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */; };
 		94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */; };
@@ -110,6 +112,8 @@
 		9408E17323BB99A90032D671 /* FakeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeProfileView.swift; sourceTree = "<group>"; };
 		9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewPresenterTestCase.swift; sourceTree = "<group>"; };
 		9408E17723BBA4C20032D671 /* FakeSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSignInView.swift; sourceTree = "<group>"; };
+		9408E17923BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewPresenterTestCase.swift; sourceTree = "<group>"; };
+		9408E17B23BBAF160032D671 /* FakeWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeWelcomeView.swift; sourceTree = "<group>"; };
 		94138AAC237D067B00419F2C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenter.swift; sourceTree = "<group>"; };
 		94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewPresenter.swift; sourceTree = "<group>"; };
@@ -358,6 +362,7 @@
 		94A2FD1223B54EFE00AE9865 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9408E17B23BBAF160032D671 /* FakeWelcomeView.swift */,
 				9408E17723BBA4C20032D671 /* FakeSignInView.swift */,
 				9408E17323BB99A90032D671 /* FakeProfileView.swift */,
 				94A2FD2F23BB77DC00AE9865 /* FakeAttachEmailView.swift */,
@@ -492,6 +497,7 @@
 			children = (
 				94A2FD3323BB98B800AE9865 /* ProfileViewPresenterTestCase.swift */,
 				9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */,
+				9408E17923BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift */,
 				94A2FD2123BA511A00AE9865 /* ScannerViewPresenterTestCase.swift */,
 				94A5C62123B4151800752182 /* DashboardViewPresenterTestCase.swift */,
 				94A2FD2523BB639300AE9865 /* SignUpViewPresenterTestCase.swift */,
@@ -761,6 +767,7 @@
 				94D20969239EE9D10089759B /* AuthFake.swift in Sources */,
 				94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift in Sources */,
 				94A2FD2223BA511A00AE9865 /* ScannerViewPresenterTestCase.swift in Sources */,
+				9408E17C23BBAF160032D671 /* FakeWelcomeView.swift in Sources */,
 				94A2FD2823BB646400AE9865 /* FakeSignUpView.swift in Sources */,
 				94A2FD3423BB98B800AE9865 /* ProfileViewPresenterTestCase.swift in Sources */,
 				94A5C62423B4171100752182 /* AccountManagerFake.swift in Sources */,
@@ -780,6 +787,7 @@
 				9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */,
 				9408E17823BBA4C20032D671 /* FakeSignInView.swift in Sources */,
 				9408E17423BB99A90032D671 /* FakeProfileView.swift in Sources */,
+				9408E17A23BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift in Sources */,
 				9408E17623BBA4960032D671 /* SignInViewPresenterTestCase.swift in Sources */,
 				94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */,
 				9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */,

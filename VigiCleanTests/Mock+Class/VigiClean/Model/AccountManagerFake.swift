@@ -87,4 +87,8 @@ class AccountManagerFake: AccountManager {
     override func signIn(email: String, password: String, completion: @escaping ((Error?) -> Void)) {
         completion(error)
     }
+    
+    override func anonymousSignIn(completion: @escaping ((Error?) -> Void)) {
+        completion(error)
+    }
 }
