@@ -10,10 +10,15 @@ import Foundation
 
 class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
     weak var view: AttachEmailView!
-    private let accountManager = AccountManager()
+    private var accountManager = AccountManager()
     
     required init(view: AttachEmailView) {
         self.view = view
+    }
+    
+    init(view: AttachEmailView, accountManager: AccountManager) {
+        self.view = view
+        self.accountManager = accountManager
     }
     
     func attachEmail(username: String?, email: String?, password: String?, confirmPassword: String?) {
@@ -39,15 +44,29 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
             } else {
-                self.accountManager.updatePseudo(to: username, with: password) { (error) in
-                    guard let error = error else {
-                        self.view.emailAttached()
-                        return
-                    }
-                    
-                    self.view.displayError(message: self.convertError(error))
-                }
+                self.view.attachedEmail()
             }
         })
+    }
+    
+    func updatePseudo(username: String?, password: String?, confirmPassword: String?) {
+        guard let username = username,
+            let password = password,
+            let confirmPassword = confirmPassword,
+            username != "",
+            password != "",
+            confirmPassword != "" else {
+                view.displayError(message: convertError(AccountManager.UAccountError.emptyTextField))
+                return
+        }
+        
+        accountManager.updatePseudo(to: username, with: password) { (error) in
+            guard let error = error else {
+                self.view.updatedPseudo()
+                return
+            }
+            
+            self.view.displayError(message: self.convertError(error))
+        }
     }
 }

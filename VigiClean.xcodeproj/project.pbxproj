@@ -37,6 +37,10 @@
 		94A2FD2423BA51CE00AE9865 /* FakeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2323BA51CE00AE9865 /* FakeScannerView.swift */; };
 		94A2FD2623BB639300AE9865 /* SignUpViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2523BB639300AE9865 /* SignUpViewPresenterTestCase.swift */; };
 		94A2FD2823BB646400AE9865 /* FakeSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2723BB646300AE9865 /* FakeSignUpView.swift */; };
+		94A2FD2A23BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2923BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift */; };
+		94A2FD2C23BB6E3800AE9865 /* FakeScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2B23BB6E3800AE9865 /* FakeScoreView.swift */; };
+		94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift */; };
+		94A2FD3023BB77DC00AE9865 /* FakeAttachEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2F23BB77DC00AE9865 /* FakeAttachEmailView.swift */; };
 		94A5C61A23B1123000752182 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61923B1123000752182 /* FakeResponseData.swift */; };
 		94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */; };
 		94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */; };
@@ -126,6 +130,10 @@
 		94A2FD2323BA51CE00AE9865 /* FakeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeScannerView.swift; sourceTree = "<group>"; };
 		94A2FD2523BB639300AE9865 /* SignUpViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenterTestCase.swift; sourceTree = "<group>"; };
 		94A2FD2723BB646300AE9865 /* FakeSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeSignUpView.swift; path = VigiCleanTests/FakeSignUpView.swift; sourceTree = SOURCE_ROOT; };
+		94A2FD2923BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewPresenterTestCase.swift; sourceTree = "<group>"; };
+		94A2FD2B23BB6E3800AE9865 /* FakeScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeScoreView.swift; sourceTree = "<group>"; };
+		94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewPresenterTestCaase.swift; sourceTree = "<group>"; };
+		94A2FD2F23BB77DC00AE9865 /* FakeAttachEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAttachEmailView.swift; sourceTree = "<group>"; };
 		94A5C61923B1123000752182 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeResponseData.swift; path = VigiCleanTests/FakeResponseData.swift; sourceTree = SOURCE_ROOT; };
 		94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReferenceFake.swift; sourceTree = "<group>"; };
 		94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentReferenceFake.swift; sourceTree = "<group>"; };
@@ -342,6 +350,8 @@
 		94A2FD1223B54EFE00AE9865 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				94A2FD2F23BB77DC00AE9865 /* FakeAttachEmailView.swift */,
+				94A2FD2B23BB6E3800AE9865 /* FakeScoreView.swift */,
 				94A2FD2723BB646300AE9865 /* FakeSignUpView.swift */,
 				94A2FD2323BA51CE00AE9865 /* FakeScannerView.swift */,
 				94A2FD1F23B584AD00AE9865 /* FakeRequestView.swift */,
@@ -473,6 +483,8 @@
 				94A2FD2123BA511A00AE9865 /* ScannerViewPresenterTestCase.swift */,
 				94A5C62123B4151800752182 /* DashboardViewPresenterTestCase.swift */,
 				94A2FD2523BB639300AE9865 /* SignUpViewPresenterTestCase.swift */,
+				94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift */,
+				94A2FD2923BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift */,
 				94A2FD1323B54F9500AE9865 /* RequestViewPresenterTestCase.swift */,
 				94D20965239EE8030089759B /* AccountManagerTestCase.swift */,
 				9451DE4F23B0ECB10097658C /* ObjectManagerTestCase.swift */,
@@ -735,6 +747,7 @@
 			files = (
 				94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */,
 				94D20969239EE9D10089759B /* AuthFake.swift in Sources */,
+				94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift in Sources */,
 				94A2FD2223BA511A00AE9865 /* ScannerViewPresenterTestCase.swift in Sources */,
 				94A2FD2823BB646400AE9865 /* FakeSignUpView.swift in Sources */,
 				94A5C62423B4171100752182 /* AccountManagerFake.swift in Sources */,
@@ -743,6 +756,8 @@
 				94A2FD2023B584AD00AE9865 /* FakeRequestView.swift in Sources */,
 				94A2FD1423B54F9500AE9865 /* RequestViewPresenterTestCase.swift in Sources */,
 				9463FDAF23AA9CF200827E06 /* EasyError.swift in Sources */,
+				94A2FD3023BB77DC00AE9865 /* FakeAttachEmailView.swift in Sources */,
+				94A2FD2A23BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift in Sources */,
 				94A2FD2623BB639300AE9865 /* SignUpViewPresenterTestCase.swift in Sources */,
 				94A2FD1C23B5847400AE9865 /* FakeDashboardView.swift in Sources */,
 				94A5C62223B4151800752182 /* DashboardViewPresenterTestCase.swift in Sources */,
@@ -752,6 +767,7 @@
 				9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */,
 				94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */,
 				9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */,
+				94A2FD2C23BB6E3800AE9865 /* FakeScoreView.swift in Sources */,
 				94D20966239EE8030089759B /* AccountManagerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

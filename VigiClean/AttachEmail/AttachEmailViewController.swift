@@ -11,7 +11,7 @@ import UIKit
 class AttachEmailViewController: UIViewController, AttachEmailView {
     // MARK: Properties
     var presenter: AttachEmailViewPresenter!
-
+    
     // MARK: Outlets
     @IBOutlet var textFields: [UITextField]!
     @IBOutlet weak var performButton: UIButton!
@@ -21,7 +21,7 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = AttachEmailPresenter(view: self)
-
+        
         if #available(iOS 13, *) {
             dismissButton.isHidden = true
         }
@@ -31,7 +31,7 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
             textFields[3].textContentType = .oneTimeCode
         }
     }
-
+    
     // MARK: Actions
     @IBAction func didTapPerformButton(_ sender: Any) {
         attachEmail()
@@ -46,12 +46,12 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
     // MARK: Methods
     func attachEmail() {
         presenter.attachEmail(username: textFields[0].text,
-                         email: textFields[1].text,
-                         password: textFields[2].text,
-                         confirmPassword: textFields[3].text)
+                              email: textFields[1].text,
+                              password: textFields[2].text,
+                              confirmPassword: textFields[3].text)
     }
     
-    func emailAttached() {
+    func updatedPseudo() {
         performSegue(withIdentifier: "unwindToLaunch", sender: self)
     }
     
@@ -60,6 +60,11 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
         performButton.isHidden = !hidden
     }
     
+    func attachedEmail() {
+        presenter.updatePseudo(username: textFields[0].text,
+                               password: textFields[2].text,
+                               confirmPassword: textFields[3].text)
+    }
 }
 
 // MARK: UITextFieldDelegate

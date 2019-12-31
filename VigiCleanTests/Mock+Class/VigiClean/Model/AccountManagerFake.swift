@@ -47,4 +47,22 @@ class AccountManagerFake: AccountManager {
     override func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
         completion(error)
     }
+    
+    override func listenForUserDocumentChanges(creditsChanged: ((Int) -> Void)?) {
+        guard let creditsChanged = creditsChanged else {
+            return
+        }
+        
+        creditsChanged(15)
+    }
+    
+    override func attachEmail(email: String,
+                              password: String,
+                              completion: @escaping ((Error?) -> Void)) {
+        completion(error)
+    }
+    
+    override func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
+        completion(error)
+    }
 }

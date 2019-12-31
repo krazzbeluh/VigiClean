@@ -10,10 +10,12 @@ import Foundation
 
 protocol AttachEmailView: BaseView {
     func switchActivityIndicator(hidden: Bool)
-    func emailAttached()
+    func updatedPseudo()
+    func attachedEmail()
 }
 
 protocol AttachEmailViewPresenter {
     init(view: AttachEmailView)
     func attachEmail(username: String?, email: String?, password: String?, confirmPassword: String?)
+    func updatePseudo(username: String?, password: String?, confirmPassword: String?)
 }

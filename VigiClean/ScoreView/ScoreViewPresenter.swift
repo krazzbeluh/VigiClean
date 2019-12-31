@@ -10,15 +10,20 @@ import Foundation
 
 class ScoreViewPresenter: ScoreViewPresenterContract {
     weak var view: ScoreViewContract!
-    private let accountManager = AccountManager()
+    private var accountManager = AccountManager()
+    
+    init(view: ScoreViewContract, accountManager: AccountManager) {
+        self.view = view
+        self.accountManager = accountManager
+    }
     
     required init(view: ScoreViewContract) {
         self.view = view
     }
     
-    func listenForUserCreditChange(valueChanged: @escaping (Int) -> Void) {
+    func listenForUserCreditChange() {
         accountManager.listenForUserDocumentChanges { (newValue) in
-            valueChanged(newValue)
+            self.view.valueChanged(to: newValue)
         }
     }
     

@@ -17,9 +17,7 @@ class ScoreView: UIView, ScoreViewContract {
         presenter = ScoreViewPresenter(view: self)
         layer.borderWidth = 25
         layer.cornerRadius = self.frame.width / 2
-        presenter.listenForUserCreditChange { newValue in
-            self.setScore(to: newValue)
-        }
+        presenter.listenForUserCreditChange()
     }
     
     private var color: UIColor {
@@ -51,5 +49,9 @@ class ScoreView: UIView, ScoreViewContract {
         
         layer.borderColor = color.cgColor
         scoreLabel.textColor = color
+    }
+    
+    func valueChanged(to value: Int) {
+        setScore(to: value)
     }
 }
