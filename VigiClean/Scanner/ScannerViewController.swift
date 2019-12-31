@@ -93,8 +93,9 @@ class ScannerViewController: UIViewController, ScannerView {
         grayOutView.isHidden = !statement
     }
     
-    func startVibration() {
+    func correctCodeFound() {
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        presenter.getObject()
     }
     
     func validObjectFound() {

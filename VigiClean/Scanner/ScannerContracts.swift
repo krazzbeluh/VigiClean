@@ -14,11 +14,11 @@ protocol ScannerViewPresenter: BasePresenter {
     var objectCode: String { get }
     
     func verifyCode(code: String)
+    func getObject()
 }
 
 protocol ScannerView: BaseView {
-    func startVibration()
-    func displayLoadViews(_ statement: Bool)
+    func correctCodeFound()
     func validObjectFound()
     func invalidCodeFound(error: Error)
 }

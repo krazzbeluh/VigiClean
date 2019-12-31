@@ -29,4 +29,12 @@ class ObjectManagerFake: ObjectManager {
                               callback: @escaping (Error?) -> Void) {
         callback(error)
     }
+    
+    override func getObject(code: String, callback: @escaping (Result<Void, Error>) -> Void) {
+        if let error = error {
+            callback(.failure(error))
+        } else {
+            callback(.success(Void()))
+        }
+    }
 }

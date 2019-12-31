@@ -13,6 +13,7 @@ import FirebaseFirestore
 class AccountManagerFake: AccountManager {
     var resultData: Result<Data, Error>!
     var resultBool: Result<Bool, Error>!
+    var error: Error?
     
     init(resultData: Result<Data, Error>) {
         self.resultData = resultData
@@ -21,6 +22,11 @@ class AccountManagerFake: AccountManager {
     
     init(resultBool: Result<Bool, Error>) {
         self.resultBool = resultBool
+        super.init()
+    }
+    
+    init(error: Error?) {
+        self.error = error
         super.init()
     }
     
@@ -36,5 +42,9 @@ class AccountManagerFake: AccountManager {
     
     override func fetchRole(callback: @escaping (Result<Bool, Error>) -> Void) {
         callback(resultBool)
+    }
+    
+    override func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
+        completion(error)
     }
 }
