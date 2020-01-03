@@ -51,15 +51,15 @@ class RequestViewPresenterTestCase: XCTestCase {
         let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
         
         let defaultMessage = "Autre"
-        var uActionsString = easyObject.actions.map { $0.message }
+        var uActionsString = easyObject.actions!.map { $0.message }
         uActionsString.append(defaultMessage)
-        var eActionsString = easyObject.employeeActions.map { $0.message }
+        var eActionsString = easyObject.employeeActions!.map { $0.message }
         eActionsString.append(defaultMessage)
         
         Object.currentObject = Object(coords: GeoPoint(latitude: 0, longitude: 0),
                                       organization: "", type: "", name: "", code: "",
-                                      actions: easyObject.actions,
-                                      employeeActions: easyObject.employeeActions)
+                                      actions: easyObject.actions!,
+                                      employeeActions: easyObject.employeeActions!)
         
         XCTAssertEqual(presenter.actions, uActionsString)
         presenter.switchEmployeeMode(to: true)
@@ -106,7 +106,7 @@ class RequestViewPresenterTestCase: XCTestCase {
         presenter.switchEmployeeMode(to: true)
         Object.currentObject = easyObject
         
-        guard let action = Object.currentObject?.employeeActions.first?.message else {
+        guard let action = Object.currentObject?.employeeActions!.first?.message else {
             XCTAssert(false)
             return
         }
@@ -124,7 +124,7 @@ class RequestViewPresenterTestCase: XCTestCase {
         presenter.switchEmployeeMode(to: true)
         Object.currentObject = easyObject
         
-        guard let action = Object.currentObject?.employeeActions.first?.message else {
+        guard let action = Object.currentObject?.employeeActions!.first?.message else {
             XCTAssert(false)
             return
         }
@@ -142,7 +142,7 @@ class RequestViewPresenterTestCase: XCTestCase {
         presenter.switchEmployeeMode(to: false)
         Object.currentObject = easyObject
         
-        guard let action = Object.currentObject?.actions.first?.message else {
+        guard let action = Object.currentObject?.actions!.first?.message else {
             XCTAssert(false)
             return
         }
@@ -160,7 +160,7 @@ class RequestViewPresenterTestCase: XCTestCase {
         presenter.switchEmployeeMode(to: false)
         Object.currentObject = easyObject
         
-        guard let action = Object.currentObject?.actions.first?.message else {
+        guard let action = Object.currentObject?.actions!.first?.message else {
             XCTAssert(false)
             return
         }

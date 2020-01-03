@@ -30,7 +30,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testSignOutShouldCallUserSignedOutIfNoError() {
-        let accountManager = AccountManagerFake(error: nil)
+        let accountManager = AccountManagerFake(errors: [nil])
         let presenter = ProfilePresenter(view: view, accountManager: accountManager)
         
         presenter.signOut()
@@ -39,7 +39,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testSignOutShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(error: EasyError())
+        let accountManager = AccountManagerFake(errors: [EasyError()])
         let presenter = ProfilePresenter(view: view, accountManager: accountManager)
         
         presenter.signOut()
@@ -48,7 +48,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdatePseudoShouldCallDisplayUsernameIfNoError() {
-        let accountManager = AccountManagerFake(error: nil)
+        let accountManager = AccountManagerFake(errors: [nil])
         let presenter = ProfilePresenter(view: view, accountManager: accountManager)
         
         presenter.updatePseudo(to: "username", with: "1234567890")
@@ -57,7 +57,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdatePseudoShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(error: EasyError())
+        let accountManager = AccountManagerFake(errors: [EasyError()])
         let presenter = ProfilePresenter(view: view, accountManager: accountManager)
         
         presenter.updatePseudo(to: "username", with: "1234567890")
@@ -66,7 +66,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdatePseudoShouldCallDisplayErrorIfEmptyTextField() {
-        let accountManager = AccountManagerFake(error: EasyError())
+        let accountManager = AccountManagerFake(errors: [EasyError()])
         let presenter = ProfilePresenter(view: view, accountManager: accountManager)
         
         presenter.updatePseudo(to: "", with: "1234567890")
@@ -75,7 +75,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdateEmailShouldCallDisplayEmailIfNoError() {
-        let accountManager = AccountManagerFake(error: nil)
+        let accountManager = AccountManagerFake(errors: [nil])
         let presenter = ProfilePresenter(view: view, accountManager: accountManager)
         
         presenter.updateEmail(to: "email@vigiclean.com", with: "1234567890")
@@ -84,7 +84,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdateEmailShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(error: EasyError())
+        let accountManager = AccountManagerFake(errors: [EasyError()])
         let presenter = ProfilePresenter(view: view, accountManager: accountManager)
         
         presenter.updateEmail(to: "email@vigiclean.com", with: "1234567890")
@@ -93,7 +93,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdateEmailShouldCallDisplayErrorIfNilInTextField() {
-        let accountManager = AccountManagerFake(error: nil)
+        let accountManager = AccountManagerFake(errors: [nil])
         let presenter = ProfilePresenter(view: view, accountManager: accountManager)
         
         presenter.updateEmail(to: "", with: "1234567890")

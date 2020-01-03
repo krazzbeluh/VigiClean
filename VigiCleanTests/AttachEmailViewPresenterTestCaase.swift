@@ -17,7 +17,7 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testAttachEmailShouldCallEmailAttachedIfNoError() {
-        let accountManager = AccountManagerFake(error: nil)
+        let accountManager = AccountManagerFake(errors: [nil, nil])
         let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
         
         presenter.attachEmail(username: "username",
@@ -51,7 +51,7 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testAttachEmailShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(error: EasyError())
+        let accountManager = AccountManagerFake(errors: [nil, EasyError()])
         let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
         
         presenter.attachEmail(username: "username",
@@ -63,7 +63,7 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testUpdatePseudoShouldCallUpdatedPseudoIfNoError() {
-        let accountManager = AccountManagerFake(error: nil)
+        let accountManager = AccountManagerFake(errors: [nil])
         let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
         
         presenter.updatePseudo(username: "username", password: "1234567890", confirmPassword: "1234567890")
@@ -80,7 +80,7 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testUpdatePseudoShouldDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(error: EasyError())
+        let accountManager = AccountManagerFake(errors: [EasyError()])
         let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
         
         presenter.updatePseudo(username: "username", password: "1234567890", confirmPassword: "1234567890")

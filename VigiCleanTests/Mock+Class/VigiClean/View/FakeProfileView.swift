@@ -15,7 +15,6 @@ class FakeProfileView: ProfileView {
     var didCallDisplayEmail = false
     var didCallDisplayError = false
     
-    
     func userSignedOut() {
         didCallUserSignedOut = true
     }

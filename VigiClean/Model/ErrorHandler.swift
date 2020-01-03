@@ -18,32 +18,20 @@ class ErrorHandler {
         case canNotConvertError
     }
     
-    func convertToAuthError(_ error: Error) -> AuthErrorCode? {
-        guard let errCode = AuthErrorCode(rawValue: error._code) else {
-            return nil
-        }
-        return errCode
+    func convertToAuthError(_ error: Error) -> AuthErrorCode! {
+        return AuthErrorCode(rawValue: error._code)
     }
     
-    func convertToStorageError(_ error: Error) -> StorageErrorCode? {
-        guard let errCode = StorageErrorCode(rawValue: error._code) else {
-            return .unknown
-        }
-        return errCode
+    func convertToStorageError(_ error: Error) -> StorageErrorCode! {
+        return StorageErrorCode(rawValue: error._code)
     }
     
-    func convertToFirestoreError(_ error: Error) -> FirestoreErrorCode? {
-        guard let errCode = FirestoreErrorCode(rawValue: error._code) else {
-            return .unknown
-        }
-        return errCode
+    func convertToFirestoreError(_ error: Error) -> FirestoreErrorCode! {
+        return FirestoreErrorCode(rawValue: error._code)
     }
     
     func convertToFunctionsError(_ error: Error) -> FunctionsErrorCode? {
-        guard let errCode = FunctionsErrorCode(rawValue: error._code) else {
-            return .unknown
-        }
-        return errCode
+        return FunctionsErrorCode(rawValue: error._code)
     }
 }
 

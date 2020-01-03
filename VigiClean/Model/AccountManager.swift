@@ -82,7 +82,7 @@ class AccountManager {
         }
     }
     
-    func attachEmail(email: String,
+    func updateEmail(email: String,
                      password: String,
                      completion: @escaping ((Error?) -> Void)) {
         AccountManager.currentUser.user?.updateEmail(to: email) { (error) in
@@ -91,14 +91,18 @@ class AccountManager {
                 completion(errCode)
                 return
             }
-            AccountManager.currentUser.user?.updatePassword(to: password) { (error) in
-                guard error == nil else {
-                    let errCode = ErrorHandler().convertToAuthError(error!)
-                    completion(errCode)
-                    return
-                }
-                completion(nil)
+            completion(nil)
+        }
+    }
+    
+    func updatePassword(password: String, completion: @escaping ((Error?) -> Void)) {
+        AccountManager.currentUser.user?.updatePassword(to: password) { (error) in
+            guard error == nil else {
+                let errCode = ErrorHandler().convertToAuthError(error!)
+                completion(errCode)
+                return
             }
+            completion(nil)
         }
     }
     
@@ -201,24 +205,38 @@ class AccountManager {
                 }
                 print("Current data: \(data)")
                 
-                if let username = data["username"] as? String {
-                    AccountManager.currentUser.username = username
+                guard let creditsChanged = creditsChanged else {
+                    return
                 }
                 
-                if let credits = data["credits"] as? Int {
-                    AccountManager.currentUser.credits = credits
-                    
-                    guard let creditsChanged = creditsChanged else {
-                        return
-                    }
-                    
-                    creditsChanged(credits)
+                let credits: Int
+                do {
+                    credits = try self.getUserInfos(in: data)
+                } catch {
+                    print("no credits in data")
+                    return
                 }
                 
-                if let isEemployee = data["isMaintainer"] as? Bool {
-                    AccountManager.currentUser.isEmployee = isEemployee
-                }
+                creditsChanged(credits)
         }
+    }
+    
+    func getUserInfos(in data: [String: Any]) throws -> Int {
+        if let username = data["username"] as? String {
+            AccountManager.currentUser.username = username
+        }
+        
+        if let isEemployee = data["isMaintainer"] as? Bool {
+            AccountManager.currentUser.isEmployee = isEemployee
+        }
+        
+        guard let credits = data["credits"] as? Int else {
+            throw FirebaseInterface.FIRInterfaceError.documentDoesNotExists
+        }
+        
+        AccountManager.currentUser.credits = credits
+        
+        return credits
     }
     
     func fetchRole(callback: @escaping (Result<Bool, Error>) -> Void) {

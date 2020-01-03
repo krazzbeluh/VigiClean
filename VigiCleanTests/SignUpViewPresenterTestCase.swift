@@ -18,7 +18,7 @@ class SignUpViewPresenterTestCase: XCTestCase {
     }
     
     func testSignUpShouldCallUserSignedInAndSwitchActivityIndicatorOneTimeIfNoError() {
-        let accountManager = AccountManagerFake(error: nil)
+        let accountManager = AccountManagerFake(errors: [nil])
         let presenter = SignUpPresenter(view: view, accountManager: accountManager)
         
         presenter.signUp(username: "username",
@@ -55,7 +55,7 @@ class SignUpViewPresenterTestCase: XCTestCase {
     }
 
     func testSignUpShouldCallDisplayErrorAndSwitchActivityIndicatorTwoTimeIfError() {
-        let accountManager = AccountManagerFake(error: EasyError())
+        let accountManager = AccountManagerFake(errors: [EasyError()])
         let presenter = SignUpPresenter(view: view, accountManager: accountManager)
         
         presenter.signUp(username: "username",

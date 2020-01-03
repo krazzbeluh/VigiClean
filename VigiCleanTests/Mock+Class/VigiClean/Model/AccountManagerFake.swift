@@ -13,7 +13,7 @@ import FirebaseFirestore
 class AccountManagerFake: AccountManager {
     var resultData: Result<Data, Error>!
     var resultBool: Result<Bool, Error>!
-    var error: Error?
+    var errors: [Error?]?
     
     init(resultData: Result<Data, Error>) {
         self.resultData = resultData
@@ -25,14 +25,14 @@ class AccountManagerFake: AccountManager {
         super.init()
     }
     
-    init(error: Error?) {
-        self.error = error
+    init(errors: [Error?]) {
+        self.errors = errors
         super.init()
     }
     
     override init() {
         let auth = AuthFake(error: nil, result: nil)
-        let database = FirestoreFake(error: nil)
+        let database = FirestoreFake(error: nil, data: nil)
         super.init(auth: auth, database: database)
     }
     
@@ -45,7 +45,7 @@ class AccountManagerFake: AccountManager {
     }
     
     override func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
-        completion(error)
+        completion(getError())
     }
     
     override func listenForUserDocumentChanges(creditsChanged: ((Int) -> Void)?) {
@@ -56,18 +56,22 @@ class AccountManagerFake: AccountManager {
         creditsChanged(15)
     }
     
-    override func attachEmail(email: String,
+    override func updateEmail(email: String,
                               password: String,
                               completion: @escaping ((Error?) -> Void)) {
-        completion(error)
+        completion(getError())
+    }
+    
+    override func updatePassword(password: String, completion: @escaping ((Error?) -> Void)) {
+        completion(getError())
     }
     
     override func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
-        completion(error)
+        completion(getError())
     }
     
     override func updateEmail(to newEmail: String, with password: String, completion: @escaping (Error?) -> Void) {
-        completion(error)
+        completion(getError())
     }
     
     private var connectedWithEmail = false
@@ -81,14 +85,20 @@ class AccountManagerFake: AccountManager {
     }
     
     override func signOut(completion: (Error?) -> Void) {
-        completion(error)
+        completion(getError())
     }
     
     override func signIn(email: String, password: String, completion: @escaping ((Error?) -> Void)) {
-        completion(error)
+        completion(getError())
     }
     
     override func anonymousSignIn(completion: @escaping ((Error?) -> Void)) {
-        completion(error)
+        completion(getError())
+    }
+    
+    private func getError() -> Error? {
+        let error = errors?.first
+        errors!.removeFirst()
+        return error ?? nil
     }
 }

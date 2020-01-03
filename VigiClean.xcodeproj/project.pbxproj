@@ -26,6 +26,8 @@
 		9451DE4A23AE70F10097658C /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451DE4923AE70F10097658C /* ErrorHandler.swift */; };
 		9451DE5023B0ECB10097658C /* ObjectManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451DE4F23B0ECB10097658C /* ObjectManagerTestCase.swift */; };
 		9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451DE5123B0EDFD0097658C /* FunctionsFake.swift */; };
+		945B3FEE23BEB9D800340B0C /* ErrorHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945B3FED23BEB9D800340B0C /* ErrorHandlerTestCase.swift */; };
+		945B3FF223BFB4A000340B0C /* DocumentSnapshotFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945B3FF123BFB4A000340B0C /* DocumentSnapshotFake.swift */; };
 		94623695239A9F780026DD95 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94623694239A9F780026DD95 /* GoogleService-Info.plist */; };
 		94623699239AC4F50026DD95 /* LaunchContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94623698239AC4F50026DD95 /* LaunchContracts.swift */; };
 		9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */; };
@@ -125,6 +127,8 @@
 		9451DE4923AE70F10097658C /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		9451DE4F23B0ECB10097658C /* ObjectManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectManagerTestCase.swift; sourceTree = "<group>"; };
 		9451DE5123B0EDFD0097658C /* FunctionsFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FunctionsFake.swift; path = "VigiCleanTests/Mock+Class/Functions/FunctionsFake.swift"; sourceTree = SOURCE_ROOT; };
+		945B3FED23BEB9D800340B0C /* ErrorHandlerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerTestCase.swift; sourceTree = "<group>"; };
+		945B3FF123BFB4A000340B0C /* DocumentSnapshotFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSnapshotFake.swift; sourceTree = "<group>"; };
 		94623694239A9F780026DD95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94623698239AC4F50026DD95 /* LaunchContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchContracts.swift; sourceTree = "<group>"; };
 		9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewPresenter.swift; sourceTree = "<group>"; };
@@ -445,6 +449,7 @@
 				94D2096A239EEB0B0089759B /* FirestoreFake.swift */,
 				94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */,
 				94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */,
+				945B3FF123BFB4A000340B0C /* DocumentSnapshotFake.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 		94F0A03D2370A1CC00037210 /* VigiCleanTests */ = {
 			isa = PBXGroup;
 			children = (
+				945B3FED23BEB9D800340B0C /* ErrorHandlerTestCase.swift */,
 				94A2FD3323BB98B800AE9865 /* ProfileViewPresenterTestCase.swift */,
 				9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */,
 				9408E17923BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift */,
@@ -783,12 +789,14 @@
 				94A5C62223B4151800752182 /* DashboardViewPresenterTestCase.swift in Sources */,
 				9451DE5023B0ECB10097658C /* ObjectManagerTestCase.swift in Sources */,
 				94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */,
+				945B3FEE23BEB9D800340B0C /* ErrorHandlerTestCase.swift in Sources */,
 				94A2FD1823B5586D00AE9865 /* ObjectManagerFake.swift in Sources */,
 				9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */,
 				9408E17823BBA4C20032D671 /* FakeSignInView.swift in Sources */,
 				9408E17423BB99A90032D671 /* FakeProfileView.swift in Sources */,
 				9408E17A23BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift in Sources */,
 				9408E17623BBA4960032D671 /* SignInViewPresenterTestCase.swift in Sources */,
+				945B3FF223BFB4A000340B0C /* DocumentSnapshotFake.swift in Sources */,
 				94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */,
 				9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */,
 				94A2FD2C23BB6E3800AE9865 /* FakeScoreView.swift in Sources */,

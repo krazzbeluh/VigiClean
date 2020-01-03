@@ -32,9 +32,9 @@ class ObjectManager {
         let docRef = database.collection("Object").document(code)
         docRef.getDocument { (document, error) in
             guard let document = document, document.exists else {
-                let errCode = ErrorHandler().convertToFirestoreError(error!)
+                let errCode: FirestoreErrorCode! = ErrorHandler().convertToFirestoreError(error!)
                 
-                callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                callback(.failure(errCode))
                 return
             }
             
@@ -47,28 +47,31 @@ class ObjectManager {
                     return
             }
             
-            self.getActions(for: type) { result in
-                switch result {
-                case .success(let userActions):
-                    self.getEmployeeActions(for: type) { result in
-                        switch result {
-                        case .success(let employeeActions):
-                            Object.currentObject = Object(coords: coords,
-                                                          organization: organization,
-                                                          type: type,
-                                                          name: name,
-                                                          code: code,
-                                                          actions: userActions,
-                                                          employeeActions: employeeActions)
-                            
-                            callback(.success(Void()))
-                        case .failure(let error):
-                            callback(.failure(error))
-                        }
-                    }
-                case .failure(let error):
-                    callback(.failure(error))
-                }
+            Object.currentObject = Object(coords: coords, organization: organization, type: type, name: name, code: code)
+            callback(.success(Void()))
+        }
+    }
+    
+    func getActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) {
+        self.getActions(for: object.type) { (result) in
+            switch result {
+            case .success(let actions):
+                object.actions = actions
+                callback(.success(Void()))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
+    
+    func getEmployeeActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) {
+        self.getEmployeeActions(for: object.type) { (result) in
+            switch result {
+            case .success(let actions):
+                object.employeeActions = actions
+                callback(.success(Void()))
+            case .failure(let error):
+                callback(.failure(error))
             }
         }
     }

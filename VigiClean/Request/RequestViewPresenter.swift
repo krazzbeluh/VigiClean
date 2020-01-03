@@ -28,12 +28,22 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         var actions = [String]()
         
         if !employeeMode {
-            for index in 1 ... object.actions.count {
-                actions.append(object.actions[index - 1].message)
+            guard let userActions = object.actions else {
+                // TODO
+                fatalError()
+            }
+            
+            for index in 1 ... userActions.count {
+                actions.append(userActions[index - 1].message)
             }
         } else {
-            for index in 1 ... object.employeeActions.count {
-                actions.append(object.employeeActions[index - 1].message)
+            guard let employeeActions = object.employeeActions else {
+                // TODO
+                fatalError()
+            }
+            
+            for index in 1 ... employeeActions.count {
+                actions.append(employeeActions[index - 1].message)
             }
         }
         
@@ -95,7 +105,13 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         
         if !employeeMode {
             var sendingAction: Action?
-            for act in object.actions where act.message == action {
+            
+            guard let actions = object.actions else {
+                fatalError()
+                // TODO
+            }
+            
+            for act in actions where act.message == action {
                 sendingAction = act
                 break
             }
@@ -114,7 +130,13 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             }
         } else {
             var sendingAction: Action?
-            for act in object.employeeActions where act.message == action {
+            
+            guard let employeeActions = object.employeeActions else {
+                fatalError()
+                // TODO
+            }
+            
+            for act in employeeActions where act.message == action {
                 sendingAction = act
                 break
             }
