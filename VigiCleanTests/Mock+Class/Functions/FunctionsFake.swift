@@ -14,4 +14,8 @@ class FunctionsFake: Functions {
     init(error: Error?) {
         self.error = error
     }
+    
+    override func httpsCallable(_ name: String) -> HTTPSCallable {
+        return HTTPSCallableFake(error: error)
+    }
 }

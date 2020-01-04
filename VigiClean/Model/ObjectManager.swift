@@ -47,7 +47,11 @@ class ObjectManager {
                     return
             }
             
-            Object.currentObject = Object(coords: coords, organization: organization, type: type, name: name, code: code)
+            Object.currentObject = Object(coords: coords,
+                                          organization: organization,
+                                          type: type,
+                                          name: name,
+                                          code: code)
             callback(.success(Void()))
         }
     }
@@ -81,19 +85,14 @@ class ObjectManager {
         docRef.getDocument { document, error in
             if let error = error {
                 let errCode = ErrorHandler().convertToFirestoreError(error)
-                callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                callback(.failure(errCode!))
                 return
             }
             
-            guard let document = document, document.exists else {
-                callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
-                return
-            }
-            
-            guard let dataAny = document.data(),
-                let data = dataAny as? [String: String] else {
-                callback(.failure(ObjectError.unableToDecodeData))
-                return
+            guard let document = document, document.exists,
+                let data = document.data() as? [String: String] else {
+                    callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                    return
             }
             
             var actions = [Action]()
@@ -113,18 +112,14 @@ class ObjectManager {
         docRef.getDocument { document, error in
             if let error = error {
                 let errCode = ErrorHandler().convertToFirestoreError(error)
-                callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                callback(.failure(errCode!))
                 return
             }
             
-            guard let document = document, document.exists else {
-                callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
-                return
-            }
-            
-            guard let data = document.data() as? [String: String] else {
-                callback(.failure(ObjectError.unableToDecodeData))
-                return
+            guard let document = document, document.exists,
+                let data = document.data() as? [String: String]else {
+                    callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                    return
             }
             
             var actions = [Action]()
@@ -157,7 +152,7 @@ class ObjectManager {
                 return
             }
             let errCode = ErrorHandler().convertToFirestoreError(error)
-            callback(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists)
+            callback(errCode!)
         }
     }
     

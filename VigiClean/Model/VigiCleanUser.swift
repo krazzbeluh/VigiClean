@@ -10,10 +10,14 @@ import Foundation
 import FirebaseAuth
 
 struct VigiCleanUser {
-    let auth = Auth.auth()
+    var auth = Auth.auth()
     
     var user: User? {
         return auth.currentUser
+    }
+    
+    init(username: String?) {
+        self.username = username
     }
     
     var username: String?

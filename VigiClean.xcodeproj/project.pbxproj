@@ -28,6 +28,9 @@
 		9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451DE5123B0EDFD0097658C /* FunctionsFake.swift */; };
 		945B3FEE23BEB9D800340B0C /* ErrorHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945B3FED23BEB9D800340B0C /* ErrorHandlerTestCase.swift */; };
 		945B3FF223BFB4A000340B0C /* DocumentSnapshotFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945B3FF123BFB4A000340B0C /* DocumentSnapshotFake.swift */; };
+		945B3FF423C0E74200340B0C /* UserFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945B3FF323C0E74200340B0C /* UserFake.swift */; };
+		945B3FF623C0F69E00340B0C /* HTTPSCallableFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945B3FF523C0F69E00340B0C /* HTTPSCallableFake.swift */; };
+		945B3FF823C0F83000340B0C /* DashboardViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945B3FF723C0F82F00340B0C /* DashboardViewPresenterTestCase.swift */; };
 		94623695239A9F780026DD95 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94623694239A9F780026DD95 /* GoogleService-Info.plist */; };
 		94623699239AC4F50026DD95 /* LaunchContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94623698239AC4F50026DD95 /* LaunchContracts.swift */; };
 		9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */; };
@@ -52,7 +55,6 @@
 		94A5C61A23B1123000752182 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61923B1123000752182 /* FakeResponseData.swift */; };
 		94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */; };
 		94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */; };
-		94A5C62223B4151800752182 /* DashboardViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C62123B4151800752182 /* DashboardViewPresenterTestCase.swift */; };
 		94A5C62423B4171100752182 /* AccountManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C62323B4171100752182 /* AccountManagerFake.swift */; };
 		94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */; };
 		94BA1EE8238C223500FE19A1 /* AttachEmailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */; };
@@ -129,6 +131,9 @@
 		9451DE5123B0EDFD0097658C /* FunctionsFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FunctionsFake.swift; path = "VigiCleanTests/Mock+Class/Functions/FunctionsFake.swift"; sourceTree = SOURCE_ROOT; };
 		945B3FED23BEB9D800340B0C /* ErrorHandlerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerTestCase.swift; sourceTree = "<group>"; };
 		945B3FF123BFB4A000340B0C /* DocumentSnapshotFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSnapshotFake.swift; sourceTree = "<group>"; };
+		945B3FF323C0E74200340B0C /* UserFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFake.swift; sourceTree = "<group>"; };
+		945B3FF523C0F69E00340B0C /* HTTPSCallableFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPSCallableFake.swift; sourceTree = "<group>"; };
+		945B3FF723C0F82F00340B0C /* DashboardViewPresenterTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewPresenterTestCase.swift; sourceTree = "<group>"; };
 		94623694239A9F780026DD95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94623698239AC4F50026DD95 /* LaunchContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchContracts.swift; sourceTree = "<group>"; };
 		9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewPresenter.swift; sourceTree = "<group>"; };
@@ -153,7 +158,6 @@
 		94A5C61923B1123000752182 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeResponseData.swift; path = VigiCleanTests/FakeResponseData.swift; sourceTree = SOURCE_ROOT; };
 		94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReferenceFake.swift; sourceTree = "<group>"; };
 		94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentReferenceFake.swift; sourceTree = "<group>"; };
-		94A5C62123B4151800752182 /* DashboardViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewPresenterTestCase.swift; sourceTree = SOURCE_ROOT; };
 		94A5C62323B4171100752182 /* AccountManagerFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountManagerFake.swift; path = "VigiCleanTests/Mock+Class/VigiClean/Model/AccountManagerFake.swift"; sourceTree = SOURCE_ROOT; };
 		94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AttachEmailViewController.swift; path = VigiClean/AttachEmail/AttachEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewPresenter.swift; sourceTree = "<group>"; };
@@ -323,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				9451DE5123B0EDFD0097658C /* FunctionsFake.swift */,
+				945B3FF523C0F69E00340B0C /* HTTPSCallableFake.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 		94D2096D239EF0F40089759B /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				945B3FF323C0E74200340B0C /* UserFake.swift */,
 				94D20968239EE9D10089759B /* AuthFake.swift */,
 			);
 			path = Auth;
@@ -505,7 +511,7 @@
 				9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */,
 				9408E17923BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift */,
 				94A2FD2123BA511A00AE9865 /* ScannerViewPresenterTestCase.swift */,
-				94A5C62123B4151800752182 /* DashboardViewPresenterTestCase.swift */,
+				945B3FF723C0F82F00340B0C /* DashboardViewPresenterTestCase.swift */,
 				94A2FD2523BB639300AE9865 /* SignUpViewPresenterTestCase.swift */,
 				94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift */,
 				94A2FD2923BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift */,
@@ -771,6 +777,7 @@
 			files = (
 				94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */,
 				94D20969239EE9D10089759B /* AuthFake.swift in Sources */,
+				945B3FF823C0F83000340B0C /* DashboardViewPresenterTestCase.swift in Sources */,
 				94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift in Sources */,
 				94A2FD2223BA511A00AE9865 /* ScannerViewPresenterTestCase.swift in Sources */,
 				9408E17C23BBAF160032D671 /* FakeWelcomeView.swift in Sources */,
@@ -783,10 +790,11 @@
 				94A2FD1423B54F9500AE9865 /* RequestViewPresenterTestCase.swift in Sources */,
 				9463FDAF23AA9CF200827E06 /* EasyError.swift in Sources */,
 				94A2FD3023BB77DC00AE9865 /* FakeAttachEmailView.swift in Sources */,
+				945B3FF623C0F69E00340B0C /* HTTPSCallableFake.swift in Sources */,
 				94A2FD2A23BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift in Sources */,
+				945B3FF423C0E74200340B0C /* UserFake.swift in Sources */,
 				94A2FD2623BB639300AE9865 /* SignUpViewPresenterTestCase.swift in Sources */,
 				94A2FD1C23B5847400AE9865 /* FakeDashboardView.swift in Sources */,
-				94A5C62223B4151800752182 /* DashboardViewPresenterTestCase.swift in Sources */,
 				9451DE5023B0ECB10097658C /* ObjectManagerTestCase.swift in Sources */,
 				94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */,
 				945B3FEE23BEB9D800340B0C /* ErrorHandlerTestCase.swift in Sources */,

@@ -21,4 +21,12 @@ class CollectionReferenceFake: CollectionReference {
     override func document(_ documentPath: String) -> DocumentReference {
         return DocumentReferenceFake(error: error, data: data)
     }
+    
+    override func addDocument(data: [String: Any], completion: ((Error?) -> Void)? = nil) -> DocumentReference {
+        if let completion = completion {
+            completion(error)
+        }
+        
+        return DocumentReferenceFake(error: error, data: data)
+    }
 }

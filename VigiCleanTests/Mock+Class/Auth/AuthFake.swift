@@ -37,4 +37,14 @@ class AuthFake: Auth {
         
         throw error
     }
+    
+    private var user: User?
+    override var currentUser: User? {
+        get {
+            return user
+        }
+        set {
+            self.user = newValue
+        }
+    }
 }
