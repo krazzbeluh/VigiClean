@@ -18,6 +18,7 @@
 		94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAC237D067B00419F2C /* SignUpViewController.swift */; };
 		94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */; };
 		94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */; };
+		941D60DD23C27BD8001F7516 /* ListenerRegistrationFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941D60DC23C27BD8001F7516 /* ListenerRegistrationFake.swift */; };
 		941F7E1B237B084400044A0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F7E1A237B084400044A0D /* ProfileViewController.swift */; };
 		94504A4B238219FC0054BE70 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 94504A4A238219FC0054BE70 /* .swiftlint.yml */; };
 		94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */; };
@@ -36,7 +37,6 @@
 		9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */; };
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		9463FDAF23AA9CF200827E06 /* EasyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463FDAE23AA9CF200827E06 /* EasyError.swift */; };
-		9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463FDB023AA9DCC00827E06 /* StorageFake.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
 		94A2FD1423B54F9500AE9865 /* RequestViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD1323B54F9500AE9865 /* RequestViewPresenterTestCase.swift */; };
@@ -121,6 +121,7 @@
 		94138AAC237D067B00419F2C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94138AAE237D069F00419F2C /* SignUpViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewPresenter.swift; sourceTree = "<group>"; };
 		94138AB0237D0EEA00419F2C /* WelcomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewPresenter.swift; sourceTree = "<group>"; };
+		941D60DC23C27BD8001F7516 /* ListenerRegistrationFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerRegistrationFake.swift; sourceTree = "<group>"; };
 		941F7E1A237B084400044A0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = VigiClean/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		94504A4A238219FC0054BE70 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
@@ -139,7 +140,6 @@
 		9462369A239AC51C0026DD95 /* LaunchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewPresenter.swift; sourceTree = "<group>"; };
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9463FDAE23AA9CF200827E06 /* EasyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyError.swift; sourceTree = "<group>"; };
-		9463FDB023AA9DCC00827E06 /* StorageFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageFake.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
 		94A2FD1323B54F9500AE9865 /* RequestViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewPresenterTestCase.swift; sourceTree = "<group>"; };
@@ -315,14 +315,6 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		942E8DDD23AA957200DD0BF7 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				9463FDB023AA9DCC00827E06 /* StorageFake.swift */,
-			);
-			path = Storage;
-			sourceTree = "<group>";
-		};
 		9451DE5323B0EE030097658C /* Functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,7 +425,6 @@
 				94A5C62523B4171600752182 /* VigiClean */,
 				94D2096D239EF0F40089759B /* Auth */,
 				94D2096E239EF0F80089759B /* Firestore */,
-				942E8DDD23AA957200DD0BF7 /* Storage */,
 				9451DE5323B0EE030097658C /* Functions */,
 				9463FDAE23AA9CF200827E06 /* EasyError.swift */,
 			);
@@ -455,6 +446,7 @@
 				94D2096A239EEB0B0089759B /* FirestoreFake.swift */,
 				94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */,
 				94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */,
+				941D60DC23C27BD8001F7516 /* ListenerRegistrationFake.swift */,
 				945B3FF123BFB4A000340B0C /* DocumentSnapshotFake.swift */,
 			);
 			path = Firestore;
@@ -803,10 +795,10 @@
 				9408E17823BBA4C20032D671 /* FakeSignInView.swift in Sources */,
 				9408E17423BB99A90032D671 /* FakeProfileView.swift in Sources */,
 				9408E17A23BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift in Sources */,
+				941D60DD23C27BD8001F7516 /* ListenerRegistrationFake.swift in Sources */,
 				9408E17623BBA4960032D671 /* SignInViewPresenterTestCase.swift in Sources */,
 				945B3FF223BFB4A000340B0C /* DocumentSnapshotFake.swift in Sources */,
 				94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */,
-				9463FDB123AA9DCC00827E06 /* StorageFake.swift in Sources */,
 				94A2FD2C23BB6E3800AE9865 /* FakeScoreView.swift in Sources */,
 				94D20966239EE8030089759B /* AccountManagerTestCase.swift in Sources */,
 			);

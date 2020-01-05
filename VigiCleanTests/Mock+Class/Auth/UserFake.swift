@@ -11,8 +11,9 @@ import FirebaseAuth
 @testable import VigiClean
 
 class UserFake: User {
+    var errors: [Error?]?
     
-    var id: String
+    var id: String // swiftlint:disable:this identifier_name
     override var uid: String {
         get {
             return id
@@ -23,7 +24,49 @@ class UserFake: User {
         }
     }
     
-    init(uid: String) {
+    var mail: String?
+    override var email: String? {
+        get {
+            return mail
+        }
+        set {
+            mail = newValue
+        }
+    }
+    
+    init(uid: String, mail: String? = nil, errors: [Error?]? = nil) {
         self.id = uid
+        self.errors = errors
+        self.mail = mail
+    }
+    
+    override func updateEmail(to email: String, completion: UserProfileChangeCallback? = nil) {
+        guard let completion = completion else {
+            return
+        }
+        
+        completion(getNextError())
+    }
+    
+    override func updatePassword(to password: String, completion: UserProfileChangeCallback? = nil) {
+        guard let completion = completion else {
+            return
+        }
+        
+        completion(getNextError())
+    }
+    
+    override func reauthenticate(with credential: AuthCredential, completion: AuthDataResultCallback? = nil) {
+        guard  let completion = completion else {
+            return
+        }
+        
+        completion(nil, getNextError())
+    }
+    
+    func getNextError() -> Error? {
+        let error = errors?.first ?? nil
+        errors?.removeFirst()
+        return error
     }
 }

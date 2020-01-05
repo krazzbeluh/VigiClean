@@ -32,7 +32,7 @@ class AccountManagerFake: AccountManager {
     
     override init() {
         let auth = AuthFake(error: nil, result: nil)
-        let database = FirestoreFake(error: nil, data: nil)
+        let database = FirestoreFake(errors: [nil], data: nil)
         super.init(auth: auth, database: database)
     }
     
@@ -56,7 +56,7 @@ class AccountManagerFake: AccountManager {
         creditsChanged(15)
     }
     
-    override func updateEmail(email: String,
+    override func attachEmail(email: String,
                               password: String,
                               completion: @escaping ((Error?) -> Void)) {
         completion(getError())

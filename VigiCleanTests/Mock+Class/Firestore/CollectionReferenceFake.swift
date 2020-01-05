@@ -10,23 +10,33 @@ import Foundation
 import FirebaseFirestore
 
 class CollectionReferenceFake: CollectionReference {
-    let error: Error?
+    var errors: [Error?]?
     let data: [String: Any]?
     
-    init(error: Error?, data: [String: Any]?) {
-        self.error = error
+    init(errors: [Error?]?, data: [String: Any]?) {
+        self.errors = errors
         self.data = data
     }
     
     override func document(_ documentPath: String) -> DocumentReference {
-        return DocumentReferenceFake(error: error, data: data)
+        return DocumentReferenceFake(errors: errors, data: data)
     }
     
     override func addDocument(data: [String: Any], completion: ((Error?) -> Void)? = nil) -> DocumentReference {
         if let completion = completion {
-            completion(error)
+            completion(getNextError())
         }
         
-        return DocumentReferenceFake(error: error, data: data)
+        return DocumentReferenceFake(errors: errors, data: data)
+    }
+    
+    private func getNextError() -> Error? {
+        guard let error = errors?.first else {
+            return nil
+        }
+        
+        errors?.removeFirst()
+        
+        return error
     }
 }

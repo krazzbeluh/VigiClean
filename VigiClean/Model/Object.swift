@@ -29,7 +29,13 @@ class Object {
         self.code = code
     }
     
-    init(coords: GeoPoint, organization: String, type: String, name: String, code: String, actions: [Action], employeeActions: [Action]) {
+    init(coords: GeoPoint,
+         organization: String,
+         type: String,
+         name: String,
+         code: String,
+         actions: [Action],
+         employeeActions: [Action]) {
         self.coords = coords
         self.organization = organization
         self.type = type

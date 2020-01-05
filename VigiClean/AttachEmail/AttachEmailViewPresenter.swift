@@ -40,7 +40,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
         
         view.switchActivityIndicator(hidden: false)
         
-        accountManager.updateEmail(email: email, password: password, completion: { error in
+        accountManager.attachEmail(email: email, password: password, completion: { error in
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
             } else {

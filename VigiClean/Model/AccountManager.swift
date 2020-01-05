@@ -12,27 +12,24 @@ import FirebaseFirestore
 import FirebaseStorage
 
 class AccountManager {
-    //    static var shared = AccountManager()
-    
     init() {
         self.auth = Auth.auth()
         self.database = Firestore.firestore()
-        self.storage = Storage.storage()
     }
     
     init(auth: Auth, database: Firestore) {
         self.auth = auth
         self.database = database
-        self.storage = Storage.storage()
     }
     
     private var auth: Auth
     private var database: Firestore
-    private var storage: Storage
+    private var storage = Storage.storage()
     private var avatar: Data?
     
     enum UAccountError: Error {
-        case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound, userNotLoggedIn
+        case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound, userNotLoggedIn,
+        userNotLoggedInWithEmail
     }
     
     static var currentUser = VigiCleanUser(username: nil)
@@ -82,7 +79,7 @@ class AccountManager {
         }
     }
     
-    func updateEmail(email: String,
+    func attachEmail(email: String,
                      password: String,
                      completion: @escaping ((Error?) -> Void)) {
         AccountManager.currentUser.user?.updateEmail(to: email) { (error) in
@@ -136,6 +133,7 @@ class AccountManager {
     
     func updateEmail(to newEmail: String, with password: String, completion: @escaping (Error?) -> Void) {
         guard let email = AccountManager.currentUser.user?.email else {
+            completion(UAccountError.userNotLoggedInWithEmail)
             return
         }
         
@@ -186,17 +184,19 @@ class AccountManager {
     }
     
     func listenForUserDocumentChanges(creditsChanged: ((Int) -> Void)?) {
-        database.collection("User").document(AccountManager.currentUser.user?.uid ?? "")
+        guard let user = AccountManager.currentUser.user else {
+            return
+        }
+        
+        database.collection("User").document(user.uid)
             .addSnapshotListener { (documentSnapshot, error) in
                 guard let document = documentSnapshot else {
                     print("Error fetching document: \(error!)")
                     return
                 }
+                
                 guard let data = document.data() else {
                     print("Document data was empty.")
-                    guard let user = AccountManager.currentUser.user else {
-                        return
-                    }
                     
                     self.createUserDocument(for: user.uid, named: nil) { (error) in
                         print("Error : \(String(describing: error))")
@@ -248,7 +248,7 @@ class AccountManager {
         database.collection("User").document(uid).getDocument { document, error in
             if let error = error {
                 let errCode = ErrorHandler().convertToFirestoreError(error)
-                callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                callback(.failure(errCode!))
             }
             
             guard let document = document, document.exists else {
