@@ -65,9 +65,12 @@ class RequestViewController: UIViewController, RequestView {
         typeLabel.text = object.type
     }
     
-    func requestSent() {
+    func requestSent(employeeMode: Bool) {
         loading(grayed: false)
-        performSegue(withIdentifier: "segueToCongrats", sender: self)
+        
+        if !employeeMode {
+            performSegue(withIdentifier: "segueToCongrats", sender: self)
+        }
     }
     
     @objc func switchChanged(mySwitch: UISwitch) {

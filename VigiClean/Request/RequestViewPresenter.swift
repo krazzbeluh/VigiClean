@@ -80,10 +80,11 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             switch result {
             case .success(let isEmployee):
                 self.isEmployee = isEmployee
-                self.view.roleFetched()
             case .failure(let error):
                 print(error)
             }
+            
+            self.view.roleFetched()
         }
     }
     
@@ -126,7 +127,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
                     return
                 }
                 
-                self.view.requestSent()
+                self.view.requestSent(employeeMode: false)
             }
         } else {
             var sendingAction: Action?
@@ -150,7 +151,8 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
                     self.view.displayError(message: self.convertError(error))
                     return
                 }
-                self.view.requestSent()
+                
+                self.view.requestSent(employeeMode: true)
             }
         }
         

@@ -15,39 +15,36 @@ import FirebaseFunctions
 class BasePresenter {
     
     func convertError(_ error: Error) -> String { // swiftlint:disable:this cyclomatic_complexity
+        let defaultMessage = "Opération impossible : Veuillez réessayer ultérieurement"
+        
         switch error {
         case let error as FirebaseInterface.FIRInterfaceError:
-            let defaultMessage = "Opération impossible : Veuillez réessayer ultérieurement"
             switch error {
             default:
                 return defaultMessage
             }
         case let error as StorageErrorCode:
-            let defaultMessage = "Opération impossible : Veuillez réessayer ultérieurement"
             switch error {
             default:
                 return defaultMessage
             }
         case let error as FunctionsErrorCode:
-            let defaultMessage = "Opération impossible : Veuillez réessayer ultérieurement"
             switch error {
             default:
                 return defaultMessage
             }
         case let error as AuthErrorCode:
-            let defaultMessage = "Opération impossible : Veuillez réessayer ultérieurement"
             switch error {
             default:
                 return defaultMessage
             }
         case let error as FirestoreErrorCode:
-            let defaultMessage = "Opération impossible : Veuillez réessayer ultérieurement"
             switch error {
             default:
                 return defaultMessage
             }
         default:
-            return "Opération impossible : Veuillez réessayer ultérieurement"
+            return defaultMessage
         }
     }
 }

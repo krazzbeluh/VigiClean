@@ -28,7 +28,7 @@ class ObjectManager {
         self.functions = functions
     }
     
-    func getObject(code: String, callback: @escaping (Result<Void, Error>) -> Void) {
+    func getObject(code: String, callback: @escaping (Result<Object, Error>) -> Void) {
         let docRef = database.collection("Object").document(code)
         docRef.getDocument { (document, error) in
             guard let document = document, document.exists else {
@@ -47,12 +47,14 @@ class ObjectManager {
                     return
             }
             
-            Object.currentObject = Object(coords: coords,
-                                          organization: organization,
-                                          type: type,
-                                          name: name,
-                                          code: code)
-            callback(.success(Void()))
+            let object = Object(coords: coords,
+                                organization: organization,
+                                type: type,
+                                name: name,
+                                code: code)
+            
+            Object.currentObject = object
+            callback(.success(object))
         }
     }
     

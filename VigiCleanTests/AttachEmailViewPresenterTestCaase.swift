@@ -51,6 +51,18 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testAttachEmailShouldCallDisplayErrorIfError() {
+        let accountManager = AccountManagerFake(errors: [EasyError()])
+        let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
+        
+        presenter.attachEmail(username: "username",
+                              email: "email@vigiclean.com",
+                              password: "1234567890",
+                              confirmPassword: "1234567890")
+        
+        XCTAssertTrue(view.didCallDisplayError)
+    }
+    
+    func testAttachEmailShouldCallDisplayErrorIfErrorAtUpdatePassword() {
         let accountManager = AccountManagerFake(errors: [nil, EasyError()])
         let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
         

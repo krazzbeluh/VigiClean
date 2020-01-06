@@ -55,7 +55,10 @@ class ScannerViewPresenterTestCase: XCTestCase {
     }
     
     func testGetObjectShouldCallValidObjectFoundIfNoError() {
-        let presenter = ScannerPresenter(view: view, objectManager: ObjectManagerFake(error: nil))
+        let data: [String: Any] = [
+            "name": "VigiClean"
+        ]
+        let presenter = ScannerPresenter(view: view, objectManager: ObjectManagerFake(errors: nil, data: data))
         presenter.lastCode = "https://www.vigiclean.com/?code=1234567890"
         
         presenter.getObject()
@@ -65,7 +68,27 @@ class ScannerViewPresenterTestCase: XCTestCase {
     }
     
     func testGetObjectShouldCallInvalidCodeFoundIfError() {
-        let presenter = ScannerPresenter(view: view, objectManager: ObjectManagerFake(error: EasyError()))
+        let presenter = ScannerPresenter(view: view, objectManager: ObjectManagerFake(errors: [EasyError()]))
+        presenter.lastCode = "https://www.vigiclean.com/?code=1234567890"
+        
+        presenter.getObject()
+        
+        XCTAssertFalse(view.didCallValidObjectFound)
+        XCTAssertTrue(view.didCallInvalidCodeFound)
+    }
+    
+    func testGetObjectShouldCallInvalidCodeFoundIfErrorAtGetActions() {
+        let presenter = ScannerPresenter(view: view, objectManager: ObjectManagerFake(errors: [nil, EasyError()]))
+        presenter.lastCode = "https://www.vigiclean.com/?code=1234567890"
+        
+        presenter.getObject()
+        
+        XCTAssertFalse(view.didCallValidObjectFound)
+        XCTAssertTrue(view.didCallInvalidCodeFound)
+    }
+    
+    func testGetObjectShouldCallInvalidCodeFoundIfErrorAtGetEmployeeActions() {
+        let presenter = ScannerPresenter(view: view, objectManager: ObjectManagerFake(errors: [nil, nil, EasyError()]))
         presenter.lastCode = "https://www.vigiclean.com/?code=1234567890"
         
         presenter.getObject()

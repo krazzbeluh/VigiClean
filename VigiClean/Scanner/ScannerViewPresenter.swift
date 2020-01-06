@@ -42,8 +42,22 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
     func getObject() {
         objectManager.getObject(code: objectCode) { result in
             switch result {
-            case .success:
-                self.view.validObjectFound()
+            case .success(let object):
+                self.objectManager.getActions(for: object) { (result) in
+                    switch result {
+                    case .success:
+                        self.objectManager.getEmployeeActions(for: object) { (result) in
+                            switch result {
+                            case .success:
+                                self.view.validObjectFound()
+                            case .failure(let error):
+                                self.view.invalidCodeFound(error: error)
+                            }
+                        }
+                    case .failure(let error):
+                        self.view.invalidCodeFound(error: error)
+                    }
+                }
             case .failure(let error):
                 self.view.invalidCodeFound(error: error)
             }

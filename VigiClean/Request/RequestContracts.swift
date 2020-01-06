@@ -22,5 +22,5 @@ protocol RequestView: BaseView {
     func configure(with object: Object)
     func configureMap(with location: Poi)
     func roleFetched()
-    func requestSent()
+    func requestSent(employeeMode: Bool)
 }
