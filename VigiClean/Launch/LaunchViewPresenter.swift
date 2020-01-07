@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseStorage
 
 class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     weak var view: LaunchView!
@@ -18,5 +19,22 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     
     required init(view: LaunchView) {
         self.view = view
+    }
+    
+    func getAvatar() {
+        accountManager.getAvatar { (result) in
+            switch result {
+            case .success:
+                self.view.gottenAvatar()
+            case .failure(let error):
+                self.view.gottenAvatar()
+                if let error = error as? StorageErrorCode,
+                    error == .objectNotFound {
+                    print("No avatar found")
+                    return
+                }
+                self.view.displayError(message: self.convertError(error))
+            }
+        }
     }
 }

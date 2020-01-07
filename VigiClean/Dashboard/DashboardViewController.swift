@@ -19,7 +19,16 @@ class DashboardViewController: UIViewController, DashboardView {
         super.viewDidLoad()
         presenter = DashboardPresenter(view: self)
         setAvatarDisplay()
-        presenter.getAvatar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.getAvatar() // TODO: NOT WORKING (maybe I should use notifications)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     // MARK: Methods
@@ -34,7 +43,4 @@ class DashboardViewController: UIViewController, DashboardView {
         avatar.layer.cornerRadius = avatar.frame.height / 2 // TODO: Not working expectedly
         avatar.clipsToBounds = true
     }
-    
-    // MARK: Actions
-    @IBAction func unwindToDashboard(segue: UIStoryboardSegue) {}
 }

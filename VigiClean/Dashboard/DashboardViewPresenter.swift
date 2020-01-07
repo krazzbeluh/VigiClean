@@ -24,19 +24,23 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     }
     
     func getAvatar() {
-        accountManager.getAvatar { (result) in
-            switch result {
-            case .success(let data):
-                self.view.setAvatar(with: data)
-            case .failure(let error):
-                if let error = error as? StorageErrorCode,
-                    error == .objectNotFound {
-                    print("No avatar found")
-                    return
+        if let avatar = AccountManager.currentUser.avatar {
+            view.setAvatar(with: avatar)
+        } else {
+            accountManager.getAvatar { (result) in
+                switch result {
+                case .success(let data):
+                    self.view.setAvatar(with: data)
+                case .failure(let error):
+                    if let error = error as? StorageErrorCode,
+                        error == .objectNotFound {
+                        print("No avatar found")
+                        return
+                    }
+                    self.view.displayError(message: self.convertError(error))
                 }
-                self.view.displayError(message: self.convertError(error))
             }
+            
         }
-        
     }
 }

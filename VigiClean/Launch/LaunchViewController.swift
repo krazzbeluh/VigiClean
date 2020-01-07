@@ -13,7 +13,7 @@ class LaunchViewController: UIViewController, LaunchView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         presenter = LaunchPresenter(view: self)
     }
     
@@ -21,16 +21,19 @@ class LaunchViewController: UIViewController, LaunchView {
         super.viewDidAppear(animated)
         
         if presenter.isUserConnected {
-            performSegue(withIdentifier: "segueToDashboard", sender: nil)
+            presenter.getAvatar()
         } else {
             performSegue(withIdentifier: "segueToWelcome", sender: nil)
         }
     }
-
+    
     @IBAction func unwindToLaunch(segue: UIStoryboardSegue) {}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.modalPresentationStyle = .fullScreen
     }
-
+    
+    func gottenAvatar() {
+        performSegue(withIdentifier: "segueToDashboard", sender: nil)
+    }
 }

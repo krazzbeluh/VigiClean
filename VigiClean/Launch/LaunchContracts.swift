@@ -11,8 +11,9 @@ import Foundation
 protocol LaunchViewPresenter: BasePresenter {
     init(view: LaunchView)
     var isUserConnected: Bool { get }
+    func getAvatar()
 }
 
-protocol LaunchView: class {
-    
+protocol LaunchView: BaseView {
+    func gottenAvatar()
 }

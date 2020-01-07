@@ -29,13 +29,14 @@ class ProfileViewController: UIViewController, ProfileView {
         if presenter.isConnectedAnonymously {
             return ["AttachEmailCell", "DisconnectCell"]
         } else {
-            return ["changeAvatarCell", "changeUsernameCell", "changeEmailCell", "DisconnectCell"]
+            return ["changeAvatarCell", "changeUsernameCell", "changeEmailCell", "ChangePasswordCell", "DisconnectCell"]
         }
     }
     
     // MARK: Outlets
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var avatar: UIImageView!
     
     // MARK: Actions
     @IBAction func didTapDisconnectButton(_ sender: Any) {
@@ -64,9 +65,25 @@ class ProfileViewController: UIViewController, ProfileView {
         }
     }
     
+    @IBAction func changePassword(_ sender: Any) {
+        changePassword { (old, new, confirmation) in
+            self.presenter.updatePassword(to: new, confirm: confirmation, with: old)
+        }
+    }
+    
+    @IBAction func changeAvatar(_ sender: Any) {
+        importPicture()
+    }
+    
     // MARK: methods
     func display(username: String) {
         usernameLabel.text = username
+    }
+    
+    func display(avatar: Data) {
+        let avatar = UIImage(data: avatar)
+        
+        self.avatar.image = avatar
     }
     
     func display(email: String) {
@@ -75,6 +92,10 @@ class ProfileViewController: UIViewController, ProfileView {
     
     func userSignedOut() {
         performSegue(withIdentifier: "unwindToLaunch", sender: self)
+    }
+    
+    func passwordChanged() {
+        print("success")
     }
     
     private func presentDeterDisconect(handler: @escaping (Bool) -> Void) {
@@ -128,6 +149,38 @@ class ProfileViewController: UIViewController, ProfileView {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    private func changePassword(completion: @escaping (String?, String?, String?) -> Void) {
+        let alert = UIAlertController(title: "Nouveau mot de passe :", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Mot de passe actuel"
+            textField.keyboardType = .default
+            textField.textContentType = .password
+            textField.isSecureTextEntry = true
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Nouveau mot de passe"
+            textField.keyboardType = .default
+            textField.textContentType = .password
+            textField.isSecureTextEntry = true
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Confirmation du mot de passe"
+            textField.keyboardType = .default
+            textField.textContentType = .password
+            textField.isSecureTextEntry = true
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            completion(alert?.textFields?[0].text, alert?.textFields?[1].text, alert?.textFields?[2].text)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -146,5 +199,23 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(withIdentifier: userActions[indexPath.row], for: indexPath)
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    private func importPicture() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let image = info[.editedImage] as? UIImage,
+            let data = image.jpegData(compressionQuality: 0) else { return }
+        
+        dismiss(animated: true, completion: nil)
+        
+        presenter.updateAvatar(to: data, with: "")
     }
 }

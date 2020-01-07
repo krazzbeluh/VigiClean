@@ -19,31 +19,37 @@ class BasePresenter {
         
         switch error {
         case let error as FirebaseInterface.FIRInterfaceError:
+            print(error)
             switch error {
             default:
                 return defaultMessage
             }
         case let error as StorageErrorCode:
+            print(error)
             switch error {
             default:
                 return defaultMessage
             }
         case let error as FunctionsErrorCode:
+            print(error)
             switch error {
             default:
                 return defaultMessage
             }
         case let error as AuthErrorCode:
+            print(error)
             switch error {
             default:
                 return defaultMessage
             }
         case let error as FirestoreErrorCode:
+            print(error)
             switch error {
             default:
                 return defaultMessage
             }
         default:
+            print(error)
             return defaultMessage
         }
     }

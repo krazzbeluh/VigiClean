@@ -25,7 +25,6 @@ class AccountManager {
     private var auth: Auth
     private var database: Firestore
     private var storage = Storage.storage()
-    private var avatar: Data?
     
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound, userNotLoggedIn,
@@ -33,6 +32,7 @@ class AccountManager {
     }
     
     static var currentUser = VigiCleanUser(username: nil)
+    private static var maxFileSize: Int64 = 5 * 1024 * 1024
     
     var isConnected: Bool {
         AccountManager.currentUser.user != nil
@@ -156,6 +156,31 @@ class AccountManager {
         })
     }
     
+    func updatePassword(to newPassword: String, from oldPassword: String, completion: @escaping (Error?) -> Void) {
+        guard let email = AccountManager.currentUser.user?.email else {
+            completion(UAccountError.userNotLoggedInWithEmail)
+            return
+        }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: oldPassword)
+        AccountManager.currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
+            if let error = error {
+                let errCode = ErrorHandler().convertToAuthError(error)
+                completion(errCode)
+                return
+            }
+            
+            AccountManager.currentUser.user?.updatePassword(to: newPassword) { (error) in
+                if let error = error {
+                    let errCode = ErrorHandler().convertToAuthError(error)
+                    completion(errCode)
+                    return
+                }
+                completion(nil)
+            }
+        })
+    }
+    
     func signOut(completion: (Error?) -> Void) {
         do {
             try auth.signOut()
@@ -267,7 +292,7 @@ class AccountManager {
     }
     
     func getAvatar(callback: @escaping ((Result<Data, Error>) -> Void)) {
-        if let avatar = self.avatar {
+        if let avatar = AccountManager.currentUser.avatar {
             callback(.success(avatar))
         } else {
             guard let uid = AccountManager.currentUser.user?.uid else {
@@ -275,10 +300,10 @@ class AccountManager {
                 return
             }
             
-            let imageReference = storage.reference(withPath: "images/\(uid).jpeg")
+            let imageReference = storage.reference(withPath: "images/\(uid).jpg")
             print(imageReference.fullPath)
             
-            imageReference.getData(maxSize: 60 * 1024 * 1024) { data, error in
+            imageReference.getData(maxSize: AccountManager.maxFileSize) { data, error in
                 guard let data = data,
                     error == nil else {
                         let errCode = ErrorHandler().convertToStorageError(error!)
@@ -286,8 +311,34 @@ class AccountManager {
                         return
                 }
                 
+                AccountManager.currentUser.avatar = data
                 callback(.success(data))
             }
+        }
+    }
+    
+    func updateAvatar(from avatar: Data, with password: String, callback: @escaping ((Result<Data, Error>) -> Void)) {
+        guard let uid = AccountManager.currentUser.user?.uid,
+            AccountManager.currentUser.user?.email != nil else {
+                callback(.failure(UAccountError.userNotLoggedInWithEmail))
+                return
+        }
+        
+        let storageRef = storage.reference()
+        let imageRef = storageRef.child("images/\(uid).jpg")
+        
+        imageRef.putData(avatar, metadata: nil) { (metadata, error) in
+            guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                return
+            }
+            
+            guard metadata.size < AccountManager.maxFileSize else {
+                return
+            }
+            
+            AccountManager.currentUser.avatar = avatar
+            callback(.success(avatar))
         }
     }
 }

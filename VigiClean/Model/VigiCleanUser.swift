@@ -23,4 +23,6 @@ struct VigiCleanUser {
     var username: String?
     var credits: Int = 0
     var isEmployee: Bool = false
+    
+    var avatar: Data?
 }

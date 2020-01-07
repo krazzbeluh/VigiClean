@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsM-yw-ANx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1237.5999999999999" y="-154.27286356821591"/>
+            <point key="canvasLocation" x="1234.7826086956522" y="-154.6875"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="WKC-7c-i5U">
@@ -216,8 +216,32 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="changeUsernameCell" id="U3b-4I-Ttl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChangePasswordCell" id="hhc-dP-MUs">
                                         <rect key="frame" x="0.0" y="114" width="374" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hhc-dP-MUs" id="XUB-6c-CcJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qko-Lt-iBn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                                    <state key="normal" title="Changer de mot de passe"/>
+                                                    <connections>
+                                                        <action selector="changePassword:" destination="PVg-Oh-QbQ" eventType="touchUpInside" id="MbF-gG-w90"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" name="Background"/>
+                                            <constraints>
+                                                <constraint firstItem="qko-Lt-iBn" firstAttribute="top" secondItem="XUB-6c-CcJ" secondAttribute="top" id="1s4-w6-FY0"/>
+                                                <constraint firstItem="qko-Lt-iBn" firstAttribute="leading" secondItem="XUB-6c-CcJ" secondAttribute="leading" id="Ovn-Wn-P0D"/>
+                                                <constraint firstAttribute="bottom" secondItem="qko-Lt-iBn" secondAttribute="bottom" id="RkD-ne-r6s"/>
+                                                <constraint firstAttribute="trailing" secondItem="qko-Lt-iBn" secondAttribute="trailing" id="u8d-DJ-cBu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="changeUsernameCell" id="U3b-4I-Ttl">
+                                        <rect key="frame" x="0.0" y="157" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U3b-4I-Ttl" id="KLV-EA-D6T">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
@@ -241,7 +265,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="changeEmailCell" id="z4A-9K-7IH">
-                                        <rect key="frame" x="0.0" y="157" width="374" height="43"/>
+                                        <rect key="frame" x="0.0" y="200" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z4A-9K-7IH" id="Dvo-TD-nkF">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
@@ -266,7 +290,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="changeAvatarCell" id="BGv-cS-O2M">
-                                        <rect key="frame" x="0.0" y="200" width="374" height="43"/>
+                                        <rect key="frame" x="0.0" y="243" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BGv-cS-O2M" id="9Lz-jo-SdA">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
@@ -275,6 +299,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrD-Px-o7f">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
                                                     <state key="normal" title="Changer d'avatar"/>
+                                                    <connections>
+                                                        <action selector="changeAvatar:" destination="PVg-Oh-QbQ" eventType="touchUpInside" id="gNw-Ww-hr1"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" name="Background"/>
@@ -335,6 +362,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ps0-aI-1ew"/>
                     <connections>
+                        <outlet property="avatar" destination="VVA-AU-iaZ" id="S6P-u4-wRP"/>
                         <outlet property="emailLabel" destination="8Di-Tf-A8j" id="Tew-BT-TPb"/>
                         <outlet property="usernameLabel" destination="07l-Nz-0B1" id="CwF-yo-aee"/>
                         <segue destination="TbZ-GO-RbZ" kind="unwind" identifier="unwindToLaunch" unwindAction="unwindToLaunchWithSegue:" id="ha6-Xg-rbE"/>
