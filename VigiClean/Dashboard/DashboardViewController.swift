@@ -18,29 +18,39 @@ class DashboardViewController: UIViewController, DashboardView {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = DashboardPresenter(view: self)
-        setAvatarDisplay()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        presenter.getAvatar() // TODO: NOT WORKING (maybe I should use notifications)
+        let name = Notification.Name(rawValue: "AvatarChanged")
+        NotificationCenter.default.addObserver(self, selector: #selector(setAvatar), name: name, object: nil)
+        
+        setAvatar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setAvatarDisplay()
+    }
+    
     // MARK: Methods
-    func setAvatar(with image: Data) {
-        avatar.setImage(UIImage(data: image), for: .normal)
+    @objc func setAvatar() {
+        DispatchQueue.main.async { // TODO: Ask to Nicolas
+            let user = AccountManager.currentUser
+            
+            guard let image = user.avatar else {
+                return
+            }
+            
+            self.avatar.setImage(UIImage(data: image), for: .normal)
+        }
     }
     
     private func setAvatarDisplay() {
-        avatar.layer.borderWidth = 1
-        avatar.layer.borderColor = UIColor(named: "Background")?.cgColor
-        avatar.layer.masksToBounds = true
-        avatar.layer.cornerRadius = avatar.frame.height / 2 // TODO: Not working expectedly
+        avatar.layer.cornerRadius = (avatar.frame.size.height) / 2
         avatar.clipsToBounds = true
     }
+    
+    @IBAction func unwindToDashboard(segue: UIStoryboardSegue) { }
 }

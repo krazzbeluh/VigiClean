@@ -25,12 +25,12 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     
     func getAvatar() {
         if let avatar = AccountManager.currentUser.avatar {
-            view.setAvatar(with: avatar)
+            view.setAvatar()
         } else {
             accountManager.getAvatar { (result) in
                 switch result {
                 case .success(let data):
-                    self.view.setAvatar(with: data)
+                    self.view.setAvatar()
                 case .failure(let error):
                     if let error = error as? StorageErrorCode,
                         error == .objectNotFound {

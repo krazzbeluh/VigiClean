@@ -24,5 +24,15 @@ struct VigiCleanUser {
     var credits: Int = 0
     var isEmployee: Bool = false
     
-    var avatar: Data?
+    var avatar: Data? {
+        didSet {
+            sendAvatarNotification()
+        }
+    }
+    
+    private func sendAvatarNotification() {
+        let name = Notification.Name(rawValue: "AvatarChanged")
+        let notification = Notification(name: name)
+        NotificationCenter.default.post(notification)
+    }
 }

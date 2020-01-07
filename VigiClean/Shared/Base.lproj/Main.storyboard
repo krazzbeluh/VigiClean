@@ -156,10 +156,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="VVA-AU-iaZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="VVA-AU-iaZ">
                                 <rect key="frame" x="100" y="20" width="214" height="214"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="VVA-AU-iaZ" secondAttribute="height" multiplier="1:1" id="lpe-Hy-E6a"/>
+                                    <constraint firstAttribute="height" secondItem="VVA-AU-iaZ" secondAttribute="width" multiplier="1:1" id="lpe-Hy-E6a"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="43" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="07s-Z2-zFR">
@@ -326,6 +326,9 @@
                                     <constraint firstAttribute="width" secondItem="eUb-t3-98D" secondAttribute="height" multiplier="1:1" id="GN6-4b-fdd"/>
                                 </constraints>
                                 <state key="normal" image="Close"/>
+                                <connections>
+                                    <segue destination="TbZ-GO-RbZ" kind="unwind" unwindAction="unwindToDashboardWithSegue:" id="5a3-ni-wMr"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07l-Nz-0B1">
                                 <rect key="frame" x="8" y="242" width="398" height="21"/>
@@ -353,7 +356,7 @@
                             <constraint firstItem="07s-Z2-zFR" firstAttribute="leading" secondItem="hSn-0T-nEO" secondAttribute="leading" constant="20" id="UPr-N0-ggu"/>
                             <constraint firstItem="07s-Z2-zFR" firstAttribute="centerX" secondItem="3iZ-bP-61y" secondAttribute="centerX" id="XgW-A9-Jaf"/>
                             <constraint firstItem="8Di-Tf-A8j" firstAttribute="top" secondItem="07l-Nz-0B1" secondAttribute="bottom" id="Zss-KT-ddu"/>
-                            <constraint firstItem="VVA-AU-iaZ" firstAttribute="leading" secondItem="hSn-0T-nEO" secondAttribute="leading" constant="100" id="aPh-cM-YXU"/>
+                            <constraint firstItem="VVA-AU-iaZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hSn-0T-nEO" secondAttribute="leading" constant="100" id="aPh-cM-YXU"/>
                             <constraint firstItem="VVA-AU-iaZ" firstAttribute="top" secondItem="hSn-0T-nEO" secondAttribute="top" constant="20" id="lK1-Vk-3cO"/>
                             <constraint firstItem="07s-Z2-zFR" firstAttribute="top" secondItem="8Di-Tf-A8j" secondAttribute="bottom" constant="12" id="nf5-vt-Wd3"/>
                             <constraint firstItem="8Di-Tf-A8j" firstAttribute="centerX" secondItem="3iZ-bP-61y" secondAttribute="centerX" id="tdZ-vA-B4i"/>
@@ -726,7 +729,7 @@
                                             <color key="titleColor" name="Background"/>
                                         </state>
                                         <connections>
-                                            <segue destination="uGM-jn-ltq" kind="unwind" unwindAction="unwindToDashboardWithSegue:" id="n7N-yd-ZJV"/>
+                                            <segue destination="uGM-jn-ltq" kind="unwind" unwindAction="unwindToDashboardWithSegue:" id="tUH-mo-YGY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1172,7 +1175,7 @@
                                 </constraints>
                                 <state key="normal" image="Close"/>
                                 <connections>
-                                    <action selector="dismiss:" destination="INL-pe-aIy" eventType="touchUpInside" id="4QT-Ax-nfj"/>
+                                    <action selector="didTapDismissButton:" destination="INL-pe-aIy" eventType="touchUpInside" id="M1I-cz-MTz"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Wks-Lu-FAD">

@@ -181,15 +181,27 @@ class AccountManager {
         })
     }
     
-    func signOut(completion: (Error?) -> Void) {
-        do {
-            try auth.signOut()
-        } catch let error {
-            let errCode = ErrorHandler().convertToAuthError(error)
-            completion(errCode)
-            return
+    func signOut(completion: @escaping (Error?) -> Void) {
+        if !isConnectedWithEmail {
+            AccountManager.currentUser.user?.delete(completion: { (error) in
+                if let error = error {
+                    completion(ErrorHandler().convertToAuthError(error))
+                } else {
+                    completion(nil)
+                }
+            })
+        } else {
+            do {
+                try auth.signOut()
+            } catch let error {
+                let errCode = ErrorHandler().convertToAuthError(error)
+                completion(errCode)
+                return
+            }
+            
+            AccountManager.currentUser.avatar = nil
+            completion(nil)
         }
-        completion(nil)
     }
     
     func createUserDocument(for user: String,
@@ -323,7 +335,7 @@ class AccountManager {
                 callback(.failure(UAccountError.userNotLoggedInWithEmail))
                 return
         }
-        
+        // TODO: check password
         let storageRef = storage.reference()
         let imageRef = storageRef.child("images/\(uid).jpg")
         

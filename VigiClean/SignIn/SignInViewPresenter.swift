@@ -35,6 +35,7 @@ class SignInPresenter: BasePresenter, SignInViewPresenter {
                 self.view.displayError(message: self.convertError(error))
                 return
             }
+            self.accountManager.getAvatar { _ in }
             self.view.userSignedIn()
         }
     }

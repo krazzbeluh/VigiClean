@@ -23,7 +23,7 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
         presenter = AttachEmailPresenter(view: self)
         
         if #available(iOS 13, *) {
-            dismissButton.isHidden = true
+//            dismissButton.isHidden = true
         }
         
         if #available(iOS 12, *) {
@@ -41,6 +41,10 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
         for textField in textFields {
             textField.resignFirstResponder()
         }
+    }
+    
+    @IBAction func didTapDismissButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Methods

@@ -8,9 +8,6 @@
 
 import UIKit
 
-// TODO: add avatar
-// TODO: change password
-
 class ProfileViewController: UIViewController, ProfileView {
     var presenter: ProfileViewPresenter!
     
@@ -18,6 +15,12 @@ class ProfileViewController: UIViewController, ProfileView {
         super.viewDidLoad()
         
         presenter = ProfilePresenter(view: self)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setAvatarDisplay()
     }
     
     // MARK: Properties
@@ -181,6 +184,11 @@ class ProfileViewController: UIViewController, ProfileView {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    private func setAvatarDisplay() {
+        avatar.layer.cornerRadius = (avatar.frame.size.width) / 2
+        avatar.clipsToBounds = true
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -210,7 +218,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         present(picker, animated: true)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let image = info[.editedImage] as? UIImage,
             let data = image.jpegData(compressionQuality: 0) else { return }
         
