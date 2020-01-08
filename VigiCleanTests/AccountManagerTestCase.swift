@@ -242,7 +242,7 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
                                             database: FirestoreFake(errors: nil, data: nil))
         
         let data: [String: Any] = [
-            "isMaintainer": true
+            "employedAt": "VigiClean"
         ]
         
         XCTAssertNil(try? accountManager.getUserInfos(in: data))
