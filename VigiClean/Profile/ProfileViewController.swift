@@ -185,6 +185,32 @@ class ProfileViewController: UIViewController, ProfileView {
         self.present(alert, animated: true, completion: nil)
     }
     
+    private func askPassword(completion: @escaping (String?) -> Void) {
+        let alert = UIAlertController(title: "Mot de passe :", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Mot de passe"
+            textField.keyboardType = .default
+            textField.textContentType = .password
+            textField.isSecureTextEntry = true
+        }
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak alert] (_) in
+            guard let text = alert?.textFields?.first?.text,
+                text != "" else {
+                    completion(nil)
+                    return
+            }
+            
+            completion(text)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: { (_) in
+            completion(nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     private func setAvatarDisplay() {
         avatar.layer.cornerRadius = (avatar.frame.size.width) / 2
         avatar.clipsToBounds = true
@@ -223,8 +249,10 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         guard let image = info[.editedImage] as? UIImage,
             let data = image.jpegData(compressionQuality: 0) else { return }
         
-        dismiss(animated: true, completion: nil)
-        
-        presenter.updateAvatar(to: data, with: "")
+        dismiss(animated: true) {
+            self.askPassword { (password) in
+                self.presenter.updateAvatar(to: data, with: password)
+            }
+        }
     }
 }

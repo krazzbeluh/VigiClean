@@ -104,81 +104,61 @@ class AccountManager {
     }
     
     func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
-        guard let uid = AccountManager.currentUser.user?.uid,
-            let email = AccountManager.currentUser.user?.email else {
-                completion(UAccountError.userNotLoggedIn)
-                return
+        guard let uid = AccountManager.currentUser.user?.uid else {
+            completion(UAccountError.userNotLoggedIn)
+            return
         }
         
-        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-        AccountManager.currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
+        reauthenticate(password: password) { (error) in
             if let error = error {
-                let errCode = ErrorHandler().convertToAuthError(error)
-                completion(errCode)
-                return
-            }
-            
-            self.database.collection("User").document(uid).updateData([
-                "username": newPseudo
-            ]) { error in
-                if let error = error {
-                    let errCode = ErrorHandler().convertToFirestoreError(error)
-                    completion(errCode)
-                    return
+                completion(error)
+            } else {
+                self.database.collection("User").document(uid).updateData([
+                    "username": newPseudo
+                ]) { error in
+                    if let error = error {
+                        let errCode = ErrorHandler().convertToFirestoreError(error)
+                        completion(errCode)
+                        return
+                    }
+                    completion(nil)
                 }
-                completion(nil)
             }
-        })
+        }
     }
     
     func updateEmail(to newEmail: String, with password: String, completion: @escaping (Error?) -> Void) {
-        guard let email = AccountManager.currentUser.user?.email else {
-            completion(UAccountError.userNotLoggedInWithEmail)
-            return
-        }
-        
-        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-        AccountManager.currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
+        reauthenticate(password: password) { (error) in
             if let error = error {
-                let errCode = ErrorHandler().convertToAuthError(error)
-                completion(errCode)
-                return
+                completion(error)
+            } else {
+                AccountManager.currentUser.user?.updateEmail(to: newEmail, completion: { (error) in
+                    if let error = error {
+                        let errCode = ErrorHandler().convertToAuthError(error)
+                        completion(errCode)
+                        return
+                    }
+                    completion(nil)
+                })
             }
-            
-            AccountManager.currentUser.user?.updateEmail(to: newEmail, completion: { (error) in
-                if let error = error {
-                    let errCode = ErrorHandler().convertToAuthError(error)
-                    completion(errCode)
-                    return
-                }
-                completion(nil)
-            })
-        })
+        }
     }
     
     func updatePassword(to newPassword: String, from oldPassword: String, completion: @escaping (Error?) -> Void) {
-        guard let email = AccountManager.currentUser.user?.email else {
-            completion(UAccountError.userNotLoggedInWithEmail)
-            return
-        }
-        
-        let credential = EmailAuthProvider.credential(withEmail: email, password: oldPassword)
-        AccountManager.currentUser.user?.reauthenticate(with: credential, completion: { (_, error) in
+        reauthenticate(password: oldPassword) { (error) in
             if let error = error {
-                let errCode = ErrorHandler().convertToAuthError(error)
-                completion(errCode)
-                return
-            }
-            
-            AccountManager.currentUser.user?.updatePassword(to: newPassword) { (error) in
-                if let error = error {
-                    let errCode = ErrorHandler().convertToAuthError(error)
-                    completion(errCode)
-                    return
+                completion(error)
+            } else {
+                AccountManager.currentUser.user?.updatePassword(to: newPassword) { (error) in
+                    if let error = error {
+                        let errCode = ErrorHandler().convertToAuthError(error)
+                        completion(errCode)
+                        return
+                    }
+                    completion(nil)
                 }
-                completion(nil)
             }
-        })
+        }
     }
     
     func signOut(completion: @escaping (Error?) -> Void) {
@@ -335,22 +315,41 @@ class AccountManager {
                 callback(.failure(UAccountError.userNotLoggedInWithEmail))
                 return
         }
-        // TODO: check password
-        let storageRef = storage.reference()
-        let imageRef = storageRef.child("images/\(uid).jpg")
         
-        imageRef.putData(avatar, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                // Uh-oh, an error occurred!
+        reauthenticate(password: password) { (error) in
+            if let error = error {
+                callback(.failure(error))
+            } else {
+                let storageRef = self.storage.reference()
+                let imageRef = storageRef.child("images/\(uid).jpg")
+                
+                imageRef.putData(avatar, metadata: nil) { (_, error) in
+                    if let error = error {
+                        callback(.failure(ErrorHandler().convertToStorageError(error)))
+                    }
+                    
+                    AccountManager.currentUser.avatar = avatar
+                    callback(.success(avatar))
+                }
+            }
+        }
+    }
+    
+    private func reauthenticate(password: String, completion: @escaping (Error?) -> Void) {
+        guard let email = AccountManager.currentUser.user?.email else {
+            completion(UAccountError.userNotLoggedIn)
+            return
+        }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        AccountManager.currentUser.user?.reauthenticate(with: credential) { (_, error) in
+            if let error = error {
+                let errCode = ErrorHandler().convertToAuthError(error)
+                completion(errCode)
                 return
             }
             
-            guard metadata.size < AccountManager.maxFileSize else {
-                return
-            }
-            
-            AccountManager.currentUser.avatar = avatar
-            callback(.success(avatar))
+            completion(nil)
         }
     }
 }
