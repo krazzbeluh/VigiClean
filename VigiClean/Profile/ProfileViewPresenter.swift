@@ -87,7 +87,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
             self.view.displayError(message: self.convertError(UserError.nilInTextField))
             return
         }
-        // TODO: Check password
+        
         accountManager.updateAvatar(from: newAvatar, with: password) { (result) in
             switch result {
             case .success(let imageData):

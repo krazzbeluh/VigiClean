@@ -12,7 +12,7 @@ import FirebaseFunctions
 
 class ObjectManager {
     enum ObjectError: Error {
-        case unableToDecodeData, userNotLoggedIn, nilInTextField
+        case unableToDecodeData, userNotLoggedIn, nilInTextField, noActionsInObject, actionNotFound
     }
     
     private var database = Firestore.firestore()

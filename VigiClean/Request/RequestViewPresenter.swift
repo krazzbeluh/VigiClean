@@ -29,8 +29,8 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         
         if !employeeMode {
             guard let userActions = object.actions else {
-                // TODO
-                fatalError()
+                view.displayError(message: convertError(ObjectManager.ObjectError.noActionsInObject))
+                return actions
             }
             
             for index in 1 ... userActions.count {
@@ -38,8 +38,8 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             }
         } else {
             guard let employeeActions = object.employeeActions else {
-                // TODO
-                fatalError()
+                view.displayError(message: convertError(ObjectManager.ObjectError.noActionsInObject))
+                return actions
             }
             
             for index in 1 ... employeeActions.count {
@@ -108,8 +108,8 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             var sendingAction: Action?
             
             guard let actions = object.actions else {
-                fatalError()
-                // TODO
+                view.displayError(message: convertError(ObjectManager.ObjectError.actionNotFound))
+                return
             }
             
             for act in actions where act.message == action {
@@ -133,8 +133,8 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             var sendingAction: Action?
             
             guard let employeeActions = object.employeeActions else {
-                fatalError()
-                // TODO
+                view.displayError(message: convertError(ObjectManager.ObjectError.actionNotFound))
+                return
             }
             
             for act in employeeActions where act.message == action {
