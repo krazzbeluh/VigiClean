@@ -98,7 +98,13 @@ class ProfileViewController: UIViewController, ProfileView {
     }
     
     func passwordChanged() {
-        print("success")
+        let alert = UIAlertController(title: "Succès !",
+                                      message: "Votre mot de passe a été modifié avec succès !",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func presentDeterDisconect(handler: @escaping (Bool) -> Void) {
