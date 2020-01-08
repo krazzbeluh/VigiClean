@@ -10,11 +10,14 @@ import UIKit
 import MapKit
 import FirebaseFirestore
 
+// Move to presenter
 class ObjectTableViewCell: UITableViewCell {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var organizationLabel: UILabel!
+    
+    private var object: Object!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +31,7 @@ class ObjectTableViewCell: UITableViewCell {
     }
     
     func configure(for object: Object) {
+        self.object = object
         nameLabel.text = object.name
         typeLabel.text = object.type
         organizationLabel.text = object.organization
@@ -41,6 +45,27 @@ class ObjectTableViewCell: UITableViewCell {
     }
     
     @IBAction func didTapGoTo(_ sender: Any) {
+        openMapForPlace()
+    }
+    
+    func openMapForPlace() {
+
+        let latitude: CLLocationDegrees = object.coords.latitude
+        let longitude: CLLocationDegrees = object.coords.longitude
+
+        let regionDistance: CLLocationDistance = 1000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegion(center: coordinates,
+                                            latitudinalMeters: regionDistance,
+                                            longitudinalMeters: regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "\(object.name) - \(object.organization)"
+        mapItem.openInMaps(launchOptions: options)
     }
 }
 
