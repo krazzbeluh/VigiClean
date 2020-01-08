@@ -52,5 +52,13 @@ class DashboardViewController: UIViewController, DashboardView {
         avatar.clipsToBounds = true
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? EmployeeViewController else {
+            return
+        }
+        
+        destinationVC.modalPresentationStyle = .fullScreen
+    }
+    
     @IBAction func unwindToDashboard(segue: UIStoryboardSegue) { }
 }

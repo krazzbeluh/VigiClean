@@ -87,6 +87,10 @@
 		94D20970239FEBA90089759B /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D2096F239FEBA90089759B /* Action.swift */; };
 		94DC7C20239ADA0E00C414DA /* ObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */; };
 		94DF01F423A514370016CA24 /* Poi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF01F323A514370016CA24 /* Poi.swift */; };
+		94DF29E923C62899006D6CAE /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29E823C62899006D6CAE /* EmployeeViewController.swift */; };
+		94DF29EB23C63601006D6CAE /* EmployeeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29EA23C63601006D6CAE /* EmployeeContracts.swift */; };
+		94DF29ED23C63610006D6CAE /* EmployeeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29EC23C63610006D6CAE /* EmployeeViewPresenter.swift */; };
+		94DF29F023C63A34006D6CAE /* ObjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29EF23C63A34006D6CAE /* ObjectTableViewCell.swift */; };
 		94EB57752372D8B800582990 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashboardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
 		94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0272370A1CA00037210 /* AppDelegate.swift */; };
@@ -190,6 +194,10 @@
 		94D2096F239FEBA90089759B /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectManager.swift; sourceTree = "<group>"; };
 		94DF01F323A514370016CA24 /* Poi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poi.swift; sourceTree = "<group>"; };
+		94DF29E823C62899006D6CAE /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
+		94DF29EA23C63601006D6CAE /* EmployeeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeContracts.swift; sourceTree = "<group>"; };
+		94DF29EC23C63610006D6CAE /* EmployeeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewPresenter.swift; sourceTree = "<group>"; };
+		94DF29EF23C63A34006D6CAE /* ObjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTableViewCell.swift; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		94F0A0242370A1CA00037210 /* VigiClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VigiClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -303,16 +311,6 @@
 				94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */,
 			);
 			path = Request;
-			sourceTree = "<group>";
-		};
-		9402E9A4239A92290070E910 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				9402E9A2239A8EF80070E910 /* BasePresenter.swift */,
-				94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */,
-				94F0A02D2370A1CA00037210 /* Main.storyboard */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		9451DE5323B0EE030097658C /* Functions */ = {
@@ -452,6 +450,26 @@
 			path = Firestore;
 			sourceTree = "<group>";
 		};
+		94DF29E723C62864006D6CAE /* Employee */ = {
+			isa = PBXGroup;
+			children = (
+				94DF29EA23C63601006D6CAE /* EmployeeContracts.swift */,
+				94DF29EC23C63610006D6CAE /* EmployeeViewPresenter.swift */,
+				94DF29E823C62899006D6CAE /* EmployeeViewController.swift */,
+			);
+			path = Employee;
+			sourceTree = "<group>";
+		};
+		94DF29EE23C63A08006D6CAE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				94F0A02D2370A1CA00037210 /* Main.storyboard */,
+				94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */,
+				94DF29EF23C63A34006D6CAE /* ObjectTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		94F0A01B2370A1CA00037210 = {
 			isa = PBXGroup;
 			children = (
@@ -478,8 +496,9 @@
 		94F0A0262370A1CA00037210 /* VigiClean */ = {
 			isa = PBXGroup;
 			children = (
+				9402E9A2239A8EF80070E910 /* BasePresenter.swift */,
+				94DF29EE23C63A08006D6CAE /* View */,
 				94623696239A9FCF0026DD95 /* Model */,
-				9402E9A4239A92290070E910 /* Shared */,
 				94623697239AC45C0026DD95 /* Launch */,
 				9402E99F239A8DB10070E910 /* Welcome */,
 				94D20947239B081C0089759B /* Dashboard */,
@@ -490,6 +509,7 @@
 				9402E99C239A8D2C0070E910 /* SignUp */,
 				9402E99B239A8D070070E910 /* AttachEmail */,
 				94D20952239EBD3B0089759B /* ScoreView */,
+				94DF29E723C62864006D6CAE /* Employee */,
 				94BE5AA02370A6C000CE3060 /* Supporting Files */,
 			);
 			path = VigiClean;
@@ -724,6 +744,7 @@
 				94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */,
 				94BA1EEA238DA11C00FE19A1 /* RequestViewController.swift in Sources */,
 				94D20949239B08560089759B /* DashboardContracts.swift in Sources */,
+				94DF29ED23C63610006D6CAE /* EmployeeViewPresenter.swift in Sources */,
 				94BA1EEE238E6A3900FE19A1 /* AttachEmailContracts.swift in Sources */,
 				9451DE4A23AE70F10097658C /* ErrorHandler.swift in Sources */,
 				94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */,
@@ -735,6 +756,8 @@
 				94D20970239FEBA90089759B /* Action.swift in Sources */,
 				94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */,
 				94CDC9B2237C617A003295AD /* UIViewController+Extension.swift in Sources */,
+				94DF29E923C62899006D6CAE /* EmployeeViewController.swift in Sources */,
+				94DF29F023C63A34006D6CAE /* ObjectTableViewCell.swift in Sources */,
 				94BA1F172395D4A900FE19A1 /* Object.swift in Sources */,
 				9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */,
 				94D2095A239EE14D0089759B /* Color.swift in Sources */,
@@ -754,6 +777,7 @@
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,
 				9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */,
 				94BA1EF0238E6A6B00FE19A1 /* ProfileContracts.swift in Sources */,
+				94DF29EB23C63601006D6CAE /* EmployeeContracts.swift in Sources */,
 				94504AA823858CCF0054BE70 /* LaunchViewController.swift in Sources */,
 				94623699239AC4F50026DD95 /* LaunchContracts.swift in Sources */,
 				94BA1F152395A53000FE19A1 /* RequestViewPresenter.swift in Sources */,

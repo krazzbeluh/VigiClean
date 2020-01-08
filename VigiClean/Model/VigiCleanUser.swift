@@ -22,7 +22,11 @@ struct VigiCleanUser {
     
     var username: String?
     var credits: Int = 0
-    var isEmployee: Bool = false
+    var employedAt: String?
+    
+    var isEmployee: Bool {
+        return employedAt != nil
+    }
     
     var avatar: Data? {
         didSet {

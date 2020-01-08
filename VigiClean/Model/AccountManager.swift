@@ -243,8 +243,8 @@ class AccountManager {
             AccountManager.currentUser.username = username
         }
         
-        if let isEemployee = data["isMaintainer"] as? Bool {
-            AccountManager.currentUser.isEmployee = isEemployee
+        if let employedAt = data["employedAt"] as? String {
+            AccountManager.currentUser.employedAt = employedAt
         }
         
         guard let credits = data["credits"] as? Int else {

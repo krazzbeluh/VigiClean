@@ -12,7 +12,7 @@ import FirebaseFunctions
 
 class ObjectManager {
     enum ObjectError: Error {
-        case unableToDecodeData, userNotLoggedIn, nilInTextField, noActionsInObject, actionNotFound
+        case unableToDecodeData, userNotLoggedIn, nilInTextField, noActionsInObject, actionNotFound, notEmployedUser
     }
     
     private var database = Firestore.firestore()
@@ -38,24 +38,33 @@ class ObjectManager {
                 return
             }
             
-            guard let data = document.data(),
-                let coords = data["coords"] as? GeoPoint,
-                let organization = data["organization"] as? String,
-                let type = data["type"] as? String,
-                let name = data["name"] as? String else {
-                    callback(.failure(FirebaseInterface.FIRInterfaceError.unableToDecodeData))
-                    return
+            guard let data = document.data() else {
+                callback(.failure(FirebaseInterface.FIRInterfaceError.unableToDecodeData))
+                return
             }
             
-            let object = Object(coords: coords,
-                                organization: organization,
-                                type: type,
-                                name: name,
-                                code: code)
+            let object: Object
+            do {
+                object = try self.getObject(from: data, with: code)
+            } catch let error {
+                callback(.failure(error))
+                return
+            }
             
             Object.currentObject = object
             callback(.success(object))
         }
+    }
+    
+    private func getObject(from data: [String: Any], with code: String) throws -> Object {
+        guard let coords = data["coords"] as? GeoPoint,
+            let organization = data["organization"] as? String,
+            let type = data["type"] as? String,
+            let name = data["name"] as? String else {
+                throw FirebaseInterface.FIRInterfaceError.unableToDecodeData
+        }
+        
+        return Object(coords: coords, organization: organization, type: type, name: name, code: code)
     }
     
     func getActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) {
@@ -168,6 +177,74 @@ class ObjectManager {
                 
                 let errCode = ErrorHandler().convertToFunctionsError(error)
                 callback(errCode)
+        }
+    }
+    
+    func getObjectList(callback: @escaping (Result<[Object], Error>) -> Void) {
+        guard let organization = AccountManager.currentUser.employedAt else {
+            callback(.failure(ObjectError.notEmployedUser))
+            return
+        }
+        
+        let objectRef = database.collection("Object")
+        let query = objectRef.whereField("organization", isEqualTo: organization)
+        
+        query.getDocuments { (querySnapshot, error) in
+            guard let objectSnapshot = querySnapshot else {
+                if let error = error {
+                    callback(.failure(ErrorHandler().convertToFirestoreError(error)))
+                }
+                
+                callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                
+                return
+            }
+            
+            var docIDs = [String]()
+            print(objectSnapshot.documents.count)
+            for objectDocument in objectSnapshot.documents {
+                docIDs.append(objectDocument.documentID)
+            }
+            
+            let requestRef = self.database.collection("Request")
+                .whereField("code", in: docIDs)
+                .whereField("isValidOperation", isEqualTo: NSNull())
+            
+            requestRef.getDocuments { (querySnapshot, error) in
+                guard let requestSnapshot = querySnapshot else {
+                    if let error = error {
+                        callback(.failure(ErrorHandler().convertToFirestoreError(error)))
+                        return
+                    }
+                    
+                    callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                    
+                    return
+                }
+                
+                var codes = [String]()
+                var objects = [Object]()
+                
+                print(requestSnapshot.documents.count)
+                
+                for request in requestSnapshot.documents {
+                    if let code = request.data()["code"] as? String {
+                        if !codes.contains(code) {
+                            codes.append(code)
+                        }
+                    }
+                }
+                
+                for object in objectSnapshot.documents where codes.contains(object.documentID) {
+                    do {
+                        objects.append(try self.getObject(from: object.data(), with: object.documentID))
+                    } catch let error {
+                        print(error)
+                    }
+                }
+                
+                callback(.success(objects))
+            }
         }
     }
 }
