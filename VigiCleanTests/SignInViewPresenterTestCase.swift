@@ -17,7 +17,7 @@ class SignInViewPresenterTestCase: XCTestCase {
     }
     
     func testSignInShouldCallUserSignedInIfNoError() {
-        let accountManager = AccountManagerFake(errors: [nil])
+        let accountManager = AccountManagerFake(resultData: .success(Data()))
         let presenter = SignInPresenter(view: view, accountManager: accountManager)
         
         presenter.signIn(email: "email@vigiclean.com", password: "1234567890")

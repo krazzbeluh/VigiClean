@@ -14,6 +14,8 @@ class FakeProfileView: ProfileView {
     var didCallDisplayUsername = false
     var didCallDisplayEmail = false
     var didCallDisplayError = false
+    var didCallDisplayAvatar = false
+    var didCallPasswordChanged = false
     
     func userSignedOut() {
         didCallUserSignedOut = true
@@ -25,6 +27,14 @@ class FakeProfileView: ProfileView {
     
     func display(email: String) {
         didCallDisplayEmail = true
+    }
+    
+    func display(avatar: Data) {
+        didCallDisplayAvatar = true
+    }
+    
+    func passwordChanged() {
+        didCallPasswordChanged = true
     }
     
     func displayError(message: String) {

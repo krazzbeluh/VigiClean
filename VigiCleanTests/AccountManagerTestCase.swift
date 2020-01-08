@@ -148,6 +148,10 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
                                             database: FirestoreFake(errors: nil, data: nil))
         
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = UserFake(uid: "", mail: "", errors: nil)
+        AccountManager.currentUser.auth = auth
+        
         accountManager.signOut { (error) in
             XCTAssertNil(error)
             expectation.fulfill()
@@ -160,6 +164,10 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: EasyError(), result: nil),
                                             database: FirestoreFake(errors: nil, data: nil))
+        
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = UserFake(uid: "", mail: "", errors: nil)
+        AccountManager.currentUser.auth = auth
         
         accountManager.signOut { (error) in
             XCTAssertNotNil(error)

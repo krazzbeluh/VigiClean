@@ -14,7 +14,7 @@ class FakeDashboardView: DashboardView {
     var didCallSetAvatar = false
     var didCallSendAlert = false
     
-    func setAvatar(with image: Data) {
+    func setAvatar() {
         didCallSetAvatar = true
     }
     

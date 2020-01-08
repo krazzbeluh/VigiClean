@@ -84,7 +84,7 @@ class AccountManagerFake: AccountManager {
         }
     }
     
-    override func signOut(completion: (Error?) -> Void) {
+    override func signOut(completion: @escaping (Error?) -> Void) {
         completion(getError())
     }
     
@@ -98,7 +98,7 @@ class AccountManagerFake: AccountManager {
     
     private func getError() -> Error? {
         let error = errors?.first
-        errors!.removeFirst()
+        errors?.removeFirst()
         return error ?? nil
     }
 }

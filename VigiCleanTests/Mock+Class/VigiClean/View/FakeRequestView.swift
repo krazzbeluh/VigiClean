@@ -24,7 +24,7 @@ class FakeRequestView: RequestView {
         didCallRoleFetched = true
     }
     
-    func requestSent() {
+    func requestSent(employeeMode: Bool) {
         didCallRequestSent = true
     }
     
