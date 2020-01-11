@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2EDF790BADCB409446220B2E /* Pods_VigiCleanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07C60F1F161004AED1E3929 /* Pods_VigiCleanTests.framework */; };
+		2CB52769B87AB84B5644B97B /* Pods_VigiClean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7B691B4616D50201C2F19C /* Pods_VigiClean.framework */; };
+		8B8F64C240FE7F8D36FE1E39 /* Pods_VigiCleanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2264975A1548D31A6F6A315 /* Pods_VigiCleanTests.framework */; };
 		9402CEFB23ABB3C000C2D671 /* VigiCleanUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9402CEFA23ABB3C000C2D671 /* VigiCleanUser.swift */; };
 		9402E9A3239A8EF80070E910 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9402E9A2239A8EF80070E910 /* BasePresenter.swift */; };
 		9408E17423BB99A90032D671 /* FakeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408E17323BB99A90032D671 /* FakeProfileView.swift */; };
@@ -91,13 +92,18 @@
 		94DF29EB23C63601006D6CAE /* EmployeeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29EA23C63601006D6CAE /* EmployeeContracts.swift */; };
 		94DF29ED23C63610006D6CAE /* EmployeeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29EC23C63610006D6CAE /* EmployeeViewPresenter.swift */; };
 		94DF29F023C63A34006D6CAE /* ObjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29EF23C63A34006D6CAE /* ObjectTableViewCell.swift */; };
+		94DF29F623C8D270006D6CAE /* MarketplaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29F523C8D270006D6CAE /* MarketplaceViewController.swift */; };
+		94DF29FA23C8D2F3006D6CAE /* MarketplaceContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29F923C8D2F3006D6CAE /* MarketplaceContracts.swift */; };
+		94DF29FC23C8D301006D6CAE /* MarketplaceViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29FB23C8D301006D6CAE /* MarketplaceViewPresenter.swift */; };
+		94DF29FE23C8EC07006D6CAE /* MarketplaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29FD23C8EC07006D6CAE /* MarketplaceManager.swift */; };
+		94DF2A0023C8EC6F006D6CAE /* Sale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29FF23C8EC6F006D6CAE /* Sale.swift */; };
+		94DF2A0223C90B36006D6CAE /* MarketplaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF2A0123C90B36006D6CAE /* MarketplaceCollectionViewCell.swift */; };
 		94EB57752372D8B800582990 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashboardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
 		94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0272370A1CA00037210 /* AppDelegate.swift */; };
 		94F0A02F2370A1CA00037210 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A02D2370A1CA00037210 /* Main.storyboard */; };
 		94F0A0312370A1CB00037210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0302370A1CB00037210 /* Assets.xcassets */; };
 		94F0A0342370A1CB00037210 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0A0322370A1CB00037210 /* LaunchScreen.storyboard */; };
-		C823D8DEB606F47307BA1838 /* Pods_VigiClean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291263C3A44A443741F7F553 /* Pods_VigiClean.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,10 +117,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		291263C3A44A443741F7F553 /* Pods_VigiClean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VigiClean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CEC49AC9E3D47668794328A /* Pods-VigiCleanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.release.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.release.xcconfig"; sourceTree = "<group>"; };
-		77B81D13D6151CE3ED84549F /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
-		7A9FC7A8205830702234610B /* Pods-VigiClean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.debug.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.debug.xcconfig"; sourceTree = "<group>"; };
+		1B7B691B4616D50201C2F19C /* Pods_VigiClean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VigiClean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		361D9B44D256E94E7D6D5FA2 /* Pods-VigiClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.release.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.release.xcconfig"; sourceTree = "<group>"; };
+		6920DBFF7AB2B5008132BCBE /* Pods-VigiCleanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.debug.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		738EE67DDA37BD8EF310B679 /* Pods-VigiClean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiClean.debug.xcconfig"; path = "Target Support Files/Pods-VigiClean/Pods-VigiClean.debug.xcconfig"; sourceTree = "<group>"; };
 		9402CEFA23ABB3C000C2D671 /* VigiCleanUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VigiCleanUser.swift; sourceTree = "<group>"; };
 		9402E9A2239A8EF80070E910 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		9408E17323BB99A90032D671 /* FakeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeProfileView.swift; sourceTree = "<group>"; };
@@ -198,6 +204,12 @@
 		94DF29EA23C63601006D6CAE /* EmployeeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeContracts.swift; sourceTree = "<group>"; };
 		94DF29EC23C63610006D6CAE /* EmployeeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewPresenter.swift; sourceTree = "<group>"; };
 		94DF29EF23C63A34006D6CAE /* ObjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTableViewCell.swift; sourceTree = "<group>"; };
+		94DF29F523C8D270006D6CAE /* MarketplaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewController.swift; sourceTree = "<group>"; };
+		94DF29F923C8D2F3006D6CAE /* MarketplaceContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceContracts.swift; sourceTree = "<group>"; };
+		94DF29FB23C8D301006D6CAE /* MarketplaceViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewPresenter.swift; sourceTree = "<group>"; };
+		94DF29FD23C8EC07006D6CAE /* MarketplaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceManager.swift; sourceTree = "<group>"; };
+		94DF29FF23C8EC6F006D6CAE /* Sale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sale.swift; sourceTree = "<group>"; };
+		94DF2A0123C90B36006D6CAE /* MarketplaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		94F0A0242370A1CA00037210 /* VigiClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VigiClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,8 +220,8 @@
 		94F0A0352370A1CB00037210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F0A03A2370A1CC00037210 /* VigiCleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VigiCleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0A0402370A1CC00037210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B07C60F1F161004AED1E3929 /* Pods_VigiCleanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VigiCleanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAD75F3222AE242513DE9980 /* Pods-VigiCleanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.debug.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2264975A1548D31A6F6A315 /* Pods_VigiCleanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VigiCleanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E04F0294C8ECACA361F6BA4B /* Pods-VigiCleanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VigiCleanTests.release.xcconfig"; path = "Target Support Files/Pods-VigiCleanTests/Pods-VigiCleanTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,7 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C823D8DEB606F47307BA1838 /* Pods_VigiClean.framework in Frameworks */,
+				2CB52769B87AB84B5644B97B /* Pods_VigiClean.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EDF790BADCB409446220B2E /* Pods_VigiCleanTests.framework in Frameworks */,
+				8B8F64C240FE7F8D36FE1E39 /* Pods_VigiCleanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,12 +247,21 @@
 		4D002501E48799779E32FE97 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7A9FC7A8205830702234610B /* Pods-VigiClean.debug.xcconfig */,
-				77B81D13D6151CE3ED84549F /* Pods-VigiClean.release.xcconfig */,
-				CAD75F3222AE242513DE9980 /* Pods-VigiCleanTests.debug.xcconfig */,
-				3CEC49AC9E3D47668794328A /* Pods-VigiCleanTests.release.xcconfig */,
+				738EE67DDA37BD8EF310B679 /* Pods-VigiClean.debug.xcconfig */,
+				361D9B44D256E94E7D6D5FA2 /* Pods-VigiClean.release.xcconfig */,
+				6920DBFF7AB2B5008132BCBE /* Pods-VigiCleanTests.debug.xcconfig */,
+				E04F0294C8ECACA361F6BA4B /* Pods-VigiCleanTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5BBAEE765E7F141630D4D9F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B7B691B4616D50201C2F19C /* Pods_VigiClean.framework */,
+				C2264975A1548D31A6F6A315 /* Pods_VigiCleanTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9402E99B239A8D070070E910 /* AttachEmail */ = {
@@ -325,6 +346,8 @@
 		94623696239A9FCF0026DD95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94DF29FD23C8EC07006D6CAE /* MarketplaceManager.swift */,
+				94DF29FF23C8EC6F006D6CAE /* Sale.swift */,
 				94DF01F323A514370016CA24 /* Poi.swift */,
 				94D2096F239FEBA90089759B /* Action.swift */,
 				94D20959239EE14D0089759B /* Color.swift */,
@@ -466,8 +489,19 @@
 				94F0A02D2370A1CA00037210 /* Main.storyboard */,
 				94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */,
 				94DF29EF23C63A34006D6CAE /* ObjectTableViewCell.swift */,
+				94DF2A0123C90B36006D6CAE /* MarketplaceCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		94DF29F823C8D2D7006D6CAE /* Marketplace */ = {
+			isa = PBXGroup;
+			children = (
+				94DF29F923C8D2F3006D6CAE /* MarketplaceContracts.swift */,
+				94DF29FB23C8D301006D6CAE /* MarketplaceViewPresenter.swift */,
+				94DF29F523C8D270006D6CAE /* MarketplaceViewController.swift */,
+			);
+			path = Marketplace;
 			sourceTree = "<group>";
 		};
 		94F0A01B2370A1CA00037210 = {
@@ -480,7 +514,7 @@
 				94F0A03D2370A1CC00037210 /* VigiCleanTests */,
 				94F0A0252370A1CA00037210 /* Products */,
 				4D002501E48799779E32FE97 /* Pods */,
-				9BA05A22AD7E5D21E0362247 /* Frameworks */,
+				5BBAEE765E7F141630D4D9F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -510,6 +544,7 @@
 				9402E99B239A8D070070E910 /* AttachEmail */,
 				94D20952239EBD3B0089759B /* ScoreView */,
 				94DF29E723C62864006D6CAE /* Employee */,
+				94DF29F823C8D2D7006D6CAE /* Marketplace */,
 				94BE5AA02370A6C000CE3060 /* Supporting Files */,
 			);
 			path = VigiClean;
@@ -536,15 +571,6 @@
 			path = VigiCleanTests;
 			sourceTree = "<group>";
 		};
-		9BA05A22AD7E5D21E0362247 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				291263C3A44A443741F7F553 /* Pods_VigiClean.framework */,
-				B07C60F1F161004AED1E3929 /* Pods_VigiCleanTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -552,12 +578,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94F0A04E2370A1CC00037210 /* Build configuration list for PBXNativeTarget "VigiClean" */;
 			buildPhases = (
-				3B66E7506A3DE1D6A844A24E /* [CP] Check Pods Manifest.lock */,
+				6F8C006BB505186E52AD5589 /* [CP] Check Pods Manifest.lock */,
 				94F0A0202370A1CA00037210 /* Sources */,
 				94F0A0212370A1CA00037210 /* Frameworks */,
 				94F0A0222370A1CA00037210 /* Resources */,
 				94BE5AA52370AB7400CE3060 /* ShellScript */,
-				58ED8FE5B2CA0D99055F2665 /* [CP] Embed Pods Frameworks */,
+				1C26771808E9FF4FAD721A39 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -572,7 +598,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94F0A0512370A1CC00037210 /* Build configuration list for PBXNativeTarget "VigiCleanTests" */;
 			buildPhases = (
-				446AF808C563EF3C701760DD /* [CP] Check Pods Manifest.lock */,
+				EFA876C04BA9AC9F2696AD09 /* [CP] Check Pods Manifest.lock */,
 				94F0A0362370A1CC00037210 /* Sources */,
 				94F0A0372370A1CC00037210 /* Frameworks */,
 				94F0A0382370A1CC00037210 /* Resources */,
@@ -652,7 +678,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3B66E7506A3DE1D6A844A24E /* [CP] Check Pods Manifest.lock */ = {
+		1C26771808E9FF4FAD721A39 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VigiClean/Pods-VigiClean-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VigiClean/Pods-VigiClean-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VigiClean/Pods-VigiClean-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F8C006BB505186E52AD5589 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -674,7 +717,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		446AF808C563EF3C701760DD /* [CP] Check Pods Manifest.lock */ = {
+		94BE5AA52370AB7400CE3060 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		EFA876C04BA9AC9F2696AD09 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -696,40 +756,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		58ED8FE5B2CA0D99055F2665 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VigiClean/Pods-VigiClean-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VigiClean/Pods-VigiClean-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VigiClean/Pods-VigiClean-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		94BE5AA52370AB7400CE3060 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -739,6 +765,9 @@
 			files = (
 				94138AAD237D067B00419F2C /* SignUpViewController.swift in Sources */,
 				9402E9A3239A8EF80070E910 /* BasePresenter.swift in Sources */,
+				94DF2A0023C8EC6F006D6CAE /* Sale.swift in Sources */,
+				94DF29F623C8D270006D6CAE /* MarketplaceViewController.swift in Sources */,
+				94DF29FC23C8D301006D6CAE /* MarketplaceViewPresenter.swift in Sources */,
 				94D20954239EBD590089759B /* ScoreViewPresenter.swift in Sources */,
 				94D20956239EBD9D0089759B /* ScoreContracts.swift in Sources */,
 				94138AAF237D069F00419F2C /* SignUpViewPresenter.swift in Sources */,
@@ -774,6 +803,7 @@
 				94D20958239EDE080089759B /* FirebaseInterface.swift in Sources */,
 				947FFAEF237213C800F01487 /* ScoreView.swift in Sources */,
 				94138AB1237D0EEA00419F2C /* WelcomeViewPresenter.swift in Sources */,
+				94DF2A0223C90B36006D6CAE /* MarketplaceCollectionViewCell.swift in Sources */,
 				94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */,
 				9462369B239AC51C0026DD95 /* LaunchViewPresenter.swift in Sources */,
 				94BA1EF0238E6A6B00FE19A1 /* ProfileContracts.swift in Sources */,
@@ -782,7 +812,9 @@
 				94623699239AC4F50026DD95 /* LaunchContracts.swift in Sources */,
 				94BA1F152395A53000FE19A1 /* RequestViewPresenter.swift in Sources */,
 				94BA1F192395D72F00FE19A1 /* Scanner.swift in Sources */,
+				94DF29FE23C8EC07006D6CAE /* MarketplaceManager.swift in Sources */,
 				94BA1F132395A4F400FE19A1 /* RequestContracts.swift in Sources */,
+				94DF29FA23C8D2F3006D6CAE /* MarketplaceContracts.swift in Sources */,
 				94D2094B239B09920089759B /* DashboardViewPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -978,7 +1010,7 @@
 		};
 		94F0A04F2370A1CC00037210 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A9FC7A8205830702234610B /* Pods-VigiClean.debug.xcconfig */;
+			baseConfigurationReference = 738EE67DDA37BD8EF310B679 /* Pods-VigiClean.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -999,7 +1031,7 @@
 		};
 		94F0A0502370A1CC00037210 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77B81D13D6151CE3ED84549F /* Pods-VigiClean.release.xcconfig */;
+			baseConfigurationReference = 361D9B44D256E94E7D6D5FA2 /* Pods-VigiClean.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -1020,7 +1052,7 @@
 		};
 		94F0A0522370A1CC00037210 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CAD75F3222AE242513DE9980 /* Pods-VigiCleanTests.debug.xcconfig */;
+			baseConfigurationReference = 6920DBFF7AB2B5008132BCBE /* Pods-VigiCleanTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1047,7 +1079,7 @@
 		};
 		94F0A0532370A1CC00037210 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CEC49AC9E3D47668794328A /* Pods-VigiCleanTests.release.xcconfig */;
+			baseConfigurationReference = E04F0294C8ECACA361F6BA4B /* Pods-VigiCleanTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

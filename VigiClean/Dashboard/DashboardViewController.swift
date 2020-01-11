@@ -47,17 +47,35 @@ class DashboardViewController: UIViewController, DashboardView {
         }
     }
     
+    func salesGotten() {
+        displayLoadView(false)
+        
+        performSegue(withIdentifier: "segueToMarketplace", sender: self)
+    }
+    
+    private func displayLoadView(_ displayed: Bool) {
+        // TODO
+    }
+    
     private func setAvatarDisplay() {
         avatar.layer.cornerRadius = (avatar.frame.size.height) / 2
         avatar.clipsToBounds = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destinationVC = segue.destination as? EmployeeViewController else {
-            return
+        switch segue.destination {
+        case let destinationVC as EmployeeViewController:
+            destinationVC.modalPresentationStyle = .fullScreen
+        default:
+            break
         }
+    }
+    
+    // MARK: Actions
+    @IBAction func goToMarketPlace(_ sender: Any) {
+        displayLoadView(true)
         
-        destinationVC.modalPresentationStyle = .fullScreen
+        presenter.getSales()
     }
     
     @IBAction func unwindToDashboard(segue: UIStoryboardSegue) { }

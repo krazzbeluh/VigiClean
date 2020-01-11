@@ -11,8 +11,10 @@ import Foundation
 protocol DashboardViewPresenter: BasePresenter {
     init(view: DashboardView)
     func getAvatar()
+    func getSales()
 }
 
 protocol DashboardView: BaseView {
     func setAvatar()
+    func salesGotten()
 }

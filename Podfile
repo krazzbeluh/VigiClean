@@ -14,6 +14,7 @@ target 'VigiClean' do
   pod 'Firebase/Storage', '6.13.0'
   pod 'FirebaseFirestoreSwift', '0.2'
   pod 'IQKeyboardManagerSwift', '6.3.0'
+  pod 'Kingfisher', '5.9.0'
 
   target 'VigiCleanTests' do
     inherit! :search_paths

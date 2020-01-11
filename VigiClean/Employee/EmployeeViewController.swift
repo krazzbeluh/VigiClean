@@ -15,6 +15,7 @@ class EmployeeViewController: UIViewController, EmployeeView {
     var presenter: EmployeeViewPresenter!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var didmissButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

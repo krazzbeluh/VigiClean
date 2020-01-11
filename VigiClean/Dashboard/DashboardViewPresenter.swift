@@ -12,14 +12,17 @@ import FirebaseStorage
 class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     weak var view: DashboardView!
     private let accountManager: AccountManager
+    private let marketplaceManager: MarketplaceManager
     
     required init(view: DashboardView) {
         self.accountManager = AccountManager()
         self.view = view
+        self.marketplaceManager = MarketplaceManager()
     }
     
-    init(accountManager: AccountManager, view: DashboardView) {
+    init(accountManager: AccountManager, view: DashboardView, marketplaceManager: MarketplaceManager) {
         self.accountManager = accountManager
+        self.marketplaceManager = marketplaceManager
         self.view = view
     }
     
@@ -41,6 +44,23 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
                 }
             }
             
+        }
+    }
+    
+    func getSales() {
+        if MarketplaceManager.sales.count < 1 {
+            marketplaceManager.getSales { (error) in
+                if let error = error {
+                    self.view.displayError(message: self.convertError(error))
+                    
+                    return
+                }
+                
+                print(MarketplaceManager.sales.count)
+                self.view.salesGotten()
+            }
+        } else {
+            self.view.salesGotten()
         }
     }
 }
