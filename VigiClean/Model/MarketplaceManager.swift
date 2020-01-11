@@ -53,25 +53,24 @@ class MarketplaceManager {
         }
     }
     
-    func buySale(sale: Sale, complection: @escaping (Error?) -> Void) {
+    func buySale(sale: Sale, complection: @escaping (Result<String, Error>) -> Void) {
         guard let uid = AccountManager.currentUser.user?.uid else {
-            // TODO
+            complection(.failure(AccountManager.UAccountError.userNotLoggedIn))
             return
         }
         functions.httpsCallable("selectSale?code=\(sale.code)&user=\(uid)")
             .call { (functionResult, error) in
                 if let error = error {
-                    complection(ErrorHandler().convertToFunctionsError(error))
+                    complection(.failure(ErrorHandler().convertToFunctionsError(error)))
                     return
                 }
                 
-                // TODO
                 guard let data = functionResult?.data as? [String: Any],
                     let code = data["saleCode"] as? String else {
                         return
                 }
                 
-                print(code)
+                complection(.success(code))
         }
     }
     

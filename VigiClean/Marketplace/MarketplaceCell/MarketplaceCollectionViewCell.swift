@@ -14,9 +14,11 @@ class MarketplaceCollectionViewCell: UICollectionViewCell, MarketplaceCellView {
     @IBOutlet weak var titleLabel: UILabel!
     
     private var presenter: MarketplaceCellViewPresenter!
+    weak var delegate: MarketplaceDelegate?
     
-    func configure(with sale: Sale) {
+    func configure(with sale: Sale, delegate: MarketplaceDelegate) {
         presenter = MarketplaceCellPresenter(view: self, sale: sale)
+        self.delegate = delegate
         
         titleLabel.text = sale.title
         
@@ -28,5 +30,22 @@ class MarketplaceCollectionViewCell: UICollectionViewCell, MarketplaceCellView {
     
     @IBAction func didSelectSale(_ sender: Any) {
         presenter.buySale()
+    }
+    
+    func sendAlert(with message: String) {
+        delegate?.displayError(message: message)
+    }
+    
+    func saleGotten(with code: String) {
+        let alertVC = UIAlertController(
+            title: "Votre récompense :",
+            message: "Voici votre code promotionnel à utiliser chez notre partenaire : \n\(code)",
+            preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alertVC.addAction(UIAlertAction(title: "Copier", style: .default, handler: { (_) in
+            UIPasteboard.general.string = code
+        }))
+        
+        self.delegate?.present(alert: alertVC)
     }
 }

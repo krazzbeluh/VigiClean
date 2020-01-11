@@ -22,12 +22,17 @@ class MarketplaceCellPresenter: BasePresenter, MarketplaceCellViewPresenter {
     
     func buySale() {
         guard sale.price <= AccountManager.currentUser.credits else {
-            // TODO
+            view.sendAlert(with: convertError(AccountManager.UAccountError.notEnoughCredits))
             return
         }
         
-        marketplaceManager.buySale(sale: sale) { (error) in
-            print(error)
+        marketplaceManager.buySale(sale: sale) { (result) in
+            switch result {
+            case .success(let code):
+                self.view.saleGotten(with: code)
+            case .failure(let error):
+                self.view.sendAlert(with: self.convertError(error))
+            }
         }
     }
 }

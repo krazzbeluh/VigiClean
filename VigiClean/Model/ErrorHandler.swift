@@ -30,7 +30,7 @@ class ErrorHandler {
         return FirestoreErrorCode(rawValue: error._code)
     }
     
-    func convertToFunctionsError(_ error: Error) -> FunctionsErrorCode? {
+    func convertToFunctionsError(_ error: Error) -> FunctionsErrorCode! {
         return FunctionsErrorCode(rawValue: error._code)
     }
 }

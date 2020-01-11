@@ -15,4 +15,6 @@ protocol MarketplaceCellViewPresenter: BasePresenter {
 }
 
 protocol MarketplaceCellView: class {
+    func sendAlert(with message: String)
+    func saleGotten(with code: String)
 }

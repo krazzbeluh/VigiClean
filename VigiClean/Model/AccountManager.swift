@@ -28,7 +28,7 @@ class AccountManager {
     
     enum UAccountError: Error {
         case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound, userNotLoggedIn,
-        userNotLoggedInWithEmail
+        userNotLoggedInWithEmail, notEnoughCredits
     }
     
     static var currentUser = VigiCleanUser(username: nil)

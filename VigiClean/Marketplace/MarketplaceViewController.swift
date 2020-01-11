@@ -43,7 +43,7 @@ extension MarketplaceViewController: UICollectionViewDataSource {
                                                                 return UICollectionViewCell()
         }
         
-        cell.configure(with: MarketplaceManager.sales[indexPath.row])
+        cell.configure(with: MarketplaceManager.sales[indexPath.row], delegate: self)
         
         return cell
     }
@@ -75,4 +75,10 @@ extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
                       minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return sectionInsets.left
   }
+}
+
+extension MarketplaceViewController: MarketplaceDelegate {
+    func present(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
 }
