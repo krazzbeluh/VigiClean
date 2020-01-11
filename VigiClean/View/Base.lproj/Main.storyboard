@@ -242,16 +242,27 @@
                                     <segue destination="X0O-sN-hRI" kind="show" id="cJz-Zd-4ka"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lub-9X-Xg4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JEj-WT-H0U">
+                                <rect key="frame" x="188.66666666666666" y="402.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
+                            <constraint firstItem="JEj-WT-H0U" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="4Pg-Ws-tZi"/>
                             <constraint firstItem="ezg-5l-AbO" firstAttribute="leading" secondItem="EWC-VY-GCU" secondAttribute="leading" constant="50" id="6LS-if-AaK"/>
                             <constraint firstItem="8bi-WW-cOh" firstAttribute="height" secondItem="ezg-5l-AbO" secondAttribute="height" id="6lt-9k-Euw"/>
                             <constraint firstItem="ezg-5l-AbO" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="70G-zv-gk2"/>
                             <constraint firstItem="8bi-WW-cOh" firstAttribute="width" secondItem="ezg-5l-AbO" secondAttribute="width" id="96k-Uk-AQT"/>
                             <constraint firstItem="nV6-tx-khr" firstAttribute="centerY" secondItem="N56-T9-4uu" secondAttribute="centerY" id="Gem-sf-EeY"/>
                             <constraint firstItem="Kav-Ke-XC3" firstAttribute="top" secondItem="N56-T9-4uu" secondAttribute="top" id="Hh6-ns-B5I"/>
+                            <constraint firstAttribute="bottom" secondItem="Lub-9X-Xg4" secondAttribute="bottom" id="M2D-Gh-jrP"/>
                             <constraint firstItem="lb8-av-c4K" firstAttribute="width" secondItem="N56-T9-4uu" secondAttribute="width" multiplier="1/8" id="QYC-q5-IsE"/>
+                            <constraint firstItem="Lub-9X-Xg4" firstAttribute="trailing" secondItem="N56-T9-4uu" secondAttribute="trailing" id="Wjo-HD-N1j"/>
+                            <constraint firstItem="Lub-9X-Xg4" firstAttribute="top" secondItem="N56-T9-4uu" secondAttribute="top" id="WkI-yD-xmV"/>
                             <constraint firstItem="vJL-n8-ceg" firstAttribute="top" secondItem="ezg-5l-AbO" secondAttribute="bottom" id="coG-3z-dJd"/>
                             <constraint firstItem="Kav-Ke-XC3" firstAttribute="leading" secondItem="EWC-VY-GCU" secondAttribute="leading" id="eXr-Gy-gLh"/>
                             <constraint firstItem="8bi-WW-cOh" firstAttribute="centerX" secondItem="ezg-5l-AbO" secondAttribute="centerX" id="f0R-QY-1rW"/>
@@ -260,9 +271,11 @@
                             <constraint firstItem="nV6-tx-khr" firstAttribute="leading" secondItem="EWC-VY-GCU" secondAttribute="leading" constant="50" id="khG-sZ-WYx"/>
                             <constraint firstItem="EWC-VY-GCU" firstAttribute="trailing" secondItem="Kav-Ke-XC3" secondAttribute="trailing" id="kyZ-bp-frk"/>
                             <constraint firstItem="ezg-5l-AbO" firstAttribute="top" secondItem="8bi-WW-cOh" secondAttribute="bottom" constant="8" id="nrD-Fp-5ak"/>
+                            <constraint firstItem="Lub-9X-Xg4" firstAttribute="leading" secondItem="N56-T9-4uu" secondAttribute="leading" id="owu-IJ-V8X"/>
                             <constraint firstItem="vJL-n8-ceg" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="p4g-E0-MFN"/>
                             <constraint firstItem="EWC-VY-GCU" firstAttribute="trailing" secondItem="lb8-av-c4K" secondAttribute="trailing" constant="20" id="pTC-GP-s2I"/>
                             <constraint firstItem="Kav-Ke-XC3" firstAttribute="height" secondItem="N56-T9-4uu" secondAttribute="height" multiplier="0.13" id="thO-kt-IFA"/>
+                            <constraint firstItem="JEj-WT-H0U" firstAttribute="centerY" secondItem="N56-T9-4uu" secondAttribute="centerY" id="x8H-UX-fXh"/>
                             <constraint firstItem="nV6-tx-khr" firstAttribute="centerX" secondItem="N56-T9-4uu" secondAttribute="centerX" id="xdt-UR-0R7"/>
                             <constraint firstItem="RBU-3M-OZO" firstAttribute="top" secondItem="EWC-VY-GCU" secondAttribute="top" id="yG7-0u-TUS"/>
                             <constraint firstItem="lb8-av-c4K" firstAttribute="top" secondItem="Kav-Ke-XC3" secondAttribute="bottom" constant="20" id="zd4-2J-2TE"/>
@@ -271,7 +284,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="LnF-tz-2Hr"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="JEj-WT-H0U" id="r4W-aU-PR4"/>
                         <outlet property="avatar" destination="lb8-av-c4K" id="v9B-94-N4n"/>
+                        <outlet property="grayOutView" destination="Lub-9X-Xg4" id="yl9-og-M1A"/>
                         <outlet property="scoreView" destination="nV6-tx-khr" id="8VG-BZ-Jgj"/>
                         <segue destination="KWJ-gV-enL" kind="show" identifier="segueToMarketplace" id="epd-0i-bZj"/>
                     </connections>

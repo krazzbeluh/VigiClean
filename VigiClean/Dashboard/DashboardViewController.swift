@@ -13,6 +13,8 @@ class DashboardViewController: UIViewController, DashboardView {
     // MARK: Outlets
     @IBOutlet weak var scoreView: ScoreView!
     @IBOutlet weak var avatar: UIButton!
+    @IBOutlet weak var grayOutView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var presenter: DashboardViewPresenter!
 
@@ -55,7 +57,9 @@ class DashboardViewController: UIViewController, DashboardView {
     }
     
     private func displayLoadView(_ displayed: Bool) {
-        // TODO
+        avatar.isHidden = displayed
+        grayOutView.isHidden = !displayed
+        activityIndicator.isHidden = !displayed
     }
     
     private func setAvatarDisplay() {
