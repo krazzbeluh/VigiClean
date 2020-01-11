@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO: move to presenter
 class DashboardViewController: UIViewController, DashboardView {
     // MARK: Outlets
     @IBOutlet weak var scoreView: ScoreView!
@@ -19,7 +20,7 @@ class DashboardViewController: UIViewController, DashboardView {
         super.viewDidLoad()
         presenter = DashboardPresenter(view: self)
         
-        let name = Notification.Name(rawValue: "AvatarChanged")
+        let name = Notification.Name(rawValue: VigiCleanUser.NotificationType.avatar.rawValue)
         NotificationCenter.default.addObserver(self, selector: #selector(setAvatar), name: name, object: nil)
         
         setAvatar()

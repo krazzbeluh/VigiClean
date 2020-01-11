@@ -10,6 +10,11 @@ import Foundation
 import FirebaseAuth
 
 struct VigiCleanUser {
+    enum NotificationType: String {
+        case avatar = "AvatarChanged"
+        case score = "ScoreChanged"
+    }
+    
     var auth = Auth.auth()
     
     var user: User? {
@@ -21,7 +26,11 @@ struct VigiCleanUser {
     }
     
     var username: String?
-    var credits: Int = 0
+    var credits: Int = 0 {
+        didSet {
+            sendNotification(for: .score)
+        }
+    }
     var employedAt: String?
     
     var isEmployee: Bool {
@@ -30,12 +39,12 @@ struct VigiCleanUser {
     
     var avatar: Data? {
         didSet {
-            sendAvatarNotification()
+            sendNotification(for: .avatar)
         }
     }
     
-    private func sendAvatarNotification() {
-        let name = Notification.Name(rawValue: "AvatarChanged")
+    private func sendNotification(for type: NotificationType) {
+        let name = Notification.Name(rawValue: type.rawValue)
         let notification = Notification(name: name)
         NotificationCenter.default.post(notification)
     }

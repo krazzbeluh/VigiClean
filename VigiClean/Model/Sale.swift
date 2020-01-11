@@ -9,10 +9,12 @@
 import Foundation
 
 struct Sale {
+    let price: Int
     let image: URL
     let title: String
     let littleTitle: String
     let partner: String
     let description: String
     let url: URL
+    let code: String
 }

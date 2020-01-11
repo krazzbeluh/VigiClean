@@ -11,16 +11,24 @@ import UIKit
 class MarketplaceViewController: UIViewController, MarketplaceView {
     var presenter: MarketplaceViewPresenter!
     
+    private let itemsPerRow: CGFloat = 2
+    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var score: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.presenter = MarketplacePresenter(view: self)
-
-        // Do any additional setup after loading the view.
+        
+        presenter.getScore()
     }
-
+    
+    func setScoreLabel(to text: String) {
+        score.text = text
+    }
+    
 }
 
 extension MarketplaceViewController: UICollectionViewDataSource {
@@ -32,11 +40,39 @@ extension MarketplaceViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceCell",
                                                             for: indexPath) as? MarketplaceCollectionViewCell else {
-            return UICollectionViewCell()
+                                                                return UICollectionViewCell()
         }
         
         cell.configure(with: MarketplaceManager.sales[indexPath.row])
         
         return cell
     }
+}
+
+extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
+  //1
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //2
+    let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+    let availableWidth = view.frame.width - paddingSpace
+    let widthPerItem = availableWidth / itemsPerRow
+    
+    return CGSize(width: widthPerItem, height: widthPerItem)
+  }
+  
+  //3
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      insetForSectionAt section: Int) -> UIEdgeInsets {
+    return sectionInsets
+  }
+  
+  // 4
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return sectionInsets.left
+  }
 }

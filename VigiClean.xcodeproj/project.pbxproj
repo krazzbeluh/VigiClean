@@ -98,6 +98,8 @@
 		94DF29FE23C8EC07006D6CAE /* MarketplaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29FD23C8EC07006D6CAE /* MarketplaceManager.swift */; };
 		94DF2A0023C8EC6F006D6CAE /* Sale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF29FF23C8EC6F006D6CAE /* Sale.swift */; };
 		94DF2A0223C90B36006D6CAE /* MarketplaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF2A0123C90B36006D6CAE /* MarketplaceCollectionViewCell.swift */; };
+		94DF2A0523CA3614006D6CAE /* MarketplaceCellViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF2A0423CA3614006D6CAE /* MarketplaceCellViewPresenter.swift */; };
+		94DF2A0723CA3620006D6CAE /* MarketplaceCellContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF2A0623CA3620006D6CAE /* MarketplaceCellContract.swift */; };
 		94EB57752372D8B800582990 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57742372D8B800582990 /* DashboardViewController.swift */; };
 		94EB57772372DB1E00582990 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB57762372DB1E00582990 /* ScannerViewController.swift */; };
 		94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0A0272370A1CA00037210 /* AppDelegate.swift */; };
@@ -210,6 +212,8 @@
 		94DF29FD23C8EC07006D6CAE /* MarketplaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceManager.swift; sourceTree = "<group>"; };
 		94DF29FF23C8EC6F006D6CAE /* Sale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sale.swift; sourceTree = "<group>"; };
 		94DF2A0123C90B36006D6CAE /* MarketplaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCollectionViewCell.swift; sourceTree = "<group>"; };
+		94DF2A0423CA3614006D6CAE /* MarketplaceCellViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCellViewPresenter.swift; sourceTree = "<group>"; };
+		94DF2A0623CA3620006D6CAE /* MarketplaceCellContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCellContract.swift; sourceTree = "<group>"; };
 		94EB57742372D8B800582990 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		94EB57762372DB1E00582990 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		94F0A0242370A1CA00037210 /* VigiClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VigiClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -489,7 +493,6 @@
 				94F0A02D2370A1CA00037210 /* Main.storyboard */,
 				94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */,
 				94DF29EF23C63A34006D6CAE /* ObjectTableViewCell.swift */,
-				94DF2A0123C90B36006D6CAE /* MarketplaceCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -502,6 +505,16 @@
 				94DF29F523C8D270006D6CAE /* MarketplaceViewController.swift */,
 			);
 			path = Marketplace;
+			sourceTree = "<group>";
+		};
+		94DF2A0323CA35DE006D6CAE /* MarketplaceCell */ = {
+			isa = PBXGroup;
+			children = (
+				94DF2A0623CA3620006D6CAE /* MarketplaceCellContract.swift */,
+				94DF2A0423CA3614006D6CAE /* MarketplaceCellViewPresenter.swift */,
+				94DF2A0123C90B36006D6CAE /* MarketplaceCollectionViewCell.swift */,
+			);
+			path = MarketplaceCell;
 			sourceTree = "<group>";
 		};
 		94F0A01B2370A1CA00037210 = {
@@ -545,6 +558,7 @@
 				94D20952239EBD3B0089759B /* ScoreView */,
 				94DF29E723C62864006D6CAE /* Employee */,
 				94DF29F823C8D2D7006D6CAE /* Marketplace */,
+				94DF2A0323CA35DE006D6CAE /* MarketplaceCell */,
 				94BE5AA02370A6C000CE3060 /* Supporting Files */,
 			);
 			path = VigiClean;
@@ -767,6 +781,7 @@
 				9402E9A3239A8EF80070E910 /* BasePresenter.swift in Sources */,
 				94DF2A0023C8EC6F006D6CAE /* Sale.swift in Sources */,
 				94DF29F623C8D270006D6CAE /* MarketplaceViewController.swift in Sources */,
+				94DF2A0723CA3620006D6CAE /* MarketplaceCellContract.swift in Sources */,
 				94DF29FC23C8D301006D6CAE /* MarketplaceViewPresenter.swift in Sources */,
 				94D20954239EBD590089759B /* ScoreViewPresenter.swift in Sources */,
 				94D20956239EBD9D0089759B /* ScoreContracts.swift in Sources */,
@@ -796,6 +811,7 @@
 				94CDC9AC237C35FC003295AD /* SignInViewPresenter.swift in Sources */,
 				94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */,
 				94CDC9B0237C48F9003295AD /* WelcomeViewController.swift in Sources */,
+				94DF2A0523CA3614006D6CAE /* MarketplaceCellViewPresenter.swift in Sources */,
 				94F0A0282370A1CA00037210 /* AppDelegate.swift in Sources */,
 				94BA1EE8238C223500FE19A1 /* AttachEmailViewPresenter.swift in Sources */,
 				94BA1EEC238E696800FE19A1 /* SignUpContracts.swift in Sources */,

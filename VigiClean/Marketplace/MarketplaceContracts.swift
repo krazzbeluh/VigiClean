@@ -10,7 +10,9 @@ import Foundation
 
 protocol MarketplaceViewPresenter {
     init(view: MarketplaceView)
+    func getScore()
 }
 
 protocol MarketplaceView: class {
+    func setScoreLabel(to text: String)
 }
