@@ -75,7 +75,7 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     }
     
     @objc private func setAvatar() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { // TODO: Ask to Nicolas
             let user = VigiCleanUser.currentUser
             
             guard let image = user.avatar else {

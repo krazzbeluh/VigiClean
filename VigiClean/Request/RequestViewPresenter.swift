@@ -14,7 +14,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
     private var accountManager = AccountManager()
     
     var employeeMode = false
-    var isEmployee = false
+    var isUserEmployedAtObjectOrganization = false
     
     func switchEmployeeMode(to employeeMode: Bool) {
         self.employeeMode = employeeMode
@@ -63,7 +63,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             fatalError("No object found when preparing request") // TODO
         }
         
-        fetchRole()
+        isUserEmployedAtObjectOrganization = VigiCleanUser.currentUser.employedAt == object.organization
         
         view.configure(with: object)
     }
@@ -73,19 +73,6 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         self.view = view
         self.objectManager = objectManager
         self.accountManager = accountManager
-    }
-    
-    func fetchRole() {
-        accountManager.fetchRole { result in
-            switch result {
-            case .success(let isEmployee):
-                self.isEmployee = isEmployee
-            case .failure(let error):
-                print(error)
-            }
-            
-            self.view.roleFetched()
-        }
     }
     
     func prepareMap() {

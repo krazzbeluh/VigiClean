@@ -11,7 +11,6 @@ import MapKit
 import FirebaseFirestore
 
 class EmployeeViewController: UIViewController, EmployeeView {
-    // TODO: move to presenter
     var presenter: EmployeeViewPresenter!
     
     @IBOutlet weak var tableView: UITableView!

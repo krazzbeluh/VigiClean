@@ -40,11 +40,13 @@ class RequestViewController: UIViewController, RequestView {
         switchMode.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         
         presenter.prepareMap()
+        
+        roleFetched()
     }
     
     // MARK: Methods
     func roleFetched() {
-        let isEmployee = presenter.isEmployee
+        let isEmployee = presenter.isUserEmployedAtObjectOrganization
         self.employeeLabel.isHidden = !isEmployee
         self.switchMode.isHidden = !isEmployee
         self.switchMode.isOn = isEmployee

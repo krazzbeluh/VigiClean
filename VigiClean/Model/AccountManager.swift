@@ -105,33 +105,6 @@ class AccountManager {
         return credits
     }
     
-    func fetchRole(callback: @escaping (Result<Bool, Error>) -> Void) {
-        guard let uid = VigiCleanUser.currentUser.user?.uid else {
-            callback(.failure(UAccountError.userNotLoggedIn))
-            return
-        }
-        
-        database.collection(FirestoreCollection.user.rawValue).document(uid).getDocument { document, error in
-            if let error = error {
-                let errCode = ErrorHandler().convertToFirestoreError(error)
-                callback(.failure(errCode!))
-            }
-            
-            guard let document = document, document.exists else {
-                callback(.failure(FirebaseInterfaceError.documentDoesNotExists))
-                return
-            }
-            
-            guard let data = document.data(),
-                data[FirestoreCollection.FirestoreField.employedAt.rawValue] as? String != nil else { // TODO
-                    callback(.failure(FirebaseInterfaceError.unableToDecodeData))
-                    return
-            }
-            
-            callback(.success(true))
-        }
-    }
-    
     func getAvatar(callback: @escaping ((Result<Data, Error>) -> Void)) {
         if let avatar = VigiCleanUser.currentUser.avatar {
             callback(.success(avatar))
