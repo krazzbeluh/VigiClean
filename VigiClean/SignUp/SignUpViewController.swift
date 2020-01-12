@@ -59,7 +59,7 @@ class SignUpViewController: UIViewController, SignUpView {
     
     // MARK: Segues
     func userSignedUp() {
-        performSegue(withIdentifier: "segueToDashboard", sender: nil)
+        performSegue(withIdentifier: SegueType.dashboard.rawValue, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

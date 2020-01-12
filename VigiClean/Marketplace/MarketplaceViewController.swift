@@ -38,7 +38,7 @@ extension MarketplaceViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceCell",
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.marketPlace.rawValue,
                                                             for: indexPath) as? MarketplaceCollectionViewCell else {
                                                                 return UICollectionViewCell()
         }

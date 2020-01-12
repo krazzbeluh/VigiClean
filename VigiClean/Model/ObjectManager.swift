@@ -29,7 +29,7 @@ class ObjectManager {
     }
     
     func getObject(code: String, callback: @escaping (Result<Object, Error>) -> Void) {
-        let docRef = database.collection("Object").document(code)
+        let docRef = database.collection(FirestoreCollection.object.rawValue).document(code)
         docRef.getDocument { (document, error) in
             guard let document = document, document.exists else {
                 let errCode: FirestoreErrorCode! = ErrorHandler().convertToFirestoreError(error!)
@@ -57,10 +57,10 @@ class ObjectManager {
     }
     
     private func getObject(from data: [String: Any], with code: String) throws -> Object {
-        guard let coords = data["coords"] as? GeoPoint,
-            let organization = data["organization"] as? String,
-            let type = data["type"] as? String,
-            let name = data["name"] as? String else {
+        guard let coords = data[FirestoreCollection.FirestoreField.coords.rawValue] as? GeoPoint,
+            let organization = data[FirestoreCollection.FirestoreField.organization.rawValue] as? String,
+            let type = data[FirestoreCollection.FirestoreField.type.rawValue] as? String,
+            let name = data[FirestoreCollection.FirestoreField.name.rawValue] as? String else {
                 throw FirebaseInterfaceError.unableToDecodeData
         }
         
@@ -92,7 +92,7 @@ class ObjectManager {
     }
     
     private func getActions(for type: String, callback: @escaping (Result<[Action], Error>) -> Void) {
-        let docRef = database.collection("actions").document(type)
+        let docRef = database.collection(FirestoreCollection.actions.rawValue).document(type)
         docRef.getDocument { document, error in
             if let error = error {
                 let errCode = ErrorHandler().convertToFirestoreError(error)
@@ -119,7 +119,7 @@ class ObjectManager {
     }
     
     private func getEmployeeActions(for type: String, callback: @escaping (Result<[Action], Error>) -> Void) {
-        let docRef = database.collection("performedActions").document(type)
+        let docRef = database.collection(FirestoreCollection.performedActions.rawValue).document(type)
         docRef.getDocument { document, error in
             if let error = error {
                 let errCode = ErrorHandler().convertToFirestoreError(error)
@@ -151,12 +151,12 @@ class ObjectManager {
             return
         }
         
-        database.collection("Request").addDocument(data: [
-            "code": object.code,
-            "action": action.index,
-            "date": Date(),
-            "user": uid,
-            "isValidOperation": NSNull()
+        database.collection(FirestoreCollection.request.rawValue).addDocument(data: [
+            FirestoreCollection.FirestoreField.code.rawValue: object.code,
+            FirestoreCollection.FirestoreField.action.rawValue: action.index,
+            FirestoreCollection.FirestoreField.date.rawValue: Date(),
+            FirestoreCollection.FirestoreField.user.rawValue: uid,
+            FirestoreCollection.FirestoreField.isValidOperation.rawValue: NSNull()
         ]) { error in
             guard let error = error else {
                 callback(nil)
@@ -186,8 +186,9 @@ class ObjectManager {
             return
         }
         
-        let objectRef = database.collection("Object")
-        let query = objectRef.whereField("organization", isEqualTo: organization)
+        let objectRef = database.collection(FirestoreCollection.object.rawValue)
+        let query = objectRef.whereField(FirestoreCollection.FirestoreField.organization.rawValue,
+                                         isEqualTo: organization)
         
         query.getDocuments { (querySnapshot, error) in
             guard let objectSnapshot = querySnapshot else {
@@ -206,9 +207,9 @@ class ObjectManager {
                 docIDs.append(objectDocument.documentID)
             }
             
-            let requestRef = self.database.collection("Request")
-                .whereField("code", in: docIDs)
-                .whereField("isValidOperation", isEqualTo: NSNull())
+            let requestRef = self.database.collection(FirestoreCollection.request.rawValue)
+                .whereField(FirestoreCollection.FirestoreField.code.rawValue, in: docIDs)
+                .whereField(FirestoreCollection.FirestoreField.isValidOperation.rawValue, isEqualTo: NSNull())
             
             requestRef.getDocuments { (querySnapshot, error) in
                 guard let requestSnapshot = querySnapshot else {
@@ -228,7 +229,7 @@ class ObjectManager {
                 print(requestSnapshot.documents.count)
                 
                 for request in requestSnapshot.documents {
-                    if let code = request.data()["code"] as? String {
+                    if let code = request.data()[FirestoreCollection.FirestoreField.code.rawValue] as? String {
                         if !codes.contains(code) {
                             codes.append(code)
                         }

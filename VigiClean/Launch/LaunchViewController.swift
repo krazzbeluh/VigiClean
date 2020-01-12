@@ -23,7 +23,7 @@ class LaunchViewController: UIViewController, LaunchView {
         if presenter.isUserConnected {
             presenter.getAvatar()
         } else {
-            performSegue(withIdentifier: "segueToWelcome", sender: nil)
+            performSegue(withIdentifier: SegueType.welcome.rawValue, sender: nil)
         }
     }
     
@@ -34,6 +34,6 @@ class LaunchViewController: UIViewController, LaunchView {
     }
     
     func gottenAvatar() {
-        performSegue(withIdentifier: "segueToDashboard", sender: nil)
+        performSegue(withIdentifier: SegueType.dashboard.rawValue, sender: nil)
     }
 }

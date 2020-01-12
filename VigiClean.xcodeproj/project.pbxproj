@@ -58,6 +58,7 @@
 		94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */; };
 		94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */; };
 		94A5C62423B4171100752182 /* AccountManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5C62323B4171100752182 /* AccountManagerFake.swift */; };
+		94AF488123CB6B5300CA2301 /* FirebaseInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF488023CB6B5300CA2301 /* FirebaseInterfaces.swift */; };
 		94BA1EE6238C213E00FE19A1 /* AttachEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */; };
 		94BA1EE8238C223500FE19A1 /* AttachEmailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */; };
 		94BA1EEA238DA11C00FE19A1 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */; };
@@ -171,6 +172,7 @@
 		94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReferenceFake.swift; sourceTree = "<group>"; };
 		94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentReferenceFake.swift; sourceTree = "<group>"; };
 		94A5C62323B4171100752182 /* AccountManagerFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountManagerFake.swift; path = "VigiCleanTests/Mock+Class/VigiClean/Model/AccountManagerFake.swift"; sourceTree = SOURCE_ROOT; };
+		94AF488023CB6B5300CA2301 /* FirebaseInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInterfaces.swift; sourceTree = "<group>"; };
 		94BA1EE5238C213E00FE19A1 /* AttachEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AttachEmailViewController.swift; path = VigiClean/AttachEmail/AttachEmailViewController.swift; sourceTree = SOURCE_ROOT; };
 		94BA1EE7238C223500FE19A1 /* AttachEmailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewPresenter.swift; sourceTree = "<group>"; };
 		94BA1EE9238DA11C00FE19A1 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				94DC7C1F239ADA0E00C414DA /* ObjectManager.swift */,
 				94CDC9AD237C3AF2003295AD /* AccountManager.swift */,
 				9451DE4923AE70F10097658C /* ErrorHandler.swift */,
+				94AF488023CB6B5300CA2301 /* FirebaseInterfaces.swift */,
 				9402CEFA23ABB3C000C2D671 /* VigiCleanUser.swift */,
 			);
 			path = Model;
@@ -803,6 +806,7 @@
 				94BA1F172395D4A900FE19A1 /* Object.swift in Sources */,
 				9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */,
 				94D2095A239EE14D0089759B /* Color.swift in Sources */,
+				94AF488123CB6B5300CA2301 /* FirebaseInterfaces.swift in Sources */,
 				94CDC9AE237C3AF2003295AD /* AccountManager.swift in Sources */,
 				94BA1F082395509600FE19A1 /* ScannerViewPresenter.swift in Sources */,
 				94EB57752372D8B800582990 /* DashboardViewController.swift in Sources */,

@@ -39,7 +39,7 @@ extension EmployeeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ObjectCell",
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellType.object.rawValue,
                                                        for: indexPath) as? ObjectTableViewCell else {
             return UITableViewCell()
         }

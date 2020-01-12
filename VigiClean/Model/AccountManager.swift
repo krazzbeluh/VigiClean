@@ -37,9 +37,9 @@ class AccountManager {
                             named: String?,
                             completion: @escaping (Error?) -> Void) {
         
-        database.collection("User").document(user).setData(
-            ["credits": 0,
-             "username": named ?? NSNull()]) { error in
+        database.collection(FirestoreCollection.user.rawValue).document(user).setData(
+            [FirestoreCollection.FirestoreField.credits.rawValue: 0,
+             FirestoreCollection.FirestoreField.username.rawValue: named ?? NSNull()]) { error in
                 guard let error = error else {
                     completion(nil)
                     return
@@ -54,7 +54,7 @@ class AccountManager {
             return
         }
         
-        database.collection("User").document(user.uid)
+        database.collection(FirestoreCollection.user.rawValue).document(user.uid)
             .addSnapshotListener { (documentSnapshot, error) in
                 guard let document = documentSnapshot else {
                     print("Error fetching document: \(error!)")
@@ -88,15 +88,15 @@ class AccountManager {
     }
     
     func getUserInfos(in data: [String: Any]) throws -> Int {
-        if let username = data["username"] as? String {
+        if let username = data[FirestoreCollection.FirestoreField.username.rawValue] as? String {
             VigiCleanUser.currentUser.username = username
         }
         
-        if let employedAt = data["employedAt"] as? String {
+        if let employedAt = data[FirestoreCollection.FirestoreField.employedAt.rawValue] as? String {
             VigiCleanUser.currentUser.employedAt = employedAt
         }
         
-        guard let credits = data["credits"] as? Int else {
+        guard let credits = data[FirestoreCollection.FirestoreField.credits.rawValue] as? Int else {
             throw FirebaseInterfaceError.documentDoesNotExists
         }
         
@@ -111,7 +111,7 @@ class AccountManager {
             return
         }
         
-        database.collection("User").document(uid).getDocument { document, error in
+        database.collection(FirestoreCollection.user.rawValue).document(uid).getDocument { document, error in
             if let error = error {
                 let errCode = ErrorHandler().convertToFirestoreError(error)
                 callback(.failure(errCode!))
@@ -123,12 +123,12 @@ class AccountManager {
             }
             
             guard let data = document.data(),
-                let role = data["isMaintainer"] as? Bool else {
+                data[FirestoreCollection.FirestoreField.employedAt.rawValue] as? String != nil else { // TODO
                     callback(.failure(FirebaseInterfaceError.unableToDecodeData))
                     return
             }
             
-            callback(.success(role))
+            callback(.success(true))
         }
     }
     

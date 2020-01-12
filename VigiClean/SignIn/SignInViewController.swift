@@ -51,7 +51,7 @@ class SignInViewController: UIViewController, SignInView {
     
     func userSignedIn() {
         switchActivityIndicator(hidden: true)
-        performSegue(withIdentifier: "segueToDashboard", sender: nil)
+        performSegue(withIdentifier: SegueType.dashboard.rawValue, sender: nil)
     }
     
     func switchActivityIndicator(hidden: Bool) {

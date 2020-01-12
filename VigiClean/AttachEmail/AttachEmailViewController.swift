@@ -56,7 +56,7 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
     }
     
     func updatedPseudo() {
-        performSegue(withIdentifier: "unwindToLaunch", sender: self)
+        performSegue(withIdentifier: SegueType.launchUnwind.rawValue, sender: self)
     }
     
     func switchActivityIndicator(hidden: Bool) {

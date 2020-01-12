@@ -47,6 +47,13 @@ enum FirebaseInterfaceError: Error {
     case documentDoesNotExists, unableToDecodeData, unableToDecodeError
 }
 
+enum AlertStrings: String {
+    case ok = "OK" // swiftlint:disable:this identifier_name
+    case error = "Erreur !"
+    case cancel = "Annuler"
+    case copy = "Copier"
+}
+
 extension AuthErrorCode: Error {}
 extension StorageErrorCode: Error {}
 extension FunctionsErrorCode: Error {}

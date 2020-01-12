@@ -104,8 +104,8 @@ struct VigiCleanUser {
             if let error = error {
                 completion(error)
             } else {
-                self.database.collection("User").document(uid).updateData([
-                    "username": newPseudo
+                self.database.collection(FirestoreCollection.user.rawValue).document(uid).updateData([
+                    FirestoreCollection.FirestoreField.username.rawValue: newPseudo
                 ]) { error in
                     if let error = error {
                         let errCode = ErrorHandler().convertToFirestoreError(error)

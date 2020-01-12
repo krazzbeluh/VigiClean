@@ -14,8 +14,8 @@ protocol BaseView: class {
 
 extension UIViewController: BaseView {
     func displayError(message: String) { // sends alert
-        let alertVC = UIAlertController(title: "Erreur !", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        let alertVC = UIAlertController(title: AlertStrings.error.rawValue, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: AlertStrings.ok.rawValue, style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
 }
@@ -43,4 +43,24 @@ extension UIViewController: UNUserNotificationCenterDelegate {
         }
         completionHandler()
     }
+}
+
+enum SegueType: String {
+    case welcome = "segueToWelcome"
+    case dashboard = "segueToDashboard"
+    case marketplace = "segueToMarketPlace"
+    case congrats = "segueToCongrats"
+    case request = "segueToRequest"
+    case launchUnwind = "unwindToLaunch"
+}
+
+enum CellType: String {
+    case attachEmail = "AttachEmailCell"
+    case disconnect = "DisconnectCell"
+    case changeAvatar = "changeAvatarCell"
+    case changeUsername = "changeUsernameCell"
+    case changeEmail = "changeEmailCell"
+    case changePassword = "ChangePasswordCell"
+    case object = "ObjectCell"
+    case marketPlace = "MarketplaceCell"
 }

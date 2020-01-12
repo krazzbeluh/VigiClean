@@ -69,7 +69,7 @@ class RequestViewController: UIViewController, RequestView {
         loading(grayed: false)
         
         if !employeeMode {
-            performSegue(withIdentifier: "segueToCongrats", sender: self)
+            performSegue(withIdentifier: SegueType.congrats.rawValue, sender: self)
         }
     }
     

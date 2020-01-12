@@ -30,9 +30,13 @@ class ProfileViewController: UIViewController, ProfileView {
     
     private var userActions: [String] {
         if presenter.isConnectedAnonymously {
-            return ["AttachEmailCell", "DisconnectCell"]
+            return [CellType.attachEmail.rawValue, CellType.disconnect.rawValue]
         } else {
-            return ["changeAvatarCell", "changeUsernameCell", "changeEmailCell", "ChangePasswordCell", "DisconnectCell"]
+            return [CellType.changeAvatar.rawValue,
+                    CellType.changeUsername.rawValue,
+                    CellType.changeEmail.rawValue,
+                    CellType.changePassword.rawValue,
+                    CellType.disconnect.rawValue]
         }
     }
     
@@ -94,14 +98,14 @@ class ProfileViewController: UIViewController, ProfileView {
     }
     
     func userSignedOut() {
-        performSegue(withIdentifier: "unwindToLaunch", sender: self)
+        performSegue(withIdentifier: SegueType.launchUnwind.rawValue, sender: self)
     }
     
     func passwordChanged() {
         let alert = UIAlertController(title: "Succès !",
                                       message: "Votre mot de passe a été modifié avec succès !",
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: AlertStrings.ok.rawValue, style: .default, handler: { (_) in
             self.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
@@ -117,7 +121,7 @@ class ProfileViewController: UIViewController, ProfileView {
                                             handler(true)
         }))
         
-        alertVC.addAction(UIAlertAction(title: "Annuler",
+        alertVC.addAction(UIAlertAction(title: AlertStrings.cancel.rawValue,
                                         style: .cancel,
                                         handler: { _ in
                                             handler(false)
@@ -148,13 +152,13 @@ class ProfileViewController: UIViewController, ProfileView {
             textField.isSecureTextEntry = true
         }
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: AlertStrings.ok.rawValue, style: .default, handler: { [weak alert] (_) in
             let changeId = alert?.textFields?[0].text
             let pass = alert?.textFields?[1].text
             completion(changeId, pass)
         }))
         
-        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: AlertStrings.cancel.rawValue, style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -182,11 +186,11 @@ class ProfileViewController: UIViewController, ProfileView {
             textField.isSecureTextEntry = true
         }
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: AlertStrings.ok.rawValue, style: .default, handler: { [weak alert] (_) in
             completion(alert?.textFields?[0].text, alert?.textFields?[1].text, alert?.textFields?[2].text)
         }))
         
-        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: AlertStrings.cancel.rawValue, style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -200,7 +204,7 @@ class ProfileViewController: UIViewController, ProfileView {
             textField.isSecureTextEntry = true
         }
         
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: AlertStrings.ok.rawValue, style: .default, handler: { [weak alert] (_) in
             guard let text = alert?.textFields?.first?.text,
                 text != "" else {
                     completion(nil)
@@ -210,7 +214,7 @@ class ProfileViewController: UIViewController, ProfileView {
             completion(text)
         }))
         
-        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: { (_) in
+        alert.addAction(UIAlertAction(title: AlertStrings.cancel.rawValue, style: .cancel, handler: { (_) in
             completion(nil)
         }))
         

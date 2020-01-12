@@ -41,8 +41,8 @@ class MarketplaceCollectionViewCell: UICollectionViewCell, MarketplaceCellView {
             title: "Votre récompense :",
             message: "Voici votre code promotionnel à utiliser chez notre partenaire : \n\(code)",
             preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        alertVC.addAction(UIAlertAction(title: "Copier", style: .default, handler: { (_) in
+        alertVC.addAction(UIAlertAction(title: AlertStrings.ok.rawValue, style: .default, handler: nil))
+        alertVC.addAction(UIAlertAction(title: AlertStrings.copy.rawValue, style: .default, handler: { (_) in
             UIPasteboard.general.string = code
         }))
         

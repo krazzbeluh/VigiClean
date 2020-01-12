@@ -53,7 +53,7 @@ class DashboardViewController: UIViewController, DashboardView {
     func salesGotten() {
         displayLoadView(false)
         
-        performSegue(withIdentifier: "segueToMarketplace", sender: self)
+        performSegue(withIdentifier: SegueType.marketplace.rawValue, sender: self)
     }
     
     private func displayLoadView(_ displayed: Bool) {

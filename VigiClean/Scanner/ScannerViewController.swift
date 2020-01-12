@@ -100,7 +100,7 @@ class ScannerViewController: UIViewController, ScannerView {
     
     func validObjectFound() {
         displayLoadViews(false)
-        performSegue(withIdentifier: "segueToRequest", sender: self)
+        performSegue(withIdentifier: SegueType.request.rawValue, sender: self)
     }
     
     func invalidCodeFound(error: Error) {
@@ -115,7 +115,7 @@ class ScannerViewController: UIViewController, ScannerView {
     
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "segueToRequest" else {
+        guard segue.identifier == SegueType.request.rawValue else {
             return
         }
         

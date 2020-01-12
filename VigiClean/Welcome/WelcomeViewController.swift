@@ -35,7 +35,7 @@ class WelcomeViewController: UIViewController, WelcomeView {
     // MARK: Methods
     func performSegue() {
         switchActivityIndicator(hidden: true)
-        performSegue(withIdentifier: "segueToDashboard", sender: nil)
+        performSegue(withIdentifier: SegueType.dashboard.rawValue, sender: nil)
     }
     
     func switchActivityIndicator(hidden: Bool) {
@@ -44,7 +44,7 @@ class WelcomeViewController: UIViewController, WelcomeView {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "segueToDashboard" else {
+        guard segue.identifier == SegueType.dashboard.rawValue else {
             return
         }
         

@@ -25,8 +25,8 @@ class MarketplaceManager {
     }
     
     func getSales(completion: @escaping (Error?) -> Void) {
-        let docsRef = database.collection("Marketplace")
-            .order(by: "partner")
+        let docsRef = database.collection(FirestoreCollection.marketplace.rawValue)
+            .order(by: FirestoreCollection.FirestoreField.partner.rawValue)
         
         docsRef.getDocuments { (querySnapshot, error) in
             guard let querySnapshot = querySnapshot else {
@@ -66,7 +66,7 @@ class MarketplaceManager {
                 }
                 
                 guard let data = functionResult?.data as? [String: Any],
-                    let code = data["saleCode"] as? String else {
+                    let code = data[FunctionsFields.saleCode.rawValue] as? String else {
                         return
                 }
                 
@@ -75,16 +75,16 @@ class MarketplaceManager {
     }
     
     private func getData(data: [String: Any], with code: String) -> Sale? {
-        guard let title = data["title"] as? String,
-            let littleTitle = data["littleText"] as? String,
-            let partner = data["partner"] as? String,
-            let description = data["description"] as? String,
-            let imageString = data["image"] as? String,
+        guard let title = data[FirestoreCollection.FirestoreField.title.rawValue] as? String,
+            let littleTitle = data[FirestoreCollection.FirestoreField.littleText.rawValue] as? String,
+            let partner = data[FirestoreCollection.FirestoreField.partner.rawValue] as? String,
+            let description = data[FirestoreCollection.FirestoreField.description.rawValue] as? String,
+            let imageString = data[FirestoreCollection.FirestoreField.image.rawValue] as? String,
             let imageUrl = URL(string: imageString
                 .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""),
-            let urlString = data["url"] as? String,
+            let urlString = data[FirestoreCollection.FirestoreField.url.rawValue] as? String,
             let url = URL(string: urlString),
-            let price = data["price"] as? Int else {
+            let price = data[FirestoreCollection.FirestoreField.price.rawValue] as? Int else {
                 return nil
         }
         
