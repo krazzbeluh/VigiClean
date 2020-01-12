@@ -24,7 +24,7 @@ class SignInPresenter: BasePresenter, SignInViewPresenter {
     func signIn(email: String?, password: String?) {
         guard let email = email, let password = password, email != "", password != "" else {
             view.switchActivityIndicator(hidden: true)
-            view.displayError(message: convertError(AccountManager.UAccountError.emptyTextField))
+            view.displayError(message: convertError(UserError.nilInTextField))
             return
         }
         

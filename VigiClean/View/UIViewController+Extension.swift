@@ -43,9 +43,4 @@ extension UIViewController: UNUserNotificationCenterDelegate {
         }
         completionHandler()
     }
-    
-}
-
-enum UserError: Error {
-    case nilInTextField
 }

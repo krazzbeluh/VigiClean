@@ -85,7 +85,7 @@ class RequestViewController: UIViewController, RequestView {
         loading(grayed: true)
         
         guard let action = action.text, action != "" else {
-            displayError(message: presenter.convertError(ObjectManager.ObjectError.nilInTextField))
+            displayError(message: presenter.convertError(UserError.nilInTextField))
             return
         }
         

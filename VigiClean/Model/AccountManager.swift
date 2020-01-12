@@ -27,7 +27,7 @@ class AccountManager {
     private var storage = Storage.storage()
     
     enum UAccountError: Error {
-        case emptyTextField, notMatchingPassword, userDocumentNotCreated, unknownUID, noCreditsFound, userNotLoggedIn,
+        case notMatchingPassword, userDocumentNotCreated, userNotLoggedIn,
         userNotLoggedInWithEmail, notEnoughCredits
     }
     
@@ -248,7 +248,7 @@ class AccountManager {
         }
         
         guard let credits = data["credits"] as? Int else {
-            throw FirebaseInterface.FIRInterfaceError.documentDoesNotExists
+            throw FirebaseInterfaceError.documentDoesNotExists
         }
         
         AccountManager.currentUser.credits = credits
@@ -269,13 +269,13 @@ class AccountManager {
             }
             
             guard let document = document, document.exists else {
-                callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                callback(.failure(FirebaseInterfaceError.documentDoesNotExists))
                 return
             }
             
             guard let data = document.data(),
                 let role = data["isMaintainer"] as? Bool else {
-                    callback(.failure(FirebaseInterface.FIRInterfaceError.unableToDecodeData))
+                    callback(.failure(FirebaseInterfaceError.unableToDecodeData))
                     return
             }
             
@@ -299,7 +299,7 @@ class AccountManager {
                 guard let data = data,
                     error == nil else {
                         let errCode = ErrorHandler().convertToStorageError(error!)
-                        callback(.failure(errCode ?? FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                        callback(.failure(errCode ?? FirebaseInterfaceError.documentDoesNotExists))
                         return
                 }
                 

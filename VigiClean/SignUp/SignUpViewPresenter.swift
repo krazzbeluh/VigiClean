@@ -29,7 +29,7 @@ class SignUpPresenter: BasePresenter, SignUpViewPresenter {
             username != "", email != "",
             password != "",
             confirmPassword != "" else {
-                view.displayError(message: convertError(AccountManager.UAccountError.emptyTextField))
+                view.displayError(message: convertError(UserError.nilInTextField))
                 return
         }
         

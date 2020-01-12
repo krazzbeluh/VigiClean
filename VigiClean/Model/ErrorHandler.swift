@@ -35,6 +35,18 @@ class ErrorHandler {
     }
 }
 
+enum ScannerError: Error {
+    case scanNotSupported, invalidQRCode
+}
+
+enum UserError: Error {
+    case nilInTextField
+}
+
+enum FirebaseInterfaceError: Error {
+    case documentDoesNotExists, unableToDecodeData, unableToDecodeError
+}
+
 extension AuthErrorCode: Error {}
 extension StorageErrorCode: Error {}
 extension FunctionsErrorCode: Error {}

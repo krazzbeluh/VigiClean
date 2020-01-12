@@ -12,7 +12,7 @@ import FirebaseFunctions
 
 class ObjectManager {
     enum ObjectError: Error {
-        case unableToDecodeData, userNotLoggedIn, nilInTextField, noActionsInObject, actionNotFound, notEmployedUser
+        case unableToDecodeData, userNotLoggedIn, noActionsInObject, actionNotFound, notEmployedUser
     }
     
     private var database = Firestore.firestore()
@@ -39,7 +39,7 @@ class ObjectManager {
             }
             
             guard let data = document.data() else {
-                callback(.failure(FirebaseInterface.FIRInterfaceError.unableToDecodeData))
+                callback(.failure(FirebaseInterfaceError.unableToDecodeData))
                 return
             }
             
@@ -61,7 +61,7 @@ class ObjectManager {
             let organization = data["organization"] as? String,
             let type = data["type"] as? String,
             let name = data["name"] as? String else {
-                throw FirebaseInterface.FIRInterfaceError.unableToDecodeData
+                throw FirebaseInterfaceError.unableToDecodeData
         }
         
         return Object(coords: coords, organization: organization, type: type, name: name, code: code)
@@ -102,7 +102,7 @@ class ObjectManager {
             
             guard let document = document, document.exists,
                 let data = document.data() as? [String: String] else {
-                    callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                    callback(.failure(FirebaseInterfaceError.documentDoesNotExists))
                     return
             }
             
@@ -129,7 +129,7 @@ class ObjectManager {
             
             guard let document = document, document.exists,
                 let data = document.data() as? [String: String]else {
-                    callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                    callback(.failure(FirebaseInterfaceError.documentDoesNotExists))
                     return
             }
             
@@ -195,7 +195,7 @@ class ObjectManager {
                     callback(.failure(ErrorHandler().convertToFirestoreError(error)))
                 }
                 
-                callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                callback(.failure(FirebaseInterfaceError.documentDoesNotExists))
                 
                 return
             }
@@ -217,7 +217,7 @@ class ObjectManager {
                         return
                     }
                     
-                    callback(.failure(FirebaseInterface.FIRInterfaceError.documentDoesNotExists))
+                    callback(.failure(FirebaseInterfaceError.documentDoesNotExists))
                     
                     return
                 }

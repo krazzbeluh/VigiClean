@@ -35,7 +35,7 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
         if code.starts(with: "https://www.vigiclean.com/") {
             view.correctCodeFound()
         } else {
-            view.invalidCodeFound(error: Scanner.ScannerError.invalidQRCode)
+            view.invalidCodeFound(error: ScannerError.invalidQRCode)
         }
     }
     

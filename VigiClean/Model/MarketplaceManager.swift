@@ -33,7 +33,7 @@ class MarketplaceManager {
                 if let error = error {
                     completion(ErrorHandler().convertToFirestoreError(error))
                 } else {
-                    completion(FirebaseInterface.FIRInterfaceError.documentDoesNotExists)
+                    completion(FirebaseInterfaceError.documentDoesNotExists)
                 }
                 return
             }
