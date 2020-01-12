@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: get objects and their types to do a diagram with good and bad requests. The number is the user's credit
 class ScoreView: UIView, ScoreViewContract {
     var presenter: ScoreViewPresenterContract!
     

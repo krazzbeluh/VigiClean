@@ -54,7 +54,7 @@ class MarketplaceManager {
     }
     
     func buySale(sale: Sale, complection: @escaping (Result<String, Error>) -> Void) {
-        guard let uid = AccountManager.currentUser.user?.uid else {
+        guard let uid = VigiCleanUser.currentUser.user?.uid else {
             complection(.failure(AccountManager.UAccountError.userNotLoggedIn))
             return
         }

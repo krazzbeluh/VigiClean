@@ -12,18 +12,18 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
     private var accountManager = AccountManager()
     
     var isConnectedAnonymously: Bool {
-        return !accountManager.isConnectedWithEmail
+        return !VigiCleanUser.currentUser.isConnectedWithEmail
     }
     
     weak var view: ProfileView!
     
     required init(view: ProfileView) {
         self.view = view
-        if accountManager.isConnectedWithEmail {
-            view.display(username: AccountManager.currentUser.username ?? "")
-            view.display(email: AccountManager.currentUser.user?.email ?? "")
+        if VigiCleanUser.currentUser.isConnectedWithEmail {
+            view.display(username: VigiCleanUser.currentUser.username ?? "")
+            view.display(email: VigiCleanUser.currentUser.user?.email ?? "")
             
-            guard let image = AccountManager.currentUser.avatar else {
+            guard let image = VigiCleanUser.currentUser.avatar else {
                 return
             }
             
@@ -37,7 +37,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
     }
     
     func signOut() {
-        accountManager.signOut { error in
+        VigiCleanUser.currentUser.signOut { error in
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
             } else {
@@ -54,7 +54,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
                 return
         }
         
-        accountManager.updatePseudo(to: newPseudo, with: password) { error in
+        VigiCleanUser.currentUser.updatePseudo(to: newPseudo, with: password) { error in
             guard let error = error else {
                 self.view.display(username: newPseudo)
                 return
@@ -72,7 +72,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
                 return
         }
         
-        accountManager.updateEmail(to: newEmail, with: password) { error in
+        VigiCleanUser.currentUser.updateEmail(to: newEmail, with: password) { error in
             guard let error = error else {
                 self.view.display(email: newEmail)
                 return
@@ -104,7 +104,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
                 return
         }
         
-        accountManager.updatePassword(to: newPassword, from: password) { (error) in
+        VigiCleanUser.currentUser.updatePassword(to: newPassword, from: password) { (error) in
             guard let error = error else {
                 self.view.passwordChanged()
                 return

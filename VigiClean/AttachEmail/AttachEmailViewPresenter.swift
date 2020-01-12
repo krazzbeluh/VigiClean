@@ -40,11 +40,11 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
         
         view.switchActivityIndicator(hidden: false)
         
-        accountManager.attachEmail(email: email, password: password, completion: { error in
+        VigiCleanUser.currentUser.attachEmail(email: email, password: password, completion: { error in
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
             } else {
-                self.accountManager.updatePassword(password: password) { (error) in
+                VigiCleanUser.currentUser.updatePassword(password: password) { (error) in
                     if let error = error {
                         self.view.displayError(message: self.convertError(error))
                     } else {
@@ -66,7 +66,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
                 return
         }
         
-        accountManager.updatePseudo(to: username, with: password) { (error) in
+        VigiCleanUser.currentUser.updatePseudo(to: username, with: password) { (error) in
             guard let error = error else {
                 self.view.updatedPseudo()
                 return

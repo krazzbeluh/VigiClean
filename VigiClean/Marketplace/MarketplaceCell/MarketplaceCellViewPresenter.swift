@@ -21,7 +21,7 @@ class MarketplaceCellPresenter: BasePresenter, MarketplaceCellViewPresenter {
     private let marketplaceManager: MarketplaceManager
     
     func buySale() {
-        guard sale.price <= AccountManager.currentUser.credits else {
+        guard sale.price <= VigiCleanUser.currentUser.credits else {
             view.sendAlert(with: convertError(AccountManager.UAccountError.notEnoughCredits))
             return
         }

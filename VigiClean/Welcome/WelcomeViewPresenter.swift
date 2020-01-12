@@ -22,7 +22,7 @@ class WelcomePresenter: BasePresenter, WelcomeViewPresenter {
     }
     
     func signIn() {
-        accountManager.anonymousSignIn { error in
+        VigiCleanUser.currentUser.anonymousSignIn { error in
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
                 return

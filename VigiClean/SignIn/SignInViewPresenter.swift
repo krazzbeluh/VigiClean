@@ -30,7 +30,7 @@ class SignInPresenter: BasePresenter, SignInViewPresenter {
         
         view.switchActivityIndicator(hidden: false)
         
-        accountManager.signIn(email: email, password: password) { error in
+        VigiCleanUser.currentUser.signIn(email: email, password: password) { error in
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
                 return

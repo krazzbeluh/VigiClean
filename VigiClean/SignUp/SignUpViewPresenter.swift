@@ -40,7 +40,7 @@ class SignUpPresenter: BasePresenter, SignUpViewPresenter {
         
         view.switchActivityIndicator(hidden: false)
         
-        accountManager.signUp(username: username, email: email, password: password) { error in
+        VigiCleanUser.currentUser.signUp(username: username, email: email, password: password) { error in
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
                 self.view.switchActivityIndicator(hidden: true)

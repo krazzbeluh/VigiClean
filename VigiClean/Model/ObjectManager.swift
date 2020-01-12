@@ -146,7 +146,7 @@ class ObjectManager {
     }
     
     func sendRequest(for object: Object, with action: Action, callback: @escaping (Error?) -> Void) {
-        guard let uid = AccountManager.currentUser.user?.uid else {
+        guard let uid = VigiCleanUser.currentUser.user?.uid else {
             callback(ObjectError.userNotLoggedIn)
             return
         }
@@ -181,7 +181,7 @@ class ObjectManager {
     }
     
     func getObjectList(callback: @escaping (Result<[Object], Error>) -> Void) {
-        guard let organization = AccountManager.currentUser.employedAt else {
+        guard let organization = VigiCleanUser.currentUser.employedAt else {
             callback(.failure(ObjectError.notEmployedUser))
             return
         }

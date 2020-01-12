@@ -40,7 +40,7 @@ class DashboardViewController: UIViewController, DashboardView {
     // MARK: Methods
     @objc func setAvatar() {
         DispatchQueue.main.async { // TODO: Ask to Nicolas
-            let user = AccountManager.currentUser
+            let user = VigiCleanUser.currentUser
             
             guard let image = user.avatar else {
                 return

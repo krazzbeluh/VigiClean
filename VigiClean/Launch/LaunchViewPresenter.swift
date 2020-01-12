@@ -14,7 +14,7 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     private let accountManager = AccountManager()
     
     var isUserConnected: Bool {
-        return accountManager.isConnected
+        return VigiCleanUser.currentUser.isConnected
     }
     
     required init(view: LaunchView) {

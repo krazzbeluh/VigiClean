@@ -24,7 +24,7 @@ class MarketplacePresenter: MarketplaceViewPresenter {
     
     @objc func setScore() {
         DispatchQueue.main.async { // TODO: Ask to Nicolas
-            self.view.setScoreLabel(to: "\(AccountManager.currentUser.credits) points")
+            self.view.setScoreLabel(to: "\(VigiCleanUser.currentUser.credits) points")
         }
     }
 }

@@ -27,7 +27,7 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     }
     
     func getAvatar() {
-        if AccountManager.currentUser.avatar != nil {
+        if VigiCleanUser.currentUser.avatar != nil {
             view.setAvatar()
         } else {
             accountManager.getAvatar { (result) in
