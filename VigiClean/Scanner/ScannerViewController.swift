@@ -16,6 +16,10 @@ class ScannerViewController: UIViewController, ScannerView {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    var isAlreadyPresentingAlert: Bool {
+        return presentedViewController != nil
+    }
+    
     // MARK: Outlets
     @IBOutlet weak var scannerView: UIView!
     @IBOutlet weak var qrScope: UIView!
@@ -82,7 +86,6 @@ class ScannerViewController: UIViewController, ScannerView {
     }
     
     // MARK: methods
-    
     func displayLoadViews(_ statement: Bool) {
         if statement {
             captureSession.stopRunning()
@@ -94,8 +97,10 @@ class ScannerViewController: UIViewController, ScannerView {
     }
     
     func correctCodeFound() {
-        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-        presenter.getObject()
+        if !isAlreadyPresentingAlert {
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            presenter.getObject()
+        }
     }
     
     func validObjectFound() {
@@ -104,7 +109,9 @@ class ScannerViewController: UIViewController, ScannerView {
     }
     
     func invalidCodeFound(error: Error) {
-        displayError(message: presenter.convertError(error))
+        displayError(message: presenter.convertError(error)) {
+            self.performSegue(withIdentifier: SegueType.dashboardUnwind.rawValue, sender: nil)
+        }
         displayLoadViews(false)
     }
     

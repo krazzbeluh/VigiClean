@@ -21,4 +21,5 @@ protocol ScannerView: BaseView {
     func correctCodeFound()
     func validObjectFound()
     func invalidCodeFound(error: Error)
+    var isAlreadyPresentingAlert: Bool { get }
 }

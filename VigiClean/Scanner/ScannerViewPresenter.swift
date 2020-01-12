@@ -35,7 +35,7 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
         if code.starts(with: "https://www.vigiclean.com/") {
             view.correctCodeFound()
         } else {
-            view.invalidCodeFound(error: ScannerError.invalidQRCode)
+            invalidCodeFound(error: ScannerError.invalidQRCode)
         }
     }
     
@@ -51,16 +51,23 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
                             case .success:
                                 self.view.validObjectFound()
                             case .failure(let error):
-                                self.view.invalidCodeFound(error: error)
+                                self.invalidCodeFound(error: error)
                             }
                         }
                     case .failure(let error):
-                        self.view.invalidCodeFound(error: error)
+                        self.invalidCodeFound(error: error)
                     }
                 }
             case .failure(let error):
-                self.view.invalidCodeFound(error: error)
+                self.invalidCodeFound(error: error)
             }
+        }
+    }
+    
+    private func invalidCodeFound(error: Error) {
+        lastCode = ""
+        if !view.isAlreadyPresentingAlert {
+            view.invalidCodeFound(error: error)
         }
     }
 }

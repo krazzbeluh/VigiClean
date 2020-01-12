@@ -22,7 +22,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
     
     var actions: [String] {
         guard let object = Object.currentObject else {
-            return ["Autre"] // TODO: remove functionality autre
+            return [String]()
         }
         
         var actions = [String]()
@@ -47,8 +47,6 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             }
         }
         
-        actions.append("Autre")
-        
         return actions
     }
     
@@ -60,7 +58,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         self.view = view
         
         guard let object = Object.currentObject else {
-            fatalError("No object found when preparing request") // TODO
+            fatalError("No object found when preparing request")
         }
         
         isUserEmployedAtObjectOrganization = VigiCleanUser.currentUser.employedAt == object.organization

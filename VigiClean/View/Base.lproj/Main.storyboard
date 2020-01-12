@@ -1008,9 +1008,11 @@
                         <outlet property="qrScope" destination="gEF-QP-7Wq" id="5Pg-lF-Cs8"/>
                         <outlet property="scannerView" destination="nZb-0W-31b" id="KOT-yV-CDg"/>
                         <segue destination="GWr-bf-MJh" kind="show" identifier="segueToRequest" id="PLn-ML-gJy"/>
+                        <segue destination="LwD-K7-UZS" kind="unwind" identifier="unwindToDashboard" unwindAction="unwindToDashboardWithSegue:" id="sou-6K-Y1G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hgp-RG-qqj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="LwD-K7-UZS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2093" y="-881"/>
         </scene>

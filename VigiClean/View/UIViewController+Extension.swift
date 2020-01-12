@@ -10,12 +10,22 @@ import UIKit
 
 protocol BaseView: class {
     func displayError(message: String)
+    func displayError(message: String, completion: (() -> Void)?)
 }
 
 extension UIViewController: BaseView {
     func displayError(message: String) { // sends alert
+        displayError(message: message, completion: nil)
+    }
+    
+    func displayError(message: String, completion: (() -> Void)?) { // sends alert
         let alertVC = UIAlertController(title: AlertStrings.error.rawValue, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: AlertStrings.ok.rawValue, style: .cancel, handler: nil))
+        alertVC.addAction(UIAlertAction(title: AlertStrings.ok.rawValue, style: .cancel, handler: { (_) in
+            guard let completion = completion else {
+                return
+            }
+            completion()
+        }))
         self.present(alertVC, animated: true, completion: nil)
     }
 }
@@ -52,6 +62,7 @@ enum SegueType: String {
     case congrats = "segueToCongrats"
     case request = "segueToRequest"
     case launchUnwind = "unwindToLaunch"
+    case dashboardUnwind = "unwindToDashboard"
 }
 
 enum CellType: String {
