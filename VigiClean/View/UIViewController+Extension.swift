@@ -48,7 +48,7 @@ extension UIViewController: UNUserNotificationCenterDelegate {
 enum SegueType: String {
     case welcome = "segueToWelcome"
     case dashboard = "segueToDashboard"
-    case marketplace = "segueToMarketPlace"
+    case marketplace = "segueToMarketplace"
     case congrats = "segueToCongrats"
     case request = "segueToRequest"
     case launchUnwind = "unwindToLaunch"

@@ -18,6 +18,16 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
         self.accountManager = AccountManager()
         self.view = view
         self.marketplaceManager = MarketplaceManager()
+        
+        super.init()
+        
+        setAvatar()
+        registerForNotifications()
+    }
+    
+    private func registerForNotifications() {
+        let name = Notification.Name(rawValue: VigiCleanUser.NotificationType.avatar.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(setAvatar), name: name, object: nil)
     }
     
     init(accountManager: AccountManager, view: DashboardView, marketplaceManager: MarketplaceManager) {
@@ -28,12 +38,12 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     
     func getAvatar() {
         if VigiCleanUser.currentUser.avatar != nil {
-            view.setAvatar()
+            setAvatar()
         } else {
             accountManager.getAvatar { (result) in
                 switch result {
                 case .success:
-                    self.view.setAvatar()
+                    self.setAvatar()
                 case .failure(let error):
                     if let error = error as? StorageErrorCode,
                         error == .objectNotFound {
@@ -61,6 +71,18 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
             }
         } else {
             self.view.salesGotten()
+        }
+    }
+    
+    @objc private func setAvatar() {
+        DispatchQueue.main.async {
+            let user = VigiCleanUser.currentUser
+            
+            guard let image = user.avatar else {
+                return
+            }
+            
+            self.view.setAvatar(to: image)
         }
     }
 }

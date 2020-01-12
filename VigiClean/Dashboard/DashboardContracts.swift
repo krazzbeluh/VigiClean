@@ -15,6 +15,6 @@ protocol DashboardViewPresenter: BasePresenter {
 }
 
 protocol DashboardView: BaseView {
-    func setAvatar()
+    func setAvatar(to image: Data)
     func salesGotten()
 }

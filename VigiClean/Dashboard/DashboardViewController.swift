@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: move to presenter
 class DashboardViewController: UIViewController, DashboardView {
     // MARK: Outlets
     @IBOutlet weak var scoreView: ScoreView!
@@ -21,11 +20,6 @@ class DashboardViewController: UIViewController, DashboardView {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = DashboardPresenter(view: self)
-        
-        let name = Notification.Name(rawValue: VigiCleanUser.NotificationType.avatar.rawValue)
-        NotificationCenter.default.addObserver(self, selector: #selector(setAvatar), name: name, object: nil)
-        
-        setAvatar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,16 +32,8 @@ class DashboardViewController: UIViewController, DashboardView {
     }
     
     // MARK: Methods
-    @objc func setAvatar() {
-        DispatchQueue.main.async { // TODO: Ask to Nicolas
-            let user = VigiCleanUser.currentUser
-            
-            guard let image = user.avatar else {
-                return
-            }
-            
+    func setAvatar(to image: Data) {
             self.avatar.setImage(UIImage(data: image), for: .normal)
-        }
     }
     
     func salesGotten() {
