@@ -11,7 +11,7 @@ import FirebaseStorage
 
 class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     weak var view: LaunchView!
-    private let accountManager = AccountManager()
+    private let accountManager: AccountManager
     
     var isUserConnected: Bool {
         return VigiCleanUser.currentUser.isConnected
@@ -19,6 +19,12 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     
     required init(view: LaunchView) {
         self.view = view
+        self.accountManager = AccountManager()
+    }
+    
+    init(view: LaunchView, accountManager: AccountManager) {
+        self.view = view
+        self.accountManager = accountManager
     }
     
     func getAvatar() {

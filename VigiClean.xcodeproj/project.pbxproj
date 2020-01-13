@@ -52,6 +52,8 @@
 		9463FDAF23AA9CF200827E06 /* EasyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463FDAE23AA9CF200827E06 /* EasyError.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
+		94912A0323CD3825001F3DD3 /* LaunchViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94912A0223CD3825001F3DD3 /* LaunchViewPresenterTestCase.swift */; };
+		94912A0523CD3884001F3DD3 /* FakeLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94912A0423CD3884001F3DD3 /* FakeLaunchView.swift */; };
 		94A2FD1423B54F9500AE9865 /* RequestViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD1323B54F9500AE9865 /* RequestViewPresenterTestCase.swift */; };
 		94A2FD1823B5586D00AE9865 /* ObjectManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD1723B5586D00AE9865 /* ObjectManagerFake.swift */; };
 		94A2FD1C23B5847400AE9865 /* FakeDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD1B23B5847400AE9865 /* FakeDashboardView.swift */; };
@@ -183,6 +185,8 @@
 		9463FDAE23AA9CF200827E06 /* EasyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyError.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
+		94912A0223CD3825001F3DD3 /* LaunchViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewPresenterTestCase.swift; sourceTree = "<group>"; };
+		94912A0423CD3884001F3DD3 /* FakeLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLaunchView.swift; sourceTree = "<group>"; };
 		94A2FD1323B54F9500AE9865 /* RequestViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewPresenterTestCase.swift; sourceTree = "<group>"; };
 		94A2FD1723B5586D00AE9865 /* ObjectManagerFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectManagerFake.swift; sourceTree = "<group>"; };
 		94A2FD1B23B5847400AE9865 /* FakeDashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDashboardView.swift; sourceTree = "<group>"; };
@@ -399,6 +403,7 @@
 				94A2FD1323B54F9500AE9865 /* RequestViewPresenterTestCase.swift */,
 				943446B323CC9390007EB2E0 /* MarketplaceViewPresenterTestCase.swift */,
 				943446B723CCB1CA007EB2E0 /* MarketplaceCellPresenterTestCase.swift */,
+				94912A0223CD3825001F3DD3 /* LaunchViewPresenterTestCase.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				94A2FD1B23B5847400AE9865 /* FakeDashboardView.swift */,
 				943446B523CC93D1007EB2E0 /* FakeMarketplaceView.swift */,
 				944762F023CCB2A8002EA115 /* FakeMarketplaceCellView.swift */,
+				94912A0423CD3884001F3DD3 /* FakeLaunchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -916,6 +922,7 @@
 			files = (
 				94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */,
 				944762FB23CCBA17002EA115 /* QuerySnapshotFake.swift in Sources */,
+				94912A0523CD3884001F3DD3 /* FakeLaunchView.swift in Sources */,
 				94D20969239EE9D10089759B /* AuthFake.swift in Sources */,
 				945B3FF823C0F83000340B0C /* DashboardViewPresenterTestCase.swift in Sources */,
 				944762F323CCB44D002EA115 /* MarketplaceManagerFake.swift in Sources */,
@@ -948,6 +955,7 @@
 				94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */,
 				944762F123CCB2A8002EA115 /* FakeMarketplaceCellView.swift in Sources */,
 				943446B823CCB1CA007EB2E0 /* MarketplaceCellPresenterTestCase.swift in Sources */,
+				94912A0323CD3825001F3DD3 /* LaunchViewPresenterTestCase.swift in Sources */,
 				944762FD23CCBA53002EA115 /* QueryDocumentSnapshotFake.swift in Sources */,
 				945B3FEE23BEB9D800340B0C /* ErrorHandlerTestCase.swift in Sources */,
 				944762FF23CCD221002EA115 /* HTTPSCallableResultFake.swift in Sources */,
