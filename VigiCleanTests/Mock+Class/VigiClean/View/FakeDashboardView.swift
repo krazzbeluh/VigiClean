@@ -11,14 +11,40 @@ import UIKit
 @testable import VigiClean
 
 class FakeDashboardView: DashboardView {
+    var listener: (() -> Void)?
+    
+    init() {}
+    
+    init(listener: @escaping (() -> Void)) {
+        self.listener = listener
+    }
+    
     var didCallSetAvatar = false
     var didCallSendAlert = false
+    var didCallSetAvatarToImage = false
+    var didCallSalesGotten = false
     
     func setAvatar() {
         didCallSetAvatar = true
+        listener?()
+    }
+    
+    func setAvatar(to image: Data) {
+        didCallSetAvatarToImage = true
+        listener?()
+    }
+    
+    func salesGotten() {
+        didCallSalesGotten = true
+        listener?()
     }
     
     func displayError(message: String) {
         didCallSendAlert = true
+        listener?()
+    }
+    
+    func displayError(message: String, completion: (() -> Void)?) {
+        displayError(message: message)
     }
 }

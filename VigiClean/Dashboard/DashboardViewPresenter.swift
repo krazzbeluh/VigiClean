@@ -17,6 +17,7 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     required init(view: DashboardView) {
         self.accountManager = AccountManager()
         self.view = view
+        print(2)
         self.marketplaceManager = MarketplaceManager()
         
         super.init()
@@ -30,30 +31,26 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
         NotificationCenter.default.addObserver(self, selector: #selector(setAvatar), name: name, object: nil)
     }
     
-    init(accountManager: AccountManager, view: DashboardView, marketplaceManager: MarketplaceManager) {
-        self.accountManager = accountManager
-        self.marketplaceManager = marketplaceManager
+    init(accountManager: AccountManager? = nil, view: DashboardView, marketplaceManager: MarketplaceManager? = nil) {
+        self.accountManager = accountManager ?? AccountManager()
+        self.marketplaceManager = marketplaceManager ?? MarketplaceManager()
         self.view = view
+        print(1)
+        super.init()
     }
     
     func getAvatar() {
-        if VigiCleanUser.currentUser.avatar != nil {
-            setAvatar()
-        } else {
-            accountManager.getAvatar { (result) in
-                switch result {
-                case .success:
-                    self.setAvatar()
-                case .failure(let error):
-                    if let error = error as? StorageErrorCode,
-                        error == .objectNotFound {
-                        print("No avatar found")
-                        return
-                    }
-                    self.view.displayError(message: self.convertError(error))
+        accountManager.getAvatar { (error) in
+            if let error = error {
+                if let error = error as? StorageErrorCode,
+                    error == .objectNotFound {
+                    print("No avatar found")
+                    return
                 }
+                self.view.displayError(message: self.convertError(error))
+                return
             }
-            
+            self.setAvatar()
         }
     }
     

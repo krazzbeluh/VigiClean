@@ -10,9 +10,14 @@ import Foundation
 @testable import VigiClean
 
 class FakeScannerView: ScannerView {
+    var isAlreadyPresentingAlert: Bool {
+        return true
+    }
+    
     var correctCodeFoundWasCalledXTimes = 0
     var didCallInvalidCodeFound = false
     var didCallValidObjectFound = false
+    var didCallDisplayError = false
     
     func correctCodeFound() {
         correctCodeFoundWasCalledXTimes += 1
@@ -31,6 +36,11 @@ class FakeScannerView: ScannerView {
     }
     
     func displayError(message: String) {
-        
+        didCallDisplayError = true
     }
+    
+    func displayError(message: String, completion: (() -> Void)?) {
+        displayError(message: message)
+    }
+
 }

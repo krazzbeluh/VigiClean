@@ -18,8 +18,9 @@ class SignUpViewPresenterTestCase: XCTestCase {
     }
     
     func testSignUpShouldCallUserSignedInAndSwitchActivityIndicatorOneTimeIfNoError() {
-        let accountManager = AccountManagerFake(errors: [nil])
-        let presenter = SignUpPresenter(view: view, accountManager: accountManager)
+        let presenter = SignUpPresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: nil)
         
         presenter.signUp(username: "username",
                          email: "email@vigiclean.com",
@@ -55,8 +56,9 @@ class SignUpViewPresenterTestCase: XCTestCase {
     }
 
     func testSignUpShouldCallDisplayErrorAndSwitchActivityIndicatorTwoTimeIfError() {
-        let accountManager = AccountManagerFake(errors: [EasyError()])
-        let presenter = SignUpPresenter(view: view, accountManager: accountManager)
+        let presenter = SignUpPresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: EasyError())
         
         presenter.signUp(username: "username",
                          email: "email@vigiclean.com",

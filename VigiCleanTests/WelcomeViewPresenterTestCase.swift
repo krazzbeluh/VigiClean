@@ -17,8 +17,9 @@ class WelcomeViewPresenterTestCase: XCTestCase {
     }
     
     func testSignInShouldCallPerformSegueIfNoError() {
-        let accountManager = AccountManagerFake(errors: [nil])
-        let presenter = WelcomePresenter(view: view, accountManager: accountManager)
+        let presenter = WelcomePresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: nil)
         
         presenter.signIn()
         
@@ -26,8 +27,9 @@ class WelcomeViewPresenterTestCase: XCTestCase {
     }
     
     func testSignInShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(errors: [EasyError()])
-        let presenter = WelcomePresenter(view: view, accountManager: accountManager)
+        let presenter = WelcomePresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: EasyError())
         
         presenter.signIn()
         

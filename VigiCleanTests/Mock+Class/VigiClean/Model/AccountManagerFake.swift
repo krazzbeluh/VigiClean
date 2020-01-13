@@ -36,16 +36,8 @@ class AccountManagerFake: AccountManager {
         super.init(auth: auth, database: database)
     }
     
-    override func getAvatar(callback: @escaping ((Result<Data, Error>) -> Void)) {
-        callback(resultData)
-    }
-    
-    override func fetchRole(callback: @escaping (Result<Bool, Error>) -> Void) {
-        callback(resultBool)
-    }
-    
-    override func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
-        completion(getError())
+    override func getAvatar(callback: @escaping ((Error?) -> Void)) {
+        callback(getError())
     }
     
     override func listenForUserDocumentChanges(creditsChanged: ((Int) -> Void)?) {
@@ -54,46 +46,6 @@ class AccountManagerFake: AccountManager {
         }
         
         creditsChanged(15)
-    }
-    
-    override func attachEmail(email: String,
-                              password: String,
-                              completion: @escaping ((Error?) -> Void)) {
-        completion(getError())
-    }
-    
-    override func updatePassword(password: String, completion: @escaping ((Error?) -> Void)) {
-        completion(getError())
-    }
-    
-    override func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
-        completion(getError())
-    }
-    
-    override func updateEmail(to newEmail: String, with password: String, completion: @escaping (Error?) -> Void) {
-        completion(getError())
-    }
-    
-    private var connectedWithEmail = false
-    override var isConnectedWithEmail: Bool {
-        get {
-            return connectedWithEmail
-        }
-        set {
-            connectedWithEmail = newValue
-        }
-    }
-    
-    override func signOut(completion: @escaping (Error?) -> Void) {
-        completion(getError())
-    }
-    
-    override func signIn(email: String, password: String, completion: @escaping ((Error?) -> Void)) {
-        completion(getError())
-    }
-    
-    override func anonymousSignIn(completion: @escaping ((Error?) -> Void)) {
-        completion(getError())
     }
     
     private func getError() -> Error? {

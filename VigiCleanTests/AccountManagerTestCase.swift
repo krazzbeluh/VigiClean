@@ -9,172 +9,8 @@
 import XCTest
 @testable import VigiClean
 
-class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_length
+class AccountManagerTestCase: XCTestCase {
     override func setUp() {
-    }
-    
-    // MARK: isConnected
-    func testIsConnectedShouldReturnTrueIfIsConnected() {
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = UserFake(uid: "")
-        AccountManager.currentUser.auth = auth
-        
-        XCTAssertTrue(accountManager.isConnected)
-    }
-    
-    func testIsConnectedShouldReturnFalseIfIsNotConnected() {
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = nil
-        AccountManager.currentUser.auth = auth
-        
-        XCTAssertFalse(accountManager.isConnected)
-    }
-    
-    // MARK: isConnectedWithEmail
-    func testIsConnectedWithEmailShouldReturnTrueIfIsConnectedWithEmail() {
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = UserFake(uid: "", mail: "", errors: nil)
-        AccountManager.currentUser.auth = auth
-        
-        XCTAssertTrue(accountManager.isConnectedWithEmail)
-    }
-    
-    func testIsConnectedWithEmailShouldReturnFalseIfIsNotConnectedWithEmail() {
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = UserFake(uid: "", mail: nil, errors: nil)
-        AccountManager.currentUser.auth = auth
-        
-        XCTAssertFalse(accountManager.isConnectedWithEmail)
-    }
-    
-    // MARK: Anonymous signIn
-    func testAnonymousSignInShouldNotSendErrorCallbackIfSuccess() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.anonymousSignIn { error in
-            XCTAssertNil(error)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    func  testAnonymousSignInShouldReturnErrorCallbackIfFailure() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        let accountManager = AccountManager(auth: AuthFake(error: EasyError(), result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.anonymousSignIn { (error) in
-            XCTAssertNotNil(error)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    // MARK: SignUp
-    func testSignUpShouldNotReturnErrorCallbackIfSuccess() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.signUp(username: "", email: "", password: "") { (error) in
-            XCTAssertNil(error)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    func testSignUpShouldReturnErrorCallbackIfFailure() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        let accountManager = AccountManager(auth: AuthFake(error: EasyError(), result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.signUp(username: "", email: "", password: "") { (error) in
-            XCTAssertNotNil(error)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    // MARK: SignIn
-    func testSignInShouldNotReturnErrorCallbackIfSuccess() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.signIn(email: "", password: "") { error in
-            XCTAssertNil(error)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    func testSignInShouldReturnErrorCallbackIfFailure() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        let accountManager = AccountManager(auth: AuthFake(error: EasyError(), result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.signIn(email: "", password: "") { (error) in
-            XCTAssertNotNil(error)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    // MARK: SignOut
-    
-    func testSignOutShouldNotReturnErrorCallbackIfSuccess() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = UserFake(uid: "", mail: "", errors: nil)
-        AccountManager.currentUser.auth = auth
-        
-        accountManager.signOut { (error) in
-            XCTAssertNil(error)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    func testSignOutShouldReturnErrorCallbackIfFailure() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        let accountManager = AccountManager(auth: AuthFake(error: EasyError(), result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = UserFake(uid: "", mail: "", errors: nil)
-        AccountManager.currentUser.auth = auth
-        
-        accountManager.signOut { (error) in
-            XCTAssertNotNil(error)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
     }
     
     // MARK: CreateUserDocument
@@ -234,7 +70,7 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         ]
         
         XCTAssertNil(try? accountManager.getUserInfos(in: data))
-        XCTAssertEqual(AccountManager.currentUser.username, "VigiClean")
+        XCTAssertEqual(VigiCleanUser.currentUser.username, "VigiClean")
     }
     
     func testGetUserInfosShouldStoreRoleIfExists() {
@@ -246,179 +82,7 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         ]
         
         XCTAssertNil(try? accountManager.getUserInfos(in: data))
-        XCTAssertTrue(AccountManager.currentUser.isEmployee)
-    }
-    
-    // MARK: attachEmail
-    func testAttachEmailShouldReturnSuccessCallbackIfNoError() {
-        let user = UserFake(uid: "", errors: nil)
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.attachEmail(email: "", password: "") { error in
-            XCTAssertNil(error)
-        }
-    }
-    
-    func testAttachEmailShouldReturnErrorCallbackIfError() {
-        let user = UserFake(uid: "", errors: [EasyError()])
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.attachEmail(email: "", password: "") { error in
-            XCTAssertNotNil(error)
-        }
-    }
-    
-    // MARK: updatePassword
-    func testUpdatePasswordShouldReturnSuccessCallbackIfNoError() {
-        let user = UserFake(uid: "", errors: nil)
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.updatePassword(password: "") { (error) in
-            XCTAssertNil(error)
-        }
-    }
-    
-    func testUpdatePasswordShouldReturnErrorCallbackIfError() {
-        let user = UserFake(uid: "", errors: [EasyError()])
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.updatePassword(password: "") { (error) in
-            XCTAssertNotNil(error)
-        }
-    }
-    
-    // MARK: updatePseudo
-    func testUpdatePseudoShouldReturnSuccessCallbackIfNoError() {
-        let user = UserFake(uid: "", mail: "", errors: nil)
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.updatePseudo(to: "", with: "") { (error) in
-            XCTAssertNil(error)
-        }
-    }
-    
-    func testUpdatePseudoShouldReturnErrorCallbackIfFirestoreError() {
-        let user = UserFake(uid: "", mail: "", errors: nil)
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: [EasyError()], data: nil))
-        
-        accountManager.updatePseudo(to: "", with: "") { (error) in
-            XCTAssertNotNil(error)
-        }
-    }
-    
-    func testUpdatePseudoShouldReturnErrorCallbackIfAuthError() {
-        let user = UserFake(uid: "", mail: "", errors: [EasyError()])
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.updatePseudo(to: "", with: "") { (error) in
-            XCTAssertNotNil(error)
-        }
-    }
-    
-    func testUpdatePseudoShouldReturnErrorCallbackIfUserNotLoggedInWithEmail() {
-        let user = UserFake(uid: "", mail: nil, errors: nil)
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.updatePseudo(to: "", with: "") { (error) in
-            XCTAssertNotNil(error)
-        }
-    }
-    
-    // MARK: updateEmail
-    func testUpdateEmailShouldReturnSuccessCallbackIfNoError() {
-        let user = UserFake(uid: "", mail: "", errors: nil)
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.updateEmail(to: "", with: "") { (error) in
-            XCTAssertNil(error)
-        }
-    }
-    
-    func testUpdateEmailShouldReturnErrorCallbackIfNoEmail() {
-        let user = UserFake(uid: "", mail: nil, errors: nil)
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.updateEmail(to: "", with: "") { (error) in
-            XCTAssertNotNil(error)
-        }
-    }
-    
-    func testUpdateEmailShouldReturnErrorCallbackIfErrorInReauthenticate() {
-        let user = UserFake(uid: "", mail: "", errors: [EasyError()])
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.updateEmail(to: "", with: "") { (error) in
-            XCTAssertNotNil(error)
-        }
-    }
-    
-    func testUpdateEmailShouldReturnErrorCallbackIfErrorInUpdateEmail() {
-        let user = UserFake(uid: "", mail: "", errors: [nil, EasyError()])
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = user
-        AccountManager.currentUser.auth = auth
-        
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
-        
-        accountManager.updateEmail(to: "", with: "") { (error) in
-            XCTAssertNotNil(error)
-        }
+        XCTAssertTrue(VigiCleanUser.currentUser.isEmployee)
     }
     
     // MARK: listenForUserDocumentChanges
@@ -434,7 +98,7 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")
-        AccountManager.currentUser.auth = auth
+        VigiCleanUser.currentUser.auth = auth
         
         var listenedCredits = 0
         
@@ -451,7 +115,7 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")
-        AccountManager.currentUser.auth = auth
+        VigiCleanUser.currentUser.auth = auth
         
         accountManager.listenForUserDocumentChanges { (_) in
             XCTAssert(false)
@@ -464,7 +128,7 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = nil
-        AccountManager.currentUser.auth = auth
+        VigiCleanUser.currentUser.auth = auth
         
         accountManager.listenForUserDocumentChanges { (_) in
             XCTAssert(false)
@@ -477,7 +141,7 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")
-        AccountManager.currentUser.auth = auth
+        VigiCleanUser.currentUser.auth = auth
         
         accountManager.listenForUserDocumentChanges { (_) in
             XCTAssert(false)
@@ -492,11 +156,11 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")
-        AccountManager.currentUser.auth = auth
+        VigiCleanUser.currentUser.auth = auth
         
         accountManager.listenForUserDocumentChanges(creditsChanged: nil)
         
-        XCTAssertEqual(AccountManager.currentUser.username, "VigiClean")
+        XCTAssertEqual(VigiCleanUser.currentUser.username, "VigiClean")
     }
     
     func testListenForUserDocumentChangesShouldNotReturnCreditsIfNoCreditsInDataIfCallback() {
@@ -507,92 +171,12 @@ class AccountManagerTestCase: XCTestCase { // swiftlint:disable:this type_body_l
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")
-        AccountManager.currentUser.auth = auth
+        VigiCleanUser.currentUser.auth = auth
         
         accountManager.listenForUserDocumentChanges { (_) in
             XCTAssert(false)
         }
         
-        XCTAssertEqual(AccountManager.currentUser.username, "VigiClean")
+        XCTAssertEqual(VigiCleanUser.currentUser.username, "VigiClean")
     }
-    
-    // MARK: fetchRole
-    func testFetchRoleShouldReturnSuccessCallbackIfNoError() {
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: [
-                                                "isMaintainer": false
-                                            ]))
-        
-        let auth =  AuthFake(error: nil, result: nil)
-        auth.currentUser = UserFake(uid: "")
-        AccountManager.currentUser.auth = auth
-        
-        accountManager.fetchRole { (result) in
-            switch result {
-            case .success:
-                XCTAssert(true)
-            default:
-                XCTAssert(false)
-            }
-        }
-    }
-    
-    func testFetchRoleShouldReturnFailureCallbackIfUserNotLoggedIn() {
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: [
-                                                "isMaintainer": false
-                                            ]))
-        
-        let auth =  AuthFake(error: nil, result: nil)
-        auth.currentUser = nil
-        AccountManager.currentUser.auth = auth
-        
-        accountManager.fetchRole { (result) in
-            switch result {
-            case .failure:
-                XCTAssert(true)
-            default:
-                XCTAssert(false)
-            }
-        }
-    }
-    
-    func testFetchRoleShouldReturnFailureCallbackIfError() {
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: [EasyError()], data: nil))
-        
-        let auth =  AuthFake(error: nil, result: nil)
-        auth.currentUser = UserFake(uid: "")
-        AccountManager.currentUser.auth = auth
-        
-        accountManager.fetchRole { (result) in
-            switch result {
-            case .failure:
-                XCTAssert(true)
-            default:
-                XCTAssert(false)
-            }
-        }
-    }
-    
-    func testFetchRoleShouldReturnFailureCallbackIfIncorrectData() {
-        let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: [
-                                                "App": "VigiClean"
-                                            ]))
-        
-        let auth =  AuthFake(error: nil, result: nil)
-        auth.currentUser = UserFake(uid: "")
-        AccountManager.currentUser.auth = auth
-        
-        accountManager.fetchRole { (result) in
-            switch result {
-            case .failure:
-                XCTAssert(true)
-            default:
-                XCTAssert(false)
-            }
-        }
-    }
-    
-} // swiftlint:disable:this file_length
+}

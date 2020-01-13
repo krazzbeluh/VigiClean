@@ -20,4 +20,9 @@ class FakeWelcomeView: WelcomeView {
     func displayError(message: String) {
         didCallDisplayError  = true
     }
+    
+    func displayError(message: String, completion: (() -> Void)?) {
+        displayError(message: message)
+    }
+
 }

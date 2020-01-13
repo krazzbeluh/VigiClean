@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol EmployeeViewPresenter {
+protocol EmployeeViewPresenter: BasePresenter {
     var objects: [Object]? { get }
     init(view: EmployeeView)
     func getObjectList()
 }
 
-protocol EmployeeView: class {
+protocol EmployeeView: BaseView {
     func reloadTableView()
 }

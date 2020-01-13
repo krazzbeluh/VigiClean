@@ -10,15 +10,9 @@ import Foundation
 
 class SignUpPresenter: BasePresenter, SignUpViewPresenter {
     weak var view: SignUpView!
-    private var accountManager = AccountManager()
     
     required init(view: SignUpView) {
         self.view = view
-    }
-    
-    init(view: SignUpView, accountManager: AccountManager) {
-        self.view = view
-        self.accountManager = accountManager
     }
     
     func signUp(username: String?, email: String?, password: String?, confirmPassword: String?) {

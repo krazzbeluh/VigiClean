@@ -30,4 +30,8 @@ class FakeAttachEmailView: AttachEmailView {
     func displayError(message: String) {
         self.didCallDisplayError = true
     }
+    
+    func displayError(message: String, completion: (() -> Void)?) {
+        displayError(message: message)
+    }
 }

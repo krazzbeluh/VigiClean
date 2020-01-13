@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-struct VigiCleanUser {
+class VigiCleanUser {
     enum NotificationType: String {
         case avatar = "AvatarChanged"
         case score = "ScoreChanged"

@@ -26,35 +26,29 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testSwitchEmployeeMode() {
-        let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(errors: nil)
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
         
         presenter.switchEmployeeMode(to: true)
         
         XCTAssertTrue(presenter.employeeMode)
     }
     
-    func testActionsShouldReturnAutreIfNoObject() {
-        let accountManager = AccountManagerFake()
+    func testActionsShouldReturnEmptyArrayIfNoObject() {
         let objectManager = ObjectManagerFake(errors: nil)
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
         
         Object.currentObject = nil
         
-        XCTAssertEqual(presenter.actions, ["Autre"])
+        XCTAssertEqual(presenter.actions, [String]())
     }
     
     func testActionsShouldNotBeTheSameIfEmployeeModeSwitched() {
-        let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(errors: nil)
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
         
-        let defaultMessage = "Autre"
-        var uActionsString = easyObject.actions!.map { $0.message }
-        uActionsString.append(defaultMessage)
-        var eActionsString = easyObject.employeeActions!.map { $0.message }
-        eActionsString.append(defaultMessage)
+        let uActionsString = easyObject.actions!.map { $0.message }
+        let eActionsString = easyObject.employeeActions!.map { $0.message }
         
         Object.currentObject = Object(coords: GeoPoint(latitude: 0, longitude: 0),
                                       organization: "", type: "", name: "", code: "",
@@ -67,9 +61,8 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testPrepareMapShouldNotCallConfigureMapIfNoObject() {
-        let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(errors: nil)
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
         
         Object.currentObject = nil
         
@@ -79,9 +72,8 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testPrepareMapShouldCallConfigureMapWithCorrecDatas() {
-        let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(errors: nil)
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
         
         Object.currentObject = easyObject
         let object: Object! = Object.currentObject
@@ -100,9 +92,8 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testSendRequestShouldReturnSuccessCallbackWithIsEmployeeAtTrueIfNoErrorAndIsEmployeeIsTrue() {
-        let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(errors: nil)
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
         presenter.switchEmployeeMode(to: true)
         Object.currentObject = easyObject
         
@@ -118,9 +109,8 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testSendRequestShouldReturnFailureCallbackIfErrorAndIsEmployeeIsTrue() {
-        let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(errors: [EasyError()])
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
         presenter.switchEmployeeMode(to: true)
         Object.currentObject = easyObject
         
@@ -136,9 +126,8 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testSendRequestShouldReturnSuccessCallbackWithIsEmployeeAtFalseIfNoErrorAndIsEmployeeIsFalse() {
-        let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(errors: nil)
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
         presenter.switchEmployeeMode(to: false)
         Object.currentObject = easyObject
         
@@ -154,9 +143,8 @@ class RequestViewPresenterTestCase: XCTestCase {
     }
     
     func testSendRequestShouldReturnFailureCallbackIfErrorAndIsEmployeeIsFalse() {
-        let accountManager = AccountManagerFake()
         let objectManager = ObjectManagerFake(errors: [EasyError()])
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
         presenter.switchEmployeeMode(to: false)
         Object.currentObject = easyObject
         
@@ -169,25 +157,5 @@ class RequestViewPresenterTestCase: XCTestCase {
         
         XCTAssertFalse(view.didCallRequestSent)
         XCTAssertNotNil(view.alert)
-    }
-    
-    func testFetchRoleShouldCallRoleFetchedIfNoError() {
-        let accountManager = AccountManagerFake(resultBool: .success(true))
-        let objectManager = ObjectManagerFake(errors: [EasyError()])
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
-        
-        presenter.fetchRole()
-        
-        XCTAssertTrue(view.didCallRoleFetched)
-    }
-    
-    func testFetchRoleShouldCallRoleFetchedIfError() {
-        let accountManager = AccountManagerFake(resultBool: .failure(EasyError()))
-        let objectManager = ObjectManagerFake(errors: [EasyError()])
-        let presenter = RequestPresenter(view: view, objectManager: objectManager, accountManager: accountManager)
-        
-        presenter.fetchRole()
-        
-        XCTAssertTrue(view.didCallRoleFetched)
     }
 }

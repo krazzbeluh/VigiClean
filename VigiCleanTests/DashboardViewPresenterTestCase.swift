@@ -13,31 +13,44 @@ import XCTest
 
 class DashboardViewPresenterTestCase: XCTestCase {
     func testgetAvatarShouldCallViewSetAvatarIfSuccess() {
-        let view = FakeDashboardView()
-        let accountManager = AccountManagerFake(resultData: .success("VigiClean".data(using: .utf8)!))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        VigiCleanUser.currentUser.avatar = Data()
+        let view = FakeDashboardView {
+            expectation.fulfill()
+        }
+        let accountManager = AccountManagerFake(errors: [nil])
         let presenter = DashboardPresenter(accountManager: accountManager, view: view)
         
         presenter.getAvatar()
         
-        XCTAssertTrue(view.didCallSetAvatar)
+        wait(for: [expectation], timeout: 1)
+        XCTAssertTrue(view.didCallSetAvatarToImage)
         XCTAssertFalse(view.didCallSendAlert)
     }
     
     func testgetAvatarShouldCallViewSendAlertIfFailure() {
-        let view = FakeDashboardView()
-        let accountManager = AccountManagerFake(resultData: .failure(EasyError()))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        VigiCleanUser.currentUser.avatar = Data()
+        let view = FakeDashboardView {
+            expectation.fulfill()
+        }
+        let accountManager = AccountManagerFake(errors: [EasyError()])
         let presenter = DashboardPresenter(accountManager: accountManager, view: view)
         
         presenter.getAvatar()
         
+        wait(for: [expectation], timeout: 1)
+        XCTAssertFalse(view.didCallSetAvatarToImage)
         XCTAssertTrue(view.didCallSendAlert)
-        XCTAssertFalse(view.didCallSetAvatar)
     }
     
     func testgetAvatarShouldNotCallViewSendAlertIfFailureWithObjectNotFound() {
         let view = FakeDashboardView()
         let accountManager = AccountManagerFake(resultData: .failure(StorageErrorCode.objectNotFound))
-        let presenter = DashboardPresenter(accountManager: accountManager, view: view)
+        let marketplaceManager = MarketplaceManager()
+        let presenter = DashboardPresenter(accountManager: accountManager,
+                                           view: view,
+                                           marketplaceManager: marketplaceManager)
         
         presenter.getAvatar()
         

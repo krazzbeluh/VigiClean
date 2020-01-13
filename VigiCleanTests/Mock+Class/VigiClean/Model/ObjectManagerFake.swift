@@ -61,6 +61,14 @@ class ObjectManagerFake: ObjectManager {
         }
     }
     
+    override func getObjectList(callback: @escaping (Result<[Object], Error>) -> Void) {
+        if let error = getNextError() {
+            callback(.failure(error))
+        } else {
+            callback(.success([Object]()))
+        }
+    }
+    
     private func getNextError() -> Error? {
         guard let error = errors?.first else {
             return nil

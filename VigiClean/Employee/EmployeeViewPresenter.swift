@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EmployeePresenter: EmployeeViewPresenter {
+class EmployeePresenter: BasePresenter, EmployeeViewPresenter {
     weak var view: EmployeeView!
     
     var objects: [Object]?
@@ -19,6 +19,11 @@ class EmployeePresenter: EmployeeViewPresenter {
         self.view = view
     }
     
+    init(view: EmployeeView, objectManager: ObjectManager? = nil) {
+        self.view = view
+        self.objectManager = objectManager ?? ObjectManager()
+    }
+    
     func getObjectList() {
         objectManager.getObjectList { (result) in
             switch result {
@@ -26,7 +31,7 @@ class EmployeePresenter: EmployeeViewPresenter {
                 self.objects = objects
                 self.view.reloadTableView()
             case .failure(let error):
-                print(error)
+                self.view.displayError(message: self.convertError(error))
             }
         }
     }

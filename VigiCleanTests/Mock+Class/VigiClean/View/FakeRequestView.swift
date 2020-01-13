@@ -31,4 +31,8 @@ class FakeRequestView: RequestView {
     func displayError(message: String) {
         alert = message
     }
+    
+    func displayError(message: String, completion: (() -> Void)?) {
+        displayError(message: message)
+    }
 }

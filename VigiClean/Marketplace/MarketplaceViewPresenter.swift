@@ -11,6 +11,8 @@ import Foundation
 class MarketplacePresenter: MarketplaceViewPresenter {
     weak var view: MarketplaceView!
     
+    private var listener: (() -> Void)?
+    
     func getScore() {
         setScore()
     }
@@ -22,9 +24,15 @@ class MarketplacePresenter: MarketplaceViewPresenter {
         NotificationCenter.default.addObserver(self, selector: #selector(setScore), name: name, object: nil)
     }
     
+    init(view: MarketplaceView, listener: (() -> Void)? = nil) {
+        self.view = view
+        self.listener = listener
+    }
+    
     @objc func setScore() {
         DispatchQueue.main.async { // TODO: Ask to Nicolas
             self.view.setScoreLabel(to: "\(VigiCleanUser.currentUser.credits) points")
+            self.listener?()
         }
     }
 }

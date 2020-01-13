@@ -10,15 +10,9 @@ import Foundation
 
 class WelcomePresenter: BasePresenter, WelcomeViewPresenter {
     weak var view: WelcomeView!
-    private var accountManager = AccountManager()
     
     required init(view: WelcomeView) {
         self.view = view
-    }
-    
-    init(view: WelcomeView, accountManager: AccountManager) {
-        self.view = view
-        self.accountManager = accountManager
     }
     
     func signIn() {

@@ -174,7 +174,7 @@ class ObjectManagerTestCase: XCTestCase {
         objectManager.getObject(code: "VigiClean") { (result) in
             switch result {
             case .failure(let error):
-                if case FirebaseInterface.FIRInterfaceError.unableToDecodeData = error {
+                if case FirebaseInterfaceError.unableToDecodeData = error {
                     XCTAssert(true)
                 } else {
                     XCTAssert(false)
@@ -194,7 +194,7 @@ class ObjectManagerTestCase: XCTestCase {
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
-        AccountManager.currentUser.auth = auth
+        VigiCleanUser.currentUser.auth = auth
         
         Object.currentObject = easyObject
         Object.currentObject?.actions = [Action(index: 1, message: "VigiClean Action")]
@@ -211,7 +211,7 @@ class ObjectManagerTestCase: XCTestCase {
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
-        AccountManager.currentUser.auth = auth
+        VigiCleanUser.currentUser.auth = auth
         
         Object.currentObject = easyObject
         Object.currentObject?.actions = [Action(index: 1, message: "VigiClean Action")]
@@ -228,7 +228,7 @@ class ObjectManagerTestCase: XCTestCase {
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
-        AccountManager.currentUser.auth = auth
+        VigiCleanUser.currentUser.auth = auth
         
         Object.currentObject = easyObject
         Object.currentObject?.actions = [Action(index: 1, message: "VigiClean Action")]

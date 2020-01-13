@@ -17,8 +17,8 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testAttachEmailShouldCallEmailAttachedIfNoError() {
-        let accountManager = AccountManagerFake(errors: [nil, nil])
-        let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: nil)
+        let presenter = AttachEmailPresenter(view: view)
         
         presenter.attachEmail(username: "username",
                               email: "email@vigiclean.com",
@@ -51,8 +51,8 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testAttachEmailShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(errors: [EasyError()])
-        let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: EasyError())
+        let presenter = AttachEmailPresenter(view: view)
         
         presenter.attachEmail(username: "username",
                               email: "email@vigiclean.com",
@@ -63,8 +63,7 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testAttachEmailShouldCallDisplayErrorIfErrorAtUpdatePassword() {
-        let accountManager = AccountManagerFake(errors: [nil, EasyError()])
-        let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
+        let presenter = AttachEmailPresenter(view: view)
         
         presenter.attachEmail(username: "username",
                               email: "email@vigiclean.com",
@@ -75,8 +74,8 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testUpdatePseudoShouldCallUpdatedPseudoIfNoError() {
-        let accountManager = AccountManagerFake(errors: [nil])
-        let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: nil)
+        let presenter = AttachEmailPresenter(view: view)
         
         presenter.updatePseudo(username: "username", password: "1234567890", confirmPassword: "1234567890")
         
@@ -92,8 +91,8 @@ class AttachEmailViewPresenterTestCaase: XCTestCase {
     }
     
     func testUpdatePseudoShouldDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(errors: [EasyError()])
-        let presenter = AttachEmailPresenter(view: view, accountManager: accountManager)
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: EasyError())
+        let presenter = AttachEmailPresenter(view: view)
         
         presenter.updatePseudo(username: "username", password: "1234567890", confirmPassword: "1234567890")
         

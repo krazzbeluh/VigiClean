@@ -82,8 +82,6 @@ class MarketplaceManager {
             let imageString = data[FirestoreCollection.FirestoreField.image.rawValue] as? String,
             let imageUrl = URL(string: imageString
                 .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""),
-            let urlString = data[FirestoreCollection.FirestoreField.url.rawValue] as? String,
-            let url = URL(string: urlString),
             let price = data[FirestoreCollection.FirestoreField.price.rawValue] as? Int else {
                 return nil
         }
@@ -94,7 +92,6 @@ class MarketplaceManager {
                     littleTitle: littleTitle,
                     partner: partner,
                     description: description,
-                    url: url,
                     code: code)
     }
 }

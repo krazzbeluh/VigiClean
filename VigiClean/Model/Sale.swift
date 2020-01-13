@@ -15,6 +15,5 @@ struct Sale {
     let littleTitle: String
     let partner: String
     let description: String
-    let url: URL
     let code: String
 }

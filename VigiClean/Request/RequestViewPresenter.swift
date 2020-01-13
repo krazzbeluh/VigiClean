@@ -11,7 +11,6 @@ import MapKit
 
 class RequestPresenter: BasePresenter, RequestViewPresenter {
     private var objectManager = ObjectManager()
-    private var accountManager = AccountManager()
     
     var employeeMode = false
     var isUserEmployedAtObjectOrganization = false
@@ -66,11 +65,10 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         view.configure(with: object)
     }
     
-    init(view: RequestView, objectManager: ObjectManager, accountManager: AccountManager) {
+    init(view: RequestView, objectManager: ObjectManager) {
         super.init()
         self.view = view
         self.objectManager = objectManager
-        self.accountManager = accountManager
     }
     
     func prepareMap() {

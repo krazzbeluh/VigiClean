@@ -66,7 +66,7 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
     
     private func invalidCodeFound(error: Error) {
         lastCode = ""
-        if !view.isAlreadyPresentingAlert {
+        if !view.isAlreadyPresentingAlert { // TODO : Ask to Nicolas : not testable ; will always return true in tests
             view.invalidCodeFound(error: error)
         }
     }

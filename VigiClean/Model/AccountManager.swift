@@ -105,12 +105,12 @@ class AccountManager {
         return credits
     }
     
-    func getAvatar(callback: @escaping ((Result<Data, Error>) -> Void)) {
-        if let avatar = VigiCleanUser.currentUser.avatar {
-            callback(.success(avatar))
+    func getAvatar(callback: @escaping ((Error?) -> Void)) {
+        if VigiCleanUser.currentUser.avatar != nil {
+            callback(nil)
         } else {
             guard let uid = VigiCleanUser.currentUser.user?.uid else {
-                callback(.failure(UAccountError.userNotLoggedIn))
+                callback(UAccountError.userNotLoggedIn)
                 return
             }
             
@@ -121,12 +121,12 @@ class AccountManager {
                 guard let data = data,
                     error == nil else {
                         let errCode = ErrorHandler().convertToStorageError(error!)
-                        callback(.failure(errCode ?? FirebaseInterfaceError.documentDoesNotExists))
+                        callback(errCode ?? FirebaseInterfaceError.documentDoesNotExists)
                         return
                 }
                 
                 VigiCleanUser.currentUser.avatar = data
-                callback(.success(data))
+                callback(nil)
             }
         }
     }

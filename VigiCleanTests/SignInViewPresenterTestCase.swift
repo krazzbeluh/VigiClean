@@ -20,14 +20,17 @@ class SignInViewPresenterTestCase: XCTestCase {
         let accountManager = AccountManagerFake(resultData: .success(Data()))
         let presenter = SignInPresenter(view: view, accountManager: accountManager)
         
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: nil)
+        
         presenter.signIn(email: "email@vigiclean.com", password: "1234567890")
         
         XCTAssertTrue(view.didCallUserSignedIn)
     }
     
     func testSignInShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(errors: [EasyError()])
-        let presenter = SignInPresenter(view: view, accountManager: accountManager)
+        let presenter = SignInPresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: EasyError())
         
         presenter.signIn(email: "email@vigiclean.com", password: "1234567890")
         

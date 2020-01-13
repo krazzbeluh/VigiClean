@@ -22,19 +22,18 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     }
     
     func getAvatar() {
-        accountManager.getAvatar { (result) in
-            switch result {
-            case .success:
-                self.view.gottenAvatar()
-            case .failure(let error):
-                self.view.gottenAvatar()
+        accountManager.getAvatar { error in
+            if let error = error {
                 if let error = error as? StorageErrorCode,
                     error == .objectNotFound {
                     print("No avatar found")
                     return
                 }
                 self.view.displayError(message: self.convertError(error))
+                return
             }
+            
+            self.view.gottenAvatar()
         }
     }
 }

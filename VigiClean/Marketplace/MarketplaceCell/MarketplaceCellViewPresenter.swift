@@ -17,8 +17,14 @@ class MarketplaceCellPresenter: BasePresenter, MarketplaceCellViewPresenter {
         marketplaceManager = MarketplaceManager()
     }
     
+    init(view: MarketplaceCellView, sale: Sale, marketplaceManager: MarketplaceManager) {
+        self.view = view
+        self.sale = sale
+        self.marketplaceManager = marketplaceManager
+    }
+    
     let sale: Sale
-    private let marketplaceManager: MarketplaceManager
+    private var marketplaceManager: MarketplaceManager
     
     func buySale() {
         guard sale.price <= VigiCleanUser.currentUser.credits else {

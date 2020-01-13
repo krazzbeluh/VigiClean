@@ -10,15 +10,9 @@ import Foundation
 
 class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
     weak var view: AttachEmailView!
-    private var accountManager = AccountManager()
     
     required init(view: AttachEmailView) {
         self.view = view
-    }
-    
-    init(view: AttachEmailView, accountManager: AccountManager) {
-        self.view = view
-        self.accountManager = accountManager
     }
     
     func attachEmail(username: String?, email: String?, password: String?, confirmPassword: String?) {

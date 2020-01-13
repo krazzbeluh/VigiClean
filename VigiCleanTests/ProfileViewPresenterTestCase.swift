@@ -17,21 +17,21 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testIsConnectedAnonymouslyShouldReturnAccountManagerIsConnectedWithEmailInverted() {
-        let accountManager = AccountManagerFake()
-        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        let presenter = ProfilePresenter(view: view)
         
-        accountManager.isConnectedWithEmail = false
-        
+        let user = VigiCleanUserFake(username: "", error: nil)
+        user.isConnectedWithEmail = false
+        VigiCleanUser.currentUser = user
         XCTAssertTrue(presenter.isConnectedAnonymously)
         
-        accountManager.isConnectedWithEmail = true
-        
+        user.isConnectedWithEmail = true
         XCTAssertFalse(presenter.isConnectedAnonymously)
     }
     
     func testSignOutShouldCallUserSignedOutIfNoError() {
-        let accountManager = AccountManagerFake(errors: [nil])
-        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        let presenter = ProfilePresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: nil)
         
         presenter.signOut()
         
@@ -39,8 +39,9 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testSignOutShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(errors: [EasyError()])
-        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        let presenter = ProfilePresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: EasyError())
         
         presenter.signOut()
         
@@ -48,8 +49,9 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdatePseudoShouldCallDisplayUsernameIfNoError() {
-        let accountManager = AccountManagerFake(errors: [nil])
-        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        let presenter = ProfilePresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: nil)
         
         presenter.updatePseudo(to: "username", with: "1234567890")
         
@@ -57,8 +59,9 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdatePseudoShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(errors: [EasyError()])
-        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        let presenter = ProfilePresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: EasyError())
         
         presenter.updatePseudo(to: "username", with: "1234567890")
         
@@ -66,8 +69,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdatePseudoShouldCallDisplayErrorIfEmptyTextField() {
-        let accountManager = AccountManagerFake(errors: [EasyError()])
-        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        let presenter = ProfilePresenter(view: view)
         
         presenter.updatePseudo(to: "", with: "1234567890")
         
@@ -75,8 +77,9 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdateEmailShouldCallDisplayEmailIfNoError() {
-        let accountManager = AccountManagerFake(errors: [nil])
-        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        let presenter = ProfilePresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: nil)
         
         presenter.updateEmail(to: "email@vigiclean.com", with: "1234567890")
         
@@ -84,8 +87,9 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdateEmailShouldCallDisplayErrorIfError() {
-        let accountManager = AccountManagerFake(errors: [EasyError()])
-        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        let presenter = ProfilePresenter(view: view)
+        
+        VigiCleanUser.currentUser = VigiCleanUserFake(username: "", error: EasyError())
         
         presenter.updateEmail(to: "email@vigiclean.com", with: "1234567890")
         
@@ -93,8 +97,7 @@ class ProfileViewPresenterTestCase: XCTestCase {
     }
     
     func testUpdateEmailShouldCallDisplayErrorIfNilInTextField() {
-        let accountManager = AccountManagerFake(errors: [nil])
-        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        let presenter = ProfilePresenter(view: view)
         
         presenter.updateEmail(to: "", with: "1234567890")
         
