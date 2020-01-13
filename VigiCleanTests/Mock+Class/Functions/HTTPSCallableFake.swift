@@ -12,12 +12,19 @@ import FirebaseFunctions
 
 class HTTPSCallableFake: HTTPSCallable {
     let error: Error?
+    let data: Any?
     
-    init(error: Error?) {
+    init(error: Error?, data: Any?) {
         self.error = error
+        self.data = data
     }
     
     override func call(completion: @escaping (HTTPSCallableResult?, Error?) -> Void) {
-        completion(nil, error)
+        if let data = data {
+            completion(HTTPSCallableResultFake(data: data), error)
+        } else {
+            completion(nil, error)
+        }
+        
     }
 }

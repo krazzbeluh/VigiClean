@@ -16,7 +16,7 @@ class MarketplaceManagerFake: MarketplaceManager {
         self.resultString = resultString
     }
     
-    override func buySale(sale: Sale, complection: @escaping (Result<String, Error>) -> Void) {
-        complection(resultString)
+    override func buySale(sale: Sale, completion: @escaping (Result<String, Error>) -> Void) {
+        completion(resultString)
     }
 }

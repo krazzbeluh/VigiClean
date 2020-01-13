@@ -13,15 +13,13 @@ import FirebaseFunctions
 
 class MarketplaceManager {
     var database: Firestore
-    var storage: Storage
     var functions: Functions
     
     static var sales = [Sale]()
     
-    init() {
-        database = Firestore.firestore()
-        storage = Storage.storage()
-        functions = Functions.functions()
+    init(database: Firestore? = nil, functions: Functions? = nil) {
+        self.database = database ?? Firestore.firestore()
+        self.functions = functions ?? Functions.functions()
     }
     
     func getSales(completion: @escaping (Error?) -> Void) {
@@ -53,24 +51,25 @@ class MarketplaceManager {
         }
     }
     
-    func buySale(sale: Sale, complection: @escaping (Result<String, Error>) -> Void) {
+    func buySale(sale: Sale, completion: @escaping (Result<String, Error>) -> Void) {
         guard let uid = VigiCleanUser.currentUser.user?.uid else {
-            complection(.failure(AccountManager.UAccountError.userNotLoggedIn))
+            completion(.failure(AccountManager.UAccountError.userNotLoggedIn))
             return
         }
         functions.httpsCallable("selectSale?code=\(sale.code)&user=\(uid)")
             .call { (functionResult, error) in
                 if let error = error {
-                    complection(.failure(ErrorHandler().convertToFunctionsError(error)))
+                    completion(.failure(ErrorHandler().convertToFunctionsError(error)))
                     return
                 }
                 
                 guard let data = functionResult?.data as? [String: Any],
                     let code = data[FunctionsFields.saleCode.rawValue] as? String else {
+                        completion(.failure(FirebaseInterfaceError.unableToDecodeData))
                         return
                 }
                 
-                complection(.success(code))
+                completion(.success(code))
         }
     }
     

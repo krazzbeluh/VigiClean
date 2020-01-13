@@ -17,7 +17,7 @@ class ObjectManagerFake: ObjectManager {
     init(errors: [Error?]?, data: [String: Any]? = nil) {
         self.errors = errors
         self.data = data
-        super.init(database: FirestoreFake(errors: errors, data: nil), functions: FunctionsFake(error: nil))
+        super.init(database: FirestoreFake(errors: errors, data: nil), functions: FunctionsFake(error: nil, data: nil))
     }
     
     override func resolvedRequest(for object: Object,

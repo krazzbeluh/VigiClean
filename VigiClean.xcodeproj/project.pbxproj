@@ -28,6 +28,11 @@
 		943446B823CCB1CA007EB2E0 /* MarketplaceCellPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943446B723CCB1CA007EB2E0 /* MarketplaceCellPresenterTestCase.swift */; };
 		944762F123CCB2A8002EA115 /* FakeMarketplaceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944762F023CCB2A8002EA115 /* FakeMarketplaceCellView.swift */; };
 		944762F323CCB44D002EA115 /* MarketplaceManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944762F223CCB44D002EA115 /* MarketplaceManagerFake.swift */; };
+		944762F723CCB839002EA115 /* MarketplaceManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944762F623CCB839002EA115 /* MarketplaceManagerTestCase.swift */; };
+		944762F923CCB99C002EA115 /* QueryFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944762F823CCB99C002EA115 /* QueryFake.swift */; };
+		944762FB23CCBA17002EA115 /* QuerySnapshotFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944762FA23CCBA17002EA115 /* QuerySnapshotFake.swift */; };
+		944762FD23CCBA53002EA115 /* QueryDocumentSnapshotFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944762FC23CCBA53002EA115 /* QueryDocumentSnapshotFake.swift */; };
+		944762FF23CCD221002EA115 /* HTTPSCallableResultFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944762FE23CCD221002EA115 /* HTTPSCallableResultFake.swift */; };
 		94504A4B238219FC0054BE70 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 94504A4A238219FC0054BE70 /* .swiftlint.yml */; };
 		94504A602382CADE0054BE70 /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */; };
 		94504AA5238583C90054BE70 /* SignInContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94504AA4238583C90054BE70 /* SignInContracts.swift */; };
@@ -57,7 +62,7 @@
 		94A2FD2823BB646400AE9865 /* FakeSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2723BB646300AE9865 /* FakeSignUpView.swift */; };
 		94A2FD2A23BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2923BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift */; };
 		94A2FD2C23BB6E3800AE9865 /* FakeScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2B23BB6E3800AE9865 /* FakeScoreView.swift */; };
-		94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift */; };
+		94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCase.swift */; };
 		94A2FD3023BB77DC00AE9865 /* FakeAttachEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD2F23BB77DC00AE9865 /* FakeAttachEmailView.swift */; };
 		94A2FD3423BB98B800AE9865 /* ProfileViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2FD3323BB98B800AE9865 /* ProfileViewPresenterTestCase.swift */; };
 		94A444CD23CA712C00923ADE /* MarketplaceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A444CC23CA712C00923ADE /* MarketplaceDelegate.swift */; };
@@ -151,6 +156,11 @@
 		943446B723CCB1CA007EB2E0 /* MarketplaceCellPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCellPresenterTestCase.swift; sourceTree = "<group>"; };
 		944762F023CCB2A8002EA115 /* FakeMarketplaceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMarketplaceCellView.swift; sourceTree = "<group>"; };
 		944762F223CCB44D002EA115 /* MarketplaceManagerFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceManagerFake.swift; sourceTree = "<group>"; };
+		944762F623CCB839002EA115 /* MarketplaceManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceManagerTestCase.swift; sourceTree = "<group>"; };
+		944762F823CCB99C002EA115 /* QueryFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryFake.swift; sourceTree = "<group>"; };
+		944762FA23CCBA17002EA115 /* QuerySnapshotFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuerySnapshotFake.swift; sourceTree = "<group>"; };
+		944762FC23CCBA53002EA115 /* QueryDocumentSnapshotFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDocumentSnapshotFake.swift; sourceTree = "<group>"; };
+		944762FE23CCD221002EA115 /* HTTPSCallableResultFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPSCallableResultFake.swift; sourceTree = "<group>"; };
 		94504A4A238219FC0054BE70 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		94504A5F2382CADE0054BE70 /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
 		94504AA4238583C90054BE70 /* SignInContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContracts.swift; sourceTree = "<group>"; };
@@ -180,7 +190,7 @@
 		94A2FD2723BB646300AE9865 /* FakeSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeSignUpView.swift; path = VigiCleanTests/FakeSignUpView.swift; sourceTree = SOURCE_ROOT; };
 		94A2FD2923BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewPresenterTestCase.swift; sourceTree = "<group>"; };
 		94A2FD2B23BB6E3800AE9865 /* FakeScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeScoreView.swift; sourceTree = "<group>"; };
-		94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewPresenterTestCaase.swift; sourceTree = "<group>"; };
+		94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachEmailViewPresenterTestCase.swift; sourceTree = "<group>"; };
 		94A2FD2F23BB77DC00AE9865 /* FakeAttachEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAttachEmailView.swift; sourceTree = "<group>"; };
 		94A2FD3323BB98B800AE9865 /* ProfileViewPresenterTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenterTestCase.swift; sourceTree = "<group>"; };
 		94A444CC23CA712C00923ADE /* MarketplaceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceDelegate.swift; sourceTree = "<group>"; };
@@ -356,11 +366,43 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		944762F423CCB7E5002EA115 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				945B3FED23BEB9D800340B0C /* ErrorHandlerTestCase.swift */,
+				94D20965239EE8030089759B /* AccountManagerTestCase.swift */,
+				94AF488423CBB85100CA2301 /* VigiCleanUserTestCase.swift */,
+				9451DE4F23B0ECB10097658C /* ObjectManagerTestCase.swift */,
+				944762F623CCB839002EA115 /* MarketplaceManagerTestCase.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		944762F523CCB7EF002EA115 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				94A2FD3323BB98B800AE9865 /* ProfileViewPresenterTestCase.swift */,
+				9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */,
+				9408E17923BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift */,
+				94A2FD2123BA511A00AE9865 /* ScannerViewPresenterTestCase.swift */,
+				945B3FF723C0F82F00340B0C /* DashboardViewPresenterTestCase.swift */,
+				94A2FD2523BB639300AE9865 /* SignUpViewPresenterTestCase.swift */,
+				94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCase.swift */,
+				94A2FD2923BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift */,
+				943446AF23CC8EF2007EB2E0 /* EmployeeViewPresenterTestCase.swift */,
+				94A2FD1323B54F9500AE9865 /* RequestViewPresenterTestCase.swift */,
+				943446B323CC9390007EB2E0 /* MarketplaceViewPresenterTestCase.swift */,
+				943446B723CCB1CA007EB2E0 /* MarketplaceCellPresenterTestCase.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		9451DE5323B0EE030097658C /* Functions */ = {
 			isa = PBXGroup;
 			children = (
 				9451DE5123B0EDFD0097658C /* FunctionsFake.swift */,
 				945B3FF523C0F69E00340B0C /* HTTPSCallableFake.swift */,
+				944762FE23CCD221002EA115 /* HTTPSCallableResultFake.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -492,6 +534,9 @@
 			children = (
 				94D2096A239EEB0B0089759B /* FirestoreFake.swift */,
 				94A5C61B23B4128B00752182 /* CollectionReferenceFake.swift */,
+				944762F823CCB99C002EA115 /* QueryFake.swift */,
+				944762FA23CCBA17002EA115 /* QuerySnapshotFake.swift */,
+				944762FC23CCBA53002EA115 /* QueryDocumentSnapshotFake.swift */,
 				94A5C61D23B412B800752182 /* DocumentReferenceFake.swift */,
 				941D60DC23C27BD8001F7516 /* ListenerRegistrationFake.swift */,
 				945B3FF123BFB4A000340B0C /* DocumentSnapshotFake.swift */,
@@ -590,22 +635,8 @@
 		94F0A03D2370A1CC00037210 /* VigiCleanTests */ = {
 			isa = PBXGroup;
 			children = (
-				945B3FED23BEB9D800340B0C /* ErrorHandlerTestCase.swift */,
-				94A2FD3323BB98B800AE9865 /* ProfileViewPresenterTestCase.swift */,
-				9408E17523BBA4960032D671 /* SignInViewPresenterTestCase.swift */,
-				9408E17923BBAEF90032D671 /* WelcomeViewPresenterTestCase.swift */,
-				94A2FD2123BA511A00AE9865 /* ScannerViewPresenterTestCase.swift */,
-				945B3FF723C0F82F00340B0C /* DashboardViewPresenterTestCase.swift */,
-				94A2FD2523BB639300AE9865 /* SignUpViewPresenterTestCase.swift */,
-				94A2FD2D23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift */,
-				94A2FD2923BB6C6A00AE9865 /* ScoreViewPresenterTestCase.swift */,
-				943446AF23CC8EF2007EB2E0 /* EmployeeViewPresenterTestCase.swift */,
-				94A2FD1323B54F9500AE9865 /* RequestViewPresenterTestCase.swift */,
-				94D20965239EE8030089759B /* AccountManagerTestCase.swift */,
-				94AF488423CBB85100CA2301 /* VigiCleanUserTestCase.swift */,
-				9451DE4F23B0ECB10097658C /* ObjectManagerTestCase.swift */,
-				943446B323CC9390007EB2E0 /* MarketplaceViewPresenterTestCase.swift */,
-				943446B723CCB1CA007EB2E0 /* MarketplaceCellPresenterTestCase.swift */,
+				944762F423CCB7E5002EA115 /* Model */,
+				944762F523CCB7EF002EA115 /* Presenter */,
 				94D20967239EE9B90089759B /* Mock+Class */,
 				94F0A0402370A1CC00037210 /* Info.plist */,
 			);
@@ -867,11 +898,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				94D2096B239EEB0B0089759B /* FirestoreFake.swift in Sources */,
+				944762FB23CCBA17002EA115 /* QuerySnapshotFake.swift in Sources */,
 				94D20969239EE9D10089759B /* AuthFake.swift in Sources */,
 				945B3FF823C0F83000340B0C /* DashboardViewPresenterTestCase.swift in Sources */,
 				944762F323CCB44D002EA115 /* MarketplaceManagerFake.swift in Sources */,
 				94AF488523CBB85100CA2301 /* VigiCleanUserTestCase.swift in Sources */,
-				94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCaase.swift in Sources */,
+				94A2FD2E23BB73EE00AE9865 /* AttachEmailViewPresenterTestCase.swift in Sources */,
 				94A2FD2223BA511A00AE9865 /* ScannerViewPresenterTestCase.swift in Sources */,
 				9408E17C23BBAF160032D671 /* FakeWelcomeView.swift in Sources */,
 				94A2FD2823BB646400AE9865 /* FakeSignUpView.swift in Sources */,
@@ -896,7 +928,9 @@
 				94A5C61C23B4128C00752182 /* CollectionReferenceFake.swift in Sources */,
 				944762F123CCB2A8002EA115 /* FakeMarketplaceCellView.swift in Sources */,
 				943446B823CCB1CA007EB2E0 /* MarketplaceCellPresenterTestCase.swift in Sources */,
+				944762FD23CCBA53002EA115 /* QueryDocumentSnapshotFake.swift in Sources */,
 				945B3FEE23BEB9D800340B0C /* ErrorHandlerTestCase.swift in Sources */,
+				944762FF23CCD221002EA115 /* HTTPSCallableResultFake.swift in Sources */,
 				94A2FD1823B5586D00AE9865 /* ObjectManagerFake.swift in Sources */,
 				9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */,
 				9408E17823BBA4C20032D671 /* FakeSignInView.swift in Sources */,
@@ -907,7 +941,9 @@
 				9408E17623BBA4960032D671 /* SignInViewPresenterTestCase.swift in Sources */,
 				945B3FF223BFB4A000340B0C /* DocumentSnapshotFake.swift in Sources */,
 				94A5C61E23B412B800752182 /* DocumentReferenceFake.swift in Sources */,
+				944762F923CCB99C002EA115 /* QueryFake.swift in Sources */,
 				94A2FD2C23BB6E3800AE9865 /* FakeScoreView.swift in Sources */,
+				944762F723CCB839002EA115 /* MarketplaceManagerTestCase.swift in Sources */,
 				94D20966239EE8030089759B /* AccountManagerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

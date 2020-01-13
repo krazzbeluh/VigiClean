@@ -20,7 +20,7 @@ class ObjectManagerTestCase: XCTestCase {
     func testGetActionsShouldReturnSuccessCallbackAndStoreActionsIfNoErrors() {
         let objectManager = ObjectManager(database: FirestoreFake(errors: [nil],
                                                                   data: ["1": "La poubelle est pleine"]),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = easyObject
         
@@ -38,7 +38,7 @@ class ObjectManagerTestCase: XCTestCase {
     func testGetActionsShouldReturnFailureCallbackIfErrors() {
         let objectManager = ObjectManager(database: FirestoreFake(errors: [EasyError()],
                                                                   data: nil),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = easyObject
         
@@ -55,7 +55,7 @@ class ObjectManagerTestCase: XCTestCase {
     func testGetActionsShouldReturnFailureCallbackIfNoData() {
         let objectManager = ObjectManager(database: FirestoreFake(errors: nil,
                                                                   data: nil),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = easyObject
         
@@ -72,7 +72,7 @@ class ObjectManagerTestCase: XCTestCase {
     // MARK: GetEmployeeActions
     func testGetEmployeeActionsShouldReturnSuccessCallbackAndStoreEmployeeActionsIfNoErrors() {
         let objectManager = ObjectManager(database: FirestoreFake(errors: nil, data: ["1": "EmployeeAction"]),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = easyObject
         
@@ -89,7 +89,7 @@ class ObjectManagerTestCase: XCTestCase {
     
     func testGetEmployeeActionsShouldReturnFailureCallbackIfErrors() {
         let objectManager = ObjectManager(database: FirestoreFake(errors: [EasyError()], data: nil),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = easyObject
         
@@ -105,7 +105,7 @@ class ObjectManagerTestCase: XCTestCase {
     
     func testGetEmployeeActionsShouldReturnFailureCallbackIfNoData() {
         let objectManager = ObjectManager(database: FirestoreFake(errors: nil, data: nil),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = easyObject
         
@@ -129,7 +129,7 @@ class ObjectManagerTestCase: XCTestCase {
         ]
         
         let objectManager = ObjectManager(database: FirestoreFake(errors: nil, data: data),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = nil
         
@@ -145,7 +145,7 @@ class ObjectManagerTestCase: XCTestCase {
     
     func testGetObjectShouldReturnFailureCallbackIfError() {
         let objectManager = ObjectManager(database: FirestoreFake(errors: [EasyError()], data: nil),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = nil
         
@@ -167,7 +167,7 @@ class ObjectManagerTestCase: XCTestCase {
         ]
         
         let objectManager = ObjectManager(database: FirestoreFake(errors: nil, data: data),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = nil
         
@@ -190,7 +190,7 @@ class ObjectManagerTestCase: XCTestCase {
     func testSendRequestShouldReturnSuccessCallbackIfNoError() {
         let user = UserFake(uid: "VigiClean User")
         let objectManager = ObjectManager(database: FirestoreFake(errors: nil, data: nil),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
@@ -207,7 +207,7 @@ class ObjectManagerTestCase: XCTestCase {
     func testSendRequestShouldReturnErrorCallbackIfError() {
         let user = UserFake(uid: "VigiClean User", errors: nil)
         let objectManager = ObjectManager(database: FirestoreFake(errors: [EasyError()], data: nil),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
@@ -224,7 +224,7 @@ class ObjectManagerTestCase: XCTestCase {
     func testSendRequestShouldReturnErrorCallbackIfUserNotLoggedIn() {
         let user: UserFake? = nil
         let objectManager = ObjectManager(database: FirestoreFake(errors: nil, data: nil),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
@@ -241,7 +241,7 @@ class ObjectManagerTestCase: XCTestCase {
     // MARK: resolvedRequest
     func testResolvedRequestShouldReturnSuccessCallbackIfNoError() {
         let objectManager = ObjectManager(database: FirestoreFake(errors: nil, data: nil),
-                                          functions: FunctionsFake(error: nil))
+                                          functions: FunctionsFake(error: nil, data: nil))
         
         Object.currentObject = easyObject
         Object.currentObject?.actions = [Action(index: 1, message: "VigiClean Action")]
@@ -255,7 +255,7 @@ class ObjectManagerTestCase: XCTestCase {
     
     func testResolvedRequestShouldReturnErrorCallbackIfError() {
         let objectManager = ObjectManager(database: FirestoreFake(errors: nil, data: nil),
-                                          functions: FunctionsFake(error: EasyError()))
+                                          functions: FunctionsFake(error: EasyError(), data: nil))
         
         Object.currentObject = easyObject
         Object.currentObject?.actions = [Action(index: 1, message: "VigiClean Action")]

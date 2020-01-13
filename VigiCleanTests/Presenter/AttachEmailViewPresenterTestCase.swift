@@ -1,5 +1,5 @@
 //
-//  AttachEmailViewPresenterTestCaase.swift
+//  AttachEmailViewPresenterTestCase.swift
 //  VigiCleanTests
 //
 //  Created by Paul Leclerc on 31/12/2019.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import VigiClean
 
-class AttachEmailViewPresenterTestCaase: XCTestCase {
+class AttachEmailViewPresenterTestCase: XCTestCase {
     var view: FakeAttachEmailView!
     
     override func setUp() {

@@ -12,10 +12,12 @@ import FirebaseFirestore
 class CollectionReferenceFake: CollectionReference {
     var errors: [Error?]?
     let data: [String: Any]?
+    let datas: [[String: Any]]?
     
-    init(errors: [Error?]?, data: [String: Any]?) {
+    init(errors: [Error?]?, data: [String: Any]? = nil, datas: [[String: Any]]? = nil) {
         self.errors = errors
         self.data = data
+        self.datas = datas
     }
     
     override func document(_ documentPath: String) -> DocumentReference {
@@ -28,6 +30,10 @@ class CollectionReferenceFake: CollectionReference {
         }
         
         return DocumentReferenceFake(errors: errors, data: data)
+    }
+    
+    override func order(by field: String) -> Query {
+        return QueryFake(datas: datas, error: getNextError())
     }
     
     private func getNextError() -> Error? {
