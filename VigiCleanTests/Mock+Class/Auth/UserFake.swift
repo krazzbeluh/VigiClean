@@ -64,6 +64,14 @@ class UserFake: User {
         completion(nil, getNextError())
     }
     
+    override func delete(completion: UserProfileChangeCallback? = nil) {
+        guard let completion = completion else {
+            return
+        }
+        
+        completion(getNextError())
+    }
+    
     func getNextError() -> Error? {
         let error = errors?.first ?? nil
         errors?.removeFirst()

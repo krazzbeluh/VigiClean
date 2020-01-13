@@ -38,7 +38,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
             } else {
-                VigiCleanUser.currentUser.updatePassword(password: password) { (error) in
+                VigiCleanUser.currentUser.createPassword(password: password) { (error) in
                     if let error = error {
                         self.view.displayError(message: self.convertError(error))
                     } else {

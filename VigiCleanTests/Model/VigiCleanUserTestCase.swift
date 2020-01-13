@@ -147,18 +147,37 @@ class VigiCleanUserTestCase: XCTestCase {
     }
     
     func testSignOutShouldReturnErrorCallbackIfFailure() {
-        let expectation = XCTestExpectation(description: "Wait for callback")
-        
         let auth = AuthFake(error: EasyError(), result: nil)
         auth.currentUser = UserFake(uid: "", mail: "", errors: nil)
         VigiCleanUser.currentUser.auth = auth
         
         VigiCleanUser.currentUser.signOut { (error) in
             XCTAssertNotNil(error)
-            expectation.fulfill()
         }
+    }
+    
+    func testSignOutShouldReturnSuccessCallbackIfNoErrorAndUserIsAnonymous() {
+        let auth = AuthFake(error: nil, result: nil)
+        let user = UserFake(uid: "", mail: "", errors: nil)
+        user.email = nil
+        auth.currentUser = user
+        VigiCleanUser.currentUser.auth = auth
         
-        wait(for: [expectation], timeout: 0.01)
+        VigiCleanUser.currentUser.signOut { (error) in
+            XCTAssertNil(error)
+        }
+    }
+    
+    func testSignOutShouldReturnErrorCallbackIfErrorAndUserIsAnonymous() {
+        let auth = AuthFake(error: nil, result: nil)
+        let user = UserFake(uid: "", mail: "", errors: [EasyError()])
+        user.email = nil
+        auth.currentUser = user
+        VigiCleanUser.currentUser.auth = auth
+        
+        VigiCleanUser.currentUser.signOut { (error) in
+            XCTAssertNotNil(error)
+        }
     }
     
     // MARK: attachEmail
@@ -184,25 +203,25 @@ class VigiCleanUserTestCase: XCTestCase {
         }
     }
     
-    // MARK: updatePassword
-    func testUpdatePasswordShouldReturnSuccessCallbackIfNoError() {
+    // MARK: createPassword
+    func testCreatePasswordShouldReturnSuccessCallbackIfNoError() {
         let user = UserFake(uid: "", errors: nil)
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
         VigiCleanUser.currentUser.auth = auth
         
-        VigiCleanUser.currentUser.updatePassword(password: "") { (error) in
+        VigiCleanUser.currentUser.createPassword(password: "") { (error) in
             XCTAssertNil(error)
         }
     }
     
-    func testUpdatePasswordShouldReturnErrorCallbackIfError() {
+    func testCreatePasswordShouldReturnErrorCallbackIfError() {
         let user = UserFake(uid: "", errors: [EasyError()])
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
         VigiCleanUser.currentUser.auth = auth
         
-        VigiCleanUser.currentUser.updatePassword(password: "") { (error) in
+        VigiCleanUser.currentUser.createPassword(password: "") { (error) in
             XCTAssertNotNil(error)
         }
     }
@@ -260,6 +279,16 @@ class VigiCleanUserTestCase: XCTestCase {
         }
     }
     
+    func testUpdatePseudoShouldReturnErrorCallbackIfUserNotLoggedIn() {
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = nil
+        VigiCleanUser.currentUser.auth = auth
+        
+        VigiCleanUser.currentUser.updatePseudo(to: "", with: "") { (error) in
+            XCTAssertNotNil(error)
+        }
+    }
+    
     // MARK: updateEmail
     func testUpdateEmailShouldReturnSuccessCallbackIfNoError() {
         let user = UserFake(uid: "", mail: "", errors: nil)
@@ -301,6 +330,40 @@ class VigiCleanUserTestCase: XCTestCase {
         VigiCleanUser.currentUser.auth = auth
         
         VigiCleanUser.currentUser.updateEmail(to: "", with: "") { (error) in
+            XCTAssertNotNil(error)
+        }
+    }
+    
+    // MARK: updatePassword
+    func testUpdatePasswordShouldReturnSuccessCallbackIfNoError() {
+        let user = UserFake(uid: "", mail: "", errors: nil)
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = user
+        VigiCleanUser.currentUser.auth = auth
+        
+        VigiCleanUser.currentUser.updatePassword(to: "", from: "") { (error) in
+            XCTAssertNil(error)
+        }
+    }
+    
+    func testUpdatePasswordShouldReturnErrorCallbackIfError() {
+        let user = UserFake(uid: "", mail: "", errors: [EasyError()])
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = user
+        VigiCleanUser.currentUser.auth = auth
+        
+        VigiCleanUser.currentUser.updatePassword(to: "", from: "") { (error) in
+            XCTAssertNotNil(error)
+        }
+    }
+    
+    func testUpdatePasswordShouldReturnErrorCallbackIfErrorAtUpdatePassword() {
+        let user = UserFake(uid: "", mail: "", errors: [nil, EasyError()])
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = user
+        VigiCleanUser.currentUser.auth = auth
+        
+        VigiCleanUser.currentUser.updatePassword(to: "", from: "") { (error) in
             XCTAssertNotNil(error)
         }
     }

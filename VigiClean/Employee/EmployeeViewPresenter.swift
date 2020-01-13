@@ -19,9 +19,9 @@ class EmployeePresenter: BasePresenter, EmployeeViewPresenter {
         self.view = view
     }
     
-    init(view: EmployeeView, objectManager: ObjectManager? = nil) {
+    init(view: EmployeeView, objectManager: ObjectManager) {
         self.view = view
-        self.objectManager = objectManager ?? ObjectManager()
+        self.objectManager = objectManager
     }
     
     func getObjectList() {

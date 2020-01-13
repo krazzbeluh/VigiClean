@@ -31,7 +31,7 @@ class VigiCleanUserFake: VigiCleanUser {
         completion(error)
     }
     
-    override func updatePassword(password: String, completion: @escaping ((Error?) -> Void)) {
+    override func createPassword(password: String, completion: @escaping ((Error?) -> Void)) {
         completion(error)
     }
     

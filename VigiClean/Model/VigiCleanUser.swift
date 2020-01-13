@@ -83,7 +83,7 @@ class VigiCleanUser {
         }
     }
     
-    func updatePassword(password: String, completion: @escaping ((Error?) -> Void)) {
+    func createPassword(password: String, completion: @escaping ((Error?) -> Void)) {
         VigiCleanUser.currentUser.user?.updatePassword(to: password) { (error) in
             guard error == nil else {
                 let errCode = ErrorHandler().convertToAuthError(error!)
