@@ -43,6 +43,29 @@ class RequestViewPresenterTestCase: XCTestCase {
         XCTAssertEqual(presenter.actions, [String]())
     }
     
+    func testActionsShouldReturnEmptyArrayAndCallDisplayErrorIfNoActions() {
+        let objectManager = ObjectManagerFake(errors: nil)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
+        
+        Object.currentObject = easyObject
+        Object.currentObject?.actions = nil
+        
+        XCTAssertEqual(presenter.actions, [String]())
+        XCTAssertNotNil(view.alert)
+    }
+
+    func testActionsShouldReturnEmptyArrayAndCallDisplayErrorIfNoActionsAndUserIsEmployee() {
+        let objectManager = ObjectManagerFake(errors: nil)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
+        presenter.employeeMode = true
+        
+        Object.currentObject = easyObject
+        Object.currentObject?.employeeActions = nil
+        
+        XCTAssertEqual(presenter.actions, [String]())
+        XCTAssertNotNil(view.alert)
+    }
+    
     func testActionsShouldNotBeTheSameIfEmployeeModeSwitched() {
         let objectManager = ObjectManagerFake(errors: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager)
@@ -91,7 +114,7 @@ class RequestViewPresenterTestCase: XCTestCase {
         XCTAssertEqual(view.location?.info, poi.info)
     }
     
-    func testSendRequestShouldReturnSuccessCallbackWithIsEmployeeAtTrueIfNoErrorAndIsEmployeeIsTrue() {
+    func testSendRequestShouldCallRequestSentWithIsEmployeeAtTrueIfNoErrorAndIsEmployeeIsTrue() {
         let objectManager = ObjectManagerFake(errors: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager)
         presenter.switchEmployeeMode(to: true)
@@ -108,7 +131,7 @@ class RequestViewPresenterTestCase: XCTestCase {
         XCTAssertNil(view.alert)
     }
     
-    func testSendRequestShouldReturnFailureCallbackIfErrorAndIsEmployeeIsTrue() {
+    func testSendRequestShouldCallSendAlertIfErrorAndIsEmployeeIsTrue() {
         let objectManager = ObjectManagerFake(errors: [EasyError()])
         let presenter = RequestPresenter(view: view, objectManager: objectManager)
         presenter.switchEmployeeMode(to: true)
@@ -125,7 +148,7 @@ class RequestViewPresenterTestCase: XCTestCase {
         XCTAssertNotNil(view.alert)
     }
     
-    func testSendRequestShouldReturnSuccessCallbackWithIsEmployeeAtFalseIfNoErrorAndIsEmployeeIsFalse() {
+    func testSendRequestShouldCallRequestSentWithIsEmployeeAtFalseIfNoErrorAndIsEmployeeIsFalse() {
         let objectManager = ObjectManagerFake(errors: nil)
         let presenter = RequestPresenter(view: view, objectManager: objectManager)
         presenter.switchEmployeeMode(to: false)
@@ -139,10 +162,11 @@ class RequestViewPresenterTestCase: XCTestCase {
         presenter.sendRequest(with: action, isValid: true)
         
         XCTAssertTrue(view.didCallRequestSent)
+        XCTAssertFalse(view.employeeMode ?? true)
         XCTAssertNil(view.alert)
     }
     
-    func testSendRequestShouldReturnFailureCallbackIfErrorAndIsEmployeeIsFalse() {
+    func testSendRequestShouldCallRequestSentIfErrorAndIsEmployeeIsFalse() {
         let objectManager = ObjectManagerFake(errors: [EasyError()])
         let presenter = RequestPresenter(view: view, objectManager: objectManager)
         presenter.switchEmployeeMode(to: false)
@@ -154,6 +178,61 @@ class RequestViewPresenterTestCase: XCTestCase {
         }
         
         presenter.sendRequest(with: action, isValid: true)
+        
+        XCTAssertFalse(view.didCallRequestSent)
+        XCTAssertNotNil(view.alert)
+    }
+    
+    func testSendRequestShouldCallDisplayErrorIfNoObject() {
+        let objectManager = ObjectManagerFake(errors: nil)
+        let presenter = RequestPresenter(view: view, objectManager: objectManager)
+        Object.currentObject = nil
+        
+        presenter.sendRequest(with: "", isValid: true)
+        
+        XCTAssertFalse(view.didCallRequestSent)
+        XCTAssertNotNil(view.alert)
+    }
+    
+    func testSendRequestShouldCallDisplayErrorIfNoActions() {
+        Object.currentObject = easyObject
+        Object.currentObject?.actions = nil
+        let presenter = RequestPresenter(view: view)
+        
+        presenter.sendRequest(with: "", isValid: true)
+        
+        XCTAssertFalse(view.didCallRequestSent)
+        XCTAssertNotNil(view.alert)
+    }
+    
+    func testSendRequestShouldCallDisplayErrorIfNoActionsAndUserIsEmployed() {
+        Object.currentObject = easyObject
+        Object.currentObject?.employeeActions = nil
+        let presenter = RequestPresenter(view: view)
+        presenter.switchEmployeeMode(to: true)
+        
+        presenter.sendRequest(with: "", isValid: true)
+        
+        XCTAssertFalse(view.didCallRequestSent)
+        XCTAssertNotNil(view.alert)
+    }
+    
+    func testSendRequestShouldCallDisplayErrorIfInvalidAction() {
+        Object.currentObject = easyObject
+        let presenter = RequestPresenter(view: view)
+        
+        presenter.sendRequest(with: "", isValid: true)
+        
+        XCTAssertFalse(view.didCallRequestSent)
+        XCTAssertNotNil(view.alert)
+    }
+    
+    func testSendRequestShouldCallDisplayErrorIfInvalidActionAndUserIsEmployed() {
+        Object.currentObject = easyObject
+        let presenter = RequestPresenter(view: view)
+        presenter.switchEmployeeMode(to: true)
+        
+        presenter.sendRequest(with: "", isValid: true)
         
         XCTAssertFalse(view.didCallRequestSent)
         XCTAssertNotNil(view.alert)

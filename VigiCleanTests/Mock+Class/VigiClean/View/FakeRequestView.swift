@@ -11,6 +11,7 @@ import UIKit
 class FakeRequestView: RequestView {
     var location: Poi?
     var alert: String?
+    var employeeMode: Bool?
     var didCallRoleFetched = false
     var didCallRequestSent = false
     
@@ -26,6 +27,7 @@ class FakeRequestView: RequestView {
     
     func requestSent(employeeMode: Bool) {
         didCallRequestSent = true
+        self.employeeMode = employeeMode
     }
     
     func displayError(message: String) {

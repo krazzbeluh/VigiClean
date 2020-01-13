@@ -119,6 +119,8 @@ class BasePresenter {
                 message = "Vous devez remplir tous les champs."
             case .passwordMismatches:
                 message = "Les mots de passe ne correspondent pas."
+            case .unWantedValues:
+                message = "Certaines entrées sont inattendues"
             }
         case let error as ScannerError:
             switch error {

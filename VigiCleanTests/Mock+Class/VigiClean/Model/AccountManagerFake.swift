@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseStorage
 @testable import VigiClean
 
 class AccountManagerFake: AccountManager {
@@ -29,11 +30,9 @@ class AccountManagerFake: AccountManager {
         self.errors = errors
         super.init()
     }
-    
-    override init() {
-        let auth = AuthFake(error: nil, result: nil)
+    override init(database: Firestore? = nil, storage: Storage? = nil) {
         let database = FirestoreFake(errors: [nil], datas: nil)
-        super.init(auth: auth, database: database)
+        super.init(database: database, storage: storage)
     }
     
     override func getAvatar(callback: @escaping ((Error?) -> Void)) {

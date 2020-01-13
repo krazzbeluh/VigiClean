@@ -82,8 +82,8 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
     }
     
     func sendRequest(with action: String, isValid: Bool) {
-        
         guard let object = Object.currentObject else {
+            view.displayError(message: convertError(ObjectManager.ObjectError.objectNotFound))
             return
         }
         
@@ -101,6 +101,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             }
             
             guard let action = sendingAction else {
+                self.view.displayError(message: convertError(UserError.unWantedValues))
                 return
             }
             
@@ -126,6 +127,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
             }
             
             guard let action = sendingAction else {
+                self.view.displayError(message: convertError(UserError.unWantedValues))
                 return
             }
             
@@ -138,6 +140,5 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
                 self.view.requestSent(employeeMode: true)
             }
         }
-        
     }
 }

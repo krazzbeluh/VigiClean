@@ -40,7 +40,7 @@ enum ScannerError: Error {
 }
 
 enum UserError: Error {
-    case nilInTextField, passwordMismatches
+    case nilInTextField, passwordMismatches, unWantedValues
 }
 
 enum FirebaseInterfaceError: Error {

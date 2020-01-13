@@ -7,24 +7,17 @@
 //
 
 import Foundation
-import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 
 class AccountManager {
-    init() {
-        self.auth = Auth.auth()
-        self.database = Firestore.firestore()
+    init(database: Firestore? = nil, storage: Storage? = nil) {
+        self.database = database ?? Firestore.firestore()
+        self.storage = storage ?? Storage.storage()
     }
     
-    init(auth: Auth, database: Firestore) {
-        self.auth = auth
-        self.database = database
-    }
-    
-    private var auth: Auth
     private var database: Firestore
-    private var storage = Storage.storage()
+    private var storage: Storage
     
     enum UAccountError: Error {
         case notMatchingPassword, userDocumentNotCreated, userNotLoggedIn,
