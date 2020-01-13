@@ -10,13 +10,22 @@ import Foundation
 @testable import VigiClean
 
 class MarketplaceManagerFake: MarketplaceManager {
-    private let resultString: Result<String, Error>
+    private var resultString: Result<String, Error>?
+    private var error: Error?
     
     init(resultString: Result<String, Error>) {
         self.resultString = resultString
     }
     
+    init(error: Error?) {
+        self.error = error
+    }
+    
     override func buySale(sale: Sale, completion: @escaping (Result<String, Error>) -> Void) {
-        completion(resultString)
+        completion(resultString!)
+    }
+    
+    override func getSales(completion: @escaping (Error?) -> Void) {
+        completion(error)
     }
 }

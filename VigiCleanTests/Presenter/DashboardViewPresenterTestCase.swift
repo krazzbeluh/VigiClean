@@ -12,6 +12,13 @@ import XCTest
 @testable import VigiClean
 
 class DashboardViewPresenterTestCase: XCTestCase {
+    var view: FakeDashboardView!
+    
+    override func setUp() {
+        self.view = FakeDashboardView()
+        MarketplaceManager.sales = [Sale]()
+    }
+    
     func testgetAvatarShouldCallViewSetAvatarIfSuccess() {
         let expectation = XCTestExpectation(description: "Wait for queue change")
         VigiCleanUser.currentUser.avatar = Data()
@@ -45,8 +52,7 @@ class DashboardViewPresenterTestCase: XCTestCase {
     }
     
     func testgetAvatarShouldNotCallViewSendAlertIfFailureWithObjectNotFound() {
-        let view = FakeDashboardView()
-        let accountManager = AccountManagerFake(resultData: .failure(StorageErrorCode.objectNotFound))
+        let accountManager = AccountManagerFake(errors: [StorageErrorCode.objectNotFound])
         let marketplaceManager = MarketplaceManager()
         let presenter = DashboardPresenter(accountManager: accountManager,
                                            view: view,
@@ -56,5 +62,38 @@ class DashboardViewPresenterTestCase: XCTestCase {
         
         XCTAssertFalse(view.didCallSetAvatar)
         XCTAssertFalse(view.didCallSendAlert)
+    }
+    
+    func testGetSalesShouldCallSalesGottenIfSalesIsNotVoid() {
+        MarketplaceManager.sales = [Sale(price: 1,
+                                         image: URL(string: "https://www.vigiclean.com")!,
+                                         title: "",
+                                         littleTitle: "",
+                                         partner: "",
+                                         description: "",
+                                         code: "")]
+        
+        let presenter = DashboardPresenter(view: view)
+        presenter.getSales()
+        
+        XCTAssertTrue(view.didCallSalesGotten)
+    }
+    
+    func testGetSalesShouldCallSalesGottenIfNoError() {
+        XCTAssertFalse(view.didCallSalesGotten)
+        let marketplaceManager = MarketplaceManagerFake(error: nil)
+        let presenter = DashboardPresenter(view: view, marketplaceManager: marketplaceManager)
+        presenter.getSales()
+        
+        XCTAssertTrue(view.didCallSalesGotten)
+    }
+    
+    func testGetSalesShouldCallDisplayErrorIfError() {
+        XCTAssertFalse(view.didCallSalesGotten)
+        let marketplaceManager = MarketplaceManagerFake(error: EasyError())
+        let presenter = DashboardPresenter(view: view, marketplaceManager: marketplaceManager)
+        presenter.getSales()
+        
+        XCTAssertTrue(view.didCallSendAlert)
     }
 }
