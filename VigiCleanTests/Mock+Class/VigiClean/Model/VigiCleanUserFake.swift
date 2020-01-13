@@ -35,6 +35,12 @@ class VigiCleanUserFake: VigiCleanUser {
         completion(error)
     }
     
+    override func updatePassword(to newPassword: String,
+                                 from oldPassword: String,
+                                 completion: @escaping (Error?) -> Void) {
+        completion(error)
+    }
+    
     override func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
         completion(error)
     }

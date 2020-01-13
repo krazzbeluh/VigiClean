@@ -16,6 +16,16 @@ class ProfileViewPresenterTestCase: XCTestCase {
         self.view = FakeProfileView()
     }
     
+    func testInitShouldCallDisplayAvatarIfDefined() {
+        let user = VigiCleanUserFake(username: "", error: nil)
+        user.isConnectedWithEmail = true
+        user.avatar = Data()
+        VigiCleanUser.currentUser = user
+        _ = ProfilePresenter(view: view)
+        
+        XCTAssertTrue(view.didCallDisplayAvatar)
+    }
+    
     func testIsConnectedAnonymouslyShouldReturnAccountManagerIsConnectedWithEmailInverted() {
         let presenter = ProfilePresenter(view: view)
         
@@ -100,6 +110,72 @@ class ProfileViewPresenterTestCase: XCTestCase {
         let presenter = ProfilePresenter(view: view)
         
         presenter.updateEmail(to: "", with: "1234567890")
+        
+        XCTAssertTrue(view.didCallDisplayError)
+    }
+    
+    func testUpdateAvatarShouldCallDisplayAvatarIfNoError() {
+        let accountManager = AccountManagerFake(resultData: .success(Data()))
+        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        
+        presenter.updateAvatar(to: Data(), with: "")
+        
+        XCTAssertTrue(view.didCallDisplayAvatar)
+    }
+    
+    func testUpdateAvatarShouldCallDisplayErrorIfError() {
+        let accountManager = AccountManagerFake(resultData: .failure(EasyError()))
+        let presenter = ProfilePresenter(view: view, accountManager: accountManager)
+        
+        presenter.updateAvatar(to: Data(), with: "")
+        
+        XCTAssertTrue(view.didCallDisplayError)
+    }
+    
+    func testUpdateAvatarShouldCallDisplayErrorIfNoPassword() {
+        let presenter = ProfilePresenter(view: view)
+        
+        presenter.updateAvatar(to: Data(), with: nil)
+        
+        XCTAssertTrue(view.didCallDisplayError)
+    }
+    
+    func testUpdatePasswordShouldCallPasswordChangedIfNoError() {
+        let user = VigiCleanUserFake(username: nil, error: nil)
+        
+        VigiCleanUser.currentUser = user
+        
+        let presenter = ProfilePresenter(view: view)
+        
+        presenter.updatePassword(to: "", confirm: "", with: "")
+        
+        XCTAssertTrue(view.didCallPasswordChanged)
+    }
+    
+    func testUpdatePasswordShouldCallDisplayErrorIfError() {
+        let user = VigiCleanUserFake(username: nil, error: EasyError())
+        
+        VigiCleanUser.currentUser = user
+        
+        let presenter = ProfilePresenter(view: view)
+        
+        presenter.updatePassword(to: "", confirm: "", with: "")
+        
+        XCTAssertTrue(view.didCallDisplayError)
+    }
+    
+    func testUpdatePasswordShouldCallDisplayErrorIfNilInTextField() {
+        let presenter = ProfilePresenter(view: view)
+        
+        presenter.updatePassword(to: nil, confirm: "", with: "")
+        
+        XCTAssertTrue(view.didCallDisplayError)
+    }
+    
+    func testUpdatePasswordShouldCallDisplayErrorIfPasswordMismatches() {
+        let presenter = ProfilePresenter(view: view)
+        
+        presenter.updatePassword(to: "azertyuiop", confirm: "poiuytreza", with: "")
         
         XCTAssertTrue(view.didCallDisplayError)
     }

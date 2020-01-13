@@ -117,6 +117,8 @@ class BasePresenter {
             switch error {
             case .nilInTextField:
                 message = "Vous devez remplir tous les champs."
+            case .passwordMismatches:
+                message = "Les mots de passe ne correspondent pas."
             }
         case let error as ScannerError:
             switch error {

@@ -19,7 +19,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
     
     required init(view: ProfileView) {
         self.view = view
-        if VigiCleanUser.currentUser.isConnectedWithEmail {
+            if VigiCleanUser.currentUser.isConnectedWithEmail {
             view.display(username: VigiCleanUser.currentUser.username ?? "")
             view.display(email: VigiCleanUser.currentUser.user?.email ?? "")
             
@@ -99,9 +99,14 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
     }
     
     func updatePassword(to newPassword: String?, confirm: String?, with password: String?) {
-        guard let password = password, let newPassword = newPassword, let confirm = confirm,
-            newPassword == confirm else {
+        guard let password = password, let newPassword = newPassword, let confirm = confirm else {
+            view.displayError(message: convertError(UserError.nilInTextField))
                 return
+        }
+        
+        guard newPassword == confirm else {
+            view.displayError(message: convertError(UserError.passwordMismatches))
+            return
         }
         
         VigiCleanUser.currentUser.updatePassword(to: newPassword, from: password) { (error) in

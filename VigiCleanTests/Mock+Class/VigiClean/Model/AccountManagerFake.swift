@@ -48,6 +48,12 @@ class AccountManagerFake: AccountManager {
         creditsChanged(15)
     }
     
+    override func updateAvatar(from avatar: Data,
+                               with password: String,
+                               callback: @escaping ((Result<Data, Error>) -> Void)) {
+        callback(resultData)
+    }
+    
     private func getError() -> Error? {
         let error = errors?.first
         errors?.removeFirst()
