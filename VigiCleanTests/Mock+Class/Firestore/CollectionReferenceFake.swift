@@ -10,39 +10,29 @@ import Foundation
 import FirebaseFirestore
 
 class CollectionReferenceFake: CollectionReference {
-    var errors: [Error?]?
-    let data: [String: Any]?
-    let datas: [[String: Any]]?
-    
-    init(errors: [Error?]?, data: [String: Any]? = nil, datas: [[String: Any]]? = nil) {
-        self.errors = errors
-        self.data = data
-        self.datas = datas
-    }
+    init(vigiclean: Int? = nil) {}
     
     override func document(_ documentPath: String) -> DocumentReference {
-        return DocumentReferenceFake(errors: errors, data: data)
+        return DocumentReferenceFake()
     }
     
     override func addDocument(data: [String: Any], completion: ((Error?) -> Void)? = nil) -> DocumentReference {
         if let completion = completion {
-            completion(getNextError())
+            completion(FirestoreFake.getNextError())
         }
         
-        return DocumentReferenceFake(errors: errors, data: data)
+        return DocumentReferenceFake()
     }
     
     override func order(by field: String) -> Query {
-        return QueryFake(datas: datas, error: getNextError())
+        return QueryFake()
     }
     
-    private func getNextError() -> Error? {
-        guard let error = errors?.first else {
-            return nil
-        }
-        
-        errors?.removeFirst()
-        
-        return error
+    override func whereField(_ field: String, isEqualTo value: Any) -> Query {
+        return QueryFake()
+    }
+    
+    override func whereField(_ field: String, in values: [Any]) -> Query {
+        return QueryFake()
     }
 }

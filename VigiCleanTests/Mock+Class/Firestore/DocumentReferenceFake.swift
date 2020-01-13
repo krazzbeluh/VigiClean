@@ -10,21 +10,15 @@ import Foundation
 import FirebaseFirestore
 
 class DocumentReferenceFake: DocumentReference {
-    var errors: [Error?]?
-    let data: [String: Any]?
-    
-    init(errors: [Error?]?, data: [String: Any]?) {
-        self.errors = errors
-        self.data = data
-    }
+    init(vigiclean: Int?  = nil) {}
     
     override func setData(_ documentData: [String: Any], completion: ((Error?) -> Void)? = nil) {
-        completion!(getNextError())
+        completion!(FirestoreFake.getNextError())
     }
     
     override func getDocument(completion: @escaping FIRDocumentSnapshotBlock) {
-        let error = getNextError()
-        completion(DocumentSnapshotFake(error: error, data: data), error)
+        let error = FirestoreFake.getNextError()
+        completion(DocumentSnapshotFake(error: error, data: FirestoreFake.getNextData()), error)
     }
     
     override func updateData(_ fields: [AnyHashable: Any], completion: ((Error?) -> Void)? = nil) {
@@ -32,26 +26,18 @@ class DocumentReferenceFake: DocumentReference {
             return
         }
         
-        completion(getNextError())
+        completion(FirestoreFake.getNextError())
     }
     
     override func addSnapshotListener(_ listener: @escaping FIRDocumentSnapshotBlock) -> ListenerRegistration {
-        if let error = getNextError() {
+        if let error = FirestoreFake.getNextError() {
             listener(nil, error)
         } else {
-            listener(DocumentSnapshotFake(error: getNextError(), data: data), getNextError())
+            listener(DocumentSnapshotFake(error: FirestoreFake.getNextError(),
+                                          data: FirestoreFake.getNextData()),
+                     FirestoreFake.getNextError())
         }
         
         return ListenerRegistrationFake()
-    }
-    
-    private func getNextError() -> Error? {
-        guard let error = errors?.first else {
-            return nil
-        }
-        
-        errors?.removeFirst()
-        
-        return error
     }
 }

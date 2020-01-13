@@ -10,19 +10,17 @@ import Foundation
 import FirebaseFirestore
 
 class QueryFake: Query {
-    var datas: [[String: Any]]?
-    let error: Error?
-    
-    init(datas: [[String: Any]]?, error: Error?) {
-        self.datas = datas
-        self.error = error
-    }
+    init(vigiclean: Int? = nil) {}
     
     override func getDocuments(completion: @escaping FIRQuerySnapshotBlock) {
-        if let datas = datas {
-            completion(QuerySnapshotFake(datas: datas), error)
+        if let data = FirestoreFake.getNextData() {
+            completion(QuerySnapshotFake(datas: [data]), FirestoreFake.getNextError())
         } else {
-            completion(nil, error)
+            completion(nil, FirestoreFake.getNextError())
         }
+    }
+    
+    override func whereField(_ field: String, isEqualTo value: Any) -> Query {
+        return QueryFake()
     }
 }

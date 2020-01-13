@@ -32,7 +32,7 @@ class AccountManagerFake: AccountManager {
     
     override init() {
         let auth = AuthFake(error: nil, result: nil)
-        let database = FirestoreFake(errors: [nil], data: nil)
+        let database = FirestoreFake(errors: [nil], datas: nil)
         super.init(auth: auth, database: database)
     }
     

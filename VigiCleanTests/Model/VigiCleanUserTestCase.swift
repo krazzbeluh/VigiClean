@@ -213,7 +213,7 @@ class VigiCleanUserTestCase: XCTestCase {
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
         
-        let database = FirestoreFake(errors: nil, data: nil)
+        let database = FirestoreFake(errors: nil, datas: nil)
         
         VigiCleanUser.currentUser.auth = auth
         VigiCleanUser.currentUser.database = database
@@ -228,7 +228,7 @@ class VigiCleanUserTestCase: XCTestCase {
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = user
         
-        let database = FirestoreFake(errors: [EasyError()], data: nil)
+        let database = FirestoreFake(errors: [EasyError()], datas: nil)
         
         VigiCleanUser.currentUser.auth = auth
         VigiCleanUser.currentUser.database = database

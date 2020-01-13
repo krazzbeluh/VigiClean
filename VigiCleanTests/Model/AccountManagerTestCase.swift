@@ -17,7 +17,7 @@ class AccountManagerTestCase: XCTestCase {
     func testCreateUserDocumentShouldNotReturnErrorCallbackIfSuccess() {
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
+                                            database: FirestoreFake(errors: nil, datas: nil))
         
         accountManager.createUserDocument(for: "", named: "") { (error) in
             XCTAssertNil(error)
@@ -30,7 +30,7 @@ class AccountManagerTestCase: XCTestCase {
     func testCreateUserDocumentShouldReturnErrorCallbackIfFailure() {
         let expectation = XCTestExpectation(description: "Wait for callback")
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: [EasyError()], data: nil))
+                                            database: FirestoreFake(errors: [EasyError()], datas: nil))
         
         accountManager.createUserDocument(for: "", named: nil) { (error) in
             XCTAssertNotNil(error)
@@ -43,7 +43,7 @@ class AccountManagerTestCase: XCTestCase {
     // MARK: getUserInfos
     func testGetUserInfosShouldReturnValueIfScoreData() {
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
+                                            database: FirestoreFake(errors: nil, datas: nil))
         
         let data: [String: Any] = [
             "credits": 18
@@ -54,7 +54,7 @@ class AccountManagerTestCase: XCTestCase {
     
     func testGetUserInfosShouldNotReturnValueIfNoScoreData() {
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
+                                            database: FirestoreFake(errors: nil, datas: nil))
         
         let data = [String: Any]()
         
@@ -63,7 +63,7 @@ class AccountManagerTestCase: XCTestCase {
     
     func testGetUserInfosShouldStoreUsernameIfExists() {
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
+                                            database: FirestoreFake(errors: nil, datas: nil))
         
         let data: [String: Any] = [
             "username": "VigiClean"
@@ -75,7 +75,7 @@ class AccountManagerTestCase: XCTestCase {
     
     func testGetUserInfosShouldStoreRoleIfExists() {
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
+                                            database: FirestoreFake(errors: nil, datas: nil))
         
         let data: [String: Any] = [
             "employedAt": "VigiClean"
@@ -94,7 +94,7 @@ class AccountManagerTestCase: XCTestCase {
         ]
 
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: data))
+                                            database: FirestoreFake(errors: nil, datas: [data]))
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")
@@ -111,7 +111,7 @@ class AccountManagerTestCase: XCTestCase {
     
     func testListenForUserDocumentChangesShouldNotReturnCreditsIfError() {
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: [EasyError()], data: nil))
+                                            database: FirestoreFake(errors: [EasyError()], datas: nil))
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")
@@ -124,7 +124,7 @@ class AccountManagerTestCase: XCTestCase {
     
     func testListenForUserDocumentChangesShouldNotReturnCreditsIfUserNotLoggedIn() {
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: [EasyError()], data: nil))
+                                            database: FirestoreFake(errors: [EasyError()], datas: nil))
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = nil
@@ -137,7 +137,7 @@ class AccountManagerTestCase: XCTestCase {
     
     func testListenForUserDocumentChangesShouldNotReturnCreditsIfNoData() {
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: nil))
+                                            database: FirestoreFake(errors: nil, datas: nil))
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")
@@ -150,9 +150,9 @@ class AccountManagerTestCase: XCTestCase {
     
     func testListenForUserDocumentChangesShouldNotReturnCreditsButStoreDatasIfNoCreditsInData() {
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: [
+                                            database: FirestoreFake(errors: nil, datas: [[
                                                 "username": "VigiClean"
-                                            ]))
+                                            ]]))
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")
@@ -165,9 +165,9 @@ class AccountManagerTestCase: XCTestCase {
     
     func testListenForUserDocumentChangesShouldNotReturnCreditsIfNoCreditsInDataIfCallback() {
         let accountManager = AccountManager(auth: AuthFake(error: nil, result: nil),
-                                            database: FirestoreFake(errors: nil, data: [
+                                            database: FirestoreFake(errors: nil, datas: [[
                                                 "username": "VigiClean"
-                                            ]))
+                                            ]]))
         
         let auth = AuthFake(error: nil, result: nil)
         auth.currentUser = UserFake(uid: "")

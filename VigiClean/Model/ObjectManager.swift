@@ -15,31 +15,24 @@ class ObjectManager {
         case unableToDecodeData, userNotLoggedIn, noActionsInObject, actionNotFound, notEmployedUser
     }
     
-    private var database = Firestore.firestore()
-    private lazy var functions = Functions.functions()
+    private var database: Firestore
+    private var functions: Functions
     
-    init() {
-        database = Firestore.firestore()
-        functions = Functions.functions()
-    }
-    
-    init(database: Firestore, functions: Functions) {
-        self.database = database
-        self.functions = functions
+    init(database: Firestore? = nil, functions: Functions? = nil) {
+        self.database = database ?? Firestore.firestore()
+        self.functions = functions ?? Functions.functions()
     }
     
     func getObject(code: String, callback: @escaping (Result<Object, Error>) -> Void) {
         let docRef = database.collection(FirestoreCollection.object.rawValue).document(code)
         docRef.getDocument { (document, error) in
-            guard let document = document, document.exists else {
-                let errCode: FirestoreErrorCode! = ErrorHandler().convertToFirestoreError(error!)
-                
-                callback(.failure(errCode))
-                return
-            }
-            
-            guard let data = document.data() else {
-                callback(.failure(FirebaseInterfaceError.unableToDecodeData))
+            guard let document = document, document.exists, let data = document.data() else {
+                if let error = error {
+                    let errCode: FirestoreErrorCode! = ErrorHandler().convertToFirestoreError(error)
+                    callback(.failure(errCode))
+                } else {
+                    callback(.failure(FirebaseInterfaceError.documentDoesNotExists))
+                }
                 return
             }
             
@@ -194,6 +187,7 @@ class ObjectManager {
             guard let objectSnapshot = querySnapshot else {
                 if let error = error {
                     callback(.failure(ErrorHandler().convertToFirestoreError(error)))
+                    return
                 }
                 
                 callback(.failure(FirebaseInterfaceError.documentDoesNotExists))

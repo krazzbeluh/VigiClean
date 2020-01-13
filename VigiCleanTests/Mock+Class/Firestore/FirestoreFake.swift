@@ -10,17 +10,35 @@ import Foundation
 import FirebaseFirestore
 
 class FirestoreFake: Firestore {
-    let errors: [Error?]?
-    let data: [String: Any]?
-    let datas: [[String: Any]]?
+    static var errors: [Error?]?
+    static var datas: [[String: Any]]?
     
-    init(errors: [Error?]?, data: [String: Any]? = nil, datas: [[String: Any]]? = nil) {
-        self.errors = errors
-        self.data = data
-        self.datas = datas
+    init(errors: [Error?]?, datas: [[String: Any]]? = nil) {
+        FirestoreFake.errors = errors
+        FirestoreFake.datas = datas
+    }
+    
+    static func getNextError() -> Error? {
+        guard let error = FirestoreFake.errors?.first else {
+            return nil
+        }
+        
+        FirestoreFake.errors?.removeFirst()
+        
+        return error
+    }
+    
+    static func getNextData() -> [String: Any]? {
+        guard let data = FirestoreFake.datas?.first else {
+            return nil
+        }
+        
+        FirestoreFake.datas?.removeFirst()
+        
+        return data
     }
     
     override func collection(_ collectionPath: String) -> CollectionReference {
-        return CollectionReferenceFake(errors: errors, data: data, datas: datas)
+        return CollectionReferenceFake()
     }
 }
