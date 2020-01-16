@@ -14,6 +14,10 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
     private let accountManager: AccountManager
     private let marketplaceManager: MarketplaceManager
     
+    var isEmployee: Bool {
+        return VigiCleanUser.currentUser.isEmployee
+    }
+    
     required init(view: DashboardView) {
         self.accountManager = AccountManager()
         self.view = view

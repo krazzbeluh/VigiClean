@@ -42,7 +42,7 @@ class AccountManager {
         }
     }
     
-    func listenForUserDocumentChanges(creditsChanged: ((Int) -> Void)?) {
+    func listenForUserDocumentChanges(callback: @escaping (() -> Void)) {
         guard let user = VigiCleanUser.currentUser.user else {
             return
         }
@@ -64,23 +64,13 @@ class AccountManager {
                 }
                 print("Current data: \(data)")
                 
-                guard let creditsChanged = creditsChanged else {
-                    return
-                }
+                self.getUserInfos(in: data)
                 
-                let credits: Int
-                do {
-                    credits = try self.getUserInfos(in: data)
-                } catch {
-                    print("no credits in data")
-                    return
-                }
-                
-                creditsChanged(credits)
+                callback()
         }
     }
     
-    func getUserInfos(in data: [String: Any]) throws -> Int {
+    func getUserInfos(in data: [String: Any]) {
         if let username = data[FirestoreCollection.FirestoreField.username.rawValue] as? String {
             VigiCleanUser.currentUser.username = username
         }
@@ -89,13 +79,9 @@ class AccountManager {
             VigiCleanUser.currentUser.employedAt = employedAt
         }
         
-        guard let credits = data[FirestoreCollection.FirestoreField.credits.rawValue] as? Int else {
-            throw FirebaseInterfaceError.documentDoesNotExists
+        if let credits = data[FirestoreCollection.FirestoreField.credits.rawValue] as? Int {
+            VigiCleanUser.currentUser.credits = credits
         }
-        
-        VigiCleanUser.currentUser.credits = credits
-        
-        return credits
     }
     
     func getAvatar(callback: @escaping ((Error?) -> Void)) {

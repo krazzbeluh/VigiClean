@@ -13,6 +13,17 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     weak var view: LaunchView!
     private let accountManager: AccountManager
     
+    private var gottenDocument = false
+    private func documentGotten() {
+        gottenDocument = true
+        checkIfAllDataIsGotten()
+    }
+    private var gottenAvatar = true
+    private func avatarGotten() {
+        gottenAvatar = true
+        checkIfAllDataIsGotten()
+    }
+    
     var isUserConnected: Bool {
         return VigiCleanUser.currentUser.isConnected
     }
@@ -20,6 +31,12 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     required init(view: LaunchView) {
         self.view = view
         self.accountManager = AccountManager()
+    }
+    
+    func listenForUserDocumentChanges() {
+        accountManager.listenForUserDocumentChanges { 
+            self.documentGotten()
+        }
     }
     
     init(view: LaunchView, accountManager: AccountManager) {
@@ -33,15 +50,21 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
                 if let error = error as? StorageErrorCode,
                     error == .objectNotFound {
                     print("No avatar found")
-                    self.view.avatarResponseRecieved()
+                    self.avatarGotten()
                     return
                 }
                 self.view.displayError(message: self.convertError(error))
-                self.view.avatarResponseRecieved()
+                self.avatarGotten()
                 return
             }
             
-            self.view.avatarResponseRecieved()
+            self.avatarGotten()
+        }
+    }
+    
+    private func checkIfAllDataIsGotten() {
+        if gottenAvatar && gottenDocument {
+            view.allResponseRecieved()
         }
     }
 }

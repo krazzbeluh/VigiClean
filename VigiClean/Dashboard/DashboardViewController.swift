@@ -7,19 +7,24 @@
 //
 
 import UIKit
-
+// TODO: display employeeSpace only if user is employed
 class DashboardViewController: UIViewController, DashboardView {
     // MARK: Outlets
     @IBOutlet weak var scoreView: ScoreView!
     @IBOutlet weak var avatar: UIButton!
     @IBOutlet weak var grayOutView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var employeeSpace: UIButton!
     
     var presenter: DashboardViewPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = DashboardPresenter(view: self)
+        
+        if presenter.isEmployee {
+            employeeSpace.isHidden = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

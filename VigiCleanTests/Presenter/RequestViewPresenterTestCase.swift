@@ -144,7 +144,7 @@ class RequestViewPresenterTestCase: XCTestCase {
         
         presenter.sendRequest(with: action, isValid: true)
         
-        XCTAssertFalse(view.didCallRequestSent)
+        XCTAssertTrue(view.didCallRequestSent)
         XCTAssertNotNil(view.alert)
     }
     

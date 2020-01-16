@@ -13,7 +13,7 @@ class FakeLaunchView: LaunchView {
     var didCallGottenAvatar = false
     var didCallDisplayError = false
     
-    func gottenAvatar() {
+    func avatarResponseRecieved() {
         didCallGottenAvatar = true
     }
     

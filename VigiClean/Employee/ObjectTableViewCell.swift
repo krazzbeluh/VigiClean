@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import FirebaseFirestore
 
-// TODO: Move to presenter
 class ObjectTableViewCell: UITableViewCell {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,13 +20,10 @@ class ObjectTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     func configure(for object: Object) {
@@ -36,10 +32,10 @@ class ObjectTableViewCell: UITableViewCell {
         typeLabel.text = object.type
         organizationLabel.text = object.organization
         
-        let poi = Poi(title: "\(object.name)",
-            coordinate: CLLocationCoordinate2D(latitude: object.coords.latitude,
-                                               longitude: object.coords.longitude),
-            info: object.type)
+        let poi = Poi(title: object.name,
+                      coordinate: CLLocationCoordinate2D(latitude: object.coords.latitude,
+                                                         longitude: object.coords.longitude),
+                      info: object.type)
         
         configureMap(with: poi)
     }
@@ -49,10 +45,10 @@ class ObjectTableViewCell: UITableViewCell {
     }
     
     func openMapForPlace() {
-
+        
         let latitude: CLLocationDegrees = object.coords.latitude
         let longitude: CLLocationDegrees = object.coords.longitude
-
+        
         let regionDistance: CLLocationDistance = 1000
         let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
         let regionSpan = MKCoordinateRegion(center: coordinates,

@@ -21,6 +21,7 @@ class LaunchViewController: UIViewController, LaunchView {
         super.viewDidAppear(animated)
         
         if presenter.isUserConnected {
+            presenter.listenForUserDocumentChanges()
             presenter.getAvatar()
         } else {
             performSegue(withIdentifier: SegueType.welcome.rawValue, sender: nil)
@@ -33,7 +34,7 @@ class LaunchViewController: UIViewController, LaunchView {
         segue.destination.modalPresentationStyle = .fullScreen
     }
     
-    func avatarResponseRecieved() {
+    func allResponseRecieved() {
         performSegue(withIdentifier: SegueType.dashboard.rawValue, sender: nil)
     }
 }

@@ -11,9 +11,10 @@ import Foundation
 protocol LaunchViewPresenter: BasePresenter {
     init(view: LaunchView)
     var isUserConnected: Bool { get }
+    func listenForUserDocumentChanges()
     func getAvatar()
 }
 
 protocol LaunchView: BaseView {
-    func avatarResponseRecieved()
+    func allResponseRecieved()
 }

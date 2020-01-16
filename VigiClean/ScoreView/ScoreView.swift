@@ -16,7 +16,8 @@ class ScoreView: UIView, ScoreViewContract {
         presenter = ScoreViewPresenter(view: self)
         layer.borderWidth = 25
         layer.cornerRadius = self.frame.width / 2
-        presenter.listenForUserCreditChange()
+        
+        presenter.getScore()
     }
     
     private var color: UIColor {
@@ -28,7 +29,6 @@ class ScoreView: UIView, ScoreViewContract {
     }
     
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var score: Int? {
         guard let scoreText = scoreLabel.text else {
             return nil
@@ -43,14 +43,13 @@ class ScoreView: UIView, ScoreViewContract {
     
     func setScore(to score: Int) {
         scoreLabel.text = String(score)
-        activityIndicator.isHidden = true
         scoreLabel.isHidden = false
         
         layer.borderColor = color.cgColor
         scoreLabel.textColor = color
     }
     
-    func valueChanged(to value: Int) {
+    func scoreValueChanged(to value: Int) {
         setScore(to: value)
     }
 }

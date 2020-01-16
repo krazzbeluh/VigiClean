@@ -10,6 +10,7 @@ import Foundation
 
 protocol DashboardViewPresenter: BasePresenter {
     init(view: DashboardView)
+    var isEmployee: Bool { get }
     func getAvatar()
     func getSales()
 }

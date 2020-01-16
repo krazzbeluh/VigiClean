@@ -15,16 +15,25 @@ class ScoreViewPresenter: ScoreViewPresenterContract {
     init(view: ScoreViewContract, accountManager: AccountManager) {
         self.view = view
         self.accountManager = accountManager
+        
     }
     
     required init(view: ScoreViewContract) {
         self.view = view
+        registerForNotifications()
     }
     
-    func listenForUserCreditChange() {
-        accountManager.listenForUserDocumentChanges { (newValue) in
-            self.view.valueChanged(to: newValue)
-        }
+    private func registerForNotifications() {
+        let name = Notification.Name(rawValue: VigiCleanUser.NotificationType.score.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(scoreChanged), name: name, object: nil)
+    }
+    
+    @objc private func scoreChanged() {
+        self.view.scoreValueChanged(to: VigiCleanUser.currentUser.credits)
+    }
+    
+    func getScore() {
+        scoreChanged()
     }
     
     func getColorCode(for score: Int) -> Color {

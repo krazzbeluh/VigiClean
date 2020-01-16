@@ -296,10 +296,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nV6-tx-khr" customClass="ScoreView" customModule="VigiClean" customModuleProvider="target">
                                 <rect key="frame" x="50" y="264" width="314" height="314"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oWM-tz-hqU">
-                                        <rect key="frame" x="8" y="138.66666666666669" width="298" height="37"/>
-                                        <color key="color" name="VigiClean"/>
-                                    </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-ew-3qq">
                                         <rect key="frame" x="8" y="130" width="298" height="54"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
@@ -325,23 +321,19 @@
                                 <color key="backgroundColor" name="Background"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="oWM-tz-hqU" firstAttribute="width" secondItem="1eR-ew-3qq" secondAttribute="width" id="1lU-pV-0EF"/>
                                     <constraint firstItem="1eR-ew-3qq" firstAttribute="centerY" secondItem="nV6-tx-khr" secondAttribute="centerY" id="3BP-50-h3F"/>
-                                    <constraint firstItem="oWM-tz-hqU" firstAttribute="centerX" secondItem="1eR-ew-3qq" secondAttribute="centerX" id="4X4-Nf-Hfo"/>
                                     <constraint firstAttribute="width" secondItem="nV6-tx-khr" secondAttribute="height" multiplier="1:1" id="56H-O5-Fl0"/>
-                                    <constraint firstItem="oWM-tz-hqU" firstAttribute="centerY" secondItem="1eR-ew-3qq" secondAttribute="centerY" id="RLG-zc-4yj"/>
                                     <constraint firstItem="h1r-LB-RDw" firstAttribute="top" secondItem="1eR-ew-3qq" secondAttribute="bottom" id="SOo-7E-uXL"/>
                                     <constraint firstItem="1eR-ew-3qq" firstAttribute="centerX" secondItem="nV6-tx-khr" secondAttribute="centerX" id="YuE-dc-nLy"/>
                                     <constraint firstItem="1eR-ew-3qq" firstAttribute="leading" secondItem="nV6-tx-khr" secondAttribute="leading" constant="8" id="bgB-mT-Pxl"/>
                                     <constraint firstItem="h1r-LB-RDw" firstAttribute="centerX" secondItem="1eR-ew-3qq" secondAttribute="centerX" id="rux-9Z-bAi"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="activityIndicator" destination="oWM-tz-hqU" id="h9g-TT-ORv"/>
                                     <outlet property="scoreLabel" destination="1eR-ew-3qq" id="fEo-WR-iSp"/>
                                     <outletCollection property="gestureRecognizers" destination="AOf-L6-moy" appends="YES" id="9WZ-By-Bgw"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bi-WW-cOh">
+                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bi-WW-cOh">
                                 <rect key="frame" x="50" y="674" width="314" height="44"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -402,6 +394,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="JEj-WT-H0U" id="r4W-aU-PR4"/>
                         <outlet property="avatar" destination="lb8-av-c4K" id="v9B-94-N4n"/>
+                        <outlet property="employeeSpace" destination="8bi-WW-cOh" id="ZB8-u3-JTF"/>
                         <outlet property="grayOutView" destination="Lub-9X-Xg4" id="yl9-og-M1A"/>
                         <outlet property="scoreView" destination="nV6-tx-khr" id="8VG-BZ-Jgj"/>
                         <segue destination="KWJ-gV-enL" kind="show" identifier="segueToMarketplace" id="epd-0i-bZj"/>

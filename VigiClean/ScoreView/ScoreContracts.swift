@@ -10,10 +10,10 @@ import Foundation
 
 protocol ScoreViewPresenterContract {
     init(view: ScoreViewContract)
-    func listenForUserCreditChange()
     func getColorCode(for score: Int) -> Color
+    func getScore()
 }
 
 protocol ScoreViewContract: class {
-    func valueChanged(to value: Int)
+    func scoreValueChanged(to value: Int)
 }

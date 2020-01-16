@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: Move to presenter
 class WalletViewController: UIViewController, WalletView {
     var presenter: WalletViewPresenter!
     

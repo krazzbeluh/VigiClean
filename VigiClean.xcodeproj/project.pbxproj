@@ -591,6 +591,7 @@
 				94DF29EA23C63601006D6CAE /* EmployeeContracts.swift */,
 				94DF29EC23C63610006D6CAE /* EmployeeViewPresenter.swift */,
 				94DF29E823C62899006D6CAE /* EmployeeViewController.swift */,
+				94DF29EF23C63A34006D6CAE /* ObjectTableViewCell.swift */,
 			);
 			path = Employee;
 			sourceTree = "<group>";
@@ -600,7 +601,6 @@
 			children = (
 				94F0A02D2370A1CA00037210 /* Main.storyboard */,
 				94CDC9B1237C617A003295AD /* UIViewController+Extension.swift */,
-				94DF29EF23C63A34006D6CAE /* ObjectTableViewCell.swift */,
 				9473AA9023CF58F000BB4D0C /* SaleTableViewCell.swift */,
 			);
 			path = View;
