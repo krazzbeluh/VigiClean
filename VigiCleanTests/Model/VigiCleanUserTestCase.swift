@@ -9,7 +9,7 @@
 import XCTest
 @testable import VigiClean
 
-class VigiCleanUserTestCase: XCTestCase {
+class VigiCleanUserTestCase: XCTestCase { // swiftlint:disable:this type_body_length
     override func setUp() {
         VigiCleanUser.currentUser = VigiCleanUser(username: "")
     }

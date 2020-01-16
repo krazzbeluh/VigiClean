@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import FirebaseFirestore
 
-// Move to presenter
+// TODO: Move to presenter
 class ObjectTableViewCell: UITableViewCell {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameLabel: UILabel!

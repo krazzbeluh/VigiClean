@@ -74,4 +74,5 @@ enum CellType: String {
     case changePassword = "ChangePasswordCell"
     case object = "ObjectCell"
     case marketPlace = "MarketplaceCell"
+    case saleCell = "SaleCell"
 }

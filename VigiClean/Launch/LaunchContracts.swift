@@ -15,5 +15,5 @@ protocol LaunchViewPresenter: BasePresenter {
 }
 
 protocol LaunchView: BaseView {
-    func gottenAvatar()
+    func avatarResponseRecieved()
 }

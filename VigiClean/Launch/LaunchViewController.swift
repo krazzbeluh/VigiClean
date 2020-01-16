@@ -33,7 +33,7 @@ class LaunchViewController: UIViewController, LaunchView {
         segue.destination.modalPresentationStyle = .fullScreen
     }
     
-    func gottenAvatar() {
+    func avatarResponseRecieved() {
         performSegue(withIdentifier: SegueType.dashboard.rawValue, sender: nil)
     }
 }

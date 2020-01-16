@@ -33,13 +33,15 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
                 if let error = error as? StorageErrorCode,
                     error == .objectNotFound {
                     print("No avatar found")
+                    self.view.avatarResponseRecieved()
                     return
                 }
                 self.view.displayError(message: self.convertError(error))
+                self.view.avatarResponseRecieved()
                 return
             }
             
-            self.view.gottenAvatar()
+            self.view.avatarResponseRecieved()
         }
     }
 }

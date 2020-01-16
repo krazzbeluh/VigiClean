@@ -93,4 +93,52 @@ class MarketplaceManager {
                     description: description,
                     code: code)
     }
+    
+    func getUserSales(callback: @escaping ((Result<[Sale], Error>) -> Void)) {
+        guard let uid = VigiCleanUser.currentUser.user?.uid else {
+            callback(.failure(AccountManager.UAccountError.userNotLoggedIn))
+            return
+        }
+        
+        let salesRequest = database.collection("Sale").whereField("user", isEqualTo: uid)
+        
+        salesRequest.getDocuments { (saleSnapshot, error) in
+            guard let saleSnapshot = saleSnapshot else {
+                if let error = error {
+                    callback(.failure(ErrorHandler().convertToFirestoreError(error)))
+                } else {
+                    callback(.failure(FirebaseInterfaceError.documentDoesNotExists))
+                }
+                return
+            }
+            
+            let saleIDs = saleSnapshot.documents.map { $0.data()["sale"] as? String }
+            
+            let query = self.database.collection("Marketplace")
+            query.getDocuments { (marketplaceSnapshot, error) in
+                guard let marketplaceSnapshot = marketplaceSnapshot else {
+                    if let error = error {
+                        callback(.failure(ErrorHandler().convertToFirestoreError(error)))
+                    } else {
+                        callback(.failure(FirebaseInterfaceError.documentDoesNotExists))
+                    }
+                    return
+                }
+                
+                var sales = [Sale]()
+                
+                for document in marketplaceSnapshot.documents where saleIDs.contains(document.documentID) {
+                    let saleOpt = self.getData(data: document.data(), with: document.documentID)
+                    
+                    guard let sale = saleOpt else {
+                        break
+                    }
+                    
+                    sales.append(sale)
+                }
+                
+                callback(.success(sales))
+            }
+        }
+    }
 }

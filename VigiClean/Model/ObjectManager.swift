@@ -161,7 +161,7 @@ class ObjectManager {
     }
     
     func resolvedRequest(for object: Object, with action: Action, isValid: Bool, callback: @escaping(Error?) -> Void) {
-        functions.httpsCallable("resolvedRequest?code=\(object.code)&action=\(action.index)")
+        functions.httpsCallable("resolvedRequest?code=\(object.code)&action=\(action.index)&valid=\(isValid)")
             .call { (_, error) in
                 guard let error = error else {
                     callback(nil)
