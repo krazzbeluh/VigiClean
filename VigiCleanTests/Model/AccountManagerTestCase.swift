@@ -46,15 +46,9 @@ class AccountManagerTestCase: XCTestCase {
             "credits": 18
         ]
         
-        XCTAssertEqual(try? accountManager.getUserInfos(in: data), 18)
-    }
-    
-    func testGetUserInfosShouldNotReturnValueIfNoScoreData() {
-        let accountManager = AccountManager(database: FirestoreFake(errors: nil, datas: nil))
+        accountManager.getUserInfos(in: data)
         
-        let data = [String: Any]()
-        
-        XCTAssertNil(try? accountManager.getUserInfos(in: data))
+        XCTAssertEqual(VigiCleanUser.currentUser.credits, 18)
     }
     
     func testGetUserInfosShouldStoreUsernameIfExists() {
@@ -64,7 +58,7 @@ class AccountManagerTestCase: XCTestCase {
             "username": "VigiClean"
         ]
         
-        XCTAssertNil(try? accountManager.getUserInfos(in: data))
+        accountManager.getUserInfos(in: data)
         XCTAssertEqual(VigiCleanUser.currentUser.username, "VigiClean")
     }
     
@@ -75,12 +69,12 @@ class AccountManagerTestCase: XCTestCase {
             "employedAt": "VigiClean"
         ]
         
-        XCTAssertNil(try? accountManager.getUserInfos(in: data))
+        accountManager.getUserInfos(in: data)
         XCTAssertTrue(VigiCleanUser.currentUser.isEmployee)
     }
     
     // MARK: listenForUserDocumentChanges
-    func testListenForUserDocumentChangesShouldReturnCreditsIfNoError() {
+    func testListenForUserDocumentChangesShouldStoreCreditsIfNoError() {
         let credits = Int.random(in: 1 ... 100)
         
         let data: [String: Any] = [
@@ -93,24 +87,8 @@ class AccountManagerTestCase: XCTestCase {
         auth.currentUser = UserFake(uid: "")
         VigiCleanUser.currentUser.auth = auth
         
-        var listenedCredits = 0
-        
-        accountManager.listenForUserDocumentChanges { (credits) in
-            listenedCredits = credits
-        }
-        
-        XCTAssertEqual(credits, listenedCredits)
-    }
-    
-    func testListenForUserDocumentChangesShouldNotReturnCreditsIfError() {
-        let accountManager = AccountManager(database: FirestoreFake(errors: [EasyError()], datas: nil))
-        
-        let auth = AuthFake(error: nil, result: nil)
-        auth.currentUser = UserFake(uid: "")
-        VigiCleanUser.currentUser.auth = auth
-        
-        accountManager.listenForUserDocumentChanges { (_) in
-            XCTAssert(false)
+        accountManager.listenForUserDocumentChanges {
+            XCTAssertEqual(credits, VigiCleanUser.currentUser.credits)
         }
     }
     
@@ -121,7 +99,7 @@ class AccountManagerTestCase: XCTestCase {
         auth.currentUser = nil
         VigiCleanUser.currentUser.auth = auth
         
-        accountManager.listenForUserDocumentChanges { (_) in
+        accountManager.listenForUserDocumentChanges {
             XCTAssert(false)
         }
     }
@@ -133,7 +111,7 @@ class AccountManagerTestCase: XCTestCase {
         auth.currentUser = UserFake(uid: "")
         VigiCleanUser.currentUser.auth = auth
         
-        accountManager.listenForUserDocumentChanges { (_) in
+        accountManager.listenForUserDocumentChanges {
             XCTAssert(false)
         }
     }
@@ -147,12 +125,13 @@ class AccountManagerTestCase: XCTestCase {
         auth.currentUser = UserFake(uid: "")
         VigiCleanUser.currentUser.auth = auth
         
-        accountManager.listenForUserDocumentChanges(creditsChanged: nil)
+        accountManager.listenForUserDocumentChanges {}
         
         XCTAssertEqual(VigiCleanUser.currentUser.username, "VigiClean")
     }
     
     func testListenForUserDocumentChangesShouldNotReturnCreditsIfNoCreditsInDataIfCallback() {
+        VigiCleanUser.currentUser.credits = 0
         let accountManager = AccountManager(database: FirestoreFake(errors: nil, datas: [[
                                                 "username": "VigiClean"
                                             ]]))
@@ -161,10 +140,9 @@ class AccountManagerTestCase: XCTestCase {
         auth.currentUser = UserFake(uid: "")
         VigiCleanUser.currentUser.auth = auth
         
-        accountManager.listenForUserDocumentChanges { (_) in
-            XCTAssert(false)
-        }
+        accountManager.listenForUserDocumentChanges {}
         
         XCTAssertEqual(VigiCleanUser.currentUser.username, "VigiClean")
+        XCTAssertEqual(VigiCleanUser.currentUser.credits, 0)
     }
 }

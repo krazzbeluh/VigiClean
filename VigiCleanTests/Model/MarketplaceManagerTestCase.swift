@@ -10,15 +10,16 @@ import XCTest
 @testable import VigiClean
 
 class MarketplaceManagerTestCase: XCTestCase {
+    let easySaleData: [String: Any] = ["title": "",
+                               "littleText": "",
+                               "partner": "",
+                               "description": "",
+                               "image": "https://vigiclean.com",
+                               "price": 3
+    ]
+    
     func testGetSalesShouldReturnSuccessCallbackIfNoError() {
-        let datas: [[String: Any]] = [["title": "",
-                                       "littleText": "",
-                                       "partner": "",
-                                       "description": "",
-                                       "image": "https://vigiclean.com",
-                                       "price": 3
-            ]]
-        let database = FirestoreFake(errors: nil, datas: datas)
+        let database = FirestoreFake(errors: nil, datas: [easySaleData])
         let marketplaceManager = MarketplaceManager(database: database)
         
         marketplaceManager.getSales { error in
@@ -142,6 +143,137 @@ class MarketplaceManagerTestCase: XCTestCase {
                         code: "")
         
         marketplaceManager.buySale(sale: sale) { (result) in
+            switch result {
+            case .failure:
+                XCTAssert(true)
+            default:
+                XCTAssert(false)
+            }
+        }
+    }
+    
+    func testGetUserSalesShouldReturnSuccessCallbackWithEmptyArrayIfNoError() {
+        let marketplaceManager = MarketplaceManager(
+            database: FirestoreFake(errors: nil, datas: [["sale": ""], ["": ""]]),
+            functions: nil)
+        
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = UserFake(uid: "")
+        VigiCleanUser.currentUser.auth = auth
+        
+        marketplaceManager.getUserSales { (result) in
+            switch result {
+            case .success(let sales):
+                XCTAssertEqual(sales.count, 0)
+            default:
+                XCTAssert(false)
+            }
+        }
+    }
+    
+    func testGetUserSalesShouldReturnSuccessCallbackWithNotEmptyArrayIfNoError() {
+        let marketplaceManager = MarketplaceManager(
+            database: FirestoreFake(errors: nil, datas: [["sale": ""], easySaleData]),
+            functions: nil)
+        
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = UserFake(uid: "")
+        VigiCleanUser.currentUser.auth = auth
+        
+        marketplaceManager.getUserSales { (result) in
+            switch result {
+            case .success(let sales):
+                XCTAssertNotEqual(sales.count, 0)
+            default:
+                XCTAssert(false)
+            }
+        }
+    }
+    
+    func testGetUserSalesShouldReturnFailureCallbackIfUserNotLoggedIn() {
+        let marketplaceManager = MarketplaceManager()
+        
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = nil
+        VigiCleanUser.currentUser.auth = auth
+        
+        marketplaceManager.getUserSales { (result) in
+            switch result {
+            case .failure:
+                XCTAssert(true)
+            default:
+                XCTAssert(false)
+            }
+        }
+    }
+    
+    func testGetUserSalesShouldReturnFailureCallbackIfNoDocumentAtFirstRequest() {
+        let marketplaceManager = MarketplaceManager(
+        database: FirestoreFake(errors: nil, datas: nil),
+        functions: nil)
+        
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = UserFake(uid: "")
+        VigiCleanUser.currentUser.auth = auth
+        
+        marketplaceManager.getUserSales { (result) in
+            switch result {
+            case .failure:
+                XCTAssert(true)
+            default:
+                XCTAssert(false)
+            }
+        }
+    }
+    
+    func testGetUserSalesShouldReturnFailureCallbackIfErrorAtFirstRequest() {
+        let marketplaceManager = MarketplaceManager(
+        database: FirestoreFake(errors: [EasyError()], datas: nil),
+        functions: nil)
+        
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = UserFake(uid: "")
+        VigiCleanUser.currentUser.auth = auth
+        
+        marketplaceManager.getUserSales { (result) in
+            switch result {
+            case .failure:
+                XCTAssert(true)
+            default:
+                XCTAssert(false)
+            }
+        }
+    }
+    
+    func testGetUserSalesShouldReturnFailureCallbackIfNoDocumentAtSecondRequest() {
+        let marketplaceManager = MarketplaceManager(
+            database: FirestoreFake(errors: nil, datas: [["": ""]]),
+        functions: nil)
+        
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = UserFake(uid: "")
+        VigiCleanUser.currentUser.auth = auth
+        
+        marketplaceManager.getUserSales { (result) in
+            switch result {
+            case .failure:
+                XCTAssert(true)
+            default:
+                XCTAssert(false)
+            }
+        }
+    }
+    
+    func testGetUserSalesShouldReturnFailureCallbackIfErrorAtSecondRequest() {
+        let marketplaceManager = MarketplaceManager(
+        database: FirestoreFake(errors: [nil, EasyError()], datas: [["": ""]]),
+        functions: nil)
+        
+        let auth = AuthFake(error: nil, result: nil)
+        auth.currentUser = UserFake(uid: "")
+        VigiCleanUser.currentUser.auth = auth
+        
+        marketplaceManager.getUserSales { (result) in
             switch result {
             case .failure:
                 XCTAssert(true)

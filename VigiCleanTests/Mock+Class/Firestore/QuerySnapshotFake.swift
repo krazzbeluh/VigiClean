@@ -10,25 +10,19 @@ import Foundation
 import FirebaseFirestore
 
 class QuerySnapshotFake: QuerySnapshot {
-    var datas: [[String: Any]]
+    let datas: [[String: Any]]?
     
-    init(datas: [[String: Any]]) {
-        self.datas = datas
-    }
-    
-    private func getNextData() -> [String: Any] {
-        guard let data = self.datas.first else {
-            return [String: Any]()
-        }
-        self.datas.removeFirst()
-        return data
+    init(vigiclean: Int? = nil) {
+        self.datas = FirestoreFake.datas
     }
     
     override var documents: [QueryDocumentSnapshot] {
         var documentsSnapshots = [QueryDocumentSnapshot]()
         
-        for data in self.datas {
-            documentsSnapshots.append(QueryDocumentSnapshotFake(data: data))
+        if let datas = datas, datas.count > 0 {
+            for data in datas {
+                documentsSnapshots.append(QueryDocumentSnapshotFake(data: data))
+            }
         }
         
         return documentsSnapshots

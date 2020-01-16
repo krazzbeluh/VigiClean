@@ -12,7 +12,7 @@ import Foundation
 class FakeScoreView: ScoreViewContract {
     var didCallValueChanged = false
     
-    func valueChanged(to value: Int) {
+    func scoreValueChanged(to value: Int) {
         self.didCallValueChanged = true
     }
 }

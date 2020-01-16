@@ -7,7 +7,7 @@
 //
 
 import UIKit
-// TODO: display employeeSpace only if user is employed
+
 class DashboardViewController: UIViewController, DashboardView {
     // MARK: Outlets
     @IBOutlet weak var scoreView: ScoreView!

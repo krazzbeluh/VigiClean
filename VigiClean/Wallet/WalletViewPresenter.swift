@@ -20,6 +20,11 @@ class WalletPresenter: BasePresenter, WalletViewPresenter {
         self.marketplaceManager = MarketplaceManager()
     }
     
+    init(view: WalletView, marketplaceManager: MarketplaceManager) {
+        self.view = view
+        self.marketplaceManager = marketplaceManager
+    }
+    
     func getUserSales() {
         marketplaceManager.getUserSales { (result) in
             switch result {

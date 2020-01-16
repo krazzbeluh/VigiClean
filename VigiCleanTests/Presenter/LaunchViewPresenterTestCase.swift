@@ -16,13 +16,13 @@ class LaunchViewPresenterTestCase: XCTestCase {
         view = FakeLaunchView()
     }
     
-    func testgetAvatarShouldCallGottenAvatarIfNoError() {
+    func testgetAvatarShouldNotCallGottenAvatarIfNoErrorButGetDocumentNotCalled() {
         let accountManager = AccountManagerFake()
         let presenter = LaunchPresenter(view: view, accountManager: accountManager)
         
         presenter.getAvatar()
         
-        XCTAssertTrue(view.didCallGottenAvatar)
+        XCTAssertFalse(view.recievedAllResponses)
     }
     
     func testgetAvatarShouldCallDisplayErrorIfError() {

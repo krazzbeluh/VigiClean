@@ -39,14 +39,6 @@ class AccountManagerFake: AccountManager {
         callback(getError())
     }
     
-    override func listenForUserDocumentChanges(creditsChanged: ((Int) -> Void)?) {
-        guard let creditsChanged = creditsChanged else {
-            return
-        }
-        
-        creditsChanged(15)
-    }
-    
     override func updateAvatar(from avatar: Data,
                                with password: String,
                                callback: @escaping ((Result<Data, Error>) -> Void)) {

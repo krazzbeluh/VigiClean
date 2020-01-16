@@ -24,6 +24,14 @@ class CollectionReferenceFake: CollectionReference {
         return DocumentReferenceFake()
     }
     
+    override func getDocuments(completion: @escaping FIRQuerySnapshotBlock) {
+        if FirestoreFake.datas != nil && FirestoreFake.datas!.count > 0 {
+            completion(QuerySnapshotFake(), FirestoreFake.getNextError())
+        } else {
+            completion(nil, FirestoreFake.getNextError())
+        }
+    }
+    
     override func order(by field: String) -> Query {
         return QueryFake()
     }

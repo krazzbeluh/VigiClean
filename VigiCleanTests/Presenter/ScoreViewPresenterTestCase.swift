@@ -16,15 +16,6 @@ class ScoreViewPresenterTestCase: XCTestCase {
         self.view = FakeScoreView()
     }
     
-    func testListenForUserDocumentChangesShouldCallValueChangedAtLeastOneTime() {
-        let accountManager = AccountManagerFake()
-        let presenter = ScoreViewPresenter(view: view, accountManager: accountManager)
-        
-        presenter.listenForUserCreditChange()
-        
-        XCTAssertTrue(view.didCallValueChanged)
-    }
-    
     func testGetColorCodeShouldReturn085_085_0_1IfEntryIs50() {
         let presenter = ScoreViewPresenter(view: view)
         

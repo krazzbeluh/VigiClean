@@ -11,10 +11,15 @@ import Foundation
 
 class MarketplaceManagerFake: MarketplaceManager {
     private var resultString: Result<String, Error>?
+    private var resultSales: Result<[Sale], Error>?
     private var error: Error?
     
     init(resultString: Result<String, Error>) {
         self.resultString = resultString
+    }
+    
+    init(resultSales: Result<[Sale], Error>) {
+        self.resultSales = resultSales
     }
     
     init(error: Error?) {
@@ -27,5 +32,9 @@ class MarketplaceManagerFake: MarketplaceManager {
     
     override func getSales(completion: @escaping (Error?) -> Void) {
         completion(error)
+    }
+    
+    override func getUserSales(callback: @escaping ((Result<[Sale], Error>) -> Void)) {
+        callback(resultSales!)
     }
 }

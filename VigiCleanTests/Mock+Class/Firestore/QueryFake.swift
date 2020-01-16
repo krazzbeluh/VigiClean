@@ -13,8 +13,10 @@ class QueryFake: Query {
     init(vigiclean: Int? = nil) {}
     
     override func getDocuments(completion: @escaping FIRQuerySnapshotBlock) {
-        if let data = FirestoreFake.getNextData() {
-            completion(QuerySnapshotFake(datas: [data]), FirestoreFake.getNextError())
+        if FirestoreFake.datas != nil, FirestoreFake.datas!.count > 0 {
+            let querySnapshot = QuerySnapshotFake()
+            FirestoreFake.datas!.removeFirst()
+            completion(querySnapshot, FirestoreFake.getNextError())
         } else {
             completion(nil, FirestoreFake.getNextError())
         }

@@ -51,6 +51,8 @@
 		9462DCC1237B5D81003AEFB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */; };
 		9463FDAF23AA9CF200827E06 /* EasyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463FDAE23AA9CF200827E06 /* EasyError.swift */; };
 		9473AA9123CF58F000BB4D0C /* SaleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473AA9023CF58F000BB4D0C /* SaleTableViewCell.swift */; };
+		9473AA9A23D0B15700BB4D0C /* WalletViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473AA9923D0B15700BB4D0C /* WalletViewPresenterTestCase.swift */; };
+		9473AA9C23D0B2BD00BB4D0C /* FakeWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473AA9B23D0B2BD00BB4D0C /* FakeWalletView.swift */; };
 		947FFAEF237213C800F01487 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947FFAEE237213C800F01487 /* ScoreView.swift */; };
 		9488AA9B2371AA8100DCD76F /* Hamish.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9488AA9A2371AA8100DCD76F /* Hamish.otf */; };
 		94912A0323CD3825001F3DD3 /* LaunchViewPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94912A0223CD3825001F3DD3 /* LaunchViewPresenterTestCase.swift */; };
@@ -188,6 +190,8 @@
 		9462DCC0237B5D81003AEFB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9463FDAE23AA9CF200827E06 /* EasyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyError.swift; sourceTree = "<group>"; };
 		9473AA9023CF58F000BB4D0C /* SaleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleTableViewCell.swift; sourceTree = "<group>"; };
+		9473AA9923D0B15700BB4D0C /* WalletViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewPresenterTestCase.swift; sourceTree = "<group>"; };
+		9473AA9B23D0B2BD00BB4D0C /* FakeWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeWalletView.swift; sourceTree = "<group>"; };
 		947FFAEE237213C800F01487 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9488AA9A2371AA8100DCD76F /* Hamish.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamish.otf; sourceTree = "<group>"; };
 		94912A0223CD3825001F3DD3 /* LaunchViewPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewPresenterTestCase.swift; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 				943446B323CC9390007EB2E0 /* MarketplaceViewPresenterTestCase.swift */,
 				943446B723CCB1CA007EB2E0 /* MarketplaceCellPresenterTestCase.swift */,
 				94912A0223CD3825001F3DD3 /* LaunchViewPresenterTestCase.swift */,
+				9473AA9923D0B15700BB4D0C /* WalletViewPresenterTestCase.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 				943446B523CC93D1007EB2E0 /* FakeMarketplaceView.swift */,
 				944762F023CCB2A8002EA115 /* FakeMarketplaceCellView.swift */,
 				94912A0423CD3884001F3DD3 /* FakeLaunchView.swift */,
+				9473AA9B23D0B2BD00BB4D0C /* FakeWalletView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -958,6 +964,7 @@
 				94CB05D823CD1E0E00C28EC4 /* StorageFake.swift in Sources */,
 				94A2FD2823BB646400AE9865 /* FakeSignUpView.swift in Sources */,
 				94A2FD3423BB98B800AE9865 /* ProfileViewPresenterTestCase.swift in Sources */,
+				9473AA9C23D0B2BD00BB4D0C /* FakeWalletView.swift in Sources */,
 				94A5C62423B4171100752182 /* AccountManagerFake.swift in Sources */,
 				94A2FD2423BA51CE00AE9865 /* FakeScannerView.swift in Sources */,
 				94A5C61A23B1123000752182 /* FakeResponseData.swift in Sources */,
@@ -984,6 +991,7 @@
 				945B3FEE23BEB9D800340B0C /* ErrorHandlerTestCase.swift in Sources */,
 				944762FF23CCD221002EA115 /* HTTPSCallableResultFake.swift in Sources */,
 				94A2FD1823B5586D00AE9865 /* ObjectManagerFake.swift in Sources */,
+				9473AA9A23D0B15700BB4D0C /* WalletViewPresenterTestCase.swift in Sources */,
 				9451DE5223B0EDFD0097658C /* FunctionsFake.swift in Sources */,
 				9408E17823BBA4C20032D671 /* FakeSignInView.swift in Sources */,
 				9408E17423BB99A90032D671 /* FakeProfileView.swift in Sources */,
