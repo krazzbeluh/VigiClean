@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Action {
+struct Action { // An action is a possible action to do or ask to do with requests
     let index: Int
     let message: String
 }

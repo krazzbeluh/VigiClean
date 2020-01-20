@@ -10,8 +10,9 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFunctions
 
+// ObjectManager manages objects. It downloads object and sends maintenance request
 class ObjectManager {
-    enum ObjectError: Error {
+    enum ObjectError: Error { // Lists every Error cases with ObjectManager
         case unableToDecodeData, userNotLoggedIn, noActionsInObject, actionNotFound, notEmployedUser, objectNotFound
     }
     
@@ -23,7 +24,7 @@ class ObjectManager {
         self.functions = functions ?? Functions.functions()
     }
     
-    func getObject(code: String, callback: @escaping (Result<Object, Error>) -> Void) {
+    func getObject(code: String, callback: @escaping (Result<Object, Error>) -> Void) { // Gets an object by its code
         let docRef = database.collection(FirestoreCollection.object.rawValue).document(code)
         docRef.getDocument { (document, error) in
             guard let document = document, document.exists, let data = document.data() else {
@@ -49,7 +50,7 @@ class ObjectManager {
         }
     }
     
-    private func getObject(from data: [String: Any], with code: String) throws -> Object {
+    private func getObject(from data: [String: Any], with code: String) throws -> Object { // Converts firestore response data into Object
         guard let coords = data[FirestoreCollection.FirestoreField.coords.rawValue] as? GeoPoint,
             let organization = data[FirestoreCollection.FirestoreField.organization.rawValue] as? String,
             let type = data[FirestoreCollection.FirestoreField.type.rawValue] as? String,
@@ -60,32 +61,8 @@ class ObjectManager {
         return Object(coords: coords, organization: organization, type: type, name: name, code: code)
     }
     
-    func getActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) {
-        self.getActions(for: object.type) { (result) in
-            switch result {
-            case .success(let actions):
-                object.actions = actions
-                callback(.success(Void()))
-            case .failure(let error):
-                callback(.failure(error))
-            }
-        }
-    }
-    
-    func getEmployeeActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) {
-        self.getEmployeeActions(for: object.type) { (result) in
-            switch result {
-            case .success(let actions):
-                object.employeeActions = actions
-                callback(.success(Void()))
-            case .failure(let error):
-                callback(.failure(error))
-            }
-        }
-    }
-    
-    private func getActions(for type: String, callback: @escaping (Result<[Action], Error>) -> Void) {
-        let docRef = database.collection(FirestoreCollection.actions.rawValue).document(type)
+    func getActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) { // Gets Actions for a specific object
+        let docRef = database.collection(FirestoreCollection.actions.rawValue).document(object.type)
         docRef.getDocument { document, error in
             if let error = error {
                 let errCode = ErrorHandler().convertToFirestoreError(error)
@@ -107,12 +84,13 @@ class ObjectManager {
                 }
             }
             
-            callback(.success(actions))
+            object.actions = actions
+            callback(.success(Void()))
         }
     }
     
-    private func getEmployeeActions(for type: String, callback: @escaping (Result<[Action], Error>) -> Void) {
-        let docRef = database.collection(FirestoreCollection.performedActions.rawValue).document(type)
+    func getEmployeeActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) { // Gets EmployeeActions for a specific object
+        let docRef = database.collection(FirestoreCollection.performedActions.rawValue).document(object.type)
         docRef.getDocument { document, error in
             if let error = error {
                 let errCode = ErrorHandler().convertToFirestoreError(error)
@@ -134,11 +112,12 @@ class ObjectManager {
                 }
             }
             
-            callback(.success(actions))
+            object.employeeActions = actions
+            callback(.success(Void()))
         }
     }
     
-    func sendRequest(for object: Object, with action: Action, callback: @escaping (Error?) -> Void) {
+    func sendRequest(for object: Object, with action: Action, callback: @escaping (Error?) -> Void) { // Sends user request to ask a maintenance
         guard let uid = VigiCleanUser.currentUser.user?.uid else {
             callback(ObjectError.userNotLoggedIn)
             return
@@ -160,7 +139,7 @@ class ObjectManager {
         }
     }
     
-    func resolvedRequest(for object: Object, with action: Action, isValid: Bool, callback: @escaping(Error?) -> Void) {
+    func resolvedRequest(for object: Object, with action: Action, isValid: Bool, callback: @escaping(Error?) -> Void) { // Sends an employee request to validate maintenance
         functions.httpsCallable("resolvedRequest?code=\(object.code)&action=\(action.index)&valid=\(isValid)")
             .call { (_, error) in
                 guard let error = error else {
@@ -173,7 +152,7 @@ class ObjectManager {
         }
     }
     
-    func getObjectList(callback: @escaping (Result<[Object], Error>) -> Void) {
+    func getObjectList(callback: @escaping (Result<[Object], Error>) -> Void) { // Gets requested objects list
         guard let organization = VigiCleanUser.currentUser.employedAt else {
             callback(.failure(ObjectError.notEmployedUser))
             return

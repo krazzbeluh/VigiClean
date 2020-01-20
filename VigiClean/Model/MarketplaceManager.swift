@@ -11,18 +11,19 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFunctions
 
+// MarketplaceManager manages the marketplace, it downloads promotional offers and sends buying request to CFunctions.
 class MarketplaceManager {
     var database: Firestore
     var functions: Functions
     
-    static var sales = [Sale]()
+    static var sales = [Sale]() // Every sales downloaded. Empty array by default
     
     init(database: Firestore? = nil, functions: Functions? = nil) {
         self.database = database ?? Firestore.firestore()
         self.functions = functions ?? Functions.functions()
     }
     
-    func getSales(completion: @escaping (Error?) -> Void) {
+    func getSales(completion: @escaping (Error?) -> Void) { // downloads every sales availables
         let docsRef = database.collection(FirestoreCollection.marketplace.rawValue)
             .order(by: FirestoreCollection.FirestoreField.partner.rawValue)
         
@@ -51,7 +52,7 @@ class MarketplaceManager {
         }
     }
     
-    func buySale(sale: Sale, completion: @escaping (Result<String, Error>) -> Void) {
+    func buySale(sale: Sale, completion: @escaping (Result<String, Error>) -> Void) { // calls selectSale in CFunctions.
         guard let uid = VigiCleanUser.currentUser.user?.uid else {
             completion(.failure(AccountManager.UAccountError.userNotLoggedIn))
             return
@@ -73,7 +74,7 @@ class MarketplaceManager {
         }
     }
     
-    private func getData(data: [String: Any], with code: String) -> Sale? {
+    private func getData(data: [String: Any], with code: String) -> Sale? { // converts firestore data into Sale
         guard let title = data[FirestoreCollection.FirestoreField.title.rawValue] as? String,
             let littleTitle = data[FirestoreCollection.FirestoreField.littleText.rawValue] as? String,
             let partner = data[FirestoreCollection.FirestoreField.partner.rawValue] as? String,
@@ -94,7 +95,7 @@ class MarketplaceManager {
                     code: code)
     }
     
-    func getUserSales(callback: @escaping ((Result<[Sale], Error>) -> Void)) {
+    func getUserSales(callback: @escaping ((Result<[Sale], Error>) -> Void)) { // Gets every user sales
         guard let uid = VigiCleanUser.currentUser.user?.uid else {
             callback(.failure(AccountManager.UAccountError.userNotLoggedIn))
             return
@@ -112,7 +113,7 @@ class MarketplaceManager {
                 return
             }
             
-            let saleIDs = saleSnapshot.documents.map { $0.data()["sale"] as? String }
+            let saleIDs = saleSnapshot.documents.map { [$0.data()["sale"] as? String, $0.documentID] } // Must be [String?, String!] (ref001)
             
             let query = self.database.collection("Marketplace")
             query.getDocuments { (marketplaceSnapshot, error) in
@@ -127,14 +128,18 @@ class MarketplaceManager {
                 
                 var sales = [Sale]()
                 
-                for document in marketplaceSnapshot.documents where saleIDs.contains(document.documentID) {
-                    let saleOpt = self.getData(data: document.data(), with: document.documentID)
-                    
-                    guard let sale = saleOpt else {
-                        break
+                for saleID in saleIDs {
+                    print(1)
+                    for document in marketplaceSnapshot.documents where document.documentID == saleID[0] {
+                        print(2)
+                        let saleOpt = self.getData(data: document.data(), with: saleID[1]!) // second column is necessary String. (see refOO1)
+                        
+                        guard let sale = saleOpt else {
+                            break
+                        }
+                        
+                        sales.append(sale)
                     }
-                    
-                    sales.append(sale)
                 }
                 
                 callback(.success(sales))

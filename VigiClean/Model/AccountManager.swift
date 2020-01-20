@@ -10,6 +10,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseStorage
 
+// AccountManager manages firestore and storage parts of an account. Auth is managed in VigiCleanUser
 class AccountManager {
     init(database: Firestore? = nil, storage: Storage? = nil) {
         self.database = database ?? Firestore.firestore()
@@ -19,7 +20,7 @@ class AccountManager {
     private var database: Firestore
     private var storage: Storage
     
-    enum UAccountError: Error {
+    enum UAccountError: Error { // Error Cases
         case notMatchingPassword, userDocumentNotCreated, userNotLoggedIn,
         userNotLoggedInWithEmail, notEnoughCredits
     }
@@ -28,7 +29,7 @@ class AccountManager {
     
     func createUserDocument(for user: String,
                             named: String?,
-                            completion: @escaping (Error?) -> Void) {
+                            completion: @escaping (Error?) -> Void) { // Creates user document in database. Stores credits, username
         
         database.collection(FirestoreCollection.user.rawValue).document(user).setData(
             [FirestoreCollection.FirestoreField.credits.rawValue: 0,
@@ -42,7 +43,7 @@ class AccountManager {
         }
     }
     
-    func listenForUserDocumentChanges(callback: @escaping (() -> Void)) {
+    func listenForUserDocumentChanges(callback: @escaping (() -> Void)) { // Firestore listener. Manages realtime datas
         guard let user = VigiCleanUser.currentUser.user else {
             return
         }
@@ -70,7 +71,7 @@ class AccountManager {
         }
     }
     
-    func getUserInfos(in data: [String: Any]) {
+    func getUserInfos(in data: [String: Any]) {  // Gets userInfos in currentUser which is realtime updated by listenForUserDocumentChanges
         if let username = data[FirestoreCollection.FirestoreField.username.rawValue] as? String {
             VigiCleanUser.currentUser.username = username
         }
@@ -84,7 +85,7 @@ class AccountManager {
         }
     }
     
-    func getAvatar(callback: @escaping ((Error?) -> Void)) {
+    func getAvatar(callback: @escaping ((Error?) -> Void)) { // gets user avatar in storage
         if VigiCleanUser.currentUser.avatar != nil {
             callback(nil)
         } else {
@@ -110,7 +111,7 @@ class AccountManager {
         }
     }
     
-    func updateAvatar(from avatar: Data, with password: String, callback: @escaping ((Result<Data, Error>) -> Void)) {
+    func updateAvatar(from avatar: Data, with password: String, callback: @escaping ((Result<Data, Error>) -> Void)) { // Sets avatar in storage
         guard let uid = VigiCleanUser.currentUser.user?.uid,
             VigiCleanUser.currentUser.user?.email != nil else {
                 callback(.failure(UAccountError.userNotLoggedInWithEmail))

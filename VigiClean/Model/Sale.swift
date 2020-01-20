@@ -8,6 +8,7 @@
 
 import Foundation
 
+// A sale is a promotional offer. It congrats users to contribute to project
 struct Sale {
     let price: Int
     let image: URL

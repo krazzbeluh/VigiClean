@@ -10,10 +10,15 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+// Manages and stores User Infos in RAM.
 class VigiCleanUser {
-    enum NotificationType: String {
+    enum NotificationType: String { // Notifications to change values at multiple points at a time
         case avatar = "AvatarChanged"
         case score = "ScoreChanged"
+    }
+    
+    init(username: String?) {
+        self.username = username
     }
     
     static var currentUser = VigiCleanUser(username: nil)
@@ -21,7 +26,7 @@ class VigiCleanUser {
     var auth = Auth.auth()
     var database = Firestore.firestore()
     
-    var user: User? {
+    var user: User? { // returns firebaseAuth currentUser
         return auth.currentUser
     }
     
@@ -33,7 +38,25 @@ class VigiCleanUser {
         VigiCleanUser.currentUser.user?.email != nil
     }
     
-    func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) {
+    var username: String?
+    var credits: Int = 0 {
+        didSet {
+            sendNotification(for: .score)
+        }
+    }
+    var employedAt: String?
+    
+    var isEmployee: Bool {
+        return employedAt != nil
+    }
+    
+    var avatar: Data? {
+        didSet {
+            sendNotification(for: .avatar)
+        }
+    }
+    
+    func signUp(username: String, email: String, password: String, completion: @escaping((Error?) -> Void)) { // registers user in database
         auth.createUser(
             withEmail: email,
             password: password) { (_, error) in
@@ -46,7 +69,7 @@ class VigiCleanUser {
         }
     }
     
-    func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) {
+    func signIn(email: String, password: String, completion: @escaping((Error?) -> Void)) { // signs user in app
         auth.signIn(
             withEmail: email,
             password: password) { (_, error) in
@@ -59,7 +82,7 @@ class VigiCleanUser {
         }
     }
     
-    func anonymousSignIn(completion: @escaping((Error?) -> Void)) {
+    func anonymousSignIn(completion: @escaping((Error?) -> Void)) { // registers user as anonymous
         auth.signInAnonymously { (_, error) in
             guard let error = error else {
                 completion(nil)
@@ -72,7 +95,7 @@ class VigiCleanUser {
     
     func attachEmail(email: String,
                      password: String,
-                     completion: @escaping ((Error?) -> Void)) {
+                     completion: @escaping ((Error?) -> Void)) { // converts anonymous account into registered account
         VigiCleanUser.currentUser.user?.updateEmail(to: email) { (error) in
             guard error == nil else {
                 let errCode = ErrorHandler().convertToAuthError(error!)
@@ -83,7 +106,7 @@ class VigiCleanUser {
         }
     }
     
-    func createPassword(password: String, completion: @escaping ((Error?) -> Void)) {
+    func createPassword(password: String, completion: @escaping ((Error?) -> Void)) {  // creates password for attachEmail
         VigiCleanUser.currentUser.user?.updatePassword(to: password) { (error) in
             guard error == nil else {
                 let errCode = ErrorHandler().convertToAuthError(error!)
@@ -94,7 +117,7 @@ class VigiCleanUser {
         }
     }
     
-    func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) {
+    func updatePseudo(to newPseudo: String, with password: String, completion: @escaping (Error?) -> Void) { // updates pseudo in database
         guard let uid = VigiCleanUser.currentUser.user?.uid else {
             completion(AccountManager.UAccountError.userNotLoggedIn)
             return
@@ -118,7 +141,7 @@ class VigiCleanUser {
         }
     }
     
-    func updateEmail(to newEmail: String, with password: String, completion: @escaping (Error?) -> Void) {
+    func updateEmail(to newEmail: String, with password: String, completion: @escaping (Error?) -> Void) {  // updates email in auth
         reauthenticate(password: password) { (error) in
             if let error = error {
                 completion(error)
@@ -135,7 +158,7 @@ class VigiCleanUser {
         }
     }
     
-    func updatePassword(to newPassword: String, from oldPassword: String, completion: @escaping (Error?) -> Void) {
+    func updatePassword(to newPassword: String, from oldPassword: String, completion: @escaping (Error?) -> Void) { // updates password in auth
         reauthenticate(password: oldPassword) { (error) in
             if let error = error {
                 completion(error)
@@ -152,7 +175,7 @@ class VigiCleanUser {
         }
     }
     
-    func signOut(completion: @escaping (Error?) -> Void) {
+    func signOut(completion: @escaping (Error?) -> Void) { // signs user out
         if !isConnectedWithEmail {
             VigiCleanUser.currentUser.user?.delete(completion: { (error) in
                 if let error = error {
@@ -175,35 +198,13 @@ class VigiCleanUser {
         }
     }
     
-    init(username: String?) {
-        self.username = username
-    }
-    
-    var username: String?
-    var credits: Int = 0 {
-        didSet {
-            sendNotification(for: .score)
-        }
-    }
-    var employedAt: String?
-    
-    var isEmployee: Bool {
-        return employedAt != nil
-    }
-    
-    var avatar: Data? {
-        didSet {
-            sendNotification(for: .avatar)
-        }
-    }
-    
-    private func sendNotification(for type: NotificationType) {
+    private func sendNotification(for type: NotificationType) { // sends notification to update datas at multiple points at a time
         let name = Notification.Name(rawValue: type.rawValue)
         let notification = Notification(name: name)
         NotificationCenter.default.post(notification)
     }
 
-    func reauthenticate(password: String, completion: @escaping (Error?) -> Void) {
+    func reauthenticate(password: String, completion: @escaping (Error?) -> Void) { // reauthenticates user, verifies password
         guard let email = VigiCleanUser.currentUser.user?.email else {
             completion(AccountManager.UAccountError.userNotLoggedIn)
             return

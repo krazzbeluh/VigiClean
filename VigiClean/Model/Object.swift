@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseFirestore
 
+// An object is managed by VigiClean.
 class Object {
     
     // MARK: Properties

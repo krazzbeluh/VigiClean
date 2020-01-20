@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct Color {
+struct Color { // Color codes. Used to calculate color in ScoreView
     var red, green, blue, alpha: Double 
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Contains every reusable strings used in database. Prevents hardcoded Strings
 enum FirestoreCollection: String {
     case marketplace = "Marketplace"
     case object = "Object"

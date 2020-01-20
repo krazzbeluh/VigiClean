@@ -12,6 +12,7 @@ import FirebaseStorage
 import FirebaseFirestore
 import FirebaseFunctions
 
+//  Manages errors. Converts firebase errors and contains global Error cases
 class ErrorHandler {
     
     enum Errors: Error {

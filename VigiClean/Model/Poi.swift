@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 
+// A POI is a point in the map. It's used when displaying maps
 class Poi: NSObject, MKAnnotation {
     var title: String?
     var coordinate: CLLocationCoordinate2D

@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFunctions
 
+// BasePresenter is the presenter's parent class. It converts Error cases into Strings.
 class BasePresenter {
     
     func convertError(_ error: Error) -> String { // swiftlint:disable:this cyclomatic_complexity function_body_length
