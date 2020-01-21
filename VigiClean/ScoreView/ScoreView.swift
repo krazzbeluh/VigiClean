@@ -8,10 +8,11 @@
 
 import UIKit
 
+// ScoreView displays user score with calculated color
 class ScoreView: UIView, ScoreViewContract {
     var presenter: ScoreViewPresenterContract!
     
-    override func layoutSubviews() {
+    override func layoutSubviews() { // making view circular
         super.layoutSubviews()
         presenter = ScoreViewPresenter(view: self)
         layer.borderWidth = 25
@@ -20,7 +21,7 @@ class ScoreView: UIView, ScoreViewContract {
         presenter.getScore()
     }
     
-    private var color: UIColor {
+    private var color: UIColor {  // stores view color
         let color = presenter.getColorCode(for: score ?? 0)
         return UIColor(displayP3Red: CGFloat(color.red),
                        green: CGFloat(color.green),
@@ -41,7 +42,7 @@ class ScoreView: UIView, ScoreViewContract {
         return score
     }
     
-    func setScore(to score: Int) {
+    func setScore(to score: Int) { // Sets score display
         scoreLabel.text = String(score)
         scoreLabel.isHidden = false
         
@@ -49,7 +50,7 @@ class ScoreView: UIView, ScoreViewContract {
         scoreLabel.textColor = color
     }
     
-    func scoreValueChanged(to value: Int) {
+    func scoreValueChanged(to value: Int) { // updates view on score modification
         setScore(to: value)
     }
 }

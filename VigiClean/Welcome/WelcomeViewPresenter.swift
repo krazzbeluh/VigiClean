@@ -15,7 +15,7 @@ class WelcomePresenter: BasePresenter, WelcomeViewPresenter {
         self.view = view
     }
     
-    func signIn() {
+    func signIn() { // Calls sign in from VCUser and manages response
         VigiCleanUser.currentUser.anonymousSignIn { error in
             if let error = error {
                 self.view.displayError(message: self.convertError(error))

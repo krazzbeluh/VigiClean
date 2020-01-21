@@ -9,6 +9,7 @@
 import AVFoundation
 import UIKit
 
+// Scans QR code and verifies that object is managed by VigiClean
 class ScannerViewController: UIViewController, ScannerView {
     // MARK: Properties
     var presenter: ScannerViewPresenter!
@@ -77,7 +78,7 @@ class ScannerViewController: UIViewController, ScannerView {
         captureSession.startRunning()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) { // Stops captureSession
         super.viewWillDisappear(animated)
         
         if captureSession?.isRunning == true {
@@ -86,7 +87,7 @@ class ScannerViewController: UIViewController, ScannerView {
     }
     
     // MARK: methods
-    func displayLoadViews(_ statement: Bool) {
+    func displayLoadViews(_ statement: Bool) { // displays loadView or not
         if statement {
             captureSession.stopRunning()
         } else {
@@ -96,19 +97,19 @@ class ScannerViewController: UIViewController, ScannerView {
         grayOutView.isHidden = !statement
     }
     
-    func correctCodeFound() {
+    func correctCodeFound() { // vibrates when a VCCode is found
         if !isAlreadyPresentingAlert {
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             presenter.getObject()
         }
     }
     
-    func validObjectFound() {
+    func validObjectFound() { // performs segue and hides loadView
         displayLoadViews(false)
         performSegue(withIdentifier: SegueType.request.rawValue, sender: self)
     }
     
-    func invalidCodeFound(error: Error) {
+    func invalidCodeFound(error: Error) { // returns to dashboard if error
         displayError(message: presenter.convertError(error)) {
             self.performSegue(withIdentifier: SegueType.dashboardUnwind.rawValue, sender: nil)
         }
@@ -118,7 +119,6 @@ class ScannerViewController: UIViewController, ScannerView {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    // MARK: Actions
     
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -134,7 +134,7 @@ class ScannerViewController: UIViewController, ScannerView {
     }
 }
 
-extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
+extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate { // manages scanner
     func metadataOutput(_ output: AVCaptureMetadataOutput,
                         didOutput metadataObjects: [AVMetadataObject],
                         from connection: AVCaptureConnection) {

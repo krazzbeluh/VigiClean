@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 
+// Request interface where user can send request and employee can resolve it
 class RequestViewController: UIViewController, RequestView {
     var presenter: RequestViewPresenter!
     
@@ -45,7 +46,7 @@ class RequestViewController: UIViewController, RequestView {
     }
     
     // MARK: Methods
-    func roleFetched() {
+    func roleFetched() { // Manages view with user's role
         let isEmployee = presenter.isUserEmployedAtObjectOrganization
         self.employeeLabel.isHidden = !isEmployee
         self.switchMode.isHidden = !isEmployee
@@ -56,18 +57,18 @@ class RequestViewController: UIViewController, RequestView {
         self.validSwitch.isHidden = !isEmployee
     }
     
-    func loading(grayed: Bool) {
+    func loading(grayed: Bool) { // displays loadView
         activityIndicator.isHidden = !grayed
         grayOutView.isHidden = !grayed
     }
     
-    func configure(with object: Object) {
+    func configure(with object: Object) { // displays texts on differents labels
         nameLabel.text = object.name
         organizationLabel.text = object.organization
         typeLabel.text = object.type
     }
     
-    func requestSent(employeeMode: Bool) {
+    func requestSent(employeeMode: Bool) { // performs segue when request sending is complete
         loading(grayed: false)
         
         if !employeeMode {
@@ -75,7 +76,7 @@ class RequestViewController: UIViewController, RequestView {
         }
     }
     
-    @objc func switchChanged(mySwitch: UISwitch) {
+    @objc func switchChanged(mySwitch: UISwitch) { // changes mode with switch
         let value = mySwitch.isOn
         presenter.switchEmployeeMode(to: value)
         action.text = presenter.actions.first
@@ -83,7 +84,7 @@ class RequestViewController: UIViewController, RequestView {
     
     // MARK: Actions
     
-    @IBAction func sendRequest(_ sender: Any) {
+    @IBAction func sendRequest(_ sender: Any) { // ask presenter to send request when user taps button
         loading(grayed: true)
         
         guard let action = action.text, action != "" else {
@@ -99,13 +100,12 @@ class RequestViewController: UIViewController, RequestView {
     }
     
     // MARK: Segues
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.modalPresentationStyle = .fullScreen
     }
 }
 
-extension RequestViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension RequestViewController: UIPickerViewDelegate, UIPickerViewDataSource { // Manages picker selector
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -124,7 +124,7 @@ extension RequestViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 }
 
 // MARK: MapKit
-extension RequestViewController: MKMapViewDelegate {
+extension RequestViewController: MKMapViewDelegate { // manages mapkit
     func configureMap(with location: Poi) {
         let regionMeters: CLLocationDistance = 100
         let region = MKCoordinateRegion(center: location.coordinate,

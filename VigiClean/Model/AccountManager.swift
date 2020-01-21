@@ -29,7 +29,8 @@ class AccountManager {
     
     func createUserDocument(for user: String,
                             named: String?,
-                            completion: @escaping (Error?) -> Void) { // Creates user document in database. Stores credits, username
+                            completion: @escaping (Error?) -> Void) {
+        // Creates user document in database. Stores credits, username
         
         database.collection(FirestoreCollection.user.rawValue).document(user).setData(
             [FirestoreCollection.FirestoreField.credits.rawValue: 0,
@@ -71,7 +72,8 @@ class AccountManager {
         }
     }
     
-    func getUserInfos(in data: [String: Any]) {  // Gets userInfos in currentUser which is realtime updated by listenForUserDocumentChanges
+    func getUserInfos(in data: [String: Any]) {
+        // Gets userInfos in currentUser which is realtime updated by listenForUserDocumentChanges
         if let username = data[FirestoreCollection.FirestoreField.username.rawValue] as? String {
             VigiCleanUser.currentUser.username = username
         }
@@ -111,7 +113,8 @@ class AccountManager {
         }
     }
     
-    func updateAvatar(from avatar: Data, with password: String, callback: @escaping ((Result<Data, Error>) -> Void)) { // Sets avatar in storage
+    func updateAvatar(from avatar: Data, with password: String, callback: @escaping ((Result<Data, Error>) -> Void)) {
+        // Sets avatar in storage
         guard let uid = VigiCleanUser.currentUser.user?.uid,
             VigiCleanUser.currentUser.user?.email != nil else {
                 callback(.failure(UAccountError.userNotLoggedInWithEmail))

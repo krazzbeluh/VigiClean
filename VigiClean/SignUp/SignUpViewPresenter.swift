@@ -15,6 +15,7 @@ class SignUpPresenter: BasePresenter, SignUpViewPresenter {
         self.view = view
     }
     
+    // Calls VCUser signUp and manages response
     func signUp(username: String?, email: String?, password: String?, confirmPassword: String?) {
         guard let username = username,
             let email = email,

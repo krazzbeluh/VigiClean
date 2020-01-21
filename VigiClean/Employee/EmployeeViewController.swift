@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import FirebaseFirestore
 
+// EmployeeView is a view that lets employee to manage requested objects
 class EmployeeViewController: UIViewController, EmployeeView {
     var presenter: EmployeeViewPresenter!
     
@@ -24,12 +25,12 @@ class EmployeeViewController: UIViewController, EmployeeView {
         presenter.getObjectList()
     }
     
-    func reloadTableView() {
+    func reloadTableView() { // reloads tableView on modification
         tableView.reloadData()
     }
 }
 
-extension EmployeeViewController: UITableViewDataSource {
+extension EmployeeViewController: UITableViewDataSource { // manages tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let objects = presenter.objects else {
             return 0

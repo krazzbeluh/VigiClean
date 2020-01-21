@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Welcome asks authentication method
 class WelcomeViewController: UIViewController, WelcomeView {
     // MARK: Properties
     var presenter: WelcomeViewPresenter!
@@ -27,23 +28,23 @@ class WelcomeViewController: UIViewController, WelcomeView {
     }
     
     // MARK: Actions
-    @IBAction func didTapAnonymousButton(_ sender: Any) {
+    @IBAction func didTapAnonymousButton(_ sender: Any) { // Signs the user in and launchs app
         switchActivityIndicator(hidden: false)
         presenter.signIn()
     }
     
     // MARK: Methods
-    func performSegue() {
+    func performSegue() { // launch dashboard
         switchActivityIndicator(hidden: true)
         performSegue(withIdentifier: SegueType.dashboard.rawValue, sender: nil)
     }
     
-    func switchActivityIndicator(hidden: Bool) {
+    func switchActivityIndicator(hidden: Bool) { // Manages activity indicator
         activityIndicator.isHidden = hidden
         anonymousButton.isHidden = !hidden
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Manages display settings for dashboard
         guard segue.identifier == SegueType.dashboard.rawValue else {
             return
         }

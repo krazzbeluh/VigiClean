@@ -8,6 +8,7 @@
 
 import UIKit
 
+// WalletView presents every bought promotionnal offers to user
 class WalletViewController: UIViewController, WalletView {
     var presenter: WalletViewPresenter!
     
@@ -24,16 +25,17 @@ class WalletViewController: UIViewController, WalletView {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        // Displays logo rounded
         copyLabel.layer.cornerRadius = copyLabel.frame.height / 5
         copyLabel.layer.masksToBounds = true
     }
     
-    func gottenResponse() {
+    func gottenResponse() { // reloads data on response
         tableView.reloadData()
     }
 }
 
-extension WalletViewController: UITableViewDataSource {
+extension WalletViewController: UITableViewDataSource { // manages tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.sales.count
     }
@@ -50,7 +52,7 @@ extension WalletViewController: UITableViewDataSource {
     }
 }
 
-extension WalletViewController: UITableViewDelegate {
+extension WalletViewController: UITableViewDelegate { // manages tableView actions
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         

@@ -36,7 +36,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
         self.view = view
     }
     
-    func signOut() {
+    func signOut() { // calls VCUser signOut and manages response
         VigiCleanUser.currentUser.signOut { error in
             if let error = error {
                 self.view.displayError(message: self.convertError(error))
@@ -46,7 +46,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
         }
     }
     
-    func updatePseudo(to newPseudo: String?, with password: String?) {
+    func updatePseudo(to newPseudo: String?, with password: String?) { // calls VCUser updatePseudo and manages response
         guard let newPseudo = newPseudo,
             newPseudo != "",
             let password = password else {
@@ -64,7 +64,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
         }
     }
     
-    func updateEmail(to newEmail: String?, with password: String?) {
+    func updateEmail(to newEmail: String?, with password: String?) { // calls VCUserUpdateEmail and manages response
         guard let newEmail = newEmail,
             newEmail != "",
             let password = password else {
@@ -82,7 +82,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
         }
     }
     
-    func updateAvatar(to newAvatar: Data, with password: String?) {
+    func updateAvatar(to newAvatar: Data, with password: String?) { // updates Avatar and manages response
         guard let password = password else {
             self.view.displayError(message: self.convertError(UserError.nilInTextField))
             return
@@ -99,6 +99,7 @@ class ProfilePresenter: BasePresenter, ProfileViewPresenter {
     }
     
     func updatePassword(to newPassword: String?, confirm: String?, with password: String?) {
+        // updates password and manages response
         guard let password = password, let newPassword = newPassword, let confirm = confirm else {
             view.displayError(message: convertError(UserError.nilInTextField))
                 return

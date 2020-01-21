@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 
+// MarketplaceCollectionViewCell displays a promotional offer to VCUsers
 class MarketplaceCollectionViewCell: UICollectionViewCell, MarketplaceCellView {
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -32,11 +33,11 @@ class MarketplaceCollectionViewCell: UICollectionViewCell, MarketplaceCellView {
         presenter.buySale()
     }
     
-    func sendAlert(with message: String) {
+    func sendAlert(with message: String) { // calls delegate displayError
         delegate?.displayError(message: message)
     }
     
-    func saleGotten(with code: String) {
+    func saleGotten(with code: String) { // displays user sale
         let alertVC = UIAlertController(
             title: "Votre récompense :",
             message: "Voici votre code promotionnel à utiliser chez notre partenaire : \n\(code)",

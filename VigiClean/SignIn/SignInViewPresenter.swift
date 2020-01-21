@@ -21,7 +21,7 @@ class SignInPresenter: BasePresenter, SignInViewPresenter {
         self.accountManager = accountManager
     }
     
-    func signIn(email: String?, password: String?) {
+    func signIn(email: String?, password: String?) { // Calls signIn from VCUser
         guard let email = email, let password = password, email != "", password != "" else {
             view.switchActivityIndicator(hidden: true)
             view.displayError(message: convertError(UserError.nilInTextField))

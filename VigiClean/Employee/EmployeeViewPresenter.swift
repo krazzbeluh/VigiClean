@@ -24,7 +24,7 @@ class EmployeePresenter: BasePresenter, EmployeeViewPresenter {
         self.objectManager = objectManager
     }
     
-    func getObjectList() {
+    func getObjectList() {  // Gets requested objects list
         objectManager.getObjectList { (result) in
             switch result {
             case .success(let objects):

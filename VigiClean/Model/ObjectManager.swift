@@ -50,7 +50,8 @@ class ObjectManager {
         }
     }
     
-    private func getObject(from data: [String: Any], with code: String) throws -> Object { // Converts firestore response data into Object
+    private func getObject(from data: [String: Any], with code: String) throws -> Object {
+        // Converts firestore response data into Object
         guard let coords = data[FirestoreCollection.FirestoreField.coords.rawValue] as? GeoPoint,
             let organization = data[FirestoreCollection.FirestoreField.organization.rawValue] as? String,
             let type = data[FirestoreCollection.FirestoreField.type.rawValue] as? String,
@@ -61,7 +62,8 @@ class ObjectManager {
         return Object(coords: coords, organization: organization, type: type, name: name, code: code)
     }
     
-    func getActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) { // Gets Actions for a specific object
+    func getActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) {
+        // Gets Actions for a specific object
         let docRef = database.collection(FirestoreCollection.actions.rawValue).document(object.type)
         docRef.getDocument { document, error in
             if let error = error {
@@ -89,7 +91,8 @@ class ObjectManager {
         }
     }
     
-    func getEmployeeActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) { // Gets EmployeeActions for a specific object
+    func getEmployeeActions(for object: Object, callback: @escaping (Result<Void, Error>) -> Void) {
+        // Gets EmployeeActions for a specific object
         let docRef = database.collection(FirestoreCollection.performedActions.rawValue).document(object.type)
         docRef.getDocument { document, error in
             if let error = error {
@@ -117,7 +120,8 @@ class ObjectManager {
         }
     }
     
-    func sendRequest(for object: Object, with action: Action, callback: @escaping (Error?) -> Void) { // Sends user request to ask a maintenance
+    func sendRequest(for object: Object, with action: Action, callback: @escaping (Error?) -> Void) {
+        // Sends user request to ask a maintenance
         guard let uid = VigiCleanUser.currentUser.user?.uid else {
             callback(ObjectError.userNotLoggedIn)
             return
@@ -139,7 +143,8 @@ class ObjectManager {
         }
     }
     
-    func resolvedRequest(for object: Object, with action: Action, isValid: Bool, callback: @escaping(Error?) -> Void) { // Sends an employee request to validate maintenance
+    func resolvedRequest(for object: Object, with action: Action, isValid: Bool, callback: @escaping(Error?) -> Void) {
+        // Sends an employee request to validate maintenance
         functions.httpsCallable("resolvedRequest?code=\(object.code)&action=\(action.index)&valid=\(isValid)")
             .call { (_, error) in
                 guard let error = error else {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// AttachEmailView is similar to SignUp, it lets user convert anonymous account to email
 class AttachEmailViewController: UIViewController, AttachEmailView {
     // MARK: Properties
     var presenter: AttachEmailViewPresenter!
@@ -48,23 +49,23 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
     }
     
     // MARK: Methods
-    func attachEmail() {
+    func attachEmail() { // Calls presenter method
         presenter.attachEmail(username: textFields[0].text,
                               email: textFields[1].text,
                               password: textFields[2].text,
                               confirmPassword: textFields[3].text)
     }
     
-    func updatedPseudo() {
+    func updatedPseudo() { // performs segue on pseudo modification
         performSegue(withIdentifier: SegueType.launchUnwind.rawValue, sender: self)
     }
     
-    func switchActivityIndicator(hidden: Bool) {
+    func switchActivityIndicator(hidden: Bool) { // manages activityIndicator
         activityIndicator.isHidden = hidden
         performButton.isHidden = !hidden
     }
     
-    func attachedEmail() {
+    func attachedEmail() { // calls updatePseudo when email attached
         presenter.updatePseudo(username: textFields[0].text,
                                password: textFields[2].text,
                                confirmPassword: textFields[3].text)
@@ -72,7 +73,7 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
 }
 
 // MARK: UITextFieldDelegate
-extension AttachEmailViewController: UITextFieldDelegate {
+extension AttachEmailViewController: UITextFieldDelegate { // manages textFields
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField.tag < 3 {

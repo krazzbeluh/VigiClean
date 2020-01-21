@@ -12,14 +12,36 @@ import MapKit
 class RequestPresenter: BasePresenter, RequestViewPresenter {
     private var objectManager = ObjectManager()
     
+    weak var view: RequestView!
+    
+    required init(view: RequestView) {
+        super.init()
+        
+        self.view = view
+        
+        guard let object = Object.currentObject else {
+            fatalError("No object found when preparing request")
+        }
+        
+        isUserEmployedAtObjectOrganization = VigiCleanUser.currentUser.employedAt == object.organization
+        
+        view.configure(with: object)
+    }
+    
+    init(view: RequestView, objectManager: ObjectManager) {
+        super.init()
+        self.view = view
+        self.objectManager = objectManager
+    }
+    
     var employeeMode = false
     var isUserEmployedAtObjectOrganization = false
     
-    func switchEmployeeMode(to employeeMode: Bool) {
+    func switchEmployeeMode(to employeeMode: Bool) { // sets employeeMode for next methods
         self.employeeMode = employeeMode
     }
     
-    var actions: [String] {
+    var actions: [String] { // Returns actions based on employeeMode
         guard let object = Object.currentObject else {
             return [String]()
         }
@@ -49,29 +71,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         return actions
     }
     
-    weak var view: RequestView!
-    
-    required init(view: RequestView) {
-        super.init()
-        
-        self.view = view
-        
-        guard let object = Object.currentObject else {
-            fatalError("No object found when preparing request")
-        }
-        
-        isUserEmployedAtObjectOrganization = VigiCleanUser.currentUser.employedAt == object.organization
-        
-        view.configure(with: object)
-    }
-    
-    init(view: RequestView, objectManager: ObjectManager) {
-        super.init()
-        self.view = view
-        self.objectManager = objectManager
-    }
-    
-    func prepareMap() {
+    func prepareMap() {  // prepares map settings to display object location
         guard let object = Object.currentObject else {
             return
         }
@@ -81,7 +81,7 @@ class RequestPresenter: BasePresenter, RequestViewPresenter {
         view.configureMap(with: poi)
     }
     
-    func sendRequest(with action: String, isValid: Bool) {
+    func sendRequest(with action: String, isValid: Bool) { // sends objectManager request based on employeeMode
         guard let object = Object.currentObject else {
             view.displayError(message: convertError(ObjectManager.ObjectError.objectNotFound))
             return

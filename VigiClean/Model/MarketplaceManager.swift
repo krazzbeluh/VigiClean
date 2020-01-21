@@ -113,7 +113,8 @@ class MarketplaceManager {
                 return
             }
             
-            let saleIDs = saleSnapshot.documents.map { [$0.data()["sale"] as? String, $0.documentID] } // Must be [String?, String!] (ref001)
+            let saleIDs = saleSnapshot.documents.map { [$0.data()["sale"] as? String, $0.documentID] }
+            // Must be [String?, String!] (ref001)
             
             let query = self.database.collection("Marketplace")
             query.getDocuments { (marketplaceSnapshot, error) in
@@ -132,7 +133,8 @@ class MarketplaceManager {
                     print(1)
                     for document in marketplaceSnapshot.documents where document.documentID == saleID[0] {
                         print(2)
-                        let saleOpt = self.getData(data: document.data(), with: saleID[1]!) // second column is necessary String. (see refOO1)
+                        let saleOpt = self.getData(data: document.data(), with: saleID[1]!)
+                        // second column is necessary String. (see refOO1)
                         
                         guard let sale = saleOpt else {
                             break

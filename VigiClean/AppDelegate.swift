@@ -18,10 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // sets up firebase
         FirebaseApp.configure()
         let settings = FirestoreSettings()
         settings.isPersistenceEnabled = true
         
+        // sets up keyboaredManager
         IQKeyboardManager.shared.enable = true
         
         return true

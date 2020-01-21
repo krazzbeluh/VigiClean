@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Protocols are contracts between view and presenter. Views and Presenters don't knows them
 protocol LaunchViewPresenter: BasePresenter {
     init(view: LaunchView)
     var isUserConnected: Bool { get }

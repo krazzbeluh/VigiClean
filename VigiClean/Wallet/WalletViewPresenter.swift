@@ -12,7 +12,7 @@ class WalletPresenter: BasePresenter, WalletViewPresenter {
     weak var view: WalletView!
     private let marketplaceManager: MarketplaceManager
     
-    var sales = [Sale]()
+    var sales = [Sale]() // stores every user's sales
     
     required init(view: WalletView) {
         self.view = view
@@ -25,7 +25,7 @@ class WalletPresenter: BasePresenter, WalletViewPresenter {
         self.marketplaceManager = marketplaceManager
     }
     
-    func getUserSales() {
+    func getUserSales() { // gets user sales and call view method to display response
         marketplaceManager.getUserSales { (result) in
             switch result {
             case .success(let sales):

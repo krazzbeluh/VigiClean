@@ -8,6 +8,7 @@
 
 import UIKit
 
+// manages signIn with form
 class SignInViewController: UIViewController, SignInView {
     // MARK: Properties
     var presenter: SignInViewPresenter!
@@ -45,16 +46,16 @@ class SignInViewController: UIViewController, SignInView {
     
     // MARK: Methods
     
-    func signIn() {
+    func signIn() { // calls sign in from presenter
         presenter.signIn(email: emailTextField.text, password: passwordTextField.text)
     }
     
-    func userSignedIn() {
+    func userSignedIn() { // performs segue on presenter response
         switchActivityIndicator(hidden: true)
         performSegue(withIdentifier: SegueType.dashboard.rawValue, sender: nil)
     }
     
-    func switchActivityIndicator(hidden: Bool) {
+    func switchActivityIndicator(hidden: Bool) { // manages activityIndicator display
         activityIndicator.isHidden = hidden
         performButton.isHidden = !hidden
     }
@@ -66,7 +67,7 @@ class SignInViewController: UIViewController, SignInView {
     }
 }
 
-extension SignInViewController: UITextFieldDelegate {
+extension SignInViewController: UITextFieldDelegate { // manages textFields
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField != emailTextField {
             textField.resignFirstResponder()

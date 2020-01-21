@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Dashboard is the app center. It let the user access to marketplace, scanner and account settings
 class DashboardViewController: UIViewController, DashboardView {
     // MARK: Outlets
     @IBOutlet weak var scoreView: ScoreView!
@@ -27,33 +28,29 @@ class DashboardViewController: UIViewController, DashboardView {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setAvatarDisplay()
     }
     
     // MARK: Methods
-    func setAvatar(to image: Data) {
+    func setAvatar(to image: Data) { // displays Avatar
             self.avatar.setImage(UIImage(data: image), for: .normal)
     }
     
-    func salesGotten() {
+    func salesGotten() { // executes actions when presenter finishes getting Sales
         displayLoadView(false)
         
         performSegue(withIdentifier: SegueType.marketplace.rawValue, sender: self)
     }
     
-    private func displayLoadView(_ displayed: Bool) {
+    private func displayLoadView(_ displayed: Bool) { // Manages activityIndicator and grayOutView display
         avatar.isHidden = displayed
         grayOutView.isHidden = !displayed
         activityIndicator.isHidden = !displayed
     }
     
-    private func setAvatarDisplay() {
+    private func setAvatarDisplay() { // Sets imageView up
         avatar.layer.cornerRadius = (avatar.frame.size.height) / 2
         avatar.clipsToBounds = true
     }

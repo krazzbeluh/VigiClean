@@ -23,10 +23,10 @@ class MarketplaceCellPresenter: BasePresenter, MarketplaceCellViewPresenter {
         self.marketplaceManager = marketplaceManager
     }
     
-    let sale: Sale
+    let sale: Sale // Each cell stores a Sale
     private var marketplaceManager: MarketplaceManager
     
-    func buySale() {
+    func buySale() { // calls MarketplaceManager buySale if user has enough credits
         guard sale.price <= VigiCleanUser.currentUser.credits else {
             view.sendAlert(with: convertError(AccountManager.UAccountError.notEnoughCredits))
             return

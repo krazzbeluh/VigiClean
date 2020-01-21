@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol MarketplaceDelegate: class {
+protocol MarketplaceDelegate: class {  // delegate that allows view and viewCell to communicate
     func present(alert: UIAlertController)
     func displayError(message: String)
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// ProflieView is the interface where user can modify its settings
 class ProfileViewController: UIViewController, ProfileView {
     var presenter: ProfileViewPresenter!
     
@@ -28,7 +29,7 @@ class ProfileViewController: UIViewController, ProfileView {
         case username, email
     }
     
-    private var userActions: [String] {
+    private var userActions: [String] { // returns string array containing cell's reusable identifiers to use in order.
         if presenter.isConnectedAnonymously {
             return [CellType.attachEmail.rawValue, CellType.disconnect.rawValue]
         } else {
@@ -46,7 +47,7 @@ class ProfileViewController: UIViewController, ProfileView {
     @IBOutlet weak var avatar: UIImageView!
     
     // MARK: Actions
-    @IBAction func didTapDisconnectButton(_ sender: Any) {
+    @IBAction func didTapDisconnectButton(_ sender: Any) { // presents alert and disconnects user
         if presenter.isConnectedAnonymously {
             presentDeterDisconect { canDisconnect in
                 guard canDisconnect == true else {
@@ -60,48 +61,48 @@ class ProfileViewController: UIViewController, ProfileView {
         }
     }
     
-    @IBAction func changePseudo(_ sender: Any) {
+    @IBAction func changePseudo(_ sender: Any) { // changes pseudo
         prepareAlertForNew(.username) { pseudo, password  in
             self.presenter.updatePseudo(to: pseudo, with: password)
         }
     }
     
-    @IBAction func changeEmail(_ sender: Any) {
+    @IBAction func changeEmail(_ sender: Any) { // changes email
         prepareAlertForNew(.email) { (email, password) in
             self.presenter.updateEmail(to: email, with: password)
         }
     }
     
-    @IBAction func changePassword(_ sender: Any) {
+    @IBAction func changePassword(_ sender: Any) { // changes password
         changePassword { (old, new, confirmation) in
             self.presenter.updatePassword(to: new, confirm: confirmation, with: old)
         }
     }
     
-    @IBAction func changeAvatar(_ sender: Any) {
+    @IBAction func changeAvatar(_ sender: Any) { // changes avatar
         importPicture()
     }
     
     // MARK: methods
-    func display(username: String) {
+    func display(username: String) { // displays username
         usernameLabel.text = username
     }
-    
-    func display(avatar: Data) {
+     
+    func display(avatar: Data) { // displays avatar
         let avatar = UIImage(data: avatar)
         
         self.avatar.image = avatar
     }
     
-    func display(email: String) {
+    func display(email: String) { // displays email
         emailLabel.text = email
     }
     
-    func userSignedOut() {
+    func userSignedOut() { // performs segue when user signed Out
         performSegue(withIdentifier: SegueType.launchUnwind.rawValue, sender: self)
     }
     
-    func passwordChanged() {
+    func passwordChanged() { // presents alert confirming password is modified
         let alert = UIAlertController(title: "Succès !",
                                       message: "Votre mot de passe a été modifié avec succès !",
                                       preferredStyle: .alert)
@@ -111,7 +112,7 @@ class ProfileViewController: UIViewController, ProfileView {
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func presentDeterDisconect(handler: @escaping (Bool) -> Void) {
+    private func presentDeterDisconect(handler: @escaping (Bool) -> Void) { // presents deterAlert to prevent data loose
         let alertVC = UIAlertController(title: "Êtes-vous sûr ?",
                                         message: "Toutes vos données, telles que votre score, seront perdues (Vous pouvez vous inscrire pour les sauvegarder)", // swiftlint:disable:this line_length
             preferredStyle: .alert)
@@ -130,6 +131,7 @@ class ProfileViewController: UIViewController, ProfileView {
         self.present(alertVC, animated: true, completion: nil)
     }
     
+    // prepares alert to ask new userInfos
     private func prepareAlertForNew(_ userInfo: UpdateUserInfo, completion: @escaping (String?, String?) -> Void) {
         let title: String
         
@@ -163,6 +165,7 @@ class ProfileViewController: UIViewController, ProfileView {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // prepares alert with textfields to modify password
     private func changePassword(completion: @escaping (String?, String?, String?) -> Void) {
         let alert = UIAlertController(title: "Nouveau mot de passe :", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
@@ -195,6 +198,7 @@ class ProfileViewController: UIViewController, ProfileView {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // asks password to validate action
     private func askPassword(completion: @escaping (String?) -> Void) {
         let alert = UIAlertController(title: "Mot de passe :", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
@@ -221,13 +225,14 @@ class ProfileViewController: UIViewController, ProfileView {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // sets up avatar display
     private func setAvatarDisplay() {
         avatar.layer.cornerRadius = (avatar.frame.size.width) / 2
         avatar.clipsToBounds = true
     }
 }
 
-extension ProfileViewController: UITableViewDataSource {
+extension ProfileViewController: UITableViewDataSource { // manages table view
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -246,6 +251,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
 }
 
+// manages imagePicker
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private func importPicture() {
         let picker = UIImagePickerController()

@@ -15,6 +15,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
         self.view = view
     }
     
+    // Calls VCUSer attachEmail if all conditions validated
     func attachEmail(username: String?, email: String?, password: String?, confirmPassword: String?) {
         guard let username = username,
             let email = email,
@@ -49,6 +50,7 @@ class AttachEmailPresenter: BasePresenter, AttachEmailViewPresenter {
         })
     }
     
+    // Calls VCUserupdatePseudo if all conditions fulfilled
     func updatePseudo(username: String?, password: String?, confirmPassword: String?) {
         guard let username = username,
             let password = password,

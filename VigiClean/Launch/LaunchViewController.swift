@@ -8,6 +8,7 @@
 
 import UIKit
 
+// LaunchVC is the view that prepares the app, it downloads datas
 class LaunchViewController: UIViewController, LaunchView {
     var presenter: LaunchViewPresenter!
     
@@ -34,7 +35,7 @@ class LaunchViewController: UIViewController, LaunchView {
         segue.destination.modalPresentationStyle = .fullScreen
     }
     
-    func allResponseRecieved() {
+    func allResponseRecieved() { // perform segue if all datas are downloaded
         performSegue(withIdentifier: SegueType.dashboard.rawValue, sender: nil)
     }
 }

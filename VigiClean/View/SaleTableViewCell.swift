@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 
+// Sale Cell exemple in Sale list (Wallet)
 class SaleTableViewCell: UITableViewCell {
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var partnerLabel: UILabel!

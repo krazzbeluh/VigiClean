@@ -8,11 +8,13 @@
 import Foundation
 import UIKit
 
+// Every view's parent class
 protocol BaseView: class {
     func displayError(message: String)
     func displayError(message: String, completion: (() -> Void)?)
 }
 
+// Adds default methods for BaseView in ViewControllers
 extension UIViewController: BaseView {
     func displayError(message: String) { // sends alert
         displayError(message: message, completion: nil)
@@ -30,31 +32,7 @@ extension UIViewController: BaseView {
     }
 }
 
-extension UIViewController: UNUserNotificationCenterDelegate {
-    
-    //for displaying notification when app is in foreground
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) { //swiftlint:disable:this line_length
-        
-        completionHandler([.alert, .badge, .sound])
-    }
-    
-    // For handling tap and user actions
-    public func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                       didReceive response: UNNotificationResponse,
-                                       withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        switch response.actionIdentifier {
-        case "action1":
-            print("Action First Tapped")
-        case "action2":
-            print("Action Second Tapped")
-        default:
-            break
-        }
-        completionHandler()
-    }
-}
-
+// Segue's reusable identifiers. Prevents from hardcoded Strings
 enum SegueType: String {
     case welcome = "segueToWelcome"
     case dashboard = "segueToDashboard"

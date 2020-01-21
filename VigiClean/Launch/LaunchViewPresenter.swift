@@ -14,12 +14,12 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
     private let accountManager: AccountManager
     
     private var gottenDocument = false
-    private func documentGotten() {
+    private func documentGotten() { // Executes view methods when user Document is gotten
         gottenDocument = true
         checkIfAllDataIsGotten()
     }
     private var gottenAvatar = true
-    private func avatarGotten() {
+    private func avatarGotten() { // Executes view methods when user Avatar is gotten
         gottenAvatar = true
         checkIfAllDataIsGotten()
     }
@@ -33,7 +33,7 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
         self.accountManager = AccountManager()
     }
     
-    func listenForUserDocumentChanges() {
+    func listenForUserDocumentChanges() { // Executes documentGotten when documentchanges in database
         accountManager.listenForUserDocumentChanges { 
             self.documentGotten()
         }
@@ -44,7 +44,7 @@ class LaunchPresenter: BasePresenter, LaunchViewPresenter {
         self.accountManager = accountManager
     }
     
-    func getAvatar() {
+    func getAvatar() {  // Calls AM.getAvatar and manages response
         accountManager.getAvatar { error in
             if let error = error {
                 if let error = error as? StorageErrorCode,

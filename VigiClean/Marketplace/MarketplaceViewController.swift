@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MarketplaceView displays every promotional offers
 class MarketplaceViewController: UIViewController, MarketplaceView {
     var presenter: MarketplaceViewPresenter!
     
@@ -25,12 +26,13 @@ class MarketplaceViewController: UIViewController, MarketplaceView {
         presenter.getScore()
     }
     
-    func setScoreLabel(to text: String) {
+    func setScoreLabel(to text: String) { // displays score
         score.text = text
     }
     
 }
 
+// mangages collectionView
 extension MarketplaceViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return MarketplaceManager.sales.count
@@ -49,32 +51,30 @@ extension MarketplaceViewController: UICollectionViewDataSource {
     }
 }
 
+//  manages colectionView display
 extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
-  //1
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //2
-    let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-    let availableWidth = view.frame.width - paddingSpace
-    let widthPerItem = availableWidth / itemsPerRow
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
     
-    return CGSize(width: widthPerItem, height: widthPerItem)
-  }
-  
-  //3
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      insetForSectionAt section: Int) -> UIEdgeInsets {
-    return sectionInsets
-  }
-  
-  // 4
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return sectionInsets.left
-  }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
 }
 
 extension MarketplaceViewController: MarketplaceDelegate {

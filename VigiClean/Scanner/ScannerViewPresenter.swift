@@ -11,11 +11,11 @@ import Foundation
 class ScannerPresenter: BasePresenter, ScannerViewPresenter {
     weak var view: ScannerView!
     
-    var lastCode: String!
+    var lastCode: String! // Saves the last code scanned
     
     var objectManager = ObjectManager()
     
-    var objectCode: String {
+    var objectCode: String { // returns object reference from code
         return lastCode.replacingOccurrences(of: "https://www.vigiclean.com/?code=", with: "")
     }
     
@@ -28,7 +28,7 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
         self.objectManager = objectManager
     }
     
-    func verifyCode(code: String) {
+    func verifyCode(code: String) { // Verifies that code is a vigiclean code
         guard code != lastCode else { return }
         lastCode = code
         
@@ -39,7 +39,7 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
         }
     }
     
-    func getObject() {
+    func getObject() { // gets Object and actions
         objectManager.getObject(code: objectCode) { result in
             switch result {
             case .success(let object):
@@ -64,7 +64,7 @@ class ScannerPresenter: BasePresenter, ScannerViewPresenter {
         }
     }
     
-    private func invalidCodeFound(error: Error) {
+    private func invalidCodeFound(error: Error) { // presents alert if not already presenting
         lastCode = ""
         if !view.isAlreadyPresentingAlert { // TODO : Ask to Nicolas : not testable ; will always return true in tests
             view.invalidCodeFound(error: error)

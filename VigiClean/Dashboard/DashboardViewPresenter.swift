@@ -30,11 +30,6 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
         registerForNotifications()
     }
     
-    private func registerForNotifications() {
-        let name = Notification.Name(rawValue: VigiCleanUser.NotificationType.avatar.rawValue)
-        NotificationCenter.default.addObserver(self, selector: #selector(setAvatar), name: name, object: nil)
-    }
-    
     init(accountManager: AccountManager? = nil, view: DashboardView, marketplaceManager: MarketplaceManager? = nil) {
         self.accountManager = accountManager ?? AccountManager()
         self.marketplaceManager = marketplaceManager ?? MarketplaceManager()
@@ -43,7 +38,12 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
         super.init()
     }
     
-    func getAvatar() {
+    private func registerForNotifications() { // Waits for avatar changes
+        let name = Notification.Name(rawValue: VigiCleanUser.NotificationType.avatar.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(setAvatar), name: name, object: nil)
+    }
+    
+    func getAvatar() { // Gets Avatar from accountManager
         accountManager.getAvatar { (error) in
             if let error = error {
                 if let error = error as? StorageErrorCode,
@@ -58,7 +58,7 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
         }
     }
     
-    func getSales() {
+    func getSales() { // Gets sales from MarketplaceManager and calls salesGotter from view
         if MarketplaceManager.sales.count < 1 {
             marketplaceManager.getSales { (error) in
                 if let error = error {
@@ -75,7 +75,7 @@ class DashboardPresenter: BasePresenter, DashboardViewPresenter {
         }
     }
     
-    @objc private func setAvatar() {
+    @objc private func setAvatar() { // Sends avatar from VCUser to view
         DispatchQueue.main.async { // TODO: Ask to Nicolas
             let user = VigiCleanUser.currentUser
             

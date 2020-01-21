@@ -20,6 +20,7 @@ class MarketplacePresenter: MarketplaceViewPresenter {
     required init(view: MarketplaceView) {
         self.view = view
         
+        // listens for score change
         let name = Notification.Name(rawValue: VigiCleanUser.NotificationType.score.rawValue)
         NotificationCenter.default.addObserver(self, selector: #selector(setScore), name: name, object: nil)
     }
@@ -29,7 +30,7 @@ class MarketplacePresenter: MarketplaceViewPresenter {
         self.listener = listener
     }
     
-    @objc func setScore() {
+    @objc func setScore() { // sets score to view on score change
         DispatchQueue.main.async { // TODO: Ask to Nicolas
             self.view.setScoreLabel(to: "\(VigiCleanUser.currentUser.credits) points")
             self.listener?()
