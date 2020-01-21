@@ -24,7 +24,7 @@ class AttachEmailViewController: UIViewController, AttachEmailView {
         presenter = AttachEmailPresenter(view: self)
         
         if #available(iOS 13, *) {
-//            dismissButton.isHidden = true
+            dismissButton.isHidden = true
         }
         
         if #available(iOS 12, *) {

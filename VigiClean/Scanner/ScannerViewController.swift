@@ -26,6 +26,7 @@ class ScannerViewController: UIViewController, ScannerView {
     @IBOutlet weak var qrScope: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var grayOutView: UIView!
+    @IBOutlet weak var dismissButton: UIButton!
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -70,6 +71,11 @@ class ScannerViewController: UIViewController, ScannerView {
         previewLayer.frame = scannerView.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         scannerView.layer.addSublayer(previewLayer)
+        
+        if #available(iOS 13, *) {
+            // With IOS 13, the segue is not fullscreen and can be dismissed with swipe
+            dismissButton.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

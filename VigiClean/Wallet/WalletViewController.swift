@@ -14,12 +14,18 @@ class WalletViewController: UIViewController, WalletView {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var copyLabel: UILabel!
+    @IBOutlet weak var dismissButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presenter = WalletPresenter(view: self)
         presenter.getUserSales()
+        
+        if #available(iOS 13, *) {
+            // With IOS 13, the segue is not fullscreen and can be dismissed with swipe
+            dismissButton.isHidden = true
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -28,6 +34,10 @@ class WalletViewController: UIViewController, WalletView {
         // Displays logo rounded
         copyLabel.layer.cornerRadius = copyLabel.frame.height / 5
         copyLabel.layer.masksToBounds = true
+    }
+
+    @IBAction func didTaoDismissButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     func gottenResponse() { // reloads data on response

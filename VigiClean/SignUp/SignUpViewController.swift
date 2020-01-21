@@ -47,6 +47,10 @@ class SignUpViewController: UIViewController, SignUpView {
         }
     }
     
+    @IBAction func didTapDismissButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: Methods
     func signUp() { // calls presenter method with user datas
         presenter.signUp(username: textFields[0].text,

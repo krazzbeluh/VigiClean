@@ -102,16 +102,30 @@
                                     <segue destination="xBG-DZ-N2e" kind="show" id="JIj-XH-vlt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpj-tS-JJf">
+                                <rect key="frame" x="20" y="12" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="fY4-fs-zVY"/>
+                                    <constraint firstAttribute="width" secondItem="mpj-tS-JJf" secondAttribute="height" multiplier="1:1" id="xFl-Bd-9nK"/>
+                                </constraints>
+                                <state key="normal" image="Close"/>
+                                <connections>
+                                    <segue destination="Lqs-ZX-02W" kind="unwind" unwindAction="unwindToDashboardWithSegue:" id="UFk-I2-hes"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="mpj-tS-JJf" firstAttribute="width" secondItem="mpj-tS-JJf" secondAttribute="height" multiplier="1:1" id="6Gy-Kz-gpk"/>
                             <constraint firstItem="ORa-EJ-ZC0" firstAttribute="centerX" secondItem="fTD-f3-Xiq" secondAttribute="centerX" id="FeS-uP-D3d"/>
                             <constraint firstItem="fTD-f3-Xiq" firstAttribute="centerX" secondItem="Pci-AX-aRt" secondAttribute="centerX" id="MZ4-qg-bVv"/>
                             <constraint firstItem="fQX-ln-Kf9" firstAttribute="centerX" secondItem="Pci-AX-aRt" secondAttribute="centerX" id="NYo-54-aHZ"/>
                             <constraint firstItem="ORa-EJ-ZC0" firstAttribute="top" secondItem="fQX-ln-Kf9" secondAttribute="bottom" constant="8" id="R99-x5-Tsp"/>
+                            <constraint firstItem="mpj-tS-JJf" firstAttribute="leading" secondItem="DQb-FE-GDf" secondAttribute="leading" constant="20" id="VnB-PR-OIn"/>
                             <constraint firstItem="fQX-ln-Kf9" firstAttribute="width" secondItem="fTD-f3-Xiq" secondAttribute="width" id="YYT-5U-8hd"/>
                             <constraint firstItem="ORa-EJ-ZC0" firstAttribute="width" secondItem="fTD-f3-Xiq" secondAttribute="width" id="aYD-x5-E0T"/>
+                            <constraint firstItem="mpj-tS-JJf" firstAttribute="top" secondItem="DQb-FE-GDf" secondAttribute="top" constant="12" id="d6y-kj-MBO"/>
                             <constraint firstItem="DQb-FE-GDf" firstAttribute="trailing" secondItem="G8b-74-FKV" secondAttribute="trailing" id="f3a-wE-raG"/>
                             <constraint firstItem="fTD-f3-Xiq" firstAttribute="top" secondItem="DQb-FE-GDf" secondAttribute="top" constant="20" id="feS-kk-gJt"/>
                             <constraint firstAttribute="bottom" secondItem="G8b-74-FKV" secondAttribute="bottom" id="hSg-3Y-6gh"/>
@@ -125,10 +139,12 @@
                     <navigationItem key="navigationItem" id="lc0-HF-nKl"/>
                     <connections>
                         <outlet property="collectionView" destination="G8b-74-FKV" id="9LQ-0Q-JS9"/>
+                        <outlet property="dismissButton" destination="mpj-tS-JJf" id="A7q-mV-yYW"/>
                         <outlet property="score" destination="fQX-ln-Kf9" id="kaj-Ht-c9w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QgT-53-qR4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Lqs-ZX-02W" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2093" y="550"/>
         </scene>
@@ -211,15 +227,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsZ-27-3ov">
+                                <rect key="frame" x="20" y="12" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tsZ-27-3ov" secondAttribute="height" multiplier="1:1" id="WW3-sB-PPF"/>
+                                    <constraint firstAttribute="width" constant="30" id="v0a-bj-aXC"/>
+                                </constraints>
+                                <state key="normal" image="Close"/>
+                                <connections>
+                                    <action selector="didTaoDismissButton:" destination="xBG-DZ-N2e" eventType="touchUpInside" id="x1n-nP-sKM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="IWC-PD-NNY" firstAttribute="top" secondItem="ZSK-tX-79o" secondAttribute="top" constant="20" id="1MC-Nc-BqW"/>
                             <constraint firstAttribute="bottom" secondItem="Tb9-Xy-4Fk" secondAttribute="bottom" id="48V-Le-Zhn"/>
                             <constraint firstItem="ZSK-tX-79o" firstAttribute="bottom" secondItem="pas-fh-mUD" secondAttribute="bottom" constant="20" id="8QV-5F-2DQ"/>
+                            <constraint firstItem="tsZ-27-3ov" firstAttribute="width" secondItem="tsZ-27-3ov" secondAttribute="height" multiplier="1:1" id="I0h-u0-LNl"/>
+                            <constraint firstItem="tsZ-27-3ov" firstAttribute="top" secondItem="ZSK-tX-79o" secondAttribute="top" constant="12" id="Lp4-aZ-Fod"/>
                             <constraint firstItem="IWC-PD-NNY" firstAttribute="leading" secondItem="5oI-BA-SKA" secondAttribute="leading" constant="100" id="YbO-32-YXH"/>
                             <constraint firstItem="ZSK-tX-79o" firstAttribute="trailing" secondItem="Tb9-Xy-4Fk" secondAttribute="trailing" id="be3-1n-WDc"/>
                             <constraint firstItem="pas-fh-mUD" firstAttribute="centerX" secondItem="5oI-BA-SKA" secondAttribute="centerX" id="dCH-MS-uMt"/>
+                            <constraint firstItem="tsZ-27-3ov" firstAttribute="leading" secondItem="ZSK-tX-79o" secondAttribute="leading" constant="20" id="gdt-dE-gQH"/>
                             <constraint firstItem="Tb9-Xy-4Fk" firstAttribute="leading" secondItem="ZSK-tX-79o" secondAttribute="leading" id="jjQ-tr-19S"/>
                             <constraint firstItem="pas-fh-mUD" firstAttribute="leading" secondItem="ZSK-tX-79o" secondAttribute="leading" constant="60" id="osp-MD-DuT"/>
                             <constraint firstItem="Tb9-Xy-4Fk" firstAttribute="top" secondItem="IWC-PD-NNY" secondAttribute="bottom" constant="8" id="s4s-1G-qeB"/>
@@ -230,6 +260,7 @@
                     <navigationItem key="navigationItem" id="sjE-dj-y1o"/>
                     <connections>
                         <outlet property="copyLabel" destination="pas-fh-mUD" id="f5r-MU-yVo"/>
+                        <outlet property="dismissButton" destination="tsZ-27-3ov" id="wfc-ny-8YH"/>
                         <outlet property="tableView" destination="Tb9-Xy-4Fk" id="fgV-x5-8oX"/>
                     </connections>
                 </viewController>
@@ -787,6 +818,7 @@
                     <navigationItem key="navigationItem" id="ps0-aI-1ew"/>
                     <connections>
                         <outlet property="avatar" destination="VVA-AU-iaZ" id="S6P-u4-wRP"/>
+                        <outlet property="dismissButton" destination="eUb-t3-98D" id="14y-UI-bQ1"/>
                         <outlet property="emailLabel" destination="8Di-Tf-A8j" id="Tew-BT-TPb"/>
                         <outlet property="usernameLabel" destination="07l-Nz-0B1" id="CwF-yo-aee"/>
                         <segue destination="TbZ-GO-RbZ" kind="unwind" identifier="unwindToLaunch" unwindAction="unwindToLaunchWithSegue:" id="ha6-Xg-rbE"/>
@@ -1078,6 +1110,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" name="Background"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAm-uF-CPW">
+                                <rect key="frame" x="20" y="12" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pAm-uF-CPW" secondAttribute="height" multiplier="1:1" id="19C-kp-Z7L"/>
+                                    <constraint firstAttribute="width" constant="30" id="Nrn-HL-EJF"/>
+                                </constraints>
+                                <state key="normal" image="Close"/>
+                                <connections>
+                                    <segue destination="LwD-K7-UZS" kind="unwind" unwindAction="unwindToDashboardWithSegue:" id="ofR-Ev-7T6"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEF-QP-7Wq">
                                 <rect key="frame" x="35" y="249" width="344" height="344"/>
                                 <constraints>
@@ -1098,11 +1141,13 @@
                             <constraint firstAttribute="bottom" secondItem="nZb-0W-31b" secondAttribute="bottom" id="BPT-SJ-Lle"/>
                             <constraint firstItem="a4T-FZ-dOJ" firstAttribute="top" secondItem="OZO-aD-m0t" secondAttribute="top" id="CWJ-l9-a5y"/>
                             <constraint firstItem="nZb-0W-31b" firstAttribute="leading" secondItem="RUh-Qc-Xyq" secondAttribute="leading" id="Ddx-ab-NDm"/>
+                            <constraint firstItem="pAm-uF-CPW" firstAttribute="top" secondItem="OZO-aD-m0t" secondAttribute="top" constant="12" id="Gdp-AY-CDG"/>
                             <constraint firstAttribute="trailing" secondItem="nZb-0W-31b" secondAttribute="trailing" id="PkN-wp-nnQ"/>
                             <constraint firstItem="gEF-QP-7Wq" firstAttribute="centerY" secondItem="RUh-Qc-Xyq" secondAttribute="centerY" id="QRg-A7-THI"/>
                             <constraint firstItem="a4T-FZ-dOJ" firstAttribute="leading" secondItem="RUh-Qc-Xyq" secondAttribute="leading" id="cka-Xe-e7C"/>
                             <constraint firstItem="gEF-QP-7Wq" firstAttribute="leading" secondItem="OZO-aD-m0t" secondAttribute="leading" constant="35" id="fB8-Bx-hc8"/>
                             <constraint firstItem="X3a-eY-xru" firstAttribute="centerX" secondItem="RUh-Qc-Xyq" secondAttribute="centerX" id="gjy-lo-3VC"/>
+                            <constraint firstItem="pAm-uF-CPW" firstAttribute="leading" secondItem="OZO-aD-m0t" secondAttribute="leading" constant="20" id="jor-0i-vNE"/>
                             <constraint firstAttribute="trailing" secondItem="a4T-FZ-dOJ" secondAttribute="trailing" id="sgn-Dy-4sv"/>
                             <constraint firstItem="gEF-QP-7Wq" firstAttribute="centerX" secondItem="RUh-Qc-Xyq" secondAttribute="centerX" id="vs0-Mq-ciS"/>
                             <constraint firstItem="X3a-eY-xru" firstAttribute="centerY" secondItem="RUh-Qc-Xyq" secondAttribute="centerY" id="xwA-GG-WhT"/>
@@ -1113,6 +1158,7 @@
                     <navigationItem key="navigationItem" id="wNd-Ka-Q0i"/>
                     <connections>
                         <outlet property="activityIndicator" destination="X3a-eY-xru" id="pFE-pS-02a"/>
+                        <outlet property="dismissButton" destination="pAm-uF-CPW" id="lzr-Ob-ux0"/>
                         <outlet property="grayOutView" destination="a4T-FZ-dOJ" id="v1W-16-TPO"/>
                         <outlet property="qrScope" destination="gEF-QP-7Wq" id="5Pg-lF-Cs8"/>
                         <outlet property="scannerView" destination="nZb-0W-31b" id="KOT-yV-CDg"/>
@@ -1451,7 +1497,7 @@
                                 </constraints>
                                 <state key="normal" image="Close"/>
                                 <connections>
-                                    <action selector="dismiss:" destination="cXp-Q8-T4P" eventType="touchUpInside" id="4ZR-SQ-ezb"/>
+                                    <action selector="didTapDismissButton:" destination="cXp-Q8-T4P" eventType="touchUpInside" id="zQP-jJ-5ch"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HLe-nt-clu">
@@ -1597,6 +1643,9 @@
                                     <constraint firstAttribute="width" secondItem="bCK-tU-xeJ" secondAttribute="height" multiplier="1:1" id="yvk-6n-K1t"/>
                                 </constraints>
                                 <state key="normal" image="Close"/>
+                                <connections>
+                                    <action selector="didTapDismissButton:" destination="INL-pe-aIy" eventType="touchUpInside" id="F6v-Yw-0Ay"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Wks-Lu-FAD">
                                 <rect key="frame" x="20" y="488" width="374" height="40"/>
@@ -1677,6 +1726,7 @@
                     <navigationItem key="navigationItem" id="Tz4-lH-ClL"/>
                     <connections>
                         <outlet property="activityIndicator" destination="QI3-hG-flX" id="IwD-1e-i4J"/>
+                        <outlet property="dismissButton" destination="bCK-tU-xeJ" id="qfj-tX-4ra"/>
                         <outlet property="performButton" destination="IUp-1o-ipu" id="VkP-sc-9D4"/>
                         <outletCollection property="textFields" destination="Wks-Lu-FAD" collectionClass="NSMutableArray" id="gGw-Tp-yMT"/>
                         <outletCollection property="textFields" destination="ElN-6k-cqo" collectionClass="NSMutableArray" id="9c6-5N-R4Z"/>
@@ -1711,6 +1761,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aYO-w9-Rhi"/>
+        <segue reference="piD-0s-YbQ"/>
     </inferredMetricsTieBreakers>
 </document>

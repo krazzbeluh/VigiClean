@@ -17,6 +17,7 @@ class MarketplaceViewController: UIViewController, MarketplaceView {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var score: UILabel!
+    @IBOutlet weak var dismissButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,11 @@ class MarketplaceViewController: UIViewController, MarketplaceView {
         self.presenter = MarketplacePresenter(view: self)
         
         presenter.getScore()
+        
+        if #available(iOS 13, *) {
+            // With IOS 13, the segue is not fullscreen and can be dismissed with swipe
+            dismissButton.isHidden = true
+        }
     }
     
     func setScoreLabel(to text: String) { // displays score

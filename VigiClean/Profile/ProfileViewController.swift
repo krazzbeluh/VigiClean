@@ -16,6 +16,11 @@ class ProfileViewController: UIViewController, ProfileView {
         super.viewDidLoad()
         
         presenter = ProfilePresenter(view: self)
+        
+        if #available(iOS 13, *) {
+            // With IOS 13, the segue is not fullscreen and can be dismissed with swipe
+            dismissButton.isHidden = true
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,6 +50,7 @@ class ProfileViewController: UIViewController, ProfileView {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var dismissButton: UIButton!
     
     // MARK: Actions
     @IBAction func didTapDisconnectButton(_ sender: Any) { // presents alert and disconnects user
